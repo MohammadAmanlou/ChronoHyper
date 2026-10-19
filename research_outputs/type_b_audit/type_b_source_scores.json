@@ -1,0 +1,741 @@
+{
+  "schema": "type_b_source_score_v1",
+  "ranking_sha256": "b352d9ff4e895b7c8a5622df07e7f5f90a34aacfe34491372599ce6b1c764710",
+  "gold_source": "data/ground_truth.json (opened only in score phase)",
+  "n_type_b": 4,
+  "k_values": [
+    3,
+    5,
+    10
+  ],
+  "n_random_controls": 2000,
+  "summary": {
+    "flat_gold_source_recall_at_3_available_macro_mean": 0.27083,
+    "flat_gold_source_recall_at_3_all_macro_mean": 0.1625,
+    "flat_claim_source_coverage_at_3_macro_mean": 0.20198,
+    "flat_gold_source_recall_at_5_available_macro_mean": 0.52083,
+    "flat_gold_source_recall_at_5_all_macro_mean": 0.3125,
+    "flat_claim_source_coverage_at_5_macro_mean": 0.41984,
+    "flat_gold_source_recall_at_10_available_macro_mean": 0.60417,
+    "flat_gold_source_recall_at_10_all_macro_mean": 0.375,
+    "flat_claim_source_coverage_at_10_macro_mean": 0.53095,
+    "hier_gold_source_recall_at_3_available_macro_mean": 0.27083,
+    "hier_gold_source_recall_at_3_all_macro_mean": 0.1625,
+    "hier_claim_source_coverage_at_3_macro_mean": 0.20198,
+    "hier_gold_source_recall_at_5_available_macro_mean": 0.52083,
+    "hier_gold_source_recall_at_5_all_macro_mean": 0.3125,
+    "hier_claim_source_coverage_at_5_macro_mean": 0.41984,
+    "hier_gold_source_recall_at_10_available_macro_mean": 0.60417,
+    "hier_gold_source_recall_at_10_all_macro_mean": 0.375,
+    "hier_claim_source_coverage_at_10_macro_mean": 0.53095
+  },
+  "random_null_p_hier_reference_recall_at5": 0.00399800099950025,
+  "random_null_reference_recall_at5_mean": 0.10822,
+  "question_breakdown": [
+    {
+      "question_id": "Q15",
+      "query": "What are the most important open scientific challenges (by Feb 2026) in AI-based multiscale modeling of solid-state materials?",
+      "n_gold_sources": 5,
+      "n_gold_sources_exact_available": 2,
+      "n_required_claims": 10,
+      "n_claims_with_at_least_one_eligible_source": 6,
+      "source_mapping": {
+        "nguyen2023": {
+          "source_title": "Challenges and Opportunities for Machine Learning in Multiscale Computational Modeling",
+          "eligible_match_ids": [
+            "5450"
+          ],
+          "match_status": "EXACT_NORMALIZED"
+        },
+        "van2025": {
+          "source_title": "A Survey of AI for Materials Science: Foundation Models, LLM Agents, Datasets, and Tools",
+          "eligible_match_ids": [
+            "5389"
+          ],
+          "match_status": "EXACT_NORMALIZED"
+        },
+        "li2025_ood": {
+          "source_title": "Probing out-of-distribution generalization in machine learning for materials",
+          "eligible_match_ids": [],
+          "match_status": "ABSENT"
+        },
+        "jakob2025": {
+          "source_title": "Universally Accurate or Specifically Inadequate? Stress-Testing General Purpose Machine Learning Interatomic Potentials",
+          "eligible_match_ids": [],
+          "match_status": "ABSENT"
+        },
+        "deng2025_softening": {
+          "source_title": "Systematic softening in universal machine learning interatomic potentials",
+          "eligible_match_ids": [],
+          "match_status": "ABSENT"
+        }
+      },
+      "scores": {
+        "flat": {
+          "gold_source_recall_at_3_available": 0.5,
+          "gold_source_recall_at_3_all": 0.2,
+          "gold_reference_precision_at_3": 0.3333333333333333,
+          "claim_source_coverage_at_3": 0.3,
+          "gold_source_recall_at_5_available": 1.0,
+          "gold_source_recall_at_5_all": 0.4,
+          "gold_reference_precision_at_5": 0.4,
+          "claim_source_coverage_at_5": 0.6,
+          "gold_source_recall_at_10_available": 1.0,
+          "gold_source_recall_at_10_all": 0.4,
+          "gold_reference_precision_at_10": 0.2,
+          "claim_source_coverage_at_10": 0.6
+        },
+        "hier": {
+          "gold_source_recall_at_3_available": 0.5,
+          "gold_source_recall_at_3_all": 0.2,
+          "gold_reference_precision_at_3": 0.3333333333333333,
+          "claim_source_coverage_at_3": 0.3,
+          "gold_source_recall_at_5_available": 1.0,
+          "gold_source_recall_at_5_all": 0.4,
+          "gold_reference_precision_at_5": 0.4,
+          "claim_source_coverage_at_5": 0.6,
+          "gold_source_recall_at_10_available": 1.0,
+          "gold_source_recall_at_10_all": 0.4,
+          "gold_reference_precision_at_10": 0.2,
+          "claim_source_coverage_at_10": 0.6
+        }
+      },
+      "flat_top_10": [
+        {
+          "id": "5450",
+          "year": 2023,
+          "title": "Challenges and opportunities for machine learning in multiscale computational modeling"
+        },
+        {
+          "id": "5385",
+          "year": 2025,
+          "title": "Machine Learning-Guided Discovery of Temperature-Induced Solid-Solid Phase Transitions in Inorganic Materials"
+        },
+        {
+          "id": "5435",
+          "year": 2019,
+          "title": "Simulating diffusion properties of solid-state electrolytes via a neural network potential: Performance and training scheme"
+        },
+        {
+          "id": "5389",
+          "year": 2025,
+          "title": "A SURVEY OF AI FOR MATERIALS SCIENCE: FOUNDATION MODELS, LLM AGENTS, DATASETS, AND TOOLS"
+        },
+        {
+          "id": "5405",
+          "year": 2024,
+          "title": "Universal Machine Learning Kohn-Sham Hamiltonian for Materials"
+        },
+        {
+          "id": "5384",
+          "year": 2025,
+          "title": "Predicting ionic conductivity in solids from the machine-learned potential energy landscape"
+        },
+        {
+          "id": "5455",
+          "year": 2023,
+          "title": "Scaling deep learning for materials discovery"
+        },
+        {
+          "id": "5407",
+          "year": 2025,
+          "title": "Flow Matching for Accelerated Simulation of Atomic Transport in Crystalline Materials"
+        },
+        {
+          "id": "5408",
+          "year": 2013,
+          "title": "Commentary: The Materials Project: A materials genome approach to accelerating materials innovation"
+        },
+        {
+          "id": "5399",
+          "year": 2022,
+          "title": "Linking atomic structural defects to mesoscale properties in crystalline solids using graph neural networks"
+        }
+      ],
+      "hier_top_10": [
+        {
+          "id": "5450",
+          "year": 2023,
+          "title": "Challenges and opportunities for machine learning in multiscale computational modeling"
+        },
+        {
+          "id": "5385",
+          "year": 2025,
+          "title": "Machine Learning-Guided Discovery of Temperature-Induced Solid-Solid Phase Transitions in Inorganic Materials"
+        },
+        {
+          "id": "5435",
+          "year": 2019,
+          "title": "Simulating diffusion properties of solid-state electrolytes via a neural network potential: Performance and training scheme"
+        },
+        {
+          "id": "5389",
+          "year": 2025,
+          "title": "A SURVEY OF AI FOR MATERIALS SCIENCE: FOUNDATION MODELS, LLM AGENTS, DATASETS, AND TOOLS"
+        },
+        {
+          "id": "5405",
+          "year": 2024,
+          "title": "Universal Machine Learning Kohn-Sham Hamiltonian for Materials"
+        },
+        {
+          "id": "5384",
+          "year": 2025,
+          "title": "Predicting ionic conductivity in solids from the machine-learned potential energy landscape"
+        },
+        {
+          "id": "5455",
+          "year": 2023,
+          "title": "Scaling deep learning for materials discovery"
+        },
+        {
+          "id": "5407",
+          "year": 2025,
+          "title": "Flow Matching for Accelerated Simulation of Atomic Transport in Crystalline Materials"
+        },
+        {
+          "id": "5408",
+          "year": 2013,
+          "title": "Commentary: The Materials Project: A materials genome approach to accelerating materials innovation"
+        },
+        {
+          "id": "5399",
+          "year": 2022,
+          "title": "Linking atomic structural defects to mesoscale properties in crystalline solids using graph neural networks"
+        }
+      ],
+      "status": "REFERENCE_RETRIEVAL_ONLY_NOT_ANSWER_CORRECTNESS"
+    },
+    {
+      "question_id": "Q16",
+      "query": "How does E(3)-equivariance improve GNN-based interatomic potentials in accuracy and data efficiency in comparison with vanilla GNN?",
+      "n_gold_sources": 4,
+      "n_gold_sources_exact_available": 3,
+      "n_required_claims": 9,
+      "n_claims_with_at_least_one_eligible_source": 8,
+      "source_mapping": {
+        "batzner2022": {
+          "source_title": "E(3)-equivariant graph neural networks for data-efficient and accurate interatomic potentials",
+          "eligible_match_ids": [
+            "5388"
+          ],
+          "match_status": "EXACT_NORMALIZED"
+        },
+        "batatia2022": {
+          "source_title": "MACE: Higher Order Equivariant Message Passing Neural Networks for Fast and Accurate Force Fields",
+          "eligible_match_ids": [
+            "5380"
+          ],
+          "match_status": "EXACT_NORMALIZED"
+        },
+        "park2024": {
+          "source_title": "Scalable Parallel Algorithm for Graph Neural Network Interatomic Potentials in Molecular Dynamics Simulations",
+          "eligible_match_ids": [
+            "5439"
+          ],
+          "match_status": "EXACT_NORMALIZED"
+        },
+        "bigi2026": {
+          "source_title": "Pushing the limits of unconstrained machine-learned interatomic potentials",
+          "eligible_match_ids": [],
+          "match_status": "ABSENT"
+        }
+      },
+      "scores": {
+        "flat": {
+          "gold_source_recall_at_3_available": 0.3333333333333333,
+          "gold_source_recall_at_3_all": 0.25,
+          "gold_reference_precision_at_3": 0.3333333333333333,
+          "claim_source_coverage_at_3": 0.2222222222222222,
+          "gold_source_recall_at_5_available": 0.3333333333333333,
+          "gold_source_recall_at_5_all": 0.25,
+          "gold_reference_precision_at_5": 0.2,
+          "claim_source_coverage_at_5": 0.2222222222222222,
+          "gold_source_recall_at_10_available": 0.6666666666666666,
+          "gold_source_recall_at_10_all": 0.5,
+          "gold_reference_precision_at_10": 0.2,
+          "claim_source_coverage_at_10": 0.6666666666666666
+        },
+        "hier": {
+          "gold_source_recall_at_3_available": 0.3333333333333333,
+          "gold_source_recall_at_3_all": 0.25,
+          "gold_reference_precision_at_3": 0.3333333333333333,
+          "claim_source_coverage_at_3": 0.2222222222222222,
+          "gold_source_recall_at_5_available": 0.3333333333333333,
+          "gold_source_recall_at_5_all": 0.25,
+          "gold_reference_precision_at_5": 0.2,
+          "claim_source_coverage_at_5": 0.2222222222222222,
+          "gold_source_recall_at_10_available": 0.6666666666666666,
+          "gold_source_recall_at_10_all": 0.5,
+          "gold_reference_precision_at_10": 0.2,
+          "claim_source_coverage_at_10": 0.6666666666666666
+        }
+      },
+      "flat_top_10": [
+        {
+          "id": "5439",
+          "year": 2024,
+          "title": "Scalable Parallel Algorithm for Graph Neural Network Interatomic Potentials in Molecular Dynamics Simulations"
+        },
+        {
+          "id": "5383",
+          "year": 2023,
+          "title": "GNN-Assisted Phase Space Integration with Application to Atomistics"
+        },
+        {
+          "id": "5401",
+          "year": 2025,
+          "title": "A Foundational Potential Energy Surface Dataset for Materials"
+        },
+        {
+          "id": "5382",
+          "year": 2024,
+          "title": "Phonon predictions with E(3)-equivariant graph neural networks"
+        },
+        {
+          "id": "5453",
+          "year": 2025,
+          "title": "Machine Learning Interatomic Potentials: A Review and Framework for Understanding MLIPs"
+        },
+        {
+          "id": "5455",
+          "year": 2023,
+          "title": "Scaling deep learning for materials discovery"
+        },
+        {
+          "id": "5388",
+          "year": 2021,
+          "title": "E(3)-Equivariant Graph Neural Networks for Data-Efficient and Accurate Interatomic Potentials"
+        },
+        {
+          "id": "5451",
+          "year": 2016,
+          "title": "Machine-learning based interatomic potential for amorphous carbon"
+        },
+        {
+          "id": "5447",
+          "year": 2025,
+          "title": "Evaluation of Foundational Machine Learned Interatomic Potentials for Migration Barrier Predictions"
+        },
+        {
+          "id": "5404",
+          "year": 2018,
+          "title": "Machine learning a general purpose interatomic potential for silicon"
+        }
+      ],
+      "hier_top_10": [
+        {
+          "id": "5439",
+          "year": 2024,
+          "title": "Scalable Parallel Algorithm for Graph Neural Network Interatomic Potentials in Molecular Dynamics Simulations"
+        },
+        {
+          "id": "5383",
+          "year": 2023,
+          "title": "GNN-Assisted Phase Space Integration with Application to Atomistics"
+        },
+        {
+          "id": "5401",
+          "year": 2025,
+          "title": "A Foundational Potential Energy Surface Dataset for Materials"
+        },
+        {
+          "id": "5382",
+          "year": 2024,
+          "title": "Phonon predictions with E(3)-equivariant graph neural networks"
+        },
+        {
+          "id": "5453",
+          "year": 2025,
+          "title": "Machine Learning Interatomic Potentials: A Review and Framework for Understanding MLIPs"
+        },
+        {
+          "id": "5455",
+          "year": 2023,
+          "title": "Scaling deep learning for materials discovery"
+        },
+        {
+          "id": "5388",
+          "year": 2021,
+          "title": "E(3)-Equivariant Graph Neural Networks for Data-Efficient and Accurate Interatomic Potentials"
+        },
+        {
+          "id": "5451",
+          "year": 2016,
+          "title": "Machine-learning based interatomic potential for amorphous carbon"
+        },
+        {
+          "id": "5447",
+          "year": 2025,
+          "title": "Evaluation of Foundational Machine Learned Interatomic Potentials for Migration Barrier Predictions"
+        },
+        {
+          "id": "5404",
+          "year": 2018,
+          "title": "Machine learning a general purpose interatomic potential for silicon"
+        }
+      ],
+      "status": "REFERENCE_RETRIEVAL_ONLY_NOT_ANSWER_CORRECTNESS"
+    },
+    {
+      "question_id": "Q17",
+      "query": "Give evidences that ML-based coarse-grained molecular dynamics is effective for studying ionic transport and phase transitions in solid-state systems (by Feb 2026).",
+      "n_gold_sources": 5,
+      "n_gold_sources_exact_available": 4,
+      "n_required_claims": 7,
+      "n_claims_with_at_least_one_eligible_source": 7,
+      "source_mapping": {
+        "maevskiy2025": {
+          "source_title": "Predicting ionic conductivity in solids from the machine-learned potential energy landscape",
+          "eligible_match_ids": [
+            "5384"
+          ],
+          "match_status": "EXACT_NORMALIZED"
+        },
+        "bheemaguli2025": {
+          "source_title": "Evaluation of Foundational Machine Learned Interatomic Potentials for Migration Barrier Predictions",
+          "eligible_match_ids": [
+            "5447"
+          ],
+          "match_status": "EXACT_NORMALIZED"
+        },
+        "nam2025": {
+          "source_title": "Flow matching for accelerated simulation of atomic transport in crystalline materials",
+          "eligible_match_ids": [
+            "5407"
+          ],
+          "match_status": "EXACT_NORMALIZED"
+        },
+        "saxena2023": {
+          "source_title": "GNN-assisted phase space integration with application to atomistics",
+          "eligible_match_ids": [
+            "5383"
+          ],
+          "match_status": "EXACT_NORMALIZED"
+        },
+        "turchyna2025": {
+          "source_title": "Connecting Scales: Learning Dynamics for Efficient Ionic Conductivity Predictions with Graphs",
+          "eligible_match_ids": [],
+          "match_status": "ABSENT"
+        }
+      },
+      "scores": {
+        "flat": {
+          "gold_source_recall_at_3_available": 0.25,
+          "gold_source_recall_at_3_all": 0.2,
+          "gold_reference_precision_at_3": 0.3333333333333333,
+          "claim_source_coverage_at_3": 0.2857142857142857,
+          "gold_source_recall_at_5_available": 0.75,
+          "gold_source_recall_at_5_all": 0.6,
+          "gold_reference_precision_at_5": 0.6,
+          "claim_source_coverage_at_5": 0.8571428571428571,
+          "gold_source_recall_at_10_available": 0.75,
+          "gold_source_recall_at_10_all": 0.6,
+          "gold_reference_precision_at_10": 0.3,
+          "claim_source_coverage_at_10": 0.8571428571428571
+        },
+        "hier": {
+          "gold_source_recall_at_3_available": 0.25,
+          "gold_source_recall_at_3_all": 0.2,
+          "gold_reference_precision_at_3": 0.3333333333333333,
+          "claim_source_coverage_at_3": 0.2857142857142857,
+          "gold_source_recall_at_5_available": 0.75,
+          "gold_source_recall_at_5_all": 0.6,
+          "gold_reference_precision_at_5": 0.6,
+          "claim_source_coverage_at_5": 0.8571428571428571,
+          "gold_source_recall_at_10_available": 0.75,
+          "gold_source_recall_at_10_all": 0.6,
+          "gold_reference_precision_at_10": 0.3,
+          "claim_source_coverage_at_10": 0.8571428571428571
+        }
+      },
+      "flat_top_10": [
+        {
+          "id": "5385",
+          "year": 2025,
+          "title": "Machine Learning-Guided Discovery of Temperature-Induced Solid-Solid Phase Transitions in Inorganic Materials"
+        },
+        {
+          "id": "5407",
+          "year": 2025,
+          "title": "Flow Matching for Accelerated Simulation of Atomic Transport in Crystalline Materials"
+        },
+        {
+          "id": "5435",
+          "year": 2019,
+          "title": "Simulating diffusion properties of solid-state electrolytes via a neural network potential: Performance and training scheme"
+        },
+        {
+          "id": "5384",
+          "year": 2025,
+          "title": "Predicting ionic conductivity in solids from the machine-learned potential energy landscape"
+        },
+        {
+          "id": "5447",
+          "year": 2025,
+          "title": "Evaluation of Foundational Machine Learned Interatomic Potentials for Migration Barrier Predictions"
+        },
+        {
+          "id": "5455",
+          "year": 2023,
+          "title": "Scaling deep learning for materials discovery"
+        },
+        {
+          "id": "5449",
+          "year": 2022,
+          "title": "Large-scale machine-learning-assisted exploration of the whole materials space"
+        },
+        {
+          "id": "5401",
+          "year": 2025,
+          "title": "A Foundational Potential Energy Surface Dataset for Materials"
+        },
+        {
+          "id": "5405",
+          "year": 2024,
+          "title": "Universal Machine Learning Kohn-Sham Hamiltonian for Materials"
+        },
+        {
+          "id": "5453",
+          "year": 2025,
+          "title": "Machine Learning Interatomic Potentials: A Review and Framework for Understanding MLIPs"
+        }
+      ],
+      "hier_top_10": [
+        {
+          "id": "5385",
+          "year": 2025,
+          "title": "Machine Learning-Guided Discovery of Temperature-Induced Solid-Solid Phase Transitions in Inorganic Materials"
+        },
+        {
+          "id": "5407",
+          "year": 2025,
+          "title": "Flow Matching for Accelerated Simulation of Atomic Transport in Crystalline Materials"
+        },
+        {
+          "id": "5435",
+          "year": 2019,
+          "title": "Simulating diffusion properties of solid-state electrolytes via a neural network potential: Performance and training scheme"
+        },
+        {
+          "id": "5384",
+          "year": 2025,
+          "title": "Predicting ionic conductivity in solids from the machine-learned potential energy landscape"
+        },
+        {
+          "id": "5447",
+          "year": 2025,
+          "title": "Evaluation of Foundational Machine Learned Interatomic Potentials for Migration Barrier Predictions"
+        },
+        {
+          "id": "5455",
+          "year": 2023,
+          "title": "Scaling deep learning for materials discovery"
+        },
+        {
+          "id": "5449",
+          "year": 2022,
+          "title": "Large-scale machine-learning-assisted exploration of the whole materials space"
+        },
+        {
+          "id": "5401",
+          "year": 2025,
+          "title": "A Foundational Potential Energy Surface Dataset for Materials"
+        },
+        {
+          "id": "5405",
+          "year": 2024,
+          "title": "Universal Machine Learning Kohn-Sham Hamiltonian for Materials"
+        },
+        {
+          "id": "5453",
+          "year": 2025,
+          "title": "Machine Learning Interatomic Potentials: A Review and Framework for Understanding MLIPs"
+        }
+      ],
+      "status": "REFERENCE_RETRIEVAL_ONLY_NOT_ANSWER_CORRECTNESS"
+    },
+    {
+      "question_id": "Q18",
+      "query": "What mechanisms embed physical constraints, i.e., symmetry, locality, and size extensivity, into machine-learned interatomic potential architectures, and what evidence bears on whether these constraints improve transfer to system sizes and conditions beyond the training set (by Feb 2026)?",
+      "n_gold_sources": 5,
+      "n_gold_sources_exact_available": 1,
+      "n_required_claims": 10,
+      "n_claims_with_at_least_one_eligible_source": 2,
+      "source_mapping": {
+        "jacobs2025": {
+          "source_title": "A practical guide to machine learning interatomic potentials - Status and future",
+          "eligible_match_ids": [],
+          "match_status": "ABSENT"
+        },
+        "geiger2022": {
+          "source_title": "e3nn: Euclidean Neural Networks",
+          "eligible_match_ids": [],
+          "match_status": "ABSENT"
+        },
+        "gilmer2017": {
+          "source_title": "Neural Message Passing for Quantum Chemistry",
+          "eligible_match_ids": [
+            "4166"
+          ],
+          "match_status": "EXACT_NORMALIZED"
+        },
+        "elhag2025": {
+          "source_title": "Learning Inter-Atomic Potentials without Explicit Equivariance (TransIP)",
+          "eligible_match_ids": [],
+          "match_status": "ABSENT"
+        },
+        "sanocki2025": {
+          "source_title": "Generalization of Long-Range Machine Learning Potentials in Complex Chemical Spaces",
+          "eligible_match_ids": [],
+          "match_status": "ABSENT"
+        }
+      },
+      "scores": {
+        "flat": {
+          "gold_source_recall_at_3_available": 0.0,
+          "gold_source_recall_at_3_all": 0.0,
+          "gold_reference_precision_at_3": 0.0,
+          "claim_source_coverage_at_3": 0.0,
+          "gold_source_recall_at_5_available": 0.0,
+          "gold_source_recall_at_5_all": 0.0,
+          "gold_reference_precision_at_5": 0.0,
+          "claim_source_coverage_at_5": 0.0,
+          "gold_source_recall_at_10_available": 0.0,
+          "gold_source_recall_at_10_all": 0.0,
+          "gold_reference_precision_at_10": 0.0,
+          "claim_source_coverage_at_10": 0.0
+        },
+        "hier": {
+          "gold_source_recall_at_3_available": 0.0,
+          "gold_source_recall_at_3_all": 0.0,
+          "gold_reference_precision_at_3": 0.0,
+          "claim_source_coverage_at_3": 0.0,
+          "gold_source_recall_at_5_available": 0.0,
+          "gold_source_recall_at_5_all": 0.0,
+          "gold_reference_precision_at_5": 0.0,
+          "claim_source_coverage_at_5": 0.0,
+          "gold_source_recall_at_10_available": 0.0,
+          "gold_source_recall_at_10_all": 0.0,
+          "gold_reference_precision_at_10": 0.0,
+          "claim_source_coverage_at_10": 0.0
+        }
+      },
+      "flat_top_10": [
+        {
+          "id": "5384",
+          "year": 2025,
+          "title": "Predicting ionic conductivity in solids from the machine-learned potential energy landscape"
+        },
+        {
+          "id": "5435",
+          "year": 2019,
+          "title": "Simulating diffusion properties of solid-state electrolytes via a neural network potential: Performance and training scheme"
+        },
+        {
+          "id": "5447",
+          "year": 2025,
+          "title": "Evaluation of Foundational Machine Learned Interatomic Potentials for Migration Barrier Predictions"
+        },
+        {
+          "id": "5451",
+          "year": 2016,
+          "title": "Machine-learning based interatomic potential for amorphous carbon"
+        },
+        {
+          "id": "5390",
+          "year": 2022,
+          "title": "A Universal Graph Deep Learning Interatomic Potential for the Periodic Table"
+        },
+        {
+          "id": "5404",
+          "year": 2018,
+          "title": "Machine learning a general purpose interatomic potential for silicon"
+        },
+        {
+          "id": "5455",
+          "year": 2023,
+          "title": "Scaling deep learning for materials discovery"
+        },
+        {
+          "id": "5401",
+          "year": 2025,
+          "title": "A Foundational Potential Energy Surface Dataset for Materials"
+        },
+        {
+          "id": "5439",
+          "year": 2024,
+          "title": "Scalable Parallel Algorithm for Graph Neural Network Interatomic Potentials in Molecular Dynamics Simulations"
+        },
+        {
+          "id": "5397",
+          "year": 2019,
+          "title": "Graph Networks as a Universal Machine Learning Framework for Molecules and Crystals"
+        }
+      ],
+      "hier_top_10": [
+        {
+          "id": "5384",
+          "year": 2025,
+          "title": "Predicting ionic conductivity in solids from the machine-learned potential energy landscape"
+        },
+        {
+          "id": "5435",
+          "year": 2019,
+          "title": "Simulating diffusion properties of solid-state electrolytes via a neural network potential: Performance and training scheme"
+        },
+        {
+          "id": "5447",
+          "year": 2025,
+          "title": "Evaluation of Foundational Machine Learned Interatomic Potentials for Migration Barrier Predictions"
+        },
+        {
+          "id": "5451",
+          "year": 2016,
+          "title": "Machine-learning based interatomic potential for amorphous carbon"
+        },
+        {
+          "id": "5390",
+          "year": 2022,
+          "title": "A Universal Graph Deep Learning Interatomic Potential for the Periodic Table"
+        },
+        {
+          "id": "5404",
+          "year": 2018,
+          "title": "Machine learning a general purpose interatomic potential for silicon"
+        },
+        {
+          "id": "5455",
+          "year": 2023,
+          "title": "Scaling deep learning for materials discovery"
+        },
+        {
+          "id": "5401",
+          "year": 2025,
+          "title": "A Foundational Potential Energy Surface Dataset for Materials"
+        },
+        {
+          "id": "5439",
+          "year": 2024,
+          "title": "Scalable Parallel Algorithm for Graph Neural Network Interatomic Potentials in Molecular Dynamics Simulations"
+        },
+        {
+          "id": "5397",
+          "year": 2019,
+          "title": "Graph Networks as a Universal Machine Learning Framework for Molecules and Crystals"
+        }
+      ],
+      "status": "REFERENCE_RETRIEVAL_ONLY_NOT_ANSWER_CORRECTNESS"
+    }
+  ],
+  "claim_answer_accuracy_measured": false,
+  "assessment_status": "EXPLORATORY_SOURCE_COVERAGE_NOT_ANSWER_FAITHFULNESS",
+  "limitations": [
+    "No full-text article passage evidence; the gold file provides reference citations/claim rubrics, not source text to independently verify every claim.",
+    "All four benchmark questions and golden sources were previously inspected during project development, so p-values are descriptive and cannot establish generalization.",
+    "2025 snapshot excludes 2026 papers even if published before Feb 2026 (no reliable month available in archive).",
+    "The reference titles in gold are NOT necessarily the only relevant articles; reference-list precision is not true citation precision.",
+    "At-most four questions and one corpus prevent reliable domain-general statistical inference.",
+    "Candidate-score savings ignore centroid route overhead and do not imply measured wallclock gains."
+  ]
+}

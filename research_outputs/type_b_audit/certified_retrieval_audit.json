@@ -1,0 +1,445 @@
+{
+  "audit_type": "exact sparse TF-IDF search, hierarchy with componentwise cluster upper bounds",
+  "status": "VERIFIED_EXACT_TOPK",
+  "n_queries": 18,
+  "n_candidates": 2682,
+  "mean_flat_seconds": 0.003576488888534691,
+  "mean_hierarchy_seconds": 0.19434270000015708,
+  "mean_hierarchy_leaf_scores_accounted": 1048.1666666666667,
+  "caveat": "Same underlying flat ranking => Hit@K identical BY DESIGN, not an accuracy gain; report runtime/overhead fully. Hier leaf scores may be precomputed and therefore counted, including bounds/preprocessing. Does not establish superiority until measured faster end-to-end.",
+  "ground_truth_used_for_ranking": false,
+  "queries": [
+    {
+      "qid": "Q1",
+      "query_type": "A",
+      "exact_equal": true,
+      "flat_topk_node_ids": [
+        "tech_00795",
+        "tech_00658",
+        "comp_00600",
+        "meth_00396",
+        "meth_00375"
+      ],
+      "certified_topk_node_ids": [
+        "tech_00795",
+        "tech_00658",
+        "comp_00600",
+        "meth_00396",
+        "meth_00375"
+      ],
+      "flat_candidate_count": 2682,
+      "hier_leaf_scores_accounted": 1167,
+      "hier_groups_expanded": 67,
+      "flat_query_seconds": 0.004083799998625182,
+      "hier_query_seconds": 0.2171438000004855
+    },
+    {
+      "qid": "Q2",
+      "query_type": "A",
+      "exact_equal": true,
+      "flat_topk_node_ids": [
+        "meth_00223",
+        "tech_00694",
+        "comp_00625",
+        "meth_00222",
+        "meth_00226"
+      ],
+      "certified_topk_node_ids": [
+        "meth_00223",
+        "tech_00694",
+        "comp_00625",
+        "meth_00222",
+        "meth_00226"
+      ],
+      "flat_candidate_count": 2682,
+      "hier_leaf_scores_accounted": 803,
+      "hier_groups_expanded": 41,
+      "flat_query_seconds": 0.003650200000265613,
+      "hier_query_seconds": 0.14906380000320496
+    },
+    {
+      "qid": "Q3",
+      "query_type": "A",
+      "exact_equal": true,
+      "flat_topk_node_ids": [
+        "tech_00167",
+        "meth_00213",
+        "meth_00153",
+        "meth_00248",
+        "tech_00719"
+      ],
+      "certified_topk_node_ids": [
+        "tech_00167",
+        "meth_00213",
+        "meth_00153",
+        "meth_00248",
+        "tech_00719"
+      ],
+      "flat_candidate_count": 2682,
+      "hier_leaf_scores_accounted": 568,
+      "hier_groups_expanded": 33,
+      "flat_query_seconds": 0.0037441000022226945,
+      "hier_query_seconds": 0.10526389999722596
+    },
+    {
+      "qid": "Q4",
+      "query_type": "A",
+      "exact_equal": true,
+      "flat_topk_node_ids": [
+        "tech_00724",
+        "tech_00708",
+        "tech_00072",
+        "tech_00247",
+        "tech_00725"
+      ],
+      "certified_topk_node_ids": [
+        "tech_00724",
+        "tech_00708",
+        "tech_00072",
+        "tech_00247",
+        "tech_00725"
+      ],
+      "flat_candidate_count": 2682,
+      "hier_leaf_scores_accounted": 1111,
+      "hier_groups_expanded": 59,
+      "flat_query_seconds": 0.0033665000009932555,
+      "hier_query_seconds": 0.2018259999967995
+    },
+    {
+      "qid": "Q5",
+      "query_type": "A",
+      "exact_equal": true,
+      "flat_topk_node_ids": [
+        "comp_00524",
+        "comp_00653",
+        "tech_00085",
+        "meth_00333",
+        "meth_00392"
+      ],
+      "certified_topk_node_ids": [
+        "comp_00524",
+        "comp_00653",
+        "tech_00085",
+        "meth_00333",
+        "meth_00392"
+      ],
+      "flat_candidate_count": 2682,
+      "hier_leaf_scores_accounted": 1101,
+      "hier_groups_expanded": 60,
+      "flat_query_seconds": 0.003860900003928691,
+      "hier_query_seconds": 0.19745179999881657
+    },
+    {
+      "qid": "Q6",
+      "query_type": "A",
+      "exact_equal": true,
+      "flat_topk_node_ids": [
+        "cite_00365",
+        "cite_00367",
+        "cite_00366",
+        "cite_00339",
+        "cite_00363"
+      ],
+      "certified_topk_node_ids": [
+        "cite_00365",
+        "cite_00367",
+        "cite_00366",
+        "cite_00339",
+        "cite_00363"
+      ],
+      "flat_candidate_count": 2682,
+      "hier_leaf_scores_accounted": 921,
+      "hier_groups_expanded": 53,
+      "flat_query_seconds": 0.003951999999117106,
+      "hier_query_seconds": 0.16734220000216737
+    },
+    {
+      "qid": "Q7",
+      "query_type": "A",
+      "exact_equal": true,
+      "flat_topk_node_ids": [
+        "comp_00105",
+        "tech_00667",
+        "tech_00103",
+        "tech_00507",
+        "tech_00637"
+      ],
+      "certified_topk_node_ids": [
+        "comp_00105",
+        "tech_00667",
+        "tech_00103",
+        "tech_00507",
+        "tech_00637"
+      ],
+      "flat_candidate_count": 2682,
+      "hier_leaf_scores_accounted": 1230,
+      "hier_groups_expanded": 64,
+      "flat_query_seconds": 0.0038435000024037436,
+      "hier_query_seconds": 0.22743740000441903
+    },
+    {
+      "qid": "Q8",
+      "query_type": "A",
+      "exact_equal": true,
+      "flat_topk_node_ids": [
+        "cite_00001",
+        "tech_00312",
+        "cite_00002",
+        "cite_00003",
+        "comp_00294"
+      ],
+      "certified_topk_node_ids": [
+        "cite_00001",
+        "tech_00312",
+        "cite_00002",
+        "cite_00003",
+        "comp_00294"
+      ],
+      "flat_candidate_count": 2682,
+      "hier_leaf_scores_accounted": 846,
+      "hier_groups_expanded": 50,
+      "flat_query_seconds": 0.00421220000134781,
+      "hier_query_seconds": 0.16845839999587042
+    },
+    {
+      "qid": "Q9",
+      "query_type": "A",
+      "exact_equal": true,
+      "flat_topk_node_ids": [
+        "cite_00158",
+        "tech_00586",
+        "comp_00546",
+        "tech_00380",
+        "data_00094"
+      ],
+      "certified_topk_node_ids": [
+        "cite_00158",
+        "tech_00586",
+        "comp_00546",
+        "tech_00380",
+        "data_00094"
+      ],
+      "flat_candidate_count": 2682,
+      "hier_leaf_scores_accounted": 308,
+      "hier_groups_expanded": 22,
+      "flat_query_seconds": 0.002973099995870143,
+      "hier_query_seconds": 0.05901430000085384
+    },
+    {
+      "qid": "Q10",
+      "query_type": "A",
+      "exact_equal": true,
+      "flat_topk_node_ids": [
+        "comp_00602",
+        "tech_00623",
+        "tech_00012",
+        "tech_00333",
+        "tech_00328"
+      ],
+      "certified_topk_node_ids": [
+        "comp_00602",
+        "tech_00623",
+        "tech_00012",
+        "tech_00333",
+        "tech_00328"
+      ],
+      "flat_candidate_count": 2682,
+      "hier_leaf_scores_accounted": 981,
+      "hier_groups_expanded": 49,
+      "flat_query_seconds": 0.00353249999898253,
+      "hier_query_seconds": 0.18989589999546297
+    },
+    {
+      "qid": "Q11",
+      "query_type": "A",
+      "exact_equal": true,
+      "flat_topk_node_ids": [
+        "comp_00444",
+        "comp_00163",
+        "comp_00422",
+        "tech_00440",
+        "comp_00831"
+      ],
+      "certified_topk_node_ids": [
+        "comp_00444",
+        "comp_00163",
+        "comp_00422",
+        "tech_00440",
+        "comp_00831"
+      ],
+      "flat_candidate_count": 2682,
+      "hier_leaf_scores_accounted": 514,
+      "hier_groups_expanded": 33,
+      "flat_query_seconds": 0.003576000002794899,
+      "hier_query_seconds": 0.09941819999949075
+    },
+    {
+      "qid": "Q12",
+      "query_type": "A",
+      "exact_equal": true,
+      "flat_topk_node_ids": [
+        "tech_00915",
+        "cite_00414",
+        "meth_00196",
+        "cite_00416",
+        "cite_00415"
+      ],
+      "certified_topk_node_ids": [
+        "tech_00915",
+        "cite_00414",
+        "meth_00196",
+        "cite_00416",
+        "cite_00415"
+      ],
+      "flat_candidate_count": 2682,
+      "hier_leaf_scores_accounted": 1611,
+      "hier_groups_expanded": 83,
+      "flat_query_seconds": 0.0034042999977828003,
+      "hier_query_seconds": 0.28577930000028573
+    },
+    {
+      "qid": "Q13",
+      "query_type": "A",
+      "exact_equal": true,
+      "flat_topk_node_ids": [
+        "cite_00455",
+        "cite_00454",
+        "cite_00214",
+        "cite_00453",
+        "cite_00077"
+      ],
+      "certified_topk_node_ids": [
+        "cite_00455",
+        "cite_00454",
+        "cite_00214",
+        "cite_00453",
+        "cite_00077"
+      ],
+      "flat_candidate_count": 2682,
+      "hier_leaf_scores_accounted": 1015,
+      "hier_groups_expanded": 56,
+      "flat_query_seconds": 0.0033404999994672835,
+      "hier_query_seconds": 0.19441099999676226
+    },
+    {
+      "qid": "Q14",
+      "query_type": "A",
+      "exact_equal": true,
+      "flat_topk_node_ids": [
+        "meth_00179",
+        "tech_00725",
+        "comp_00010",
+        "comp_00176",
+        "comp_00177"
+      ],
+      "certified_topk_node_ids": [
+        "meth_00179",
+        "tech_00725",
+        "comp_00010",
+        "comp_00176",
+        "comp_00177"
+      ],
+      "flat_candidate_count": 2682,
+      "hier_leaf_scores_accounted": 1975,
+      "hier_groups_expanded": 105,
+      "flat_query_seconds": 0.0031674999991082586,
+      "hier_query_seconds": 0.35490650000429014
+    },
+    {
+      "qid": "Q15",
+      "query_type": "B",
+      "exact_equal": true,
+      "flat_topk_node_ids": [
+        "meth_00352",
+        "meth_00353",
+        "meth_00017",
+        "tech_00625",
+        "meth_00351"
+      ],
+      "certified_topk_node_ids": [
+        "meth_00352",
+        "meth_00353",
+        "meth_00017",
+        "tech_00625",
+        "meth_00351"
+      ],
+      "flat_candidate_count": 2682,
+      "hier_leaf_scores_accounted": 927,
+      "hier_groups_expanded": 53,
+      "flat_query_seconds": 0.0033451999988756143,
+      "hier_query_seconds": 0.1735878000035882
+    },
+    {
+      "qid": "Q16",
+      "query_type": "B",
+      "exact_equal": true,
+      "flat_topk_node_ids": [
+        "comp_00073",
+        "comp_00622",
+        "cite_00120",
+        "comp_00651",
+        "cite_00106"
+      ],
+      "certified_topk_node_ids": [
+        "comp_00073",
+        "comp_00622",
+        "cite_00120",
+        "comp_00651",
+        "cite_00106"
+      ],
+      "flat_candidate_count": 2682,
+      "hier_leaf_scores_accounted": 1283,
+      "hier_groups_expanded": 69,
+      "flat_query_seconds": 0.003560499993909616,
+      "hier_query_seconds": 0.23565709999820683
+    },
+    {
+      "qid": "Q17",
+      "query_type": "B",
+      "exact_equal": true,
+      "flat_topk_node_ids": [
+        "meth_00341",
+        "tech_00158",
+        "meth_00384",
+        "meth_00140",
+        "comp_00102"
+      ],
+      "certified_topk_node_ids": [
+        "meth_00341",
+        "tech_00158",
+        "meth_00384",
+        "meth_00140",
+        "comp_00102"
+      ],
+      "flat_candidate_count": 2682,
+      "hier_leaf_scores_accounted": 1396,
+      "hier_groups_expanded": 72,
+      "flat_query_seconds": 0.0033019999973475933,
+      "hier_query_seconds": 0.25481800000125077
+    },
+    {
+      "qid": "Q18",
+      "query_type": "B",
+      "exact_equal": true,
+      "flat_topk_node_ids": [
+        "tech_00906",
+        "comp_00627",
+        "comp_00633",
+        "tech_00658",
+        "tech_00332"
+      ],
+      "certified_topk_node_ids": [
+        "tech_00906",
+        "comp_00627",
+        "comp_00633",
+        "tech_00658",
+        "tech_00332"
+      ],
+      "flat_candidate_count": 2682,
+      "hier_leaf_scores_accounted": 1110,
+      "hier_groups_expanded": 61,
+      "flat_query_seconds": 0.003462000000581611,
+      "hier_query_seconds": 0.21669320000364678
+    }
+  ]
+}
