@@ -42,3 +42,10 @@ This assessment was materially AI-assisted. All implementation details and scien
 - **Verified by candidate on Windows:** V2 script completed on 2020/22/24 with source-audited lexical evidence; candidate reports 10 original and 12 research tests all passing; GitHub branch pushed commit `6bb6ac6`.
 - **NOT verified:** an independent scientific referee rating V2, an A/B gain over V1, valid label entailment for the 40 unclear cases, inference-latency superiority, and successful transfer of repository access to the recipient. The toy sample output printed during the unit test is a **synthetic fixture, not an actual human review result**.
 - Any email delivery is distinct from Github publication and requires explicit recipient access or an attached distributable ZIP.
+
+## Addendum — 20 October 2026 source-scope and post-hoc AI diagnostics
+
+- **AI tool:** ChatGPT GPT-6 assisted in reviewing 24 candidate V1/V2 label pairs, comparing sampled evidence, and deriving a deterministic 24-pair score on the already rated cases (6 V2 wins, 2 V1 wins, 16 ties; paired sign-test arithmetic p=0.289, **descriptive only**). The A/B method order was reconstructed by exact text matching; ratings are therefore NOT an independent blind human experiment.
+- AI also examined the supplied 36 Type-B claim rubrics, compared 19 with selected official publisher / author excerpts or abstracts located by web search, and recorded 17 as rubric-only. **No complete independent full-text claim entailment review** was conducted, and generated answer correctness has **not** been scored.
+- The source audit has complete per-claim provenance in `research_outputs/type_b_audit/primary_source_audit.csv`. Human-review forms were deliberately left empty. The locked method, 65 development jobs, five confirmation seeds and original reference question files were not retuned after these reviews.
+- The user should review the scientific report before employer submission; the report PDF must be re-rendered from updated `report.md` after this source audit.

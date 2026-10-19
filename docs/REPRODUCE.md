@@ -71,4 +71,28 @@ The [Type-B source metrics](../research_outputs/type_b_audit/type_b_source_score
 .\.venv\Scripts\python.exe .\scripts\make_report_figures.py
 ```
 
-The four-page PDF uses Pandoc+XeLaTeX to render `report.md`; regenerate PDF after **actual** scientific report edits. Retain original metrics and evidence stage labels. The legacy `outputs/` directory is the earlier model, **not** the locked selected output.
+The GitHub `report.md` was updated on 20 October with Type-B primary-source trace and AI-only V1/V2 diagnostics. The earlier compiled PDF may therefore be stale; regenerate **before final delivery**. Only one `report.pdf` is needed—do not create version-suffixed PDFs. Retain original metrics and evidence stage labels. The legacy `outputs/` directory is the earlier model, **not** the locked selected output.
+
+## 7 · Build the final report PDF on Windows (do this once)
+
+The final research report must be **3–5 readable pages** including the actual negative results. Use a local installation of Pandoc and XeLaTeX; avoid uploading the proprietary source corpus to third-party PDF services.
+
+```powershell
+pandoc --version
+xelatex --version
+pandoc .\report.md --from=markdown+tex_math_single_backslash `
+  --pdf-engine=xelatex `
+  -V geometry:margin=1.35cm -V linestretch=1.05 `
+  -V mainfont="Times New Roman" -o .\report.pdf
+```
+
+If either program is missing, install **Pandoc** and a local TeX distribution containing XeLaTeX (e.g. **MiKTeX**) first. Count pages in a PDF viewer; if not 3–5, adjust spacing/margins rather than deleting required scientific caveats. Inspect equations, tables, bibliography and the figure before committing.
+
+```powershell
+git status --short
+git add -- report.pdf
+git commit -m "Regenerate 4-page scientific report for final evidence"
+git push origin main
+```
+
+Skip the commit/push commands when `git status` shows no report change. Never blindly commit unrelated files. After a new PDF is pushed, the existing `main` GitHub Actions run must pass and `README.md` can have its PDF-staleness notice removed.

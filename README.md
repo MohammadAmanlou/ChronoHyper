@@ -2,13 +2,13 @@
 **Temporal multi-resolution abstraction of a scientific knowledge hypergraph**  
 Mohammad Amanlou · Constructor Knowledge Labs doctoral assessment · Python 3.11 · **private dataset**
 
-This is the **single entry point** for the project. Start with the [four-page research report](report.pdf) or read its [editable source](report.md). The selected model is `native_temporal_20`, frozen before the source-grouped confirmation evaluation. The repository records positive, negative and incomplete findings; passing software tests does **not** prove scientific label faithfulness or admission.
+This is the **single entry point** for the project. Start with the [latest scientific report source](report.md). The [previously compiled PDF](report.pdf) is being synchronized with the 20 October source-audit updates; regenerate it before using the PDF for final delivery. The selected model is `native_temporal_20`, frozen before the source-grouped confirmation evaluation. The repository records positive, negative and incomplete findings; passing software tests does **not** prove scientific label faithfulness or admission.
 
 ## What is inside
 
 | Path | Purpose |
 |---|---|
-| [`report.pdf`](report.pdf) · [`report.md`](report.md) | Current scientific report (not the earlier baseline) |
+| [`report.md`](report.md) · [`report.pdf`](report.pdf) | Current report source; compiled PDF must be regenerated after the 20 October evidence update |
 | [`docs/EVALUATION.md`](docs/EVALUATION.md) | T1–T7 evidence, metrics, limitations and remaining reviews |
 | [`docs/REPRODUCE.md`](docs/REPRODUCE.md) | Exact Windows commands, expected files and safe run order |
 | [`docs/ASSIGNMENT_SOURCE.md`](docs/ASSIGNMENT_SOURCE.md) | Original task description |
