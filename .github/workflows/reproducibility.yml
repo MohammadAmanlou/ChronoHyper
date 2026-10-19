@@ -15,7 +15,7 @@ jobs:
       - name: Original contract and artifact tests
         run: python -m unittest discover -s tests -v
       - name: Research-lab tests
-        run: python -m unittest research_lab.tests_lab -v
+        run: python -m unittest research_lab.tests_lab research_lab.test_label_v2 research_lab.test_type_b_source_audit -v
       - name: Locked hierarchy structural verification
         run: python verify_selected_outputs.py --out outputs_selected
       - name: Regenerate selected measured metrics without changing selection
