@@ -81,3 +81,31 @@ class PairedEvaluation(unittest.TestCase):
             self.assertEqual(x['requested_cases'],2)
             self.assertEqual(x['status'],'PARTIAL_REVIEW')
             self.assertEqual(x['v2_wins'],1)
+
+class AIPairedDiagnostic(unittest.TestCase):
+    def test_unblinding_requires_matching_original_both_arms(self):
+        import csv
+        from research_lab.label_v2 import summarize_ai_review
+        with tempfile.TemporaryDirectory() as d:
+            root=Path(d)
+            p=root/'research_outputs/label_v2'
+            p.mkdir(parents=True)
+            c=[{'year':2022,'stable_id':'s1','v1_label':'old','v1_gloss':'old gloss',
+                'v2_label':'new','v2_gloss':'new gloss'}]
+            (p/'candidates_v2_2022.json').write_text(json.dumps(c))
+            (p/'candidates_v2_2024.json').write_text('[]')
+            # Function deliberately refuses partial/incomplete or ambiguous 24-case audits.
+            with (p/'BLIND_LABEL_COMPARISON_TO_FILL.csv').open('w',newline='') as f:
+                w=csv.DictWriter(f,fieldnames=['year','stable_id','label_A','gloss_A','label_B','gloss_B'])
+                w.writeheader()
+                w.writerow({'year':2022,'stable_id':'s1','label_A':'new','gloss_A':'new gloss',
+                            'label_B':'old','gloss_B':'old gloss'})
+            with (p/'ai_label_review.csv').open('w',newline='') as f:
+                w=csv.DictWriter(f,fieldnames=['year','stable_id','A_label_rating_AI','B_label_rating_AI',
+                    'provisional_A_B_preference_AI','not_independent_human'])
+                w.writeheader()
+                w.writerow({'year':2022,'stable_id':'s1','A_label_rating_AI':'accurate',
+                            'B_label_rating_AI':'wrong','provisional_A_B_preference_AI':'A',
+                            'not_independent_human':'TRUE'})
+            with self.assertRaisesRegex(ValueError,'Expected 24 unique'):
+                summarize_ai_review(root)

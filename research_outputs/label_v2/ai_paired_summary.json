@@ -1,0 +1,27 @@
+{
+  "schema": "ckl_v1_v2_ai_diagnostic_summary_v1",
+  "sample_n": 24,
+  "derived_v2_matching": "exact candidate label+gloss vs frozen A/B pairs (24 unambiguous matches); original local A/B key NOT read",
+  "v2_arm_counts": {
+    "A": 10,
+    "B": 14
+  },
+  "rating_scale": {
+    "accurate": 2,
+    "vague": 1,
+    "wrong": 0
+  },
+  "v2_rating_wins": 6,
+  "v1_rating_wins": 2,
+  "rating_ties": 16,
+  "mean_delta_v2_minus_v1": 0.16666666666666666,
+  "exact_sign_test_p_descriptive_only": 0.2890625,
+  "general_preference_v2": 18,
+  "general_preference_v1": 3,
+  "general_preference_ties": 3,
+  "gloss_overclaim_rate": null,
+  "human_review": false,
+  "independent_evidence_validation": false,
+  "inference_validity": "EXPLORATORY AI self-evaluation on previously inspected sampled nodes and article titles, NOT independent blind expert ground truth; p-value only describes an arithmetic pairing, no confirmatory significance inference",
+  "scientific_conclusion": "V2 scientific accuracy advantage NOT established; refrain from reporting source-rubric coverage or lexical checks as entailment"
+}

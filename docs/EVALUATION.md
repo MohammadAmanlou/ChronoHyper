@@ -43,6 +43,20 @@ A ChatGPT GPT-6 diagnostic review was completed on **20 October 2026** without m
 
 **Remaining scientific gap:** independent, permitted full-text evidence/entailment checking, preferably by a qualified reader; if unavailable, the final report must keep P6 faithfulness and Type-B factual-answer validity **unverified**. Do not rerun the same observed queries and rename them an unseen test.
 
+## Reproducible A/B mapping of the earlier AI-only ratings
+
+The [aggregate analysis](../research_outputs/label_v2/ai_paired_summary.json) pairs the already recorded 24 AI A/B decisions with the frozen V1/V2 candidate texts by **exact label and gloss equality**. All 24 mappings are unique; no secret local key was needed or published.
+
+- **AI label-accuracy rating (0=wrong, 1=vague, 2=accurate):** V2 better on **6**, V1 better on **2**, **16 ties**; mean paired V2 minus V1 score **+0.167**.
+- **AI subjective title-plus-gloss preference:** V2 preferred **18**, V1 **3**, **3 ties**. This is distinct from scientific label accuracy.
+- A paired sign-test arithmetic yields `p=0.2890625` on the eight non-tied accuracy ratings; **not confirmatory evidence** due to non-independent AI assessment, implicit model-style cues and previously inspected evidence.
+- No independently checked gloss entailment, no verified overclaim rate, no human review and no full-text source verification have resulted from this step. Avoid confusing general preference with scientific faithfulness.
+- Recompute deterministically, without overwriting the human worksheet or creating a new branch:
+
+```powershell
+.\\.venv\\Scripts\\python.exe -m research_lab.label_v2 --project . --summarize-ai
+```
+
 ## Next release checklist
 
 - [x] Private repository, real input, pinned dependencies, 65+5+5 research-run registries.

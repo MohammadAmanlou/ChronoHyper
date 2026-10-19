@@ -44,3 +44,17 @@ jobs:
           assert not Path('research_outputs/label_v2/BLIND_KEY_KEEP_SEPARATE.json').exists()
           print('AI diagnostic scope correct; human review forms blank; secret absent')
           PY
+
+      - name: Summarize AI-only pairing without touching human forms
+        run: |
+          python -m research_lab.label_v2 --project . --summarize-ai
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path('research_outputs/label_v2/ai_paired_summary.json').read_text())
+          assert r['sample_n']==24
+          assert (r['v2_rating_wins'],r['v1_rating_wins'],r['rating_ties'])==(6,2,16)
+          assert (r['general_preference_v2'],r['general_preference_v1'],r['general_preference_ties'])==(18,3,3)
+          assert r['human_review'] is False and r['gloss_overclaim_rate'] is None
+          print('AI pairing checked; no human validation or AI overclaim fabricated')
+          PY

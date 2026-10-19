@@ -280,6 +280,94 @@ def score_blind(sheet, key_file, out):
     return result
 
 
+
+def summarize_ai_review(project='.', output=None):
+    """Reconcile prior AI-only A/B judgments with frozen V1/V2 candidates.
+
+    No unblinding key is read, no worksheet is modified and no human review is
+    inferred. Only aggregate counts are written: never publish per-case mapping.
+    """
+    root=Path(project)
+    base=root/'research_outputs/label_v2'
+    def load(path):
+        with path.open(encoding='utf-8-sig', newline='') as stream:
+            return list(csv.DictReader(stream))
+    sheet=load(base/'BLIND_LABEL_COMPARISON_TO_FILL.csv')
+    ai=load(base/'ai_label_review.csv')
+    candidates=[]
+    for year in (2022,2024):
+        candidates += json.loads((base/f'candidates_v2_{year}.json').read_text(encoding='utf-8'))
+    def ident(row):
+        return f'{row["year"]}:{row["stable_id"]}'
+    original={ident(row):row for row in sheet}
+    judgments={ident(row):row for row in ai}
+    source={ident(row):row for row in candidates}
+    if len(sheet)!=24 or len(ai)!=24 or len(original)!=24 or len(judgments)!=24:
+        raise ValueError('Expected 24 unique blinded cases and 24 AI judgments')
+    if set(original)!=set(judgments) or not set(original).issubset(source):
+        raise ValueError('Reviewed IDs do not match the frozen candidate records')
+    grades={'accurate':2,'vague':1,'wrong':0}
+    wins=losses=ties=pref_v2=pref_v1=pref_tie=0
+    arm_v2={'A':0,'B':0}
+    changes=[]
+    for key in sorted(original):
+        blind=original[key]
+        r=judgments[key]
+        c=source[key]
+        if r.get('not_independent_human')!='TRUE':
+            raise ValueError('AI review must explicitly disclose non-human origin')
+        validA=(blind['label_A']==c['v2_label'] and blind['gloss_A']==c['v2_gloss']
+                and blind['label_B']==c['v1_label'] and blind['gloss_B']==c['v1_gloss'])
+        validB=(blind['label_B']==c['v2_label'] and blind['gloss_B']==c['v2_gloss']
+                and blind['label_A']==c['v1_label'] and blind['gloss_A']==c['v1_gloss'])
+        if validA == validB:
+            raise ValueError('Blinded records mismatch or ambiguous: '+key)
+        arm='A' if validA else 'B'
+        arm_v2[arm]+=1
+        other='B' if validA else 'A'
+        va=r.get(arm+'_label_rating_AI','').strip().lower()
+        vb=r.get(other+'_label_rating_AI','').strip().lower()
+        if va not in grades or vb not in grades:
+            raise ValueError('Incomplete or invalid AI rating: '+key)
+        delta=grades[va]-grades[vb]
+        changes.append(delta)
+        if delta>0:wins+=1
+        elif delta<0:losses+=1
+        else:ties+=1
+        preference=r.get('provisional_A_B_preference_AI','')
+        if preference=='tie':pref_tie+=1
+        elif preference==arm:pref_v2+=1
+        elif preference==other:pref_v1+=1
+        else:raise ValueError('Invalid AI preference: '+key)
+    n=wins+losses
+    sign_p=(min(1.,2*sum(math.comb(n,k) for k in range(min(wins,losses)+1))/2**n)
+            if n else None)
+    result={
+        'schema':'ckl_v1_v2_ai_diagnostic_summary_v1',
+        'sample_n':len(changes),
+        'derived_v2_matching':'exact candidate label+gloss vs frozen A/B pairs (24 unambiguous matches); original local A/B key NOT read',
+        'v2_arm_counts':arm_v2,
+        'rating_scale':grades,
+        'v2_rating_wins':wins,
+        'v1_rating_wins':losses,
+        'rating_ties':ties,
+        'mean_delta_v2_minus_v1':sum(changes)/len(changes),
+        'exact_sign_test_p_descriptive_only':sign_p,
+        'general_preference_v2':pref_v2,
+        'general_preference_v1':pref_v1,
+        'general_preference_ties':pref_tie,
+        'gloss_overclaim_rate':None,
+        'human_review':False,
+        'independent_evidence_validation':False,
+        'inference_validity':'EXPLORATORY AI self-evaluation on previously inspected sampled nodes and article titles, NOT independent blind expert ground truth; p-value only describes an arithmetic pairing, no confirmatory significance inference',
+        'scientific_conclusion':'V2 scientific accuracy advantage NOT established; refrain from reporting source-rubric coverage or lexical checks as entailment'
+    }
+    target=Path(output) if output else base/'ai_paired_summary.json'
+    target.parent.mkdir(parents=True,exist_ok=True)
+    target.write_text(json.dumps(result,indent=2,ensure_ascii=False)+'\\n',encoding='utf-8')
+    print('AI-ONLY DIAGNOSTIC: V2',wins,'V1',losses,'ties',ties,'sign p (descriptive only)',sign_p)
+    return result
+
 def main():
     ap=argparse.ArgumentParser()
     ap.add_argument('--project',default='.')
@@ -287,7 +375,11 @@ def main():
     ap.add_argument('--years',default='2020,2022,2024')
     ap.add_argument('--score-blind',default=None,help='CSV with human A/B judgments; do not set this until actually completed')
     ap.add_argument('--key',default=None,help='Local A/B key kept away from the reviewer')
+    ap.add_argument('--summarize-ai',action='store_true',help='Score existing AI-only diagnostic review separately, NOT human ratings')
     a=ap.parse_args()
+    if a.summarize_ai:
+        summarize_ai_review(a.project, Path(a.out)/'ai_paired_summary.json')
+        return
     if a.score_blind:
         if not a.key:ap.error('--score-blind requires --key')
         score_blind(a.score_blind,a.key,a.out)
