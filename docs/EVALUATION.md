@@ -57,14 +57,22 @@ The [aggregate analysis](../research_outputs/label_v2/ai_paired_summary.json) pa
 .\\.venv\\Scripts\\python.exe -m research_lab.label_v2 --project . --summarize-ai
 ```
 
+## Primary-source trace for Type-B (scope-limited)
+
+[Single 36-row source audit](../research_outputs/type_b_audit/primary_source_audit.csv) lists each claim, an independently located publisher/author source URL where one was inspected, the strongest evidence visible there, and an explicit unresolved-entailment flag. **19/36** had at least an abstract or selected publisher section inspected; **17/36** were restricted to the supplied Constructor rubric. **Zero of 36** were certified by complete independent full-text claim/passage review. Even for the 19, abstract consistency does not imply full claim entailment. The original human-annotation sheet remains empty.
+
+The limited external check independently corroborates particular narrower observations, e.g. PES softening on tested uMLIPs ([Deng et al.](https://www.nature.com/articles/s41524-024-01500-6)), within-architecture l=0 NequIP ablation ([Batzner et al.](https://www.nature.com/articles/s41467-022-29939-5)), migration-barrier benchmark screening ([Bheemaguli et al.](https://pubs.rsc.org/en/content/articlehtml/2026/dd/d5dd00534e)), and latent equivariance ([TransIP](https://arxiv.org/abs/2510.00027)). These results must not be generalized to other materials/methods without evidence.
+
 ## Next release checklist
 
 - [x] Private repository, real input, pinned dependencies, 65+5+5 research-run registries.
 - [x] Four selected hierarchical snapshots, temporal events, direct coarsening, robustness and null logs.
 - [x] Current 4-page report and software/structural tests.
 - [x] Tested Type-B retrieval/source coverage outputs committed directly to `main` (`7db3e6e`); 25 software tests passed on the applicant's Windows machine.
-- [ ] Independent A/B label review and Type-B claim-source entailment review, if available.
-- [ ] Summarize actual review ratings with denominators and uncertainty; update report PDF only if supported.
+- [x] AI-only 24-pair diagnostic mapped reproducibly to V1/V2; 36 Type-B rubric claims source-traced with explicit limits.
+- [ ] Independent A/B label review and complete authorized Type-B claim-source entailment review, if available.
+- [x] Scientific report Markdown updated with actual AI/retrieval and scoped source-audit findings; rebuild 3–5 page PDF from Markdown before final submission.
+- [ ] Incorporate *real independent* review ratings if obtained, with denominators and uncertainty.
 - [ ] Confirm assessor can access the **private** repository or send a confidential ZIP. A URL alone is insufficient.
 
 Prior unhelpful/duplicate how-to documents were removed from the current snapshot to keep navigation simple. Their original text remains retrievable from Git commit history.

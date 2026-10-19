@@ -58,3 +58,17 @@ jobs:
           assert r['human_review'] is False and r['gloss_overclaim_rate'] is None
           print('AI pairing checked; no human validation or AI overclaim fabricated')
           PY
+
+      - name: Primary-source audit scope integrity
+        run: |
+          python - <<'PY'
+          import csv
+          with open('research_outputs/type_b_audit/primary_source_audit.csv', encoding='utf-8-sig', newline='') as fp:
+              rows=list(csv.DictReader(fp))
+          assert len(rows)==36
+          assert len({x['claim_id'] for x in rows})==36
+          assert sum(x['external_evidence_scope']!='RUBRIC_ONLY_NOT_EXTERNALLY_CHECKED' for x in rows)==19
+          assert all(x['full_claim_entailment']=='UNRESOLVED' and x['independent_fulltext_review']=='NOT_COMPLETED' for x in rows)
+          assert all(bool(x['source_url_read'])==(x['external_evidence_scope']!='RUBRIC_ONLY_NOT_EXTERNALLY_CHECKED') for x in rows)
+          print('36 claim provenance rows valid; 19 scoped URLs; zero invented full-text verdicts')
+          PY

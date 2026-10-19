@@ -41,7 +41,7 @@ $env:OMP_NUM_THREADS="1"
 
 **Type-B retrieval is now on `main`:** all four Type-B questions were evaluated in a *gold-blind-ranking / gold-only-scoring* two-stage pilot; [paper-source recall and audit](research_outputs/type_b_audit/type_b_source_scores.json) are recorded. For gold papers actually present in the eligible article set, **Recall@5 = 0.52083 for both flat and hierarchical routing**. This is *not* an answer-accuracy or evidence-entailment score. The [certified exact-search comparison](research_outputs/type_b_audit/certified_retrieval_audit.json) returned the same top five papers for all 18 inspected queries, but was slower end-to-end under measured conditions. No claimed quality/latency advantage.
 
-**What remains:** 24 independent V1/V2 label-pair reviews and 36 claim-to-full-text evidence checks (both intentionally **unrated**), followed by results synthesis and a report revision *only when supported by real ratings*. See [Evaluation and next actions](docs/EVALUATION.md).
+**What remains:** Independent qualified reviews of 24 A/B labels and 36 source-claim passages. Our *AI-only* analysis is already stored (V2 6 wins/V1 2/16 ties on label scores); for 36 claims we tracked 19 publisher/preprint excerpts and 17 rubric-only items, with **no complete independent full-text entailment ratings**. Read [Evaluation and next actions](docs/EVALUATION.md).
 
 ## Research integrity and confidentiality
 
