@@ -32,6 +32,17 @@
 
 **Type-B claims:** Use [`research_outputs/type_b_audit/CLAIM_LEVEL_REVIEW_BLANK.csv`](../research_outputs/type_b_audit/CLAIM_LEVEL_REVIEW_BLANK.csv), which already exists on `main`. For every claim, note full passage/source support (yes/no/unclear), evidence and actual reviewer identity. Do not score factual answer correctness if no answer was generated. Missing gold-paper titles are missing data, not negative entailment examples.
 
+## AI-assisted diagnostic review — NOT independent human validation
+
+A ChatGPT GPT-6 diagnostic review was completed on **20 October 2026** without modifying the original blank reviewer forms.
+
+- [24-case label review](../research_outputs/label_v2/ai_label_review.csv): qualitative A/B label ratings using only sampled member names and displayed article titles, with row-specific reasons. Provisional preferences: **A 8, B 13, ties 3**. These are not independent blinded human evaluations. The A/B identity key was not used; the model style may be inferred from wording, so a paired V1↔V2 scientific win, p-value, or independently validated overclaim rate **cannot** be claimed from these votes.
+- [36-claim Type-B evidence triage](../research_outputs/type_b_audit/ai_claim_evidence_triage.csv): case-specific caveats based on the **supplied gold rubric**, not independent full-paper inspection. The rubric marks **31 full, 3 partial and 2 asserted-only** coverage claims; these are *rubric categories*, not verified truth rates or answer accuracy. Every entry explicitly marks full-text verification and factual answer scoring as **not performed**.
+- Both human review forms are unchanged: [24-case blinded worksheet](../research_outputs/label_v2/BLIND_LABEL_COMPARISON_TO_FILL.csv) and [36-claim worksheet](../research_outputs/type_b_audit/CLAIM_LEVEL_REVIEW_BLANK.csv). No reviewer ID or human consent is fabricated.
+- The dataset and reference rubrics are employer-provided confidential assessment material. Consult Constructor before forwarding source data or blind worksheets to external annotators.
+
+**Remaining scientific gap:** independent, permitted full-text evidence/entailment checking, preferably by a qualified reader; if unavailable, the final report must keep P6 faithfulness and Type-B factual-answer validity **unverified**. Do not rerun the same observed queries and rename them an unseen test.
+
 ## Next release checklist
 
 - [x] Private repository, real input, pinned dependencies, 65+5+5 research-run registries.
