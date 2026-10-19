@@ -1,37 +1,50 @@
-# Reviewer entry point — ChronoHyper CKL assessment
+# ChronoHyper — Reviewer starting point
 
-**Candidate:** Mohammad Amanlou · **Frozen method:** `native_temporal_20` · **Status:** evidence-audited research submission; human semantic evaluation pending.
+**Assessment:** Multi-resolution semantic abstraction over an evolving knowledge hypergraph (Constructor Knowledge Labs)  
+**Candidate:** Mohammad Amanlou  
+**Date:** 19 October 2026 · **Frozen clustering:** `native_temporal_20`
 
-## Read in this order
+## Read in order
 
-1. [Report (PDF)](../report.pdf) and [source](../report.md): four-page formal method, tradeoffs, results and admitted limitations.
-2. [README](../README.md): exact pinned-environment reproductions on Windows and the selected-model adapter.
-3. [Selected hierarchies](../outputs_selected): 2020/2022/2024 four-level nested outputs, 2025 exploratory, collapsed training events, stable IDs, and temporal event log.
-4. [Metrics](../metrics.json): numbers with source paths, training-development-confirmation stage separation and provenance.
-5. [Research experiments](../research_outputs): 13 configurations × 5 seeds (65 dev jobs), 5-seed clique projection, five locked-model confirmation jobs, 99 constrained shuffles and five 10% deletion reruns.
-6. [AI disclosure](../AI_USAGE.md): assistance, code ownership, reproducibility checks and limitations.
+1. [`../report.pdf`](../report.pdf) — **four-page assessment report**, formal model, verified/assumed distinctions, tradeoffs and limitations.
+2. [`../README.md`](../README.md) — exact environment, rerun commands, snapshot outputs, and confidentiality.
+3. [`../outputs_selected/`](../outputs_selected/) — machine-readable hierarchy per 2020/2022/2024 (additional 2025 exploratory), persistent IDs, collapsed training hyperedges and temporal events.
+4. [`../metrics.json`](../metrics.json) — selected-run results with sources, stages and null caveats.
+5. [`../research_outputs/`](../research_outputs/) — 13 development methods × 5 seeds, five-seed clique projection, 5 locked source-grouped confirmation runs, 99 constrained controls, all successes **and failures**.
+6. [`../AI_USAGE.md`](../AI_USAGE.md) — AI assistance and explicitly verified checks.
 
-## Task-to-evidence index
+## Matching the assessment's tasks
 
-| Task | Where to look | Key caveat |
+| Requirement | Artifact or evidence | Limit that matters |
 |---|---|---|
-| Formal statement and P1–P6 | Report §1, §2; `src/core.py` | Local heuristic, no global-optimality guarantee |
-| T1: temporal input | `inputs/data.zip`, `outputs/snapshot_stats_*.json` | Source year vs first appearance |
-| T2: hierarchy and native structure | `outputs_selected/hierarchy_*.json`, 13-method matrix | Structure and semantic objectives conflict |
-| T3: identity and events | `outputs_selected/temporal_events.json` | Change-event type heuristic |
-| T4: hyperedge collapse | `outputs_selected/collapsed_edges_*.json` | These are training events, not all held-out events |
-| T5: automatic labels | `outputs_selected/label_evidence_*.json`, `research_lab/label_v2.py` | V1 titles weak; V2 scientific validity unreviewed |
-| T6: coherence and controls | `research_outputs/final_matrix`, `stress_temporal20_extended` | Title proxy correlated; null p=0.69 |
-| T6: stability and retrieval | `metrics.json`, exploratory 2025 question file | Retrieval 14 type-A only, type-B unscored |
-| T6: label faithfulness | `outputs_selected/label_review_results.json` | Only 8/48 determinate overclaim judgments |
-| T7: report and replication | `report.pdf`, README, pinned deps, tests, AI_USAGE | Do not equate test passage with scientific validation |
+| **Formal statement / P1–P6** | `report.pdf` §1–§2, `src/core.py`, `research_lab/experiment_suite.py` | Local heuristic, **not** global optimum |
+| **T1** source and ≥3 snapshots | `outputs/snapshot_stats_*.json`, `inputs/data.zip` | Source year is not necessarily the entity's first appearance |
+| **T2** multilevel, semantic/structural tradeoff | `outputs_selected/hierarchy_{2020,2022,2024}.json`, 13 methods | Stronger ARI does not mean coherent science |
+| **T3** temporal stability/events | `outputs_selected/temporal_events.json`, selected export validator | Event type assignments are heuristic |
+| **T4** native hyperedge collapse | `outputs_selected/collapsed_edges_*`, `src/core.py` | Only *training* hyperedges are represented in selected export |
+| **T5** automatic level-0/1 labels and provenance | `outputs_selected/label_evidence_*.json`, `research_outputs/label_v2` | V1 titles mostly vague/wrong; V2 unreviewed |
+| **T6** coherence and null controls | `research_outputs/final_matrix`, `stress_temporal20_extended` | Related title proxy; null p=0.69 |
+| **T6** temporal perturbation/CIs | stress JSON and `metrics.json` | 5 seeds of same 52-paper corpus ≠ independent datasets |
+| **T6** faithfulness and retrieval | `outputs_selected/label_review_results.json`, `selected_retrieval_EXPLORATORY_2025.json` | 40 uncertain overclaims; Type-B unscored; no proven latency benefit |
+| **T7** report, source and disclosure | `report.pdf`, `README.md`, `AI_USAGE.md` | Honest limitations must be read with positives |
 
-## Decisions a reviewer should not infer
+## A small set of numbers, and how NOT to read them
 
-- `native_temporal_20` was chosen before held-out source-grouped confirmation, but **confirmation cut worsened** from 0.6623 to 0.7172 (lower is better).
-- 99 degree/arity-preserving randomizations gave p=0.69, not evidence of significant superiority.
-- 48 nonblind V1 titles: 8 accurate / 28 vague / 12 wrong. Forty gloss overclaim judgments remain inconclusive.
-- V2 contrastive labeller generated 60 candidates in each of 2020, 2022 and 2024 and source-checked node-name phrases; **no expert-rated V2 improvement** is claimed.
-- On an already-inspected question set, hierarchical hit@5 was 2/14 vs flat 1/14; no fresh unseen extrinsic or latency advantage is established.
+- 2024 heldout cut: development **0.6623**, source-group confirmation **0.7172** (**worse by 0.0549**), lower is better.
+- Five edge-deletion perturbations: mean ARI **0.9666** under this particular stress. It is not proof of scientific accuracy.
+- 99 degree/arity-preserving shuffle controls: empirical p **0.69**: not statistically significant.
+- V1 labels reviewed: **8 accurate / 28 vague / 12 wrong**; only 8/48 overclaim judgments determinate. It is invalid to report 0/48.
+- Exploratory, already-inspected question lists: hierarchical hit@5 **2/14** versus flat **1/14**; no independent retrieval advantage is established.
+- The V2 labeler has source-audited lexical occurrences and a **blank** 24-case blinded worksheet; **no human-rated V2 improvement** has been measured.
 
-This archive contains private assessment material; preserve confidentiality and do not redistribute without Constructor authorization.
+## Minimal software integrity check (Windows Python 3.11)
+
+```powershell
+py -3.11 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe -m unittest discover -s tests -v
+.\.venv\Scripts\python.exe -m unittest research_lab.tests_lab research_lab.test_label_v2 -v
+.\.venv\Scripts\python.exe .\verify_selected_outputs.py --out outputs_selected
+```
+
+The package is intentionally **not licensed for public redistribution**; the data/benchmarks were provided as a private candidate assessment. An attached ZIP is sufficient for confidential review; private Github access must be separately approved.

@@ -1,0 +1,54 @@
+{
+  "schema": "ckl-label-v2-research",
+  "status": "AUTO_SOURCE_AUDITED_BUT_NOT_EXPERT_VALIDATED",
+  "frozen_cluster_assignments": "UNCHANGED",
+  "old_review_ratings": {
+    "vague": 28,
+    "accurate": 8,
+    "wrong": 12
+  },
+  "old_reviewer_identifiers": [
+    "GPT-6 AI-assisted reviewer; non-human; non-blind"
+  ],
+  "years": {
+    "2020": {
+      "year": 2020,
+      "labels": 60,
+      "with_abstention": 4,
+      "with_low_support": 17,
+      "with_partial_source_support": 39,
+      "lexical_source_assertions_checked": 1146,
+      "lexical_source_assertions_unsupported": 0,
+      "human_semantic_label_accuracy": "NOT_MEASURED_FOR_V2",
+      "independent_gloss_overclaim_rate": null,
+      "caveat": "Source IDs/phrases verified, but label correctness and scientific coherence cannot be certified from the same node-name source."
+    },
+    "2022": {
+      "year": 2022,
+      "labels": 60,
+      "with_abstention": 2,
+      "with_low_support": 21,
+      "with_partial_source_support": 37,
+      "lexical_source_assertions_checked": 1510,
+      "lexical_source_assertions_unsupported": 0,
+      "human_semantic_label_accuracy": "NOT_MEASURED_FOR_V2",
+      "independent_gloss_overclaim_rate": null,
+      "caveat": "Source IDs/phrases verified, but label correctness and scientific coherence cannot be certified from the same node-name source."
+    },
+    "2024": {
+      "year": 2024,
+      "labels": 60,
+      "with_abstention": 0,
+      "with_low_support": 20,
+      "with_partial_source_support": 40,
+      "lexical_source_assertions_checked": 2599,
+      "lexical_source_assertions_unsupported": 0,
+      "human_semantic_label_accuracy": "NOT_MEASURED_FOR_V2",
+      "independent_gloss_overclaim_rate": null,
+      "caveat": "Source IDs/phrases verified, but label correctness and scientific coherence cannot be certified from the same node-name source."
+    }
+  },
+  "data_sha256": "414867a07e5fdc4b38f9ad4e96bd5253d31e239012173ca439a1c5441553b4e1",
+  "blind_review_cases_unseen_in_prior_sheet": 24,
+  "blind_review_status": "UNRATED"
+}

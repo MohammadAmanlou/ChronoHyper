@@ -35,5 +35,5 @@ research_outputs/tmp_*/
 # Temporary outputs from PDF build
 _working_report.html
 _report_style.css
-
+# Keep human-review blinding key local; never distribute it with the blinded worksheet.
 research_outputs/label_v2/BLIND_KEY_KEEP_SEPARATE.json

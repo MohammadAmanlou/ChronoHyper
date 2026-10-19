@@ -4,7 +4,11 @@
 
 This repository stores an evidence-audited, multi-method research response to Constructor Knowledge Labs' supplied temporal knowledge hypergraph assessment. It preserves **both successes and negative results**, including the original baseline implementation, 13 development method variants, a separate clique projection, source-grouped confirmation of one *locked* method, four-level hypergraph exports, stress tests and partially completed human annotation.
 
-> **Working assessment snapshot, NOT a finalized claim of scientifically faithful labels.** The strongest evidence-backed report to date is [`report.pdf`](report.pdf) ([source](report.md)), regenerated for the selected method `native_temporal_20`. The earlier different-model PDF is isolated under [`docs/legacy_baseline/`](docs/legacy_baseline/) and is **not** the current selected method's report. An employer submission or PhD admission is **not** implied.
+> **Assessment delivery candidate, with scientifically open label-faithfulness questions explicitly disclosed.** The strongest evidence-backed report to date is [`report.pdf`](report.pdf) ([source](report.md)), regenerated for the selected method `native_temporal_20`. The earlier different-model PDF is isolated under [`docs/legacy_baseline/`](docs/legacy_baseline/) and is **not** the current selected method's report. An employer submission or PhD admission is **not** implied.
+
+## Start here — reviewer navigation
+
+The concise assignment-to-evidence index is [`docs/REVIEWER_START_HERE.md`](docs/REVIEWER_START_HERE.md). The 4-page scientific report is [`report.pdf`](report.pdf). For the experimental V2 labeler see [`docs/LABEL_V2_PROTOCOL.md`](docs/LABEL_V2_PROTOCOL.md) and [`research_outputs/label_v2/V2_FINDINGS.md`](research_outputs/label_v2/V2_FINDINGS.md); **V2 superiority has NOT been externally verified**. The A/B unblinding key is intentionally excluded from this repository and the delivery archive.
 
 ## What is actually verified
 
@@ -32,6 +36,7 @@ research_outputs/projection_5seed/  Unweighted clique projection x 5 seeds
 research_outputs/confirmation/   Chosen model x 5 seeds; held-out source papers
 research_outputs/model_lock.json Frozen method and development protocol
 research_outputs/stress_temporal20_extended/   99 null swaps, 5 deletions
+research_outputs/label_v2/    Exploratory source-grounded labeler + blank blinded worksheet (NOT human-rated)
 outputs/                         LEGACY baseline method output (DO NOT use as selected results)
 outputs_selected/                Current selected four-level hierarchy + review logs
 metrics.json                     **Current source-backed selected-model metrics**
@@ -52,7 +57,7 @@ py -3.11 -m venv .venv
 $env:OPENBLAS_NUM_THREADS='1'
 $env:OMP_NUM_THREADS='1'
 .\.venv\Scripts\python.exe -m unittest discover -s tests -v
-.\.venv\Scripts\python.exe -m unittest research_lab.tests_lab -v
+.\.venv\Scripts\python.exe -m unittest research_lab.tests_lab research_lab.test_label_v2 -v
 .\.venv\Scripts\python.exe .\verify_selected_outputs.py --out outputs_selected
 .\.venv\Scripts\python.exe .\final_preflight.py --project .
 ```
@@ -85,6 +90,14 @@ The separate **old reference baseline** command is still available but it is **n
 The original **13-method development matrix** (expensive, already included as measured files) can be re-run from scratch into a different folder via the commands in [`docs/RESEARCH_PROTOCOL.md`](docs/RESEARCH_PROTOCOL.md) and [`run_research_pipeline.ps1`](run_research_pipeline.ps1). Do not delete/replace original `research_outputs/` to chase a better score after confirmation.
 
 For Linux/macOS use `python3` and `python` in place of the Windows venv paths.
+
+## Experimental label V2 (not a new locked clustering method)
+
+```powershell
+.\.venv\Scripts\python.exe -m research_lab.label_v2 --project . --out research_outputs/label_v2
+```
+
+This writes source-audited 2020/22/24 candidates and a blank 24-case label-independent A/B worksheet. **Do not publish or give a reviewer `BLIND_KEY_KEEP_SEPARATE.json`**. P6 remains unproven until a real independent source-based review. The current report uses V1 label evidence to avoid presenting V2 unreviewed labels as validated.
 
 ## Reproducing the selected report PDF
 
