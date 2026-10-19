@@ -17,7 +17,7 @@
 - Actual ZIP structure, node types, years, edge arities and reference files were programmatically inspected. The correct native JSON schema is used; no derived sample is substituted for the input.
 - Output node, hyperedge and year membership audited against the original archive; future assertions excluded by cutoff rules. Unit tests guard temporal slicing.
 - The objective is documented as a **heuristic local surrogate**, not a solved global optimum; we did not invent guarantees of semantic scientific truth.
-- Actual `pytest` / `unittest` checks, output file invariants, cross-snapshot identities, exact multiplicity conservation, null preserving degrees and arity, and reproducible end-to-end runs are recorded in `TEST_LOG.txt`.
+- Actual `pytest` / `unittest` checks, output file invariants, cross-snapshot identities, exact multiplicity conservation, null preserving degrees and arity, and reproducible end-to-end runs were checked through the committed test suites and the research run registries in `research_outputs/`; the historical local test log was retired from the streamlined repository.
 - Semantic coherence evaluation uses paper titles rather than the clustering node-name vectors, but the two views remain correlated and we disclose that; no claim of fully independent human evaluation.
 - Source-grounded label glosses are mechanically audited. We explicitly **did not obtain blind NLI/expert overclaim ratings**, so independent semantic overclaim rate is null, rather than fabricated as 0%.
 - The 18 question reference answers enter only the final scoring path, not the partitioning pipeline. Type-B multi-claim answers are not scored by the candidate-ranking benchmark. Any low/negative results are preserved.

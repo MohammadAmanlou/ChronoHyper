@@ -1,123 +1,52 @@
-# Constructor CKL — Temporal Hypergraph Research Assessment
+# ChronoHyper
+**Temporal multi-resolution abstraction of a scientific knowledge hypergraph**  
+Mohammad Amanlou · Constructor Knowledge Labs doctoral assessment · Python 3.11 · **private dataset**
 
-**Candidate:** Mohammad Amanlou · **Snapshot:** 19 October 2026 · **Repository: PRIVATE**
+This is the **single entry point** for the project. Start with the [four-page research report](report.pdf) or read its [editable source](report.md). The selected model is `native_temporal_20`, frozen before the source-grouped confirmation evaluation. The repository records positive, negative and incomplete findings; passing software tests does **not** prove scientific label faithfulness or admission.
 
-This repository stores an evidence-audited, multi-method research response to Constructor Knowledge Labs' supplied temporal knowledge hypergraph assessment. It preserves **both successes and negative results**, including the original baseline implementation, 13 development method variants, a separate clique projection, source-grouped confirmation of one *locked* method, four-level hypergraph exports, stress tests and partially completed human annotation.
+## What is inside
 
-> **Assessment delivery candidate, with scientifically open label-faithfulness questions explicitly disclosed.** The strongest evidence-backed report to date is [`report.pdf`](report.pdf) ([source](report.md)), regenerated for the selected method `native_temporal_20`. The earlier different-model PDF is isolated under [`docs/legacy_baseline/`](docs/legacy_baseline/) and is **not** the current selected method's report. An employer submission or PhD admission is **not** implied.
+| Path | Purpose |
+|---|---|
+| [`report.pdf`](report.pdf) · [`report.md`](report.md) | Current scientific report (not the earlier baseline) |
+| [`docs/EVALUATION.md`](docs/EVALUATION.md) | T1–T7 evidence, metrics, limitations and remaining reviews |
+| [`docs/REPRODUCE.md`](docs/REPRODUCE.md) | Exact Windows commands, expected files and safe run order |
+| [`docs/ASSIGNMENT_SOURCE.md`](docs/ASSIGNMENT_SOURCE.md) | Original task description |
+| [`AI_USAGE.md`](AI_USAGE.md) | AI-assistance disclosure |
+| [`inputs/data.zip`](inputs/data.zip) | Original employer-supplied corpus (do not redistribute) |
+| [`src/`](src/) | Original research pipeline and native hyperedge coarsening |
+| [`research_lab/`](research_lab/) | Method comparisons, locked evaluation, V2 labels and tests |
+| [`outputs_selected/`](outputs_selected/) | **Selected model** hierarchies and temporal event outputs |
+| [`metrics.json`](metrics.json) | Selected-model metrics with source references |
+| [`research_outputs/`](research_outputs/) | Development/confirmation runs, null tests, robustness and label reviews |
+| [`outputs/`](outputs/) | **Historical baseline only**, not the selected model |
+| [`scripts/`](scripts/) · [`upgrade_scripts/`](upgrade_scripts/) | Additional reproducible checks and figures |
+| [`docs/RESEARCH_PROTOCOL.md`](docs/RESEARCH_PROTOCOL.md) | Detailed prior experimental protocol |
 
-## Start here — reviewer navigation
+## Quick start (Windows PowerShell)
 
-The concise assignment-to-evidence index is [`docs/REVIEWER_START_HERE.md`](docs/REVIEWER_START_HERE.md). The 4-page scientific report is [`report.pdf`](report.pdf). For the experimental V2 labeler see [`docs/LABEL_V2_PROTOCOL.md`](docs/LABEL_V2_PROTOCOL.md) and [`research_outputs/label_v2/V2_FINDINGS.md`](research_outputs/label_v2/V2_FINDINGS.md); **V2 superiority has NOT been externally verified**. The A/B unblinding key is intentionally excluded from this repository and the delivery archive.
-
-## What is actually verified
-
-| Component | Verified status | Important limitation |
-|---|---|---|
-| T1: real graph/data audit | Original unmodified dataset SHA-256 checked; 2020/22/24 snapshots built | Source timestamp semantics need care |
-| T2: method and four-level hierarchy | Native high-order local heuristic; 12/48/<=144/singletons verified | No proven global optimum; title labels are weak |
-| T3: temporal treatment | Warm starts, shared-node matching, versioned event logs | Identity events are heuristic |
-| T4: hyperedge collapse | Original arity, event ID, multiplicity and provenance retained | Output collapse files contain **training** events, not all held-out events |
-| T5: label creation | Automated evidence files and 48 manually reviewed title ratings | 8 accurate/28 vague/12 wrong; 40 gloss-overclaim judgments unclear |
-| T6: evaluation | 65/65 development runs; 5/5 confirmation runs; 5-seed projection baseline; 99-shuffle+5-perturbation stress | p=0.69 not significant; Type-B unscored; question retrieval exploratory |
-| T7: report | New 4-page PDF for selected locked model, all underlying CSV/JSON retained | Independent semantic-label faithfulness evaluation outstanding |
-
-**Key empirical contradiction:** mean held-out hyperedge cut in 2024 **worsened** from 0.66227 in development to 0.71720 in confirmation (lower is better); randomization p=0.69 does not establish a structural advantage. These unfavorable findings are deliberately retained.
-
-## Repository layout
-
-```text
-inputs/data.zip                  Original Constructor-provided input (private)
-src/                             Original end-to-end baseline pipeline
-research_lab/                    Distinct algorithms, experiment registry, source-grouped evaluation
-upgrade_scripts/                 Additive scientific controls/diagnostics
-research_outputs/final_matrix/   13 models x 5 seeds; 2020/2022/2024
-research_outputs/projection_5seed/  Unweighted clique projection x 5 seeds
-research_outputs/confirmation/   Chosen model x 5 seeds; held-out source papers
-research_outputs/model_lock.json Frozen method and development protocol
-research_outputs/stress_temporal20_extended/   99 null swaps, 5 deletions
-research_outputs/label_v2/    Exploratory source-grounded labeler + blank blinded worksheet (NOT human-rated)
-outputs/                         LEGACY baseline method output (DO NOT use as selected results)
-outputs_selected/                Current selected four-level hierarchy + review logs
-metrics.json                     **Current source-backed selected-model metrics**
-report.pdf                       **Current selected-model report (working draft)**
-docs/legacy_baseline/            Historical older report/manifest, clearly separated
-AI_USAGE.md                      Full AI involvement and candidate checks
-scripts/                         Deterministic report figures/metrics and QA helpers
-.github/workflows/               Portable unit-test and selected hierarchy CI
-```
-
-## Reproduce (Windows / PowerShell)
-
-Create a clean Python **3.11** environment (no GPU needed):
+Run from the repository root:
 
 ```powershell
 py -3.11 -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt
-$env:OPENBLAS_NUM_THREADS='1'
-$env:OMP_NUM_THREADS='1'
+$env:OPENBLAS_NUM_THREADS="1"
+$env:OMP_NUM_THREADS="1"
 .\.venv\Scripts\python.exe -m unittest discover -s tests -v
 .\.venv\Scripts\python.exe -m unittest research_lab.tests_lab research_lab.test_label_v2 -v
 .\.venv\Scripts\python.exe .\verify_selected_outputs.py --out outputs_selected
-.\.venv\Scripts\python.exe .\final_preflight.py --project .
 ```
 
-`final_preflight.py` deliberately reports remaining scientific gaps; a `BLOCK` means **not ready to claim full validation**, not that the other tests have failed.
+**Recorded results:** 65/65 development runs (13 configurations × 5 seeds), 5/5 locked-method confirmation runs, 5/5 pairwise projection runs, 99 constrained nulls, five 10%-deletion stress replicates, four structural snapshot checks and 22 passing software tests. These were run on the original input and their outputs are committed; executing the tests above does **not** rerun all 75 method jobs.
 
-To regenerate the current selected-method **numeric registry** from actual source files (no model rerun):
+**What remains:** independent blind judgments for 24 V1/V2 label pairs and an evidence-grounded audit of Type-B scientific claims. See [Evaluation and next actions](docs/EVALUATION.md). Type-B paper-source retrieval code is prepared separately but is not part of this main-branch snapshot until its local run and checks are committed.
 
-```powershell
-.\.venv\Scripts\python.exe .\scripts\generate_selected_metrics.py
-.\.venv\Scripts\python.exe .\scripts\make_report_figures.py
-```
+## Research integrity and confidentiality
 
-To reproduce the **locked selected hierarchy** from the existing confirmed assignment run (no further hyperparameter tuning):
+- The 2024 held-out cut **worsened** from 0.6623 (development) to 0.7172 (source-group confirmation); lower is better.
+- The constrained-shuffle null yielded `p=0.69`; no significant structure advantage is established.
+- V1 title ratings: 8 accurate / 28 vague / 12 wrong; only 8 of 48 gloss-overclaim decisions were determinate.
+- 24 V2 paired cases are **unrated**; no expert-validated V2 advantage is claimed. The local A/B identity key must not enter Git.
+- Original question retrieval was exploratory; no demonstrated speed advantage.
 
-```powershell
-.\.venv\Scripts\python.exe .\export_locked_full_hierarchy.py `
-  --lock research_outputs/model_lock.json `
-  --confirmation research_outputs/confirmation `
-  --seed 17 --out outputs_selected_reproduced --with-2025
-.\.venv\Scripts\python.exe .\verify_selected_outputs.py --out outputs_selected_reproduced
-```
-
-The separate **old reference baseline** command is still available but it is **not** the selected method and writes `outputs/`:
-
-```powershell
-.\.venv\Scripts\python.exe -m src.run --data inputs/data.zip --out outputs_baseline_regenerated --seed 17 --null-runs 16
-```
-
-The original **13-method development matrix** (expensive, already included as measured files) can be re-run from scratch into a different folder via the commands in [`docs/RESEARCH_PROTOCOL.md`](docs/RESEARCH_PROTOCOL.md) and [`run_research_pipeline.ps1`](run_research_pipeline.ps1). Do not delete/replace original `research_outputs/` to chase a better score after confirmation.
-
-For Linux/macOS use `python3` and `python` in place of the Windows venv paths.
-
-## Experimental label V2 (not a new locked clustering method)
-
-```powershell
-.\.venv\Scripts\python.exe -m research_lab.label_v2 --project . --out research_outputs/label_v2
-```
-
-This writes source-audited 2020/22/24 candidates and a blank 24-case label-independent A/B worksheet. **Do not publish or give a reviewer `BLIND_KEY_KEEP_SEPARATE.json`**. P6 remains unproven until a real independent source-based review. The current report uses V1 label evidence to avoid presenting V2 unreviewed labels as validated.
-
-## Reproducing the selected report PDF
-
-Source is `report.md` and charts are generated from archived result CSVs via `scripts/make_report_figures.py`. The provided 4-page PDF was rendered from this Markdown using **Pandoc + XeLaTeX** (an authoring dependency, not a runtime modeling dependency):
-
-```bash
-pandoc report.md --from=markdown+tex_math_single_backslash --pdf-engine=xelatex \
-  -V geometry:margin=1.35cm -V linestretch=1.05 -V mainfont='DejaVu Sans' -o report.pdf
-```
-
-## Research integrity / next steps
-
-- **Human title audit:** 48 reviewed; 8 accurate, 28 vague, 12 wrong. Gloss overclaim 0/8 determinately scorable **with 40 unclear**. It is invalid to call this 0/48, or an independent blinded expert evaluation.
-- **Selection:** `native_temporal_20` was frozen before restricted source-paper confirmation; all five seeds were retained. No subsequent retuning on confirmation or the inspected 18 questions is justified as an untouched test.
-- **Extrinsic:** 14 previously inspected Type-A questions yield flat Hit@5 1/14 vs hierarchical 2/14; four Type-B questions are not scored. No reliable runtime speedup established.
-- **All positive and negative evidence** is archived, including `research_outputs/.../experiment_registry.csv`, `all_runs.csv`, `method_summary.csv`, `paired_paper_bootstrap.csv`, stress JSON and exact article split/protocol.
-- **To finish:** independent evidence-constrained semantic label audit; source-grounded labeler revision tested on new cases; reviewer-readable examples, source-grouped null/CI caveats, clean-room reproduction; verify recipient submission deadline and original thread.
-
-See [`docs/EVIDENCE_AND_GAPS.md`](docs/EVIDENCE_AND_GAPS.md), [`docs/GITHUB_PUSH.md`](docs/GITHUB_PUSH.md) and [`AI_USAGE.md`](AI_USAGE.md).
-
-## Confidentiality
-
-The input dataset, question reference answers, and take-home task were supplied for a private assessment. **Keep this repository PRIVATE** until explicit publication rights are verified. Do not add unrelated personal email, API credentials, virtual environments, or unreviewed proprietary material. No open-source redistribution license is asserted for the employer-provided dataset.
+**Keep this repository private.** The supplied dataset, questions and ground truth belong to a confidential recruitment exercise. A GitHub URL is not access permission; the assessor needs an accepted invitation or a separately sent archive.
