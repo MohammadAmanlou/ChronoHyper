@@ -105,7 +105,14 @@ def audit(root):
     retrieval=read(root/'outputs_selected/selected_retrieval_EXPLORATORY_2025.json')
     if isinstance(retrieval,dict) and 'summary' in retrieval:
         details['retrieval_2025_exploratory']=retrieval['summary']
-        if retrieval['summary'].get('type_B_not_scored',0)>0:warnings.append('Type-B benchmark questions are unscored and must be noted')
+        if retrieval['summary'].get('type_B_not_scored',0)>0:
+            type_b=read(root/'research_outputs/type_b_audit/type_b_source_scores.json')
+            if isinstance(type_b,dict) and type_b.get('n_type_b')==4 and type_b.get('claim_answer_accuracy_measured') is False:
+                details['type_b_source_retrieval_exploratory']=type_b.get('summary')
+                passed.append('Type-B paper-source retrieval scored for four questions (answer accuracy NOT evaluated)')
+                warnings.append('Type-B claim-answer correctness and full-text entailment are UNMEASURED; do not confuse source retrieval with answer accuracy')
+            else:
+                warnings.append('Type-B question source and answer evaluations have not been completed')
         warnings.append('Original benchmark questions previously inspected: 2025 retrieval is EXPLORATORY, not an unseen test')
     else:warnings.append('No optional 2025 retrieval result; still need an extrinsic-task score')
     stress=read(root/'research_outputs/stress_temporal20_extended/result.json')
