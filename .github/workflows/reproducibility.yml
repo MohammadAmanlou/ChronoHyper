@@ -20,3 +20,27 @@ jobs:
         run: python verify_selected_outputs.py --out outputs_selected
       - name: Regenerate selected measured metrics without changing selection
         run: python scripts/generate_selected_metrics.py
+
+      - name: AI-only review diagnostic integrity
+        run: |
+          python - <<'PY'
+          import csv
+          from pathlib import Path
+          def read(path):
+              with Path(path).open(encoding='utf-8-sig', newline='') as f:
+                  return list(csv.DictReader(f))
+          labels=read('research_outputs/label_v2/ai_label_review.csv')
+          claims=read('research_outputs/type_b_audit/ai_claim_evidence_triage.csv')
+          original_labels=read('research_outputs/label_v2/BLIND_LABEL_COMPARISON_TO_FILL.csv')
+          original_claims=read('research_outputs/type_b_audit/CLAIM_LEVEL_REVIEW_BLANK.csv')
+          assert len(labels)==len(original_labels)==24
+          assert len(claims)==len(original_claims)==36
+          assert {r['stable_id'] for r in labels}=={r['stable_id'] for r in original_labels}
+          assert {r['claim_id'] for r in claims}=={r['claim_id'] for r in original_claims}
+          assert all(r['not_independent_human']=='TRUE' for r in labels)
+          assert all(r['human_review']=='BLANK_UNCHANGED' and r['independent_fulltext_check']=='NOT_CHECKED_AGAINST_FULL_PAPERS' for r in claims)
+          assert all(not r.get('reviewer_id') and not r.get('A_accuracy_accurate_vague_wrong') and not r.get('B_accuracy_accurate_vague_wrong') for r in original_labels)
+          assert all(not r.get('human_reviewer') and not r.get('manual_claim_supported_yes_no_unclear') for r in original_claims)
+          assert not Path('research_outputs/label_v2/BLIND_KEY_KEEP_SEPARATE.json').exists()
+          print('AI diagnostic scope correct; human review forms blank; secret absent')
+          PY
