@@ -33,13 +33,15 @@ py -3.11 -m venv .venv
 $env:OPENBLAS_NUM_THREADS="1"
 $env:OMP_NUM_THREADS="1"
 .\.venv\Scripts\python.exe -m unittest discover -s tests -v
-.\.venv\Scripts\python.exe -m unittest research_lab.tests_lab research_lab.test_label_v2 -v
+.\.venv\Scripts\python.exe -m unittest research_lab.tests_lab research_lab.test_label_v2 research_lab.test_type_b_source_audit -v
 .\.venv\Scripts\python.exe .\verify_selected_outputs.py --out outputs_selected
 ```
 
-**Recorded results:** 65/65 development runs (13 configurations × 5 seeds), 5/5 locked-method confirmation runs, 5/5 pairwise projection runs, 99 constrained nulls, five 10%-deletion stress replicates, four structural snapshot checks and 22 passing software tests. These were run on the original input and their outputs are committed; executing the tests above does **not** rerun all 75 method jobs.
+**Recorded results:** 65/65 development runs (13 configurations × 5 seeds), 5/5 locked-method confirmation runs, 5/5 pairwise projection runs, 99 constrained nulls, five 10%-deletion stress replicates, four structural snapshot checks and **25 passing software tests** (10 core + 15 research). These were run on the original input and their outputs are committed; executing the tests above does **not** rerun all 75 method jobs.
 
-**What remains:** independent blind judgments for 24 V1/V2 label pairs and an evidence-grounded audit of Type-B scientific claims. See [Evaluation and next actions](docs/EVALUATION.md). Type-B paper-source retrieval code is prepared separately but is not part of this main-branch snapshot until its local run and checks are committed.
+**Type-B retrieval is now on `main`:** all four Type-B questions were evaluated in a *gold-blind-ranking / gold-only-scoring* two-stage pilot; [paper-source recall and audit](research_outputs/type_b_audit/type_b_source_scores.json) are recorded. For gold papers actually present in the eligible article set, **Recall@5 = 0.52083 for both flat and hierarchical routing**. This is *not* an answer-accuracy or evidence-entailment score. The [certified exact-search comparison](research_outputs/type_b_audit/certified_retrieval_audit.json) returned the same top five papers for all 18 inspected queries, but was slower end-to-end under measured conditions. No claimed quality/latency advantage.
+
+**What remains:** 24 independent V1/V2 label-pair reviews and 36 claim-to-full-text evidence checks (both intentionally **unrated**), followed by results synthesis and a report revision *only when supported by real ratings*. See [Evaluation and next actions](docs/EVALUATION.md).
 
 ## Research integrity and confidentiality
 
@@ -47,6 +49,6 @@ $env:OMP_NUM_THREADS="1"
 - The constrained-shuffle null yielded `p=0.69`; no significant structure advantage is established.
 - V1 title ratings: 8 accurate / 28 vague / 12 wrong; only 8 of 48 gloss-overclaim decisions were determinate.
 - 24 V2 paired cases are **unrated**; no expert-validated V2 advantage is claimed. The local A/B identity key must not enter Git.
-- Original question retrieval was exploratory; no demonstrated speed advantage.
+- Type-A and Type-B source retrieval are **exploratory on previously inspected benchmark questions**; matched Type-B source recall does not imply correct generated answers or a demonstrated speed advantage.
 
 **Keep this repository private.** The supplied dataset, questions and ground truth belong to a confidential recruitment exercise. A GitHub URL is not access permission; the assessor needs an accepted invitation or a separately sent archive.
