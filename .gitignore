@@ -1,0 +1,37 @@
+# Environment and Python bytecode
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+# Credentials and machine-local material
+.env
+.env.*
+!.env.example
+*.pem
+*.p12
+*.pfx
+*.key
+credentials.json
+token.json
+*_secret*
+# Local scratch, backups and communication artifacts
+*.bak
+*_backup.zip
+locked_results_backup.zip
+final_matrix_backup.zip
+Constructor_Research_Handoff.zip
+research_handoff/
+local_only/
+.DS_Store
+Thumbs.db
+# Large scratch regenerations (canonical results are tracked)
+outputs_baseline_regenerated/
+outputs_selected_reproduced/
+research_outputs/tmp_*/
+# Temporary outputs from PDF build
+_working_report.html
+_report_style.css

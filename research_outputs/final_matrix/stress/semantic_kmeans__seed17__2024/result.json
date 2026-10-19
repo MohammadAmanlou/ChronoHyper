@@ -1,0 +1,86 @@
+{
+  "assessment_stage": "development",
+  "elapsed_seconds": 7.62,
+  "heldout_cut_observed": 0.5997006703679845,
+  "limitations": [
+    "Only sample-paper article holdout, not new corpus generalization",
+    "Same transductive node surface/text available to fit even when assertions held out",
+    "Five edge-deletion replicates yield very uncertain descriptive CIs",
+    "Multiple models/years tried: adjust any inferential interpretation for selection",
+    "Null swaps are constrained by relation+article_year; few swaps may cause null degeneracy"
+  ],
+  "method": "semantic_kmeans",
+  "null_count": 19,
+  "null_degree_arity_preserved": true,
+  "null_scores": [
+    0.5997006703679845,
+    0.5997006703679845,
+    0.5997006703679845,
+    0.5997006703679845,
+    0.5997006703679845,
+    0.5997006703679845,
+    0.5997006703679845,
+    0.5997006703679845,
+    0.5997006703679845,
+    0.5997006703679845,
+    0.5997006703679845,
+    0.5997006703679845,
+    0.5997006703679845,
+    0.5997006703679845,
+    0.5997006703679845,
+    0.5997006703679845,
+    0.5997006703679845,
+    0.5997006703679845,
+    0.5997006703679845
+  ],
+  "null_successful_swaps": [
+    10659,
+    10647,
+    10653,
+    10658,
+    10654,
+    10647,
+    10664,
+    10652,
+    10632,
+    10660,
+    10652,
+    10663,
+    10657,
+    10661,
+    10648,
+    10633,
+    10646,
+    10652,
+    10654
+  ],
+  "perturbation_10pct_ARI": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "perturbation_bootstrap_descriptive": {
+    "ci95": [
+      1.0,
+      1.0
+    ],
+    "individual_values": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "mean": 1.0,
+    "n": 5
+  },
+  "randomization_p_lower_better": 1.0,
+  "same_encoder_seed": 17,
+  "same_previous_partition_for_every_refit": true,
+  "seed": 17,
+  "source_data_sha256": "414867a07e5fdc4b38f9ad4e96bd5253d31e239012173ca439a1c5441553b4e1",
+  "status": "complete",
+  "year": 2024
+}

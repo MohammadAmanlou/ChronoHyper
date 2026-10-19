@@ -1,0 +1,6 @@
+﻿elapsed_seconds,error,method,run_id,seed,status
+1.681,,clique_pairwise,clique_pairwise__seed11,11,complete
+1.441,,clique_pairwise,clique_pairwise__seed17,17,complete
+1.482,,clique_pairwise,clique_pairwise__seed29,29,complete
+1.426,,clique_pairwise,clique_pairwise__seed41,41,complete
+1.442,,clique_pairwise,clique_pairwise__seed53,53,complete

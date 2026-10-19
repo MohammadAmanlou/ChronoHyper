@@ -1,0 +1,139 @@
+{
+  "locked_method": "native_temporal_20",
+  "confirmation_run_id": "native_temporal_20__seed17",
+  "confirmation_protocol_sha256": "278f848a7e48dd9c2721132a42cef9daf46d0576430b1fb87c21fa4fd4eddb3d",
+  "lock_sha256": "59bc50ffec803b758eb6d017290a21402e7fa7b6e93d305d098adba0cb6c2fb1",
+  "dataset_sha256": "414867a07e5fdc4b38f9ad4e96bd5253d31e239012173ca439a1c5441553b4e1",
+  "paper_ids_excluded_from_training": [
+    "5381",
+    "5382",
+    "5384",
+    "5394",
+    "5395",
+    "5397",
+    "5400",
+    "5401",
+    "5402",
+    "5404",
+    "5406",
+    "5438",
+    "5441",
+    "5442",
+    "5443",
+    "5445",
+    "5450",
+    "5451",
+    "5453",
+    "5455"
+  ],
+  "splits": {
+    "development": [
+      "5382",
+      "5384",
+      "5394",
+      "5400",
+      "5404",
+      "5438",
+      "5442",
+      "5451",
+      "5453",
+      "5455"
+    ],
+    "confirmation": [
+      "5381",
+      "5395",
+      "5397",
+      "5401",
+      "5402",
+      "5406",
+      "5441",
+      "5443",
+      "5445",
+      "5450"
+    ]
+  },
+  "snapshot_summaries": {
+    "2020": {
+      "nodes": 1505,
+      "train_edges": 209,
+      "top_clusters": 12,
+      "clusters_per_level": [
+        12,
+        48,
+        141,
+        1505
+      ],
+      "automatic_label_audit": {
+        "automatic_membership_claims_audited": 60,
+        "unsupported_membership_claims": 3,
+        "bounded_structural_claim_error_rate": 0.05,
+        "independent_semantic_overclaim_rate": null,
+        "independent_semantic_overclaim_status": "NOT_EVALUATED_NO_BLIND_REVIEW",
+        "description": "All cluster glosses assert exactly recorded membership, counts and surface-name phrases. This is a machine-verifiable factual overclaim proxy, NOT independent literature-level entailment."
+      },
+      "confirmed_assignment_identical": true
+    },
+    "2022": {
+      "nodes": 2164,
+      "train_edges": 339,
+      "top_clusters": 12,
+      "clusters_per_level": [
+        12,
+        48,
+        144,
+        2164
+      ],
+      "automatic_label_audit": {
+        "automatic_membership_claims_audited": 60,
+        "unsupported_membership_claims": 2,
+        "bounded_structural_claim_error_rate": 0.03333333333333333,
+        "independent_semantic_overclaim_rate": null,
+        "independent_semantic_overclaim_status": "NOT_EVALUATED_NO_BLIND_REVIEW",
+        "description": "All cluster glosses assert exactly recorded membership, counts and surface-name phrases. This is a machine-verifiable factual overclaim proxy, NOT independent literature-level entailment."
+      },
+      "confirmed_assignment_identical": true
+    },
+    "2024": {
+      "nodes": 4164,
+      "train_edges": 645,
+      "top_clusters": 12,
+      "clusters_per_level": [
+        12,
+        48,
+        144,
+        4164
+      ],
+      "automatic_label_audit": {
+        "automatic_membership_claims_audited": 60,
+        "unsupported_membership_claims": 0,
+        "bounded_structural_claim_error_rate": 0.0,
+        "independent_semantic_overclaim_rate": null,
+        "independent_semantic_overclaim_status": "NOT_EVALUATED_NO_BLIND_REVIEW",
+        "description": "All cluster glosses assert exactly recorded membership, counts and surface-name phrases. This is a machine-verifiable factual overclaim proxy, NOT independent literature-level entailment."
+      },
+      "confirmed_assignment_identical": true
+    },
+    "2025": {
+      "nodes": 4995,
+      "train_edges": 736,
+      "top_clusters": 12,
+      "clusters_per_level": [
+        12,
+        48,
+        144,
+        4995
+      ],
+      "automatic_label_audit": {
+        "automatic_membership_claims_audited": 60,
+        "unsupported_membership_claims": 0,
+        "bounded_structural_claim_error_rate": 0.0,
+        "independent_semantic_overclaim_rate": null,
+        "independent_semantic_overclaim_status": "NOT_EVALUATED_NO_BLIND_REVIEW",
+        "description": "All cluster glosses assert exactly recorded membership, counts and surface-name phrases. This is a machine-verifiable factual overclaim proxy, NOT independent literature-level entailment."
+      },
+      "confirmed_assignment_identical": true
+    }
+  },
+  "extra_2025_status": "exploratory model prediction and known-question evaluation, NOT confirmation",
+  "honesty": "Reuses CONFIRMATION top-level assignments but fine-grained hierarchies/labels are generated afterward. This output is NOT independently expert-annotated, has NO retriever result or fully final 3-5pp report; report only verified claims. Original author semantic overclaim is NOT_EVALUATED."
+}

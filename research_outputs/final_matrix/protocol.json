@@ -1,0 +1,47 @@
+{
+  "data_sha256": "414867a07e5fdc4b38f9ad4e96bd5253d31e239012173ca439a1c5441553b4e1",
+  "embedding_seed": 17,
+  "evaluation_stage": "development",
+  "honesty": "Source title view is a correlated but separately generated proxy, NOT blinded expert semantic coherence.",
+  "leakage_warning": "Transductive node surface forms and all provenance-linked article titles may contain heldout-source content; group-heldout edges only, not prospective out-of-domain paper testing.",
+  "method_ids": [
+    "semantic_kmeans",
+    "native_structure",
+    "native_semantic_85",
+    "native_balanced_50",
+    "native_joint_70",
+    "native_structure_75",
+    "native_temporal_03",
+    "native_temporal_08",
+    "native_temporal_20",
+    "incidence_svd",
+    "frozen_previous",
+    "native_arity_normalized",
+    "native_paper_balanced"
+  ],
+  "multi_method": "Methods are local custom implementations; do not misidentify as official implementations of Mt-KaHyPar/Leiden/Zhou.",
+  "no_answer_leakage": "Neither questions.csv nor ground_truth.json is accessed or scored here.",
+  "paper_holdout_seed": 42,
+  "performance": "all models share source snapshots, heldout papers, frozen encoder and K<=12; CPU and complexity differ.",
+  "pre_registration": "predeclared matrix, NOT hyperparameters selected from the 18 known benchmark gold answers.",
+  "seeds": [
+    11,
+    17,
+    29,
+    41,
+    53
+  ],
+  "selection_lock": null,
+  "source_code_sha256": {
+    "research_lab/experiment_suite.py": "c94e49cb2314e618a340a1957d7526f2e95934f90609b64834d4c8c47b07251c",
+    "research_lab/weighted_refinement.py": "291c61aba049ad849403b225bf86c521ebbfea7ae0e91edeffe2988208d1509f",
+    "src/core.py": "02ef840563ac08bd25171e85b8d529d2dd584d97b0d48dd07a338904c00f5e23",
+    "src/evaluation.py": "d6f37f5cc8b68d94063e82612e734fca96bc26735f88ac5b2d248825076e17b3",
+    "src/run.py": "60248ce2753e07842c76c62a0f07aa1e48e94036e22b85c583af802763e9680d"
+  },
+  "years": [
+    2020,
+    2022,
+    2024
+  ]
+}

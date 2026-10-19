@@ -1,0 +1,32 @@
+{
+  "actual_train_edge_ids_preserved": 209,
+  "cross_year_shared_node_ari": null,
+  "elapsed_seconds": 0.132,
+  "family": "incidence",
+  "fraction_train_events_internal": 0.8133971291866029,
+  "heldout_group_bootstrap_ci95": [
+    0.4970007645637897,
+    0.7094497607655503
+  ],
+  "heldout_normalized_connectivity_lower_better": 0.6053429915373961,
+  "heldout_paper_scores": {
+    "5400": 0.4200558171986743,
+    "5404": 0.7094497607655503,
+    "5451": 0.6508906592940206
+  },
+  "independent_article_title_view_coherence_higher_better": 0.2399505357436751,
+  "method": "incidence-normalized SVD initialization + high-order local refinement",
+  "model": "incidence_svd",
+  "n_clusters": 12,
+  "n_heldout_edges": 82,
+  "n_heldout_papers": 3,
+  "n_nodes": 1505,
+  "n_train_edges": 209,
+  "native_training_connectivity_lambda_minus_one": 0.215311004784689,
+  "projected_pair_events": 0,
+  "run_id": "incidence_svd__seed29",
+  "seed": 29,
+  "shared_node_count": 0,
+  "train_highorder_events_still_3plus_coarse": 6,
+  "year": 2020
+}

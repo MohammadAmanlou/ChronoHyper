@@ -1,0 +1,35 @@
+{
+  "actual_train_edge_ids_preserved": 645,
+  "cross_year_shared_node_ari": 0.3246037418874338,
+  "elapsed_seconds": 0.501,
+  "family": "native",
+  "fraction_train_events_internal": 0.14883720930232558,
+  "heldout_group_bootstrap_ci95": [
+    0.5532813570343085,
+    0.788934486344634
+  ],
+  "heldout_normalized_connectivity_lower_better": 0.6791798912026437,
+  "heldout_paper_scores": {
+    "5382": 0.43114973262032086,
+    "5394": 0.8340525793650794,
+    "5400": 0.6435566021280307,
+    "5404": 0.7436602870813397,
+    "5451": 0.8030785041289243,
+    "5455": 0.5352573352573353
+  },
+  "independent_article_title_view_coherence_higher_better": 0.1131050175485065,
+  "method": "native joint high-order local refinement",
+  "model": "native_semantic_85",
+  "n_clusters": 12,
+  "n_heldout_edges": 159,
+  "n_heldout_papers": 6,
+  "n_nodes": 4164,
+  "n_train_edges": 645,
+  "native_training_connectivity_lambda_minus_one": 1.7364341085271318,
+  "projected_pair_events": 0,
+  "run_id": "native_semantic_85__seed17",
+  "seed": 17,
+  "shared_node_count": 2164,
+  "train_highorder_events_still_3plus_coarse": 248,
+  "year": 2024
+}

@@ -1,0 +1,19 @@
+{
+  "n_requested": 48,
+  "n_evaluable": 8,
+  "n_overclaim": 0,
+  "overclaim_rate": 0.0,
+  "wilson_95_ci": [
+    0.0,
+    0.3244156195108769
+  ],
+  "n_unclear": 40,
+  "n_missing": 0,
+  "label_ratings": {
+    "accurate": 8,
+    "vague": 28,
+    "wrong": 12
+  },
+  "status": "PARTIAL_HUMAN_ANNOTATION",
+  "note": "Reviewer identity, independence and visibility to algorithm must be reported truthfully; Wilson CI measures annotation sample only, not paper-level uncertainty."
+}

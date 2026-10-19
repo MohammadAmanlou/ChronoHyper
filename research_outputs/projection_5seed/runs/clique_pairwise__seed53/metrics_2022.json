@@ -1,0 +1,32 @@
+{
+  "actual_train_edge_ids_preserved": 339,
+  "cross_year_shared_node_ari": 0.16383052303841672,
+  "elapsed_seconds": 0.348,
+  "family": "projection",
+  "fraction_train_events_internal": 0.3274336283185841,
+  "heldout_group_bootstrap_ci95": [
+    0.5032269317983603,
+    0.7549592564298447
+  ],
+  "heldout_normalized_connectivity_lower_better": 0.6849075362705205,
+  "heldout_paper_scores": {
+    "5400": 0.5032269317983603,
+    "5404": 0.7308612440191388,
+    "5451": 0.7549592564298447
+  },
+  "independent_article_title_view_coherence_higher_better": 0.1619846089582556,
+  "method": "unweighted pairwise clique expansion, high arity quadratic bias",
+  "model": "clique_pairwise",
+  "n_clusters": 12,
+  "n_heldout_edges": 82,
+  "n_heldout_papers": 3,
+  "n_nodes": 2164,
+  "n_train_edges": 339,
+  "native_training_connectivity_lambda_minus_one": 1.4129793510324484,
+  "projected_pair_events": 11148,
+  "run_id": "clique_pairwise__seed53",
+  "seed": 53,
+  "shared_node_count": 1505,
+  "train_highorder_events_still_3plus_coarse": 96,
+  "year": 2022
+}

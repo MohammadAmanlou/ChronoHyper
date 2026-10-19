@@ -1,0 +1,117 @@
+{
+  "elapsed_seconds": 1.424,
+  "method": {
+    "expensive": true,
+    "explanation": "Full unweighted clique expansion for deliberately lossy graph baseline",
+    "family": "projection",
+    "hyper": 0.3,
+    "id": "clique_pairwise",
+    "init": "clique",
+    "semantic": 0.7,
+    "temporal": 0
+  },
+  "run_id": "clique_pairwise__seed41",
+  "seed": 41,
+  "status": "complete",
+  "years": [
+    {
+      "actual_train_edge_ids_preserved": 209,
+      "cross_year_shared_node_ari": null,
+      "elapsed_seconds": 0.188,
+      "family": "projection",
+      "fraction_train_events_internal": 0.4258373205741627,
+      "heldout_group_bootstrap_ci95": [
+        0.4452625152625152,
+        0.810356566869172
+      ],
+      "heldout_normalized_connectivity_lower_better": 0.6481323446997765,
+      "heldout_paper_scores": {
+        "5400": 0.44526251526251526,
+        "5404": 0.5137559808612441,
+        "5451": 0.810356566869172
+      },
+      "independent_article_title_view_coherence_higher_better": 0.2026012470177477,
+      "method": "unweighted pairwise clique expansion, high arity quadratic bias",
+      "model": "clique_pairwise",
+      "n_clusters": 12,
+      "n_heldout_edges": 82,
+      "n_heldout_papers": 3,
+      "n_nodes": 1505,
+      "n_train_edges": 209,
+      "native_training_connectivity_lambda_minus_one": 1.3205741626794258,
+      "projected_pair_events": 4600,
+      "run_id": "clique_pairwise__seed41",
+      "seed": 41,
+      "shared_node_count": 0,
+      "train_highorder_events_still_3plus_coarse": 74,
+      "year": 2020
+    },
+    {
+      "actual_train_edge_ids_preserved": 339,
+      "cross_year_shared_node_ari": 0.1894281094232425,
+      "elapsed_seconds": 0.373,
+      "family": "projection",
+      "fraction_train_events_internal": 0.30383480825958703,
+      "heldout_group_bootstrap_ci95": [
+        0.49450898308041163,
+        0.7400717703349282
+      ],
+      "heldout_normalized_connectivity_lower_better": 0.6081243278481443,
+      "heldout_paper_scores": {
+        "5400": 0.49450898308041163,
+        "5404": 0.7400717703349282,
+        "5451": 0.6052414905356082
+      },
+      "independent_article_title_view_coherence_higher_better": 0.15877138587150616,
+      "method": "unweighted pairwise clique expansion, high arity quadratic bias",
+      "model": "clique_pairwise",
+      "n_clusters": 12,
+      "n_heldout_edges": 82,
+      "n_heldout_papers": 3,
+      "n_nodes": 2164,
+      "n_train_edges": 339,
+      "native_training_connectivity_lambda_minus_one": 1.4867256637168142,
+      "projected_pair_events": 11148,
+      "run_id": "clique_pairwise__seed41",
+      "seed": 41,
+      "shared_node_count": 1505,
+      "train_highorder_events_still_3plus_coarse": 107,
+      "year": 2022
+    },
+    {
+      "actual_train_edge_ids_preserved": 645,
+      "cross_year_shared_node_ari": 0.2929385162890093,
+      "elapsed_seconds": 0.843,
+      "family": "projection",
+      "fraction_train_events_internal": 0.23565891472868217,
+      "heldout_group_bootstrap_ci95": [
+        0.5899764377597541,
+        0.7447171504845447
+      ],
+      "heldout_normalized_connectivity_lower_better": 0.6549145916154795,
+      "heldout_paper_scores": {
+        "5382": 0.7452168746286393,
+        "5394": 0.683234126984127,
+        "5400": 0.7846398046398048,
+        "5404": 0.7352870813397129,
+        "5451": 0.6633726217759831,
+        "5455": 0.4654325998075999
+      },
+      "independent_article_title_view_coherence_higher_better": 0.1158268415002038,
+      "method": "unweighted pairwise clique expansion, high arity quadratic bias",
+      "model": "clique_pairwise",
+      "n_clusters": 12,
+      "n_heldout_edges": 159,
+      "n_heldout_papers": 6,
+      "n_nodes": 4164,
+      "n_train_edges": 645,
+      "native_training_connectivity_lambda_minus_one": 1.7224806201550387,
+      "projected_pair_events": 32145,
+      "run_id": "clique_pairwise__seed41",
+      "seed": 41,
+      "shared_node_count": 2164,
+      "train_highorder_events_still_3plus_coarse": 256,
+      "year": 2024
+    }
+  ]
+}

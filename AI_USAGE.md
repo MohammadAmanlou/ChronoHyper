@@ -1,0 +1,36 @@
+# AI-assistance disclosure (Constructor assessment)
+
+**Assistant:** OpenAI GPT-6 via ChatGPT (19 October 2026).
+
+**Scope:** AI assistance was used to turn the supplied assessment specification into the mathematical heuristic design, to draft and implement the Python code (data audit, direct hyperedge collapse, nested clustering, warm-start and temporal identity, statistical controls, retrieval, tests), to create the evaluation plan, and to generate English reporting copy. The candidate remains responsible for the project and for all unverified statements.
+
+## Representative major prompts / substantive tasks
+
+1. "Use the supplied Constructor temporal knowledge-hypergraph assignment and original data.zip. Implement the complete reproducible evaluation on the genuine provided corpus, not synthetic fixtures."
+2. "Build a nested multi-resolution hierarchy that operates on native high-order hyperedges, preserves event identities and multiplicities when coarsened, and carries persistent cluster identities through three or more real time cutoffs."
+3. "Avoid circular semantic evaluation. Keep paper groups out of clustering, measure a source-different coherence proxy, use null models that preserve graph degree and hyperedge arity, run five 10%-edge deletion robustness replicates, and report empirical confidence intervals."
+4. "Compare flat and hierarchical retrieval on the provider's own questions using a budget-accounted evaluator; don't train or tune with answer lists. Label metrics not actually measured as NOT_EVALUATED, don't invent numbers."
+5. "Produce a compact 3–5-page English research report, source-grounded labels, complete unit tests and a clear reproducibility README, with accurate disclosures of limitations."
+
+## Accepted / modified and checked
+
+- Actual ZIP structure, node types, years, edge arities and reference files were programmatically inspected. The correct native JSON schema is used; no derived sample is substituted for the input.
+- Output node, hyperedge and year membership audited against the original archive; future assertions excluded by cutoff rules. Unit tests guard temporal slicing.
+- The objective is documented as a **heuristic local surrogate**, not a solved global optimum; we did not invent guarantees of semantic scientific truth.
+- Actual `pytest` / `unittest` checks, output file invariants, cross-snapshot identities, exact multiplicity conservation, null preserving degrees and arity, and reproducible end-to-end runs are recorded in `TEST_LOG.txt`.
+- Semantic coherence evaluation uses paper titles rather than the clustering node-name vectors, but the two views remain correlated and we disclose that; no claim of fully independent human evaluation.
+- Source-grounded label glosses are mechanically audited. We explicitly **did not obtain blind NLI/expert overclaim ratings**, so independent semantic overclaim rate is null, rather than fabricated as 0%.
+- The 18 question reference answers enter only the final scoring path, not the partitioning pipeline. Type-B multi-claim answers are not scored by the candidate-ranking benchmark. Any low/negative results are preserved.
+- The 2025 evidence cutoff avoids treating every unknown-month 2026 record as available in February 2026.
+- The report citations were manually checked against publicly indexed papers and bibliographic DOIs; references are positioned as prior art, not as implemented code.
+
+## Reproducibility and authorship boundary
+
+This assessment was materially AI-assisted. All implementation details and scientific conclusions should be checked by the applicant before employer delivery. Add any additional AI tools/prompts used outside this conversation. A submission-ready archive and an email draft do **not** mean that the assignment has been sent or accepted by Constructor.
+
+## Addendum — Expanded research-lab development and GitHub consolidation (19 October 2026)
+
+- **AI tool:** ChatGPT GPT-6; assistance extended to design and implementation of a 13-method research sweep; a five-seed unweighted clique comparison; fixed article-group development/confirmation and single locked selection; 5x 10% deletion and 99 degree/arity null stress analyses; selected hierarchy adapter; UTF-8 portable tests; audit scripts; documentation and revised manuscript.
+- **Representative instructions:** "Compare all successful and unsuccessful approaches rather than cherry-picking the best metrics"; "freeze the method before confirmation and preserve independent run registries"; "connect the chosen top-level assignment to all mandatory levels without silently retuning it"; "do not treat 0 of 8 overclaims as 0 of 48"; "assemble a private reproducible GitHub repository with the verified real-data evidence and explicit pending tasks."
+- **Candidate's reported real verification:** Python 3.11 Windows, original 10 unit tests OK, research-lab 5 unit tests OK, 65/65 development models complete, 5/5 confirmation runs complete, all four selected hierarchy outputs passing structural checks, and labels reviewed at the `accurate/vague/wrong` level. Do **not** claim a qualified independent human reviewer, an employer submission, or full P6 faithfulness absent evidence.
+- **Negative results kept:** selected model source-confirmation cut worsened relative to development; 99-shuffle null p=0.69; 40/48 gloss decisions unclear; 12/48 title labels rated wrong; weak small-sample exploratory retrieval; no Type-B score. This disclosure should be revised after the candidate completes evidence-based label improvements and rereviews the manuscript.

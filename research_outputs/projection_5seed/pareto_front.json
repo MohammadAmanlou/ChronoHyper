@@ -1,0 +1,21 @@
+{
+  "year": 2024,
+  "models": [
+    "clique_pairwise"
+  ],
+  "dimensions": [
+    [
+      "heldout_normalized_connectivity_lower_better_mean",
+      -1
+    ],
+    [
+      "independent_article_title_view_coherence_higher_better_mean",
+      1
+    ],
+    [
+      "elapsed_seconds_mean",
+      -1
+    ]
+  ],
+  "caution": "Descriptive 3-metric Pareto, same 52-paper source; not statistical discovery, does not measure interpretability or actual retrieval performance."
+}

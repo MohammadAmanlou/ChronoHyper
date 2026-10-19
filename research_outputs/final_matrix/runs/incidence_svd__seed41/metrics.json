@@ -1,0 +1,117 @@
+{
+  "elapsed_seconds": 0.658,
+  "method": {
+    "expensive": false,
+    "explanation": "Normalized node-hyperedge incidence SVD + native refinement",
+    "family": "incidence",
+    "hyper": 0.6,
+    "id": "incidence_svd",
+    "init": "incidence_svd",
+    "semantic": 0.4,
+    "temporal": 0
+  },
+  "run_id": "incidence_svd__seed41",
+  "seed": 41,
+  "status": "complete",
+  "years": [
+    {
+      "actual_train_edge_ids_preserved": 209,
+      "cross_year_shared_node_ari": null,
+      "elapsed_seconds": 0.126,
+      "family": "incidence",
+      "fraction_train_events_internal": 0.7799043062200957,
+      "heldout_group_bootstrap_ci95": [
+        0.5074917146345717,
+        0.7791866028708134
+      ],
+      "heldout_normalized_connectivity_lower_better": 0.7013460415720101,
+      "heldout_paper_scores": {
+        "5400": 0.5074917146345717,
+        "5404": 0.7791866028708134,
+        "5451": 0.7630596177865085
+      },
+      "independent_article_title_view_coherence_higher_better": 0.3031715357796887,
+      "method": "incidence-normalized SVD initialization + high-order local refinement",
+      "model": "incidence_svd",
+      "n_clusters": 12,
+      "n_heldout_edges": 82,
+      "n_heldout_papers": 3,
+      "n_nodes": 1505,
+      "n_train_edges": 209,
+      "native_training_connectivity_lambda_minus_one": 0.2631578947368421,
+      "projected_pair_events": 0,
+      "run_id": "incidence_svd__seed41",
+      "seed": 41,
+      "shared_node_count": 0,
+      "train_highorder_events_still_3plus_coarse": 8,
+      "year": 2020
+    },
+    {
+      "actual_train_edge_ids_preserved": 339,
+      "cross_year_shared_node_ari": 0.14108235099310976,
+      "elapsed_seconds": 0.181,
+      "family": "incidence",
+      "fraction_train_events_internal": 0.775811209439528,
+      "heldout_group_bootstrap_ci95": [
+        0.3944976076555024,
+        0.7492499563928133
+      ],
+      "heldout_normalized_connectivity_lower_better": 0.5973459885403931,
+      "heldout_paper_scores": {
+        "5400": 0.7492499563928134,
+        "5404": 0.3944976076555024,
+        "5451": 0.613158748347824
+      },
+      "independent_article_title_view_coherence_higher_better": 0.24525709600727427,
+      "method": "incidence-normalized SVD initialization + high-order local refinement",
+      "model": "incidence_svd",
+      "n_clusters": 12,
+      "n_heldout_edges": 82,
+      "n_heldout_papers": 3,
+      "n_nodes": 2164,
+      "n_train_edges": 339,
+      "native_training_connectivity_lambda_minus_one": 0.26843657817109146,
+      "projected_pair_events": 0,
+      "run_id": "incidence_svd__seed41",
+      "seed": 41,
+      "shared_node_count": 1505,
+      "train_highorder_events_still_3plus_coarse": 14,
+      "year": 2022
+    },
+    {
+      "actual_train_edge_ids_preserved": 645,
+      "cross_year_shared_node_ari": 0.12614043471571074,
+      "elapsed_seconds": 0.329,
+      "family": "incidence",
+      "fraction_train_events_internal": 0.7364341085271318,
+      "heldout_group_bootstrap_ci95": [
+        0.5216532116326845,
+        0.7169344544897266
+      ],
+      "heldout_normalized_connectivity_lower_better": 0.6507042919057346,
+      "heldout_paper_scores": {
+        "5382": 0.49948009506833035,
+        "5394": 0.5120039682539682,
+        "5400": 0.49094365951508817,
+        "5404": 0.7777511961722489,
+        "5451": 0.8324860247129154,
+        "5455": 0.6286450817700818
+      },
+      "independent_article_title_view_coherence_higher_better": 0.17954962809924763,
+      "method": "incidence-normalized SVD initialization + high-order local refinement",
+      "model": "incidence_svd",
+      "n_clusters": 12,
+      "n_heldout_edges": 159,
+      "n_heldout_papers": 6,
+      "n_nodes": 4164,
+      "n_train_edges": 645,
+      "native_training_connectivity_lambda_minus_one": 0.3178294573643411,
+      "projected_pair_events": 0,
+      "run_id": "incidence_svd__seed41",
+      "seed": 41,
+      "shared_node_count": 2164,
+      "train_highorder_events_still_3plus_coarse": 28,
+      "year": 2024
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "heldout_provenance_article_ids": [
+    "5380",
+    "5381",
+    "5387",
+    "5397",
+    "5406",
+    "5438",
+    "5445",
+    "5450",
+    "5453",
+    "5455"
+  ],
+  "article_groups_total": 52,
+  "split_seed": 42,
+  "test_fraction_of_papers": 0.19230769230769232,
+  "note": "Holdout is grouped at asserting-article ID; no edges from those articles in clustering. Gold reference answers used only after outputs frozen."
+}

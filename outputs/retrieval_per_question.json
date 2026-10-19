@@ -1,0 +1,1084 @@
+[
+  {
+    "id": "Q1",
+    "type": "A",
+    "question": "Which methods (by Feb 2026) are best suited for predicting interatomic potentials when balancing accuracy close to DFT with computational efficiency for systems of millions of atoms?",
+    "flat_node_ids": [
+      "tech_00795",
+      "tech_00658",
+      "comp_00600",
+      "meth_00396",
+      "meth_00375"
+    ],
+    "flat_surface_forms": [
+      "dynamic load balancing",
+      "Oxidation-state balancing with relaxed constraints",
+      "Relaxed oxidation-state balancing constraint",
+      "Atoms-In-Molecules Network 2",
+      "Equivariant interatomic potentials"
+    ],
+    "hier_node_ids": [
+      "tech_00795",
+      "meth_00375",
+      "data_00160",
+      "cite_00339",
+      "comp_00622"
+    ],
+    "hier_surface_forms": [
+      "dynamic load balancing",
+      "Equivariant interatomic potentials",
+      "parallel efficiency benchmark",
+      "Matminer",
+      "GNN interatomic potentials"
+    ],
+    "flat_inspected": 2682,
+    "hier_inspected": 928,
+    "centroid_visits": 4,
+    "ranked_clusters": [
+      "8",
+      "9",
+      "4",
+      "7"
+    ],
+    "gold_expected": [
+      "MACE",
+      "M3GNet",
+      "CHGNet",
+      "GAP",
+      "NequIP",
+      "ACE",
+      "EquiformerV2"
+    ],
+    "gold_present": [
+      "MACE",
+      "M3GNet",
+      "CHGNet",
+      "GAP",
+      "NequIP",
+      "ACE",
+      "EquiformerV2"
+    ],
+    "gold_absent_in_snapshot": [],
+    "flat_hits": [],
+    "hier_hits": [],
+    "flat_hit_at_5": false,
+    "hier_hit_at_5": false,
+    "flat_recall_at_5": 0.0,
+    "hier_recall_at_5": 0.0,
+    "flat_recall_given_available": 0.0,
+    "hier_recall_given_available": 0.0
+  },
+  {
+    "id": "Q2",
+    "type": "A",
+    "question": "Which methods (by Feb 2026) are best suited for accelerating electronic structure calculations when self-consistent field iterations become prohibitively expensive for large systems (>10³ atoms)?",
+    "flat_node_ids": [
+      "meth_00223",
+      "tech_00694",
+      "comp_00625",
+      "meth_00222",
+      "meth_00226"
+    ],
+    "flat_surface_forms": [
+      "self-consistent field",
+      "Self-consistent training",
+      "Iterative self-consistent training protocol",
+      "D4FT",
+      "GPAW"
+    ],
+    "hier_node_ids": [
+      "meth_00223",
+      "tech_00694",
+      "comp_00625",
+      "meth_00226",
+      "meth_00227"
+    ],
+    "hier_surface_forms": [
+      "self-consistent field",
+      "Self-consistent training",
+      "Iterative self-consistent training protocol",
+      "GPAW",
+      "Psi4"
+    ],
+    "flat_inspected": 2682,
+    "hier_inspected": 825,
+    "centroid_visits": 4,
+    "ranked_clusters": [
+      "3",
+      "6",
+      "1",
+      "9"
+    ],
+    "gold_expected": [
+      "DeepH",
+      "D4FT",
+      "HamGNN"
+    ],
+    "gold_present": [
+      "DeepH",
+      "D4FT"
+    ],
+    "gold_absent_in_snapshot": [
+      "HamGNN"
+    ],
+    "flat_hits": [
+      "D4FT"
+    ],
+    "hier_hits": [],
+    "flat_hit_at_5": true,
+    "hier_hit_at_5": false,
+    "flat_recall_at_5": 0.3333333333333333,
+    "hier_recall_at_5": 0.0,
+    "flat_recall_given_available": 0.5,
+    "hier_recall_given_available": 0.0
+  },
+  {
+    "id": "Q3",
+    "type": "A",
+    "question": "Which methods (by Feb 2026) are best suited for learning DFT Hamiltonians when dealing with twisted van der Waals heterostructures containing thousands of magnetic atoms?",
+    "flat_node_ids": [
+      "tech_00167",
+      "meth_00213",
+      "meth_00153",
+      "meth_00248",
+      "tech_00719"
+    ],
+    "flat_surface_forms": [
+      "DFT+U with van der Waals functionals",
+      "deep neural network approach to represent DFT Hamiltonian",
+      "van der Waals density functional",
+      "van der Waals functional OptB88",
+      "Active learning for DFT data"
+    ],
+    "hier_node_ids": [
+      "tech_00167",
+      "meth_00153",
+      "meth_00248",
+      "tech_00719",
+      "meth_00102"
+    ],
+    "hier_surface_forms": [
+      "DFT+U with van der Waals functionals",
+      "van der Waals density functional",
+      "van der Waals functional OptB88",
+      "Active learning for DFT data",
+      "deep-learning DFT Hamiltonian"
+    ],
+    "flat_inspected": 2682,
+    "hier_inspected": 1361,
+    "centroid_visits": 4,
+    "ranked_clusters": [
+      "9",
+      "6",
+      "8",
+      "10"
+    ],
+    "gold_expected": [
+      "xDeepH",
+      "DeepH-E3"
+    ],
+    "gold_present": [
+      "DeepH-E3"
+    ],
+    "gold_absent_in_snapshot": [
+      "xDeepH"
+    ],
+    "flat_hits": [],
+    "hier_hits": [],
+    "flat_hit_at_5": false,
+    "hier_hit_at_5": false,
+    "flat_recall_at_5": 0.0,
+    "hier_recall_at_5": 0.0,
+    "flat_recall_given_available": 0.0,
+    "hier_recall_given_available": 0.0
+  },
+  {
+    "id": "Q4",
+    "type": "A",
+    "question": "Which methods (by Feb 2026) are best suited for phonon property prediction when universal MLIPs show inaccuracies despite good energy/force performance?",
+    "flat_node_ids": [
+      "tech_00724",
+      "tech_00708",
+      "tech_00072",
+      "tech_00247",
+      "tech_00725"
+    ],
+    "flat_surface_forms": [
+      "Energy and force benchmarking",
+      "Joint energy-force training",
+      "Combined energy‑and‑force loss",
+      "Joint training on energy, force, and stress targets",
+      "Property prediction benchmarking"
+    ],
+    "hier_node_ids": [
+      "tech_00724",
+      "tech_00708",
+      "tech_00072",
+      "tech_00247",
+      "tech_00725"
+    ],
+    "hier_surface_forms": [
+      "Energy and force benchmarking",
+      "Joint energy-force training",
+      "Combined energy‑and‑force loss",
+      "Joint training on energy, force, and stress targets",
+      "Property prediction benchmarking"
+    ],
+    "flat_inspected": 2682,
+    "hier_inspected": 624,
+    "centroid_visits": 4,
+    "ranked_clusters": [
+      "4",
+      "2",
+      "5",
+      "10"
+    ],
+    "gold_expected": [
+      "Hessian training",
+      "VGNN",
+      "MACE-F"
+    ],
+    "gold_present": [
+      "VGNN"
+    ],
+    "gold_absent_in_snapshot": [
+      "Hessian training",
+      "MACE-F"
+    ],
+    "flat_hits": [],
+    "hier_hits": [],
+    "flat_hit_at_5": false,
+    "hier_hit_at_5": false,
+    "flat_recall_at_5": 0.0,
+    "hier_recall_at_5": 0.0,
+    "flat_recall_given_available": 0.0,
+    "hier_recall_given_available": 0.0
+  },
+  {
+    "id": "Q5",
+    "type": "A",
+    "question": "Which methods (by Feb 2026) are best suited for coarse-graining molecular dynamics when crystalline symmetries and long-range elastic interactions must be preserved?",
+    "flat_node_ids": [
+      "comp_00524",
+      "comp_00653",
+      "tech_00085",
+      "meth_00333",
+      "meth_00392"
+    ],
+    "flat_surface_forms": [
+      "Deep Potential Long Range",
+      "Long-range electrostatic correction",
+      "Virtual edges for long‑range communication",
+      "Deep Potential Long Range",
+      "Deep Molecular Dynamics"
+    ],
+    "hier_node_ids": [
+      "comp_00524",
+      "comp_00653",
+      "meth_00333",
+      "meth_00392",
+      "tech_00594"
+    ],
+    "hier_surface_forms": [
+      "Deep Potential Long Range",
+      "Long-range electrostatic correction",
+      "Deep Potential Long Range",
+      "Deep Molecular Dynamics",
+      "deep potential molecular dynamics"
+    ],
+    "flat_inspected": 2682,
+    "hier_inspected": 1133,
+    "centroid_visits": 4,
+    "ranked_clusters": [
+      "8",
+      "7",
+      "10",
+      "2"
+    ],
+    "gold_expected": [
+      "Bead-mapping",
+      "GNN+GPP"
+    ],
+    "gold_present": [],
+    "gold_absent_in_snapshot": [
+      "Bead-mapping",
+      "GNN+GPP"
+    ],
+    "flat_hits": [],
+    "hier_hits": [],
+    "flat_hit_at_5": false,
+    "hier_hit_at_5": false,
+    "flat_recall_at_5": 0.0,
+    "hier_recall_at_5": 0.0,
+    "flat_recall_given_available": null,
+    "hier_recall_given_available": null
+  },
+  {
+    "id": "Q6",
+    "type": "A",
+    "question": "Which methods (by Feb 2026) are best suited for predicting ionic conductivity when full ab initio MD is too expensive but accuracy must be maintained?",
+    "flat_node_ids": [
+      "cite_00365",
+      "cite_00367",
+      "cite_00366",
+      "cite_00339",
+      "cite_00363"
+    ],
+    "flat_surface_forms": [
+      "NEB",
+      "BVSE",
+      "Pinball model",
+      "Matminer",
+      "Behler‑Parrinello NN"
+    ],
+    "hier_node_ids": [
+      "cite_00365",
+      "cite_00367",
+      "cite_00366",
+      "cite_00339",
+      "cite_00354"
+    ],
+    "hier_surface_forms": [
+      "NEB",
+      "BVSE",
+      "Pinball model",
+      "Matminer",
+      "CGCNN"
+    ],
+    "flat_inspected": 2682,
+    "hier_inspected": 968,
+    "centroid_visits": 4,
+    "ranked_clusters": [
+      "8",
+      "4",
+      "2",
+      "7"
+    ],
+    "gold_expected": [
+      "DeePMD+AL",
+      "LiFlow",
+      "MLIP descriptors"
+    ],
+    "gold_present": [
+      "LiFlow"
+    ],
+    "gold_absent_in_snapshot": [
+      "DeePMD+AL",
+      "MLIP descriptors"
+    ],
+    "flat_hits": [],
+    "hier_hits": [],
+    "flat_hit_at_5": false,
+    "hier_hit_at_5": false,
+    "flat_recall_at_5": 0.0,
+    "hier_recall_at_5": 0.0,
+    "flat_recall_given_available": 0.0,
+    "hier_recall_given_available": 0.0
+  },
+  {
+    "id": "Q7",
+    "type": "A",
+    "question": "Which methods (by Feb 2026) are best suited for predicting phase transitions when screening ~50,000 inorganic compounds at high throughput?",
+    "flat_node_ids": [
+      "comp_00105",
+      "tech_00667",
+      "tech_00103",
+      "tech_00507",
+      "tech_00637"
+    ],
+    "flat_surface_forms": [
+      "High‑throughput screening pipeline",
+      "High-throughput screening with MLIPs",
+      "High‑throughput screening",
+      "High-throughput screening workflow",
+      "high-throughput calculations"
+    ],
+    "hier_node_ids": [
+      "comp_00105",
+      "tech_00667",
+      "tech_00103",
+      "tech_00507",
+      "tech_00637"
+    ],
+    "hier_surface_forms": [
+      "High‑throughput screening pipeline",
+      "High-throughput screening with MLIPs",
+      "High‑throughput screening",
+      "High-throughput screening workflow",
+      "high-throughput calculations"
+    ],
+    "flat_inspected": 2682,
+    "hier_inspected": 1033,
+    "centroid_visits": 4,
+    "ranked_clusters": [
+      "1",
+      "8",
+      "0",
+      "2"
+    ],
+    "gold_expected": [
+      "GNN free energies",
+      "symbolic regression"
+    ],
+    "gold_present": [
+      "symbolic regression"
+    ],
+    "gold_absent_in_snapshot": [
+      "GNN free energies"
+    ],
+    "flat_hits": [],
+    "hier_hits": [],
+    "flat_hit_at_5": false,
+    "hier_hit_at_5": false,
+    "flat_recall_at_5": 0.0,
+    "hier_recall_at_5": 0.0,
+    "flat_recall_given_available": 0.0,
+    "hier_recall_given_available": 0.0
+  },
+  {
+    "id": "Q8",
+    "type": "A",
+    "question": "Which methods (by Feb 2026) are best suited for predicting fracture patterns when generalizing from atomistic MD data to unseen bicrystalline structures?",
+    "flat_node_ids": [
+      "cite_00001",
+      "tech_00312",
+      "cite_00002",
+      "cite_00003",
+      "comp_00294"
+    ],
+    "flat_surface_forms": [
+      "ConvLSTM",
+      "Image‑based encoding of atomistic data",
+      "PredRNN",
+      "WaveNet",
+      "Fracture‑toughness regression head"
+    ],
+    "hier_node_ids": [
+      "tech_00312",
+      "meth_00230",
+      "comp_00297",
+      "tech_00080",
+      "tech_00314"
+    ],
+    "hier_surface_forms": [
+      "Image‑based encoding of atomistic data",
+      "ConvLSTM-based fracture prediction model",
+      "Image‑based data‑processing pipeline",
+      "10‑fold cross‑validation",
+      "Physics‑based surface‑energy calculation"
+    ],
+    "flat_inspected": 2682,
+    "hier_inspected": 813,
+    "centroid_visits": 4,
+    "ranked_clusters": [
+      "5",
+      "7",
+      "8",
+      "4"
+    ],
+    "gold_expected": [
+      "ConvLSTM",
+      "GNN stress fields"
+    ],
+    "gold_present": [
+      "ConvLSTM"
+    ],
+    "gold_absent_in_snapshot": [
+      "GNN stress fields"
+    ],
+    "flat_hits": [
+      "ConvLSTM"
+    ],
+    "hier_hits": [],
+    "flat_hit_at_5": true,
+    "hier_hit_at_5": false,
+    "flat_recall_at_5": 0.5,
+    "hier_recall_at_5": 0.0,
+    "flat_recall_given_available": 1.0,
+    "hier_recall_given_available": 0.0
+  },
+  {
+    "id": "Q9",
+    "type": "A",
+    "question": "Which methods (by Feb 2026) are best suited for ensuring physical consistency when transferring information between scales without violating thermodynamic principles?",
+    "flat_node_ids": [
+      "cite_00158",
+      "tech_00586",
+      "comp_00546",
+      "tech_00380",
+      "data_00094"
+    ],
+    "flat_surface_forms": [
+      "thermodynamic integration",
+      "thermodynamic integration",
+      "two-body embedding full-information descriptor",
+      "Thermodynamic descriptor screening",
+      "SSUB thermodynamic database"
+    ],
+    "hier_node_ids": [
+      "cite_00158",
+      "tech_00586",
+      "comp_00546",
+      "tech_00380",
+      "data_00094"
+    ],
+    "hier_surface_forms": [
+      "thermodynamic integration",
+      "thermodynamic integration",
+      "two-body embedding full-information descriptor",
+      "Thermodynamic descriptor screening",
+      "SSUB thermodynamic database"
+    ],
+    "flat_inspected": 2682,
+    "hier_inspected": 1207,
+    "centroid_visits": 4,
+    "ranked_clusters": [
+      "8",
+      "0",
+      "10",
+      "9"
+    ],
+    "gold_expected": [
+      "E(3)-equivariant GNNs",
+      "physics-informed",
+      "NequIP"
+    ],
+    "gold_present": [
+      "NequIP"
+    ],
+    "gold_absent_in_snapshot": [
+      "E(3)-equivariant GNNs",
+      "physics-informed"
+    ],
+    "flat_hits": [],
+    "hier_hits": [],
+    "flat_hit_at_5": false,
+    "hier_hit_at_5": false,
+    "flat_recall_at_5": 0.0,
+    "hier_recall_at_5": 0.0,
+    "flat_recall_given_available": 0.0,
+    "hier_recall_given_available": 0.0
+  },
+  {
+    "id": "Q10",
+    "type": "A",
+    "question": "Which methods (by Feb 2026) are best suited for representing atomic environments when the system exhibits significant compositional diversity, defects, and disorder?",
+    "flat_node_ids": [
+      "comp_00602",
+      "tech_00623",
+      "tech_00012",
+      "tech_00333",
+      "tech_00328"
+    ],
+    "flat_surface_forms": [
+      "Graph neural network for compositional models",
+      "Prototype diversity sampling",
+      "Batch normalization",
+      "Graph representation of atomic structures",
+      "Graph construction from atomic coordinates"
+    ],
+    "hier_node_ids": [
+      "tech_00623",
+      "comp_00314",
+      "comp_00315",
+      "tech_00331",
+      "tech_00337"
+    ],
+    "hier_surface_forms": [
+      "Prototype diversity sampling",
+      "GNN predictor",
+      "GA optimizer",
+      "Genetic algorithm optimization",
+      "Genetic‑algorithm optimization"
+    ],
+    "flat_inspected": 2682,
+    "hier_inspected": 1401,
+    "centroid_visits": 4,
+    "ranked_clusters": [
+      "6",
+      "10",
+      "2",
+      "8"
+    ],
+    "gold_expected": [
+      "GNNs + ACE descriptors",
+      "SchNet"
+    ],
+    "gold_present": [
+      "SchNet"
+    ],
+    "gold_absent_in_snapshot": [
+      "GNNs + ACE descriptors"
+    ],
+    "flat_hits": [],
+    "hier_hits": [],
+    "flat_hit_at_5": false,
+    "hier_hit_at_5": false,
+    "flat_recall_at_5": 0.0,
+    "hier_recall_at_5": 0.0,
+    "flat_recall_given_available": 0.0,
+    "hier_recall_given_available": 0.0
+  },
+  {
+    "id": "Q11",
+    "type": "A",
+    "question": "Which methods (by Feb 2026) are best suited for integrating features from three or more distinct scales simultaneously within a unified framework?",
+    "flat_node_ids": [
+      "comp_00444",
+      "comp_00163",
+      "comp_00422",
+      "tech_00440",
+      "comp_00831"
+    ],
+    "flat_surface_forms": [
+      "Magpie features",
+      "Voronoi tessellation features",
+      "SO(3) irreps features",
+      "irreps features",
+      "Elemental features"
+    ],
+    "hier_node_ids": [
+      "comp_00444",
+      "comp_00163",
+      "comp_00422",
+      "tech_00440",
+      "comp_00645"
+    ],
+    "hier_surface_forms": [
+      "Magpie features",
+      "Voronoi tessellation features",
+      "SO(3) irreps features",
+      "irreps features",
+      "High body order local features"
+    ],
+    "flat_inspected": 2682,
+    "hier_inspected": 1279,
+    "centroid_visits": 4,
+    "ranked_clusters": [
+      "6",
+      "8",
+      "9",
+      "2"
+    ],
+    "gold_expected": [
+      "CE→MC→NN→PF",
+      "hybrid frameworks"
+    ],
+    "gold_present": [],
+    "gold_absent_in_snapshot": [
+      "CE→MC→NN→PF",
+      "hybrid frameworks"
+    ],
+    "flat_hits": [],
+    "hier_hits": [],
+    "flat_hit_at_5": false,
+    "hier_hit_at_5": false,
+    "flat_recall_at_5": 0.0,
+    "hier_recall_at_5": 0.0,
+    "flat_recall_given_available": null,
+    "hier_recall_given_available": null
+  },
+  {
+    "id": "Q12",
+    "type": "A",
+    "question": "What are the leading (by Feb 2026) ML-based interatomic potential methods for large-scale atomistic simulation?",
+    "flat_node_ids": [
+      "tech_00915",
+      "cite_00414",
+      "meth_00196",
+      "cite_00416",
+      "cite_00415"
+    ],
+    "flat_surface_forms": [
+      "Large-scale atomistic simulation",
+      "DFT",
+      "Gaussian Approximation Potential (GAP) for silicon",
+      "equigrad",
+      "MPTraj"
+    ],
+    "hier_node_ids": [
+      "tech_00915",
+      "meth_00196",
+      "cite_00415",
+      "cite_00419",
+      "cite_00570"
+    ],
+    "hier_surface_forms": [
+      "Large-scale atomistic simulation",
+      "Gaussian Approximation Potential (GAP) for silicon",
+      "MPTraj",
+      "DPA3",
+      "REBO"
+    ],
+    "flat_inspected": 2682,
+    "hier_inspected": 1133,
+    "centroid_visits": 4,
+    "ranked_clusters": [
+      "7",
+      "8",
+      "10",
+      "2"
+    ],
+    "gold_expected": [
+      "MACE",
+      "NequIP",
+      "CHGNet",
+      "M3GNet",
+      "SevenNet",
+      "GAP",
+      "DeePMD",
+      "MatterSim",
+      "Orb",
+      "eSEN",
+      "PET",
+      "UMA",
+      "EquiformerV2"
+    ],
+    "gold_present": [
+      "MACE",
+      "NequIP",
+      "CHGNet",
+      "M3GNet",
+      "SevenNet",
+      "GAP",
+      "DeePMD",
+      "MatterSim",
+      "Orb",
+      "eSEN",
+      "EquiformerV2"
+    ],
+    "gold_absent_in_snapshot": [
+      "PET",
+      "UMA"
+    ],
+    "flat_hits": [],
+    "hier_hits": [],
+    "flat_hit_at_5": false,
+    "hier_hit_at_5": false,
+    "flat_recall_at_5": 0.0,
+    "hier_recall_at_5": 0.0,
+    "flat_recall_given_available": 0.0,
+    "hier_recall_given_available": 0.0
+  },
+  {
+    "id": "Q13",
+    "type": "A",
+    "question": "What are the leading (by Feb 2026) GNN architectures for predicting properties of solid-state crystalline materials?",
+    "flat_node_ids": [
+      "cite_00455",
+      "cite_00454",
+      "cite_00214",
+      "cite_00453",
+      "cite_00077"
+    ],
+    "flat_surface_forms": [
+      "CPMD",
+      "Grimme-D2",
+      "DeepMD",
+      "Behler-Parrinello neural network potential",
+      "LAMMPS"
+    ],
+    "hier_node_ids": [
+      "cite_00214",
+      "cite_00191",
+      "tech_00695",
+      "data_00146",
+      "data_00147"
+    ],
+    "hier_surface_forms": [
+      "DeepMD",
+      "GAP",
+      "FPMD simulations",
+      "Li7La3Zr2O12",
+      "Na3Zr2Si2PO12"
+    ],
+    "flat_inspected": 2682,
+    "hier_inspected": 1171,
+    "centroid_visits": 4,
+    "ranked_clusters": [
+      "3",
+      "0",
+      "2",
+      "8"
+    ],
+    "gold_expected": [
+      "CGCNN",
+      "SchNet",
+      "MEGNet",
+      "M3GNet",
+      "NequIP",
+      "MACE",
+      "CHGNet",
+      "EquiformerV2"
+    ],
+    "gold_present": [
+      "CGCNN",
+      "SchNet",
+      "MEGNet",
+      "M3GNet",
+      "NequIP",
+      "MACE",
+      "CHGNet",
+      "EquiformerV2"
+    ],
+    "gold_absent_in_snapshot": [],
+    "flat_hits": [],
+    "hier_hits": [],
+    "flat_hit_at_5": false,
+    "hier_hit_at_5": false,
+    "flat_recall_at_5": 0.0,
+    "hier_recall_at_5": 0.0,
+    "flat_recall_given_available": 0.0,
+    "hier_recall_given_available": 0.0
+  },
+  {
+    "id": "Q14",
+    "type": "A",
+    "question": "What datasets and benchmarks are commonly used (by Feb 2026) to evaluate MLIPs and property prediction models for materials discovery?",
+    "flat_node_ids": [
+      "meth_00179",
+      "tech_00725",
+      "comp_00010",
+      "comp_00176",
+      "comp_00177"
+    ],
+    "flat_surface_forms": [
+      "Task‑driven taxonomy of foundation models for materials science",
+      "Property prediction benchmarking",
+      "Retriever",
+      "MatSciKB",
+      "ToolHub"
+    ],
+    "hier_node_ids": [
+      "meth_00179",
+      "tech_00725",
+      "comp_00010",
+      "comp_00176",
+      "comp_00008"
+    ],
+    "hier_surface_forms": [
+      "Task‑driven taxonomy of foundation models for materials science",
+      "Property prediction benchmarking",
+      "Retriever",
+      "MatSciKB",
+      "Bridge Model"
+    ],
+    "flat_inspected": 2682,
+    "hier_inspected": 499,
+    "centroid_visits": 4,
+    "ranked_clusters": [
+      "1",
+      "3",
+      "2",
+      "5"
+    ],
+    "gold_expected": [
+      "Matbench Discovery",
+      "Matbench",
+      "JARVIS-DFT",
+      "Materials Project",
+      "MPtrj",
+      "OQMD",
+      "AFLOW",
+      "Alexandria",
+      "GNoME",
+      "WBM",
+      "OMat24"
+    ],
+    "gold_present": [
+      "Matbench Discovery",
+      "Matbench",
+      "JARVIS-DFT",
+      "Materials Project",
+      "OQMD",
+      "AFLOW",
+      "Alexandria",
+      "GNoME",
+      "WBM",
+      "OMat24"
+    ],
+    "gold_absent_in_snapshot": [
+      "MPtrj"
+    ],
+    "flat_hits": [],
+    "hier_hits": [],
+    "flat_hit_at_5": false,
+    "hier_hit_at_5": false,
+    "flat_recall_at_5": 0.0,
+    "hier_recall_at_5": 0.0,
+    "flat_recall_given_available": 0.0,
+    "hier_recall_given_available": 0.0
+  },
+  {
+    "id": "Q15",
+    "type": "B",
+    "question": "What are the most important open scientific challenges (by Feb 2026) in AI-based multiscale modeling of solid-state materials?",
+    "flat_node_ids": [
+      "meth_00352",
+      "meth_00353",
+      "meth_00017",
+      "tech_00625",
+      "meth_00351"
+    ],
+    "flat_surface_forms": [
+      "Hierarchical multiscale modeling",
+      "Concurrent multiscale modeling",
+      "transfer learning",
+      "Representation learning",
+      "ml_multiscale_modeling_perspective"
+    ],
+    "hier_node_ids": [
+      "meth_00352",
+      "meth_00353",
+      "meth_00017",
+      "tech_00625",
+      "tech_00626"
+    ],
+    "hier_surface_forms": [
+      "Hierarchical multiscale modeling",
+      "Concurrent multiscale modeling",
+      "transfer learning",
+      "Representation learning",
+      "Meta learning"
+    ],
+    "flat_inspected": 2682,
+    "hier_inspected": 793,
+    "centroid_visits": 4,
+    "ranked_clusters": [
+      "1",
+      "3",
+      "10",
+      "0"
+    ],
+    "scoring_status": "NOT_SCORED_B: requires multi-claim source-grounded synthesis and citation verification; ranked candidate nodes alone cannot measure this truth."
+  },
+  {
+    "id": "Q16",
+    "type": "B",
+    "question": "How does E(3)-equivariance improve GNN-based interatomic potentials in accuracy and data efficiency in comparison with vanilla GNN?",
+    "flat_node_ids": [
+      "comp_00073",
+      "comp_00622",
+      "cite_00120",
+      "comp_00651",
+      "cite_00106"
+    ],
+    "flat_surface_forms": [
+      "GNN‑based phase‑space evaluator",
+      "GNN interatomic potentials",
+      "E(3)-equivariant GNN",
+      "Transformer blocks in GNN",
+      "Tensor Field Networks"
+    ],
+    "hier_node_ids": [
+      "comp_00073",
+      "comp_00622",
+      "cite_00120",
+      "data_00160",
+      "comp_00621"
+    ],
+    "hier_surface_forms": [
+      "GNN‑based phase‑space evaluator",
+      "GNN interatomic potentials",
+      "E(3)-equivariant GNN",
+      "parallel efficiency benchmark",
+      "Static GNN"
+    ],
+    "flat_inspected": 2682,
+    "hier_inspected": 1050,
+    "centroid_visits": 4,
+    "ranked_clusters": [
+      "7",
+      "10",
+      "4",
+      "8"
+    ],
+    "scoring_status": "NOT_SCORED_B: requires multi-claim source-grounded synthesis and citation verification; ranked candidate nodes alone cannot measure this truth."
+  },
+  {
+    "id": "Q17",
+    "type": "B",
+    "question": "Give evidences that ML-based coarse-grained molecular dynamics is effective for studying ionic transport and phase transitions in solid-state systems (by Feb 2026).",
+    "flat_node_ids": [
+      "meth_00341",
+      "tech_00158",
+      "meth_00384",
+      "meth_00140",
+      "comp_00102"
+    ],
+    "flat_surface_forms": [
+      "coarse-grained message passing networks",
+      "ML‑driven molecular dynamics",
+      "First-principles molecular dynamics",
+      "Uncertainty-aware graph convolutional neural network for vibrational free‑energy prediction",
+      "ML vibrational free-energy model"
+    ],
+    "hier_node_ids": [
+      "tech_00158",
+      "meth_00384",
+      "comp_00102",
+      "meth_00387",
+      "meth_00392"
+    ],
+    "hier_surface_forms": [
+      "ML‑driven molecular dynamics",
+      "First-principles molecular dynamics",
+      "ML vibrational free-energy model",
+      "Classical Force Field Molecular Dynamics",
+      "Deep Molecular Dynamics"
+    ],
+    "flat_inspected": 2682,
+    "hier_inspected": 1164,
+    "centroid_visits": 4,
+    "ranked_clusters": [
+      "8",
+      "10",
+      "4",
+      "0"
+    ],
+    "scoring_status": "NOT_SCORED_B: requires multi-claim source-grounded synthesis and citation verification; ranked candidate nodes alone cannot measure this truth."
+  },
+  {
+    "id": "Q18",
+    "type": "B",
+    "question": "What mechanisms embed physical constraints, i.e., symmetry, locality, and size extensivity, into machine-learned interatomic potential architectures, and what evidence bears on whether these constraints improve transfer to system sizes and conditions beyond the training set (by Feb 2026)?",
+    "flat_node_ids": [
+      "tech_00906",
+      "comp_00627",
+      "comp_00633",
+      "tech_00658",
+      "tech_00332"
+    ],
+    "flat_surface_forms": [
+      "Force locality test",
+      "Training set cleaning pipeline",
+      "Training set cleaning procedure",
+      "Oxidation-state balancing with relaxed constraints",
+      "Transfer learning for new loading conditions"
+    ],
+    "hier_node_ids": [
+      "tech_00906",
+      "comp_00627",
+      "comp_00633",
+      "tech_00703",
+      "tech_00381"
+    ],
+    "hier_surface_forms": [
+      "Force locality test",
+      "Training set cleaning pipeline",
+      "Training set cleaning procedure",
+      "Training set augmentation via intermediate MD",
+      "Reaction enumeration with stoichiometric constraints"
+    ],
+    "flat_inspected": 2682,
+    "hier_inspected": 1057,
+    "centroid_visits": 4,
+    "ranked_clusters": [
+      "2",
+      "7",
+      "8",
+      "3"
+    ],
+    "scoring_status": "NOT_SCORED_B: requires multi-claim source-grounded synthesis and citation verification; ranked candidate nodes alone cannot measure this truth."
+  }
+]

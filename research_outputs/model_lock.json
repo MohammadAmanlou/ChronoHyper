@@ -1,0 +1,20 @@
+{
+  "method": "native_temporal_20",
+  "years": [
+    2020,
+    2022,
+    2024
+  ],
+  "seeds": [
+    11,
+    17,
+    29,
+    41,
+    53
+  ],
+  "data_sha256": "414867a07e5fdc4b38f9ad4e96bd5253d31e239012173ca439a1c5441553b4e1",
+  "development_protocol_sha256": "5406906bb2f5276bc450103a2d8d548db941710a08c4d42e7071524a0b86dcb2",
+  "method_description": "Strong evolutionary inertia; possible failure to adapt",
+  "frozen_by": "Applicant chooses ONE method using dev evidence, no use of reference gold; author must explain decision.",
+  "confirmation_caveat": "Transductive source node text exists and 52 articles overall; report as restricted source-grouped confirmation, not unseen corpus generalization."
+}

@@ -1,0 +1,121 @@
+{
+  "elapsed_seconds": 1.047,
+  "method": {
+    "expensive": false,
+    "explanation": "Strong evolutionary inertia; possible failure to adapt",
+    "family": "native",
+    "hyper": 0.3,
+    "id": "native_temporal_20",
+    "init": "kmeans",
+    "semantic": 0.7,
+    "temporal": 0.2
+  },
+  "run_id": "native_temporal_20__seed41",
+  "seed": 41,
+  "status": "complete",
+  "years": [
+    {
+      "actual_train_edge_ids_preserved": 209,
+      "cross_year_shared_node_ari": null,
+      "elapsed_seconds": 0.177,
+      "family": "native",
+      "fraction_train_events_internal": 0.5263157894736842,
+      "heldout_group_bootstrap_ci95": [
+        0.6548655798655798,
+        0.7864285714285715
+      ],
+      "heldout_normalized_connectivity_lower_better": 0.70947599833142,
+      "heldout_paper_scores": {
+        "5397": 0.7761904761904762,
+        "5402": 0.705869130869131,
+        "5406": 0.7966666666666666,
+        "5445": 0.614423947757281
+      },
+      "independent_article_title_view_coherence_higher_better": 0.1970135860504984,
+      "method": "native joint high-order local refinement",
+      "model": "native_temporal_20",
+      "n_clusters": 12,
+      "n_heldout_edges": 83,
+      "n_heldout_papers": 4,
+      "n_nodes": 1505,
+      "n_train_edges": 209,
+      "native_training_connectivity_lambda_minus_one": 0.9569377990430622,
+      "projected_pair_events": 0,
+      "run_id": "native_temporal_20__seed41",
+      "seed": 41,
+      "shared_node_count": 0,
+      "train_highorder_events_still_3plus_coarse": 56,
+      "year": 2020
+    },
+    {
+      "actual_train_edge_ids_preserved": 339,
+      "cross_year_shared_node_ari": 0.9116636540870132,
+      "elapsed_seconds": 0.271,
+      "family": "native",
+      "fraction_train_events_internal": 0.3893805309734513,
+      "heldout_group_bootstrap_ci95": [
+        0.6632290399488676,
+        0.7747928737928739
+      ],
+      "heldout_normalized_connectivity_lower_better": 0.7092595191856276,
+      "heldout_paper_scores": {
+        "5381": 0.6937241876897049,
+        "5397": 0.7873809523809523,
+        "5402": 0.705869130869131,
+        "5406": 0.7966666666666666,
+        "5445": 0.6181276514609848
+      },
+      "independent_article_title_view_coherence_higher_better": 0.17054587503053922,
+      "method": "native joint high-order local refinement",
+      "model": "native_temporal_20",
+      "n_clusters": 12,
+      "n_heldout_edges": 105,
+      "n_heldout_papers": 5,
+      "n_nodes": 2164,
+      "n_train_edges": 339,
+      "native_training_connectivity_lambda_minus_one": 1.2418879056047198,
+      "projected_pair_events": 0,
+      "run_id": "native_temporal_20__seed41",
+      "seed": 41,
+      "shared_node_count": 1505,
+      "train_highorder_events_still_3plus_coarse": 115,
+      "year": 2022
+    },
+    {
+      "actual_train_edge_ids_preserved": 645,
+      "cross_year_shared_node_ari": 0.899694010084974,
+      "elapsed_seconds": 0.578,
+      "family": "native",
+      "fraction_train_events_internal": 0.2961240310077519,
+      "heldout_group_bootstrap_ci95": [
+        0.6905950607876774,
+        0.7367840492840492
+      ],
+      "heldout_normalized_connectivity_lower_better": 0.7090051604981291,
+      "heldout_paper_scores": {
+        "5381": 0.6937241876897049,
+        "5395": 0.7041300942244338,
+        "5397": 0.7498809523809523,
+        "5402": 0.705869130869131,
+        "5406": 0.7633333333333333,
+        "5445": 0.6551646884980218,
+        "5450": 0.7319418676561534
+      },
+      "independent_article_title_view_coherence_higher_better": 0.12964049595121915,
+      "method": "native joint high-order local refinement",
+      "model": "native_temporal_20",
+      "n_clusters": 12,
+      "n_heldout_edges": 179,
+      "n_heldout_papers": 7,
+      "n_nodes": 4164,
+      "n_train_edges": 645,
+      "native_training_connectivity_lambda_minus_one": 1.4310077519379845,
+      "projected_pair_events": 0,
+      "run_id": "native_temporal_20__seed41",
+      "seed": 41,
+      "shared_node_count": 2164,
+      "train_highorder_events_still_3plus_coarse": 198,
+      "year": 2024
+    }
+  ]
+}

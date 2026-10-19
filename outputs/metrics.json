@@ -1,0 +1,1612 @@
+{
+  "dataset_sha256": "414867a07e5fdc4b38f9ad4e96bd5253d31e239012173ca439a1c5441553b4e1",
+  "source": "original applicant-supplied Constructor data.zip",
+  "seed": 17,
+  "encoder": {
+    "primary_encoder": "HashingVectorizer(2**15,word_ngrams=(1,2)) + 48d TruncatedSVD fit only 2020",
+    "embedding_dim": 48,
+    "svd_training_year": 2020,
+    "future_leakage_precaution": "No future surface strings used in fitted SVD. Fixed deterministic hashing features used for future years.",
+    "limitations": "Word-hash representations from 2020 can underrepresent novel scientific vocabulary in later snapshots; does not use a pretrained scientific encoder."
+  },
+  "evaluation_protocol": {
+    "gold_answers": "held out until retrieval scoring",
+    "article_holdout_seed": 42,
+    "level_budgets": [
+      12,
+      48,
+      144,
+      "singletons"
+    ],
+    "cutoffs": [
+      2020,
+      2022,
+      2024,
+      2025
+    ],
+    "coarse_model_selection": "fixed a priori; no tuning to evaluation test questions"
+  },
+  "snapshots": {
+    "2020": {
+      "n_nodes": 1505,
+      "n_train_edges": 312,
+      "n_heldout_edges": 62,
+      "n_total_edges": 374,
+      "clusters_per_level": [
+        12,
+        48,
+        143,
+        1505
+      ],
+      "heldout_normalized_connectivity": 0.7194612238967077,
+      "label_support_audit": {
+        "automatic_membership_claims_audited": 60,
+        "unsupported_membership_claims": 3,
+        "bounded_structural_claim_error_rate": 0.05,
+        "independent_semantic_overclaim_rate": null,
+        "independent_semantic_overclaim_status": "NOT_EVALUATED_NO_BLIND_REVIEW",
+        "description": "All cluster glosses assert exactly recorded membership, counts and surface-name phrases. This is a machine-verifiable factual overclaim proxy, NOT independent literature-level entailment."
+      },
+      "native_loss": {
+        "normalized_hyperedge_connectivity": 0.2556118754525706,
+        "n_hyperedges": 312,
+        "hyperedges_with_3plus_endpoints": 217,
+        "fraction_of_3plus_hyperedge_events_lost_as_unique_when_cliquified": 0.6955128205128205,
+        "pairwise_projection_note": "Clique expansion is many-to-one: original event ID, relation grouping, and multiplicity provenance are not uniquely recoverable. Fraction is diagnostic, not exact information-theoretic loss."
+      },
+      "coherence": {
+        "source": "provenance-linked scientific article titles, char 3-5-gram TF-IDF; not clustering node embeddings",
+        "n_valid_nodes": 1475,
+        "observed": 0.2084765666808568,
+        "random_size_matched_mean": 0.14706354742526276,
+        "random_size_matched_sd": 0.009957771236080585,
+        "effect_delta": 0.06141301925559403,
+        "randomization_p_ge": 0.03225806451612903,
+        "null_draws": 30,
+        "limitations": "Article titles are distinct from the input surface forms/embeddings but correlated by publication; this is an independent evidence VIEW, not human-judged semantic correctness. Null labels exactly preserve sizes."
+      },
+      "robustness": {
+        "ari": {
+          "mean": 0.9373864052205241,
+          "ci95": [
+            0.9255165842616476,
+            0.9506112266569451
+          ],
+          "n": 5,
+          "individual_values": [
+            0.9380166285134082,
+            0.9339267201686141,
+            0.9129013804011977,
+            0.9589994478164299,
+            0.9430878492029707
+          ]
+        },
+        "deleted_fraction": 0.1,
+        "seeds": 5,
+        "interpretation": "5 independent deletion draws, all nodes held fixed; bootstrap CI over 5 draws is descriptive and uncertain."
+      },
+      "edge_collapse_summary": [
+        {
+          "level": 0,
+          "n_edges": 312,
+          "internal": 155,
+          "highorder_remaining": 81
+        },
+        {
+          "level": 1,
+          "n_edges": 312,
+          "internal": 77,
+          "highorder_remaining": 115
+        },
+        {
+          "level": 2,
+          "n_edges": 312,
+          "internal": 51,
+          "highorder_remaining": 147
+        }
+      ]
+    },
+    "2022": {
+      "n_nodes": 2164,
+      "n_train_edges": 442,
+      "n_heldout_edges": 84,
+      "n_total_edges": 526,
+      "clusters_per_level": [
+        12,
+        48,
+        144,
+        2164
+      ],
+      "heldout_normalized_connectivity": 0.6884858776792274,
+      "label_support_audit": {
+        "automatic_membership_claims_audited": 60,
+        "unsupported_membership_claims": 2,
+        "bounded_structural_claim_error_rate": 0.03333333333333333,
+        "independent_semantic_overclaim_rate": null,
+        "independent_semantic_overclaim_status": "NOT_EVALUATED_NO_BLIND_REVIEW",
+        "description": "All cluster glosses assert exactly recorded membership, counts and surface-name phrases. This is a machine-verifiable factual overclaim proxy, NOT independent literature-level entailment."
+      },
+      "native_loss": {
+        "normalized_hyperedge_connectivity": 0.2909090909090909,
+        "n_hyperedges": 442,
+        "hyperedges_with_3plus_endpoints": 317,
+        "fraction_of_3plus_hyperedge_events_lost_as_unique_when_cliquified": 0.7171945701357466,
+        "pairwise_projection_note": "Clique expansion is many-to-one: original event ID, relation grouping, and multiplicity provenance are not uniquely recoverable. Fraction is diagnostic, not exact information-theoretic loss."
+      },
+      "coherence": {
+        "source": "provenance-linked scientific article titles, char 3-5-gram TF-IDF; not clustering node embeddings",
+        "n_valid_nodes": 2137,
+        "observed": 0.16628769981721886,
+        "random_size_matched_mean": 0.1334726440934172,
+        "random_size_matched_sd": 0.006988387882431729,
+        "effect_delta": 0.03281505572380167,
+        "randomization_p_ge": 0.03225806451612903,
+        "null_draws": 30,
+        "limitations": "Article titles are distinct from the input surface forms/embeddings but correlated by publication; this is an independent evidence VIEW, not human-judged semantic correctness. Null labels exactly preserve sizes."
+      },
+      "robustness": {
+        "ari": {
+          "mean": 0.36174922508760776,
+          "ci95": [
+            0.35731966366134793,
+            0.3660280215575505
+          ],
+          "n": 5,
+          "individual_values": [
+            0.35816426642602933,
+            0.3670148952402792,
+            0.3630782610636432,
+            0.35397267458631165,
+            0.3665160281217754
+          ]
+        },
+        "deleted_fraction": 0.1,
+        "seeds": 5,
+        "interpretation": "5 independent deletion draws, all nodes held fixed; bootstrap CI over 5 draws is descriptive and uncertain."
+      },
+      "edge_collapse_summary": [
+        {
+          "level": 0,
+          "n_edges": 442,
+          "internal": 152,
+          "highorder_remaining": 148
+        },
+        {
+          "level": 1,
+          "n_edges": 442,
+          "internal": 74,
+          "highorder_remaining": 210
+        },
+        {
+          "level": 2,
+          "n_edges": 442,
+          "internal": 39,
+          "highorder_remaining": 247
+        }
+      ]
+    },
+    "2024": {
+      "n_nodes": 4164,
+      "n_train_edges": 800,
+      "n_heldout_edges": 183,
+      "n_total_edges": 983,
+      "clusters_per_level": [
+        12,
+        48,
+        144,
+        4164
+      ],
+      "heldout_normalized_connectivity": 0.7046412156007973,
+      "label_support_audit": {
+        "automatic_membership_claims_audited": 60,
+        "unsupported_membership_claims": 0,
+        "bounded_structural_claim_error_rate": 0.0,
+        "independent_semantic_overclaim_rate": null,
+        "independent_semantic_overclaim_status": "NOT_EVALUATED_NO_BLIND_REVIEW",
+        "description": "All cluster glosses assert exactly recorded membership, counts and surface-name phrases. This is a machine-verifiable factual overclaim proxy, NOT independent literature-level entailment."
+      },
+      "native_loss": {
+        "normalized_hyperedge_connectivity": 0.28662109375,
+        "n_hyperedges": 800,
+        "hyperedges_with_3plus_endpoints": 620,
+        "fraction_of_3plus_hyperedge_events_lost_as_unique_when_cliquified": 0.775,
+        "pairwise_projection_note": "Clique expansion is many-to-one: original event ID, relation grouping, and multiplicity provenance are not uniquely recoverable. Fraction is diagnostic, not exact information-theoretic loss."
+      },
+      "coherence": {
+        "source": "provenance-linked scientific article titles, char 3-5-gram TF-IDF; not clustering node embeddings",
+        "n_valid_nodes": 4094,
+        "observed": 0.12079360442319213,
+        "random_size_matched_mean": 0.10145440380142294,
+        "random_size_matched_sd": 0.00571050147591026,
+        "effect_delta": 0.019339200621769193,
+        "randomization_p_ge": 0.03225806451612903,
+        "null_draws": 30,
+        "limitations": "Article titles are distinct from the input surface forms/embeddings but correlated by publication; this is an independent evidence VIEW, not human-judged semantic correctness. Null labels exactly preserve sizes."
+      },
+      "robustness": {
+        "ari": {
+          "mean": 0.3945730319834517,
+          "ci95": [
+            0.38955376402436387,
+            0.399833867183803
+          ],
+          "n": 5,
+          "individual_values": [
+            0.39638140631782176,
+            0.4024048004261673,
+            0.38955013421434576,
+            0.39768388548464917,
+            0.38684493347427484
+          ]
+        },
+        "deleted_fraction": 0.1,
+        "seeds": 5,
+        "interpretation": "5 independent deletion draws, all nodes held fixed; bootstrap CI over 5 draws is descriptive and uncertain."
+      },
+      "edge_collapse_summary": [
+        {
+          "level": 0,
+          "n_edges": 800,
+          "internal": 216,
+          "highorder_remaining": 250
+        },
+        {
+          "level": 1,
+          "n_edges": 800,
+          "internal": 113,
+          "highorder_remaining": 333
+        },
+        {
+          "level": 2,
+          "n_edges": 800,
+          "internal": 79,
+          "highorder_remaining": 404
+        }
+      ]
+    },
+    "2025": {
+      "n_nodes": 4995,
+      "n_train_edges": 988,
+      "n_heldout_edges": 251,
+      "n_total_edges": 1239,
+      "clusters_per_level": [
+        12,
+        48,
+        144,
+        4995
+      ],
+      "heldout_normalized_connectivity": 0.7548205707972822,
+      "label_support_audit": {
+        "automatic_membership_claims_audited": 60,
+        "unsupported_membership_claims": 0,
+        "bounded_structural_claim_error_rate": 0.0,
+        "independent_semantic_overclaim_rate": null,
+        "independent_semantic_overclaim_status": "NOT_EVALUATED_NO_BLIND_REVIEW",
+        "description": "All cluster glosses assert exactly recorded membership, counts and surface-name phrases. This is a machine-verifiable factual overclaim proxy, NOT independent literature-level entailment."
+      },
+      "native_loss": {
+        "normalized_hyperedge_connectivity": 0.2864281431141315,
+        "n_hyperedges": 988,
+        "hyperedges_with_3plus_endpoints": 777,
+        "fraction_of_3plus_hyperedge_events_lost_as_unique_when_cliquified": 0.7864372469635628,
+        "pairwise_projection_note": "Clique expansion is many-to-one: original event ID, relation grouping, and multiplicity provenance are not uniquely recoverable. Fraction is diagnostic, not exact information-theoretic loss."
+      },
+      "coherence": {
+        "source": "provenance-linked scientific article titles, char 3-5-gram TF-IDF; not clustering node embeddings",
+        "n_valid_nodes": 4987,
+        "observed": 0.11105809733921126,
+        "random_size_matched_mean": 0.0941072824773214,
+        "random_size_matched_sd": 0.005038801837616545,
+        "effect_delta": 0.01695081486188986,
+        "randomization_p_ge": 0.03225806451612903,
+        "null_draws": 30,
+        "limitations": "Article titles are distinct from the input surface forms/embeddings but correlated by publication; this is an independent evidence VIEW, not human-judged semantic correctness. Null labels exactly preserve sizes."
+      },
+      "robustness": null,
+      "edge_collapse_summary": [
+        {
+          "level": 0,
+          "n_edges": 988,
+          "internal": 282,
+          "highorder_remaining": 298
+        },
+        {
+          "level": 1,
+          "n_edges": 988,
+          "internal": 160,
+          "highorder_remaining": 410
+        },
+        {
+          "level": 2,
+          "n_edges": 988,
+          "internal": 89,
+          "highorder_remaining": 476
+        }
+      ]
+    }
+  },
+  "temporal": {
+    "2020_2022": {
+      "ari": 0.8243508054589821,
+      "ci95": [
+        0.7969159425180136,
+        0.8536762453003468
+      ],
+      "nodes": 1505,
+      "bootstrap_unit": "node (shared provenance means this may underestimate uncertainty)"
+    },
+    "2022_2024": {
+      "ari": 0.8814255186635912,
+      "ci95": [
+        0.8617108980104208,
+        0.9013278114001554
+      ],
+      "nodes": 2164,
+      "bootstrap_unit": "node (shared provenance means this may underestimate uncertainty)"
+    },
+    "2024_2025": {
+      "ari": 0.9393331804317528,
+      "ci95": [
+        0.9269944177674955,
+        0.9496770138380207
+      ],
+      "nodes": 4164,
+      "bootstrap_unit": "node (shared provenance means this may underestimate uncertainty)"
+    }
+  },
+  "retrieval": {
+    "summary": {
+      "evaluated_type_A": 14,
+      "type_B_not_scored": 4,
+      "flat_hit_at_5": 0.14285714285714285,
+      "hier_hit_at_5": 0.0,
+      "flat_recall_at_5": 0.05952380952380952,
+      "hier_recall_at_5": 0.0,
+      "mean_flat_nodes_scored": 2682.0,
+      "mean_hier_nodes_scored": 1026.7857142857142,
+      "mean_available_gold_per_question": 3.2142857142857144,
+      "mean_absent_gold_per_question": 1.2857142857142858,
+      "comparison": "same question/candidates/TF-IDF ranker; flat scores all, hierarchy scores top 4 concept centroids then scores only their descendant candidates. Both inspect top 5 result items. Centroid computations excluded from nodes_scored count but reported separately.",
+      "caveat": "14 type-A lists scored using exact case/spacing/punctuation-normalized surface matches; aliases may undercount recall; 4 type-B reasoning/synthesis questions transparently not scored. 2025 cutoff conservatively avoids month-unknown 2026 data."
+    },
+    "per_question": [
+      {
+        "id": "Q1",
+        "type": "A",
+        "question": "Which methods (by Feb 2026) are best suited for predicting interatomic potentials when balancing accuracy close to DFT with computational efficiency for systems of millions of atoms?",
+        "flat_node_ids": [
+          "tech_00795",
+          "tech_00658",
+          "comp_00600",
+          "meth_00396",
+          "meth_00375"
+        ],
+        "flat_surface_forms": [
+          "dynamic load balancing",
+          "Oxidation-state balancing with relaxed constraints",
+          "Relaxed oxidation-state balancing constraint",
+          "Atoms-In-Molecules Network 2",
+          "Equivariant interatomic potentials"
+        ],
+        "hier_node_ids": [
+          "tech_00795",
+          "meth_00375",
+          "data_00160",
+          "cite_00339",
+          "comp_00622"
+        ],
+        "hier_surface_forms": [
+          "dynamic load balancing",
+          "Equivariant interatomic potentials",
+          "parallel efficiency benchmark",
+          "Matminer",
+          "GNN interatomic potentials"
+        ],
+        "flat_inspected": 2682,
+        "hier_inspected": 928,
+        "centroid_visits": 4,
+        "ranked_clusters": [
+          "8",
+          "9",
+          "4",
+          "7"
+        ],
+        "gold_expected": [
+          "MACE",
+          "M3GNet",
+          "CHGNet",
+          "GAP",
+          "NequIP",
+          "ACE",
+          "EquiformerV2"
+        ],
+        "gold_present": [
+          "MACE",
+          "M3GNet",
+          "CHGNet",
+          "GAP",
+          "NequIP",
+          "ACE",
+          "EquiformerV2"
+        ],
+        "gold_absent_in_snapshot": [],
+        "flat_hits": [],
+        "hier_hits": [],
+        "flat_hit_at_5": false,
+        "hier_hit_at_5": false,
+        "flat_recall_at_5": 0.0,
+        "hier_recall_at_5": 0.0,
+        "flat_recall_given_available": 0.0,
+        "hier_recall_given_available": 0.0
+      },
+      {
+        "id": "Q2",
+        "type": "A",
+        "question": "Which methods (by Feb 2026) are best suited for accelerating electronic structure calculations when self-consistent field iterations become prohibitively expensive for large systems (>10³ atoms)?",
+        "flat_node_ids": [
+          "meth_00223",
+          "tech_00694",
+          "comp_00625",
+          "meth_00222",
+          "meth_00226"
+        ],
+        "flat_surface_forms": [
+          "self-consistent field",
+          "Self-consistent training",
+          "Iterative self-consistent training protocol",
+          "D4FT",
+          "GPAW"
+        ],
+        "hier_node_ids": [
+          "meth_00223",
+          "tech_00694",
+          "comp_00625",
+          "meth_00226",
+          "meth_00227"
+        ],
+        "hier_surface_forms": [
+          "self-consistent field",
+          "Self-consistent training",
+          "Iterative self-consistent training protocol",
+          "GPAW",
+          "Psi4"
+        ],
+        "flat_inspected": 2682,
+        "hier_inspected": 825,
+        "centroid_visits": 4,
+        "ranked_clusters": [
+          "3",
+          "6",
+          "1",
+          "9"
+        ],
+        "gold_expected": [
+          "DeepH",
+          "D4FT",
+          "HamGNN"
+        ],
+        "gold_present": [
+          "DeepH",
+          "D4FT"
+        ],
+        "gold_absent_in_snapshot": [
+          "HamGNN"
+        ],
+        "flat_hits": [
+          "D4FT"
+        ],
+        "hier_hits": [],
+        "flat_hit_at_5": true,
+        "hier_hit_at_5": false,
+        "flat_recall_at_5": 0.3333333333333333,
+        "hier_recall_at_5": 0.0,
+        "flat_recall_given_available": 0.5,
+        "hier_recall_given_available": 0.0
+      },
+      {
+        "id": "Q3",
+        "type": "A",
+        "question": "Which methods (by Feb 2026) are best suited for learning DFT Hamiltonians when dealing with twisted van der Waals heterostructures containing thousands of magnetic atoms?",
+        "flat_node_ids": [
+          "tech_00167",
+          "meth_00213",
+          "meth_00153",
+          "meth_00248",
+          "tech_00719"
+        ],
+        "flat_surface_forms": [
+          "DFT+U with van der Waals functionals",
+          "deep neural network approach to represent DFT Hamiltonian",
+          "van der Waals density functional",
+          "van der Waals functional OptB88",
+          "Active learning for DFT data"
+        ],
+        "hier_node_ids": [
+          "tech_00167",
+          "meth_00153",
+          "meth_00248",
+          "tech_00719",
+          "meth_00102"
+        ],
+        "hier_surface_forms": [
+          "DFT+U with van der Waals functionals",
+          "van der Waals density functional",
+          "van der Waals functional OptB88",
+          "Active learning for DFT data",
+          "deep-learning DFT Hamiltonian"
+        ],
+        "flat_inspected": 2682,
+        "hier_inspected": 1361,
+        "centroid_visits": 4,
+        "ranked_clusters": [
+          "9",
+          "6",
+          "8",
+          "10"
+        ],
+        "gold_expected": [
+          "xDeepH",
+          "DeepH-E3"
+        ],
+        "gold_present": [
+          "DeepH-E3"
+        ],
+        "gold_absent_in_snapshot": [
+          "xDeepH"
+        ],
+        "flat_hits": [],
+        "hier_hits": [],
+        "flat_hit_at_5": false,
+        "hier_hit_at_5": false,
+        "flat_recall_at_5": 0.0,
+        "hier_recall_at_5": 0.0,
+        "flat_recall_given_available": 0.0,
+        "hier_recall_given_available": 0.0
+      },
+      {
+        "id": "Q4",
+        "type": "A",
+        "question": "Which methods (by Feb 2026) are best suited for phonon property prediction when universal MLIPs show inaccuracies despite good energy/force performance?",
+        "flat_node_ids": [
+          "tech_00724",
+          "tech_00708",
+          "tech_00072",
+          "tech_00247",
+          "tech_00725"
+        ],
+        "flat_surface_forms": [
+          "Energy and force benchmarking",
+          "Joint energy-force training",
+          "Combined energy‑and‑force loss",
+          "Joint training on energy, force, and stress targets",
+          "Property prediction benchmarking"
+        ],
+        "hier_node_ids": [
+          "tech_00724",
+          "tech_00708",
+          "tech_00072",
+          "tech_00247",
+          "tech_00725"
+        ],
+        "hier_surface_forms": [
+          "Energy and force benchmarking",
+          "Joint energy-force training",
+          "Combined energy‑and‑force loss",
+          "Joint training on energy, force, and stress targets",
+          "Property prediction benchmarking"
+        ],
+        "flat_inspected": 2682,
+        "hier_inspected": 624,
+        "centroid_visits": 4,
+        "ranked_clusters": [
+          "4",
+          "2",
+          "5",
+          "10"
+        ],
+        "gold_expected": [
+          "Hessian training",
+          "VGNN",
+          "MACE-F"
+        ],
+        "gold_present": [
+          "VGNN"
+        ],
+        "gold_absent_in_snapshot": [
+          "Hessian training",
+          "MACE-F"
+        ],
+        "flat_hits": [],
+        "hier_hits": [],
+        "flat_hit_at_5": false,
+        "hier_hit_at_5": false,
+        "flat_recall_at_5": 0.0,
+        "hier_recall_at_5": 0.0,
+        "flat_recall_given_available": 0.0,
+        "hier_recall_given_available": 0.0
+      },
+      {
+        "id": "Q5",
+        "type": "A",
+        "question": "Which methods (by Feb 2026) are best suited for coarse-graining molecular dynamics when crystalline symmetries and long-range elastic interactions must be preserved?",
+        "flat_node_ids": [
+          "comp_00524",
+          "comp_00653",
+          "tech_00085",
+          "meth_00333",
+          "meth_00392"
+        ],
+        "flat_surface_forms": [
+          "Deep Potential Long Range",
+          "Long-range electrostatic correction",
+          "Virtual edges for long‑range communication",
+          "Deep Potential Long Range",
+          "Deep Molecular Dynamics"
+        ],
+        "hier_node_ids": [
+          "comp_00524",
+          "comp_00653",
+          "meth_00333",
+          "meth_00392",
+          "tech_00594"
+        ],
+        "hier_surface_forms": [
+          "Deep Potential Long Range",
+          "Long-range electrostatic correction",
+          "Deep Potential Long Range",
+          "Deep Molecular Dynamics",
+          "deep potential molecular dynamics"
+        ],
+        "flat_inspected": 2682,
+        "hier_inspected": 1133,
+        "centroid_visits": 4,
+        "ranked_clusters": [
+          "8",
+          "7",
+          "10",
+          "2"
+        ],
+        "gold_expected": [
+          "Bead-mapping",
+          "GNN+GPP"
+        ],
+        "gold_present": [],
+        "gold_absent_in_snapshot": [
+          "Bead-mapping",
+          "GNN+GPP"
+        ],
+        "flat_hits": [],
+        "hier_hits": [],
+        "flat_hit_at_5": false,
+        "hier_hit_at_5": false,
+        "flat_recall_at_5": 0.0,
+        "hier_recall_at_5": 0.0,
+        "flat_recall_given_available": null,
+        "hier_recall_given_available": null
+      },
+      {
+        "id": "Q6",
+        "type": "A",
+        "question": "Which methods (by Feb 2026) are best suited for predicting ionic conductivity when full ab initio MD is too expensive but accuracy must be maintained?",
+        "flat_node_ids": [
+          "cite_00365",
+          "cite_00367",
+          "cite_00366",
+          "cite_00339",
+          "cite_00363"
+        ],
+        "flat_surface_forms": [
+          "NEB",
+          "BVSE",
+          "Pinball model",
+          "Matminer",
+          "Behler‑Parrinello NN"
+        ],
+        "hier_node_ids": [
+          "cite_00365",
+          "cite_00367",
+          "cite_00366",
+          "cite_00339",
+          "cite_00354"
+        ],
+        "hier_surface_forms": [
+          "NEB",
+          "BVSE",
+          "Pinball model",
+          "Matminer",
+          "CGCNN"
+        ],
+        "flat_inspected": 2682,
+        "hier_inspected": 968,
+        "centroid_visits": 4,
+        "ranked_clusters": [
+          "8",
+          "4",
+          "2",
+          "7"
+        ],
+        "gold_expected": [
+          "DeePMD+AL",
+          "LiFlow",
+          "MLIP descriptors"
+        ],
+        "gold_present": [
+          "LiFlow"
+        ],
+        "gold_absent_in_snapshot": [
+          "DeePMD+AL",
+          "MLIP descriptors"
+        ],
+        "flat_hits": [],
+        "hier_hits": [],
+        "flat_hit_at_5": false,
+        "hier_hit_at_5": false,
+        "flat_recall_at_5": 0.0,
+        "hier_recall_at_5": 0.0,
+        "flat_recall_given_available": 0.0,
+        "hier_recall_given_available": 0.0
+      },
+      {
+        "id": "Q7",
+        "type": "A",
+        "question": "Which methods (by Feb 2026) are best suited for predicting phase transitions when screening ~50,000 inorganic compounds at high throughput?",
+        "flat_node_ids": [
+          "comp_00105",
+          "tech_00667",
+          "tech_00103",
+          "tech_00507",
+          "tech_00637"
+        ],
+        "flat_surface_forms": [
+          "High‑throughput screening pipeline",
+          "High-throughput screening with MLIPs",
+          "High‑throughput screening",
+          "High-throughput screening workflow",
+          "high-throughput calculations"
+        ],
+        "hier_node_ids": [
+          "comp_00105",
+          "tech_00667",
+          "tech_00103",
+          "tech_00507",
+          "tech_00637"
+        ],
+        "hier_surface_forms": [
+          "High‑throughput screening pipeline",
+          "High-throughput screening with MLIPs",
+          "High‑throughput screening",
+          "High-throughput screening workflow",
+          "high-throughput calculations"
+        ],
+        "flat_inspected": 2682,
+        "hier_inspected": 1033,
+        "centroid_visits": 4,
+        "ranked_clusters": [
+          "1",
+          "8",
+          "0",
+          "2"
+        ],
+        "gold_expected": [
+          "GNN free energies",
+          "symbolic regression"
+        ],
+        "gold_present": [
+          "symbolic regression"
+        ],
+        "gold_absent_in_snapshot": [
+          "GNN free energies"
+        ],
+        "flat_hits": [],
+        "hier_hits": [],
+        "flat_hit_at_5": false,
+        "hier_hit_at_5": false,
+        "flat_recall_at_5": 0.0,
+        "hier_recall_at_5": 0.0,
+        "flat_recall_given_available": 0.0,
+        "hier_recall_given_available": 0.0
+      },
+      {
+        "id": "Q8",
+        "type": "A",
+        "question": "Which methods (by Feb 2026) are best suited for predicting fracture patterns when generalizing from atomistic MD data to unseen bicrystalline structures?",
+        "flat_node_ids": [
+          "cite_00001",
+          "tech_00312",
+          "cite_00002",
+          "cite_00003",
+          "comp_00294"
+        ],
+        "flat_surface_forms": [
+          "ConvLSTM",
+          "Image‑based encoding of atomistic data",
+          "PredRNN",
+          "WaveNet",
+          "Fracture‑toughness regression head"
+        ],
+        "hier_node_ids": [
+          "tech_00312",
+          "meth_00230",
+          "comp_00297",
+          "tech_00080",
+          "tech_00314"
+        ],
+        "hier_surface_forms": [
+          "Image‑based encoding of atomistic data",
+          "ConvLSTM-based fracture prediction model",
+          "Image‑based data‑processing pipeline",
+          "10‑fold cross‑validation",
+          "Physics‑based surface‑energy calculation"
+        ],
+        "flat_inspected": 2682,
+        "hier_inspected": 813,
+        "centroid_visits": 4,
+        "ranked_clusters": [
+          "5",
+          "7",
+          "8",
+          "4"
+        ],
+        "gold_expected": [
+          "ConvLSTM",
+          "GNN stress fields"
+        ],
+        "gold_present": [
+          "ConvLSTM"
+        ],
+        "gold_absent_in_snapshot": [
+          "GNN stress fields"
+        ],
+        "flat_hits": [
+          "ConvLSTM"
+        ],
+        "hier_hits": [],
+        "flat_hit_at_5": true,
+        "hier_hit_at_5": false,
+        "flat_recall_at_5": 0.5,
+        "hier_recall_at_5": 0.0,
+        "flat_recall_given_available": 1.0,
+        "hier_recall_given_available": 0.0
+      },
+      {
+        "id": "Q9",
+        "type": "A",
+        "question": "Which methods (by Feb 2026) are best suited for ensuring physical consistency when transferring information between scales without violating thermodynamic principles?",
+        "flat_node_ids": [
+          "cite_00158",
+          "tech_00586",
+          "comp_00546",
+          "tech_00380",
+          "data_00094"
+        ],
+        "flat_surface_forms": [
+          "thermodynamic integration",
+          "thermodynamic integration",
+          "two-body embedding full-information descriptor",
+          "Thermodynamic descriptor screening",
+          "SSUB thermodynamic database"
+        ],
+        "hier_node_ids": [
+          "cite_00158",
+          "tech_00586",
+          "comp_00546",
+          "tech_00380",
+          "data_00094"
+        ],
+        "hier_surface_forms": [
+          "thermodynamic integration",
+          "thermodynamic integration",
+          "two-body embedding full-information descriptor",
+          "Thermodynamic descriptor screening",
+          "SSUB thermodynamic database"
+        ],
+        "flat_inspected": 2682,
+        "hier_inspected": 1207,
+        "centroid_visits": 4,
+        "ranked_clusters": [
+          "8",
+          "0",
+          "10",
+          "9"
+        ],
+        "gold_expected": [
+          "E(3)-equivariant GNNs",
+          "physics-informed",
+          "NequIP"
+        ],
+        "gold_present": [
+          "NequIP"
+        ],
+        "gold_absent_in_snapshot": [
+          "E(3)-equivariant GNNs",
+          "physics-informed"
+        ],
+        "flat_hits": [],
+        "hier_hits": [],
+        "flat_hit_at_5": false,
+        "hier_hit_at_5": false,
+        "flat_recall_at_5": 0.0,
+        "hier_recall_at_5": 0.0,
+        "flat_recall_given_available": 0.0,
+        "hier_recall_given_available": 0.0
+      },
+      {
+        "id": "Q10",
+        "type": "A",
+        "question": "Which methods (by Feb 2026) are best suited for representing atomic environments when the system exhibits significant compositional diversity, defects, and disorder?",
+        "flat_node_ids": [
+          "comp_00602",
+          "tech_00623",
+          "tech_00012",
+          "tech_00333",
+          "tech_00328"
+        ],
+        "flat_surface_forms": [
+          "Graph neural network for compositional models",
+          "Prototype diversity sampling",
+          "Batch normalization",
+          "Graph representation of atomic structures",
+          "Graph construction from atomic coordinates"
+        ],
+        "hier_node_ids": [
+          "tech_00623",
+          "comp_00314",
+          "comp_00315",
+          "tech_00331",
+          "tech_00337"
+        ],
+        "hier_surface_forms": [
+          "Prototype diversity sampling",
+          "GNN predictor",
+          "GA optimizer",
+          "Genetic algorithm optimization",
+          "Genetic‑algorithm optimization"
+        ],
+        "flat_inspected": 2682,
+        "hier_inspected": 1401,
+        "centroid_visits": 4,
+        "ranked_clusters": [
+          "6",
+          "10",
+          "2",
+          "8"
+        ],
+        "gold_expected": [
+          "GNNs + ACE descriptors",
+          "SchNet"
+        ],
+        "gold_present": [
+          "SchNet"
+        ],
+        "gold_absent_in_snapshot": [
+          "GNNs + ACE descriptors"
+        ],
+        "flat_hits": [],
+        "hier_hits": [],
+        "flat_hit_at_5": false,
+        "hier_hit_at_5": false,
+        "flat_recall_at_5": 0.0,
+        "hier_recall_at_5": 0.0,
+        "flat_recall_given_available": 0.0,
+        "hier_recall_given_available": 0.0
+      },
+      {
+        "id": "Q11",
+        "type": "A",
+        "question": "Which methods (by Feb 2026) are best suited for integrating features from three or more distinct scales simultaneously within a unified framework?",
+        "flat_node_ids": [
+          "comp_00444",
+          "comp_00163",
+          "comp_00422",
+          "tech_00440",
+          "comp_00831"
+        ],
+        "flat_surface_forms": [
+          "Magpie features",
+          "Voronoi tessellation features",
+          "SO(3) irreps features",
+          "irreps features",
+          "Elemental features"
+        ],
+        "hier_node_ids": [
+          "comp_00444",
+          "comp_00163",
+          "comp_00422",
+          "tech_00440",
+          "comp_00645"
+        ],
+        "hier_surface_forms": [
+          "Magpie features",
+          "Voronoi tessellation features",
+          "SO(3) irreps features",
+          "irreps features",
+          "High body order local features"
+        ],
+        "flat_inspected": 2682,
+        "hier_inspected": 1279,
+        "centroid_visits": 4,
+        "ranked_clusters": [
+          "6",
+          "8",
+          "9",
+          "2"
+        ],
+        "gold_expected": [
+          "CE→MC→NN→PF",
+          "hybrid frameworks"
+        ],
+        "gold_present": [],
+        "gold_absent_in_snapshot": [
+          "CE→MC→NN→PF",
+          "hybrid frameworks"
+        ],
+        "flat_hits": [],
+        "hier_hits": [],
+        "flat_hit_at_5": false,
+        "hier_hit_at_5": false,
+        "flat_recall_at_5": 0.0,
+        "hier_recall_at_5": 0.0,
+        "flat_recall_given_available": null,
+        "hier_recall_given_available": null
+      },
+      {
+        "id": "Q12",
+        "type": "A",
+        "question": "What are the leading (by Feb 2026) ML-based interatomic potential methods for large-scale atomistic simulation?",
+        "flat_node_ids": [
+          "tech_00915",
+          "cite_00414",
+          "meth_00196",
+          "cite_00416",
+          "cite_00415"
+        ],
+        "flat_surface_forms": [
+          "Large-scale atomistic simulation",
+          "DFT",
+          "Gaussian Approximation Potential (GAP) for silicon",
+          "equigrad",
+          "MPTraj"
+        ],
+        "hier_node_ids": [
+          "tech_00915",
+          "meth_00196",
+          "cite_00415",
+          "cite_00419",
+          "cite_00570"
+        ],
+        "hier_surface_forms": [
+          "Large-scale atomistic simulation",
+          "Gaussian Approximation Potential (GAP) for silicon",
+          "MPTraj",
+          "DPA3",
+          "REBO"
+        ],
+        "flat_inspected": 2682,
+        "hier_inspected": 1133,
+        "centroid_visits": 4,
+        "ranked_clusters": [
+          "7",
+          "8",
+          "10",
+          "2"
+        ],
+        "gold_expected": [
+          "MACE",
+          "NequIP",
+          "CHGNet",
+          "M3GNet",
+          "SevenNet",
+          "GAP",
+          "DeePMD",
+          "MatterSim",
+          "Orb",
+          "eSEN",
+          "PET",
+          "UMA",
+          "EquiformerV2"
+        ],
+        "gold_present": [
+          "MACE",
+          "NequIP",
+          "CHGNet",
+          "M3GNet",
+          "SevenNet",
+          "GAP",
+          "DeePMD",
+          "MatterSim",
+          "Orb",
+          "eSEN",
+          "EquiformerV2"
+        ],
+        "gold_absent_in_snapshot": [
+          "PET",
+          "UMA"
+        ],
+        "flat_hits": [],
+        "hier_hits": [],
+        "flat_hit_at_5": false,
+        "hier_hit_at_5": false,
+        "flat_recall_at_5": 0.0,
+        "hier_recall_at_5": 0.0,
+        "flat_recall_given_available": 0.0,
+        "hier_recall_given_available": 0.0
+      },
+      {
+        "id": "Q13",
+        "type": "A",
+        "question": "What are the leading (by Feb 2026) GNN architectures for predicting properties of solid-state crystalline materials?",
+        "flat_node_ids": [
+          "cite_00455",
+          "cite_00454",
+          "cite_00214",
+          "cite_00453",
+          "cite_00077"
+        ],
+        "flat_surface_forms": [
+          "CPMD",
+          "Grimme-D2",
+          "DeepMD",
+          "Behler-Parrinello neural network potential",
+          "LAMMPS"
+        ],
+        "hier_node_ids": [
+          "cite_00214",
+          "cite_00191",
+          "tech_00695",
+          "data_00146",
+          "data_00147"
+        ],
+        "hier_surface_forms": [
+          "DeepMD",
+          "GAP",
+          "FPMD simulations",
+          "Li7La3Zr2O12",
+          "Na3Zr2Si2PO12"
+        ],
+        "flat_inspected": 2682,
+        "hier_inspected": 1171,
+        "centroid_visits": 4,
+        "ranked_clusters": [
+          "3",
+          "0",
+          "2",
+          "8"
+        ],
+        "gold_expected": [
+          "CGCNN",
+          "SchNet",
+          "MEGNet",
+          "M3GNet",
+          "NequIP",
+          "MACE",
+          "CHGNet",
+          "EquiformerV2"
+        ],
+        "gold_present": [
+          "CGCNN",
+          "SchNet",
+          "MEGNet",
+          "M3GNet",
+          "NequIP",
+          "MACE",
+          "CHGNet",
+          "EquiformerV2"
+        ],
+        "gold_absent_in_snapshot": [],
+        "flat_hits": [],
+        "hier_hits": [],
+        "flat_hit_at_5": false,
+        "hier_hit_at_5": false,
+        "flat_recall_at_5": 0.0,
+        "hier_recall_at_5": 0.0,
+        "flat_recall_given_available": 0.0,
+        "hier_recall_given_available": 0.0
+      },
+      {
+        "id": "Q14",
+        "type": "A",
+        "question": "What datasets and benchmarks are commonly used (by Feb 2026) to evaluate MLIPs and property prediction models for materials discovery?",
+        "flat_node_ids": [
+          "meth_00179",
+          "tech_00725",
+          "comp_00010",
+          "comp_00176",
+          "comp_00177"
+        ],
+        "flat_surface_forms": [
+          "Task‑driven taxonomy of foundation models for materials science",
+          "Property prediction benchmarking",
+          "Retriever",
+          "MatSciKB",
+          "ToolHub"
+        ],
+        "hier_node_ids": [
+          "meth_00179",
+          "tech_00725",
+          "comp_00010",
+          "comp_00176",
+          "comp_00008"
+        ],
+        "hier_surface_forms": [
+          "Task‑driven taxonomy of foundation models for materials science",
+          "Property prediction benchmarking",
+          "Retriever",
+          "MatSciKB",
+          "Bridge Model"
+        ],
+        "flat_inspected": 2682,
+        "hier_inspected": 499,
+        "centroid_visits": 4,
+        "ranked_clusters": [
+          "1",
+          "3",
+          "2",
+          "5"
+        ],
+        "gold_expected": [
+          "Matbench Discovery",
+          "Matbench",
+          "JARVIS-DFT",
+          "Materials Project",
+          "MPtrj",
+          "OQMD",
+          "AFLOW",
+          "Alexandria",
+          "GNoME",
+          "WBM",
+          "OMat24"
+        ],
+        "gold_present": [
+          "Matbench Discovery",
+          "Matbench",
+          "JARVIS-DFT",
+          "Materials Project",
+          "OQMD",
+          "AFLOW",
+          "Alexandria",
+          "GNoME",
+          "WBM",
+          "OMat24"
+        ],
+        "gold_absent_in_snapshot": [
+          "MPtrj"
+        ],
+        "flat_hits": [],
+        "hier_hits": [],
+        "flat_hit_at_5": false,
+        "hier_hit_at_5": false,
+        "flat_recall_at_5": 0.0,
+        "hier_recall_at_5": 0.0,
+        "flat_recall_given_available": 0.0,
+        "hier_recall_given_available": 0.0
+      },
+      {
+        "id": "Q15",
+        "type": "B",
+        "question": "What are the most important open scientific challenges (by Feb 2026) in AI-based multiscale modeling of solid-state materials?",
+        "flat_node_ids": [
+          "meth_00352",
+          "meth_00353",
+          "meth_00017",
+          "tech_00625",
+          "meth_00351"
+        ],
+        "flat_surface_forms": [
+          "Hierarchical multiscale modeling",
+          "Concurrent multiscale modeling",
+          "transfer learning",
+          "Representation learning",
+          "ml_multiscale_modeling_perspective"
+        ],
+        "hier_node_ids": [
+          "meth_00352",
+          "meth_00353",
+          "meth_00017",
+          "tech_00625",
+          "tech_00626"
+        ],
+        "hier_surface_forms": [
+          "Hierarchical multiscale modeling",
+          "Concurrent multiscale modeling",
+          "transfer learning",
+          "Representation learning",
+          "Meta learning"
+        ],
+        "flat_inspected": 2682,
+        "hier_inspected": 793,
+        "centroid_visits": 4,
+        "ranked_clusters": [
+          "1",
+          "3",
+          "10",
+          "0"
+        ],
+        "scoring_status": "NOT_SCORED_B: requires multi-claim source-grounded synthesis and citation verification; ranked candidate nodes alone cannot measure this truth."
+      },
+      {
+        "id": "Q16",
+        "type": "B",
+        "question": "How does E(3)-equivariance improve GNN-based interatomic potentials in accuracy and data efficiency in comparison with vanilla GNN?",
+        "flat_node_ids": [
+          "comp_00073",
+          "comp_00622",
+          "cite_00120",
+          "comp_00651",
+          "cite_00106"
+        ],
+        "flat_surface_forms": [
+          "GNN‑based phase‑space evaluator",
+          "GNN interatomic potentials",
+          "E(3)-equivariant GNN",
+          "Transformer blocks in GNN",
+          "Tensor Field Networks"
+        ],
+        "hier_node_ids": [
+          "comp_00073",
+          "comp_00622",
+          "cite_00120",
+          "data_00160",
+          "comp_00621"
+        ],
+        "hier_surface_forms": [
+          "GNN‑based phase‑space evaluator",
+          "GNN interatomic potentials",
+          "E(3)-equivariant GNN",
+          "parallel efficiency benchmark",
+          "Static GNN"
+        ],
+        "flat_inspected": 2682,
+        "hier_inspected": 1050,
+        "centroid_visits": 4,
+        "ranked_clusters": [
+          "7",
+          "10",
+          "4",
+          "8"
+        ],
+        "scoring_status": "NOT_SCORED_B: requires multi-claim source-grounded synthesis and citation verification; ranked candidate nodes alone cannot measure this truth."
+      },
+      {
+        "id": "Q17",
+        "type": "B",
+        "question": "Give evidences that ML-based coarse-grained molecular dynamics is effective for studying ionic transport and phase transitions in solid-state systems (by Feb 2026).",
+        "flat_node_ids": [
+          "meth_00341",
+          "tech_00158",
+          "meth_00384",
+          "meth_00140",
+          "comp_00102"
+        ],
+        "flat_surface_forms": [
+          "coarse-grained message passing networks",
+          "ML‑driven molecular dynamics",
+          "First-principles molecular dynamics",
+          "Uncertainty-aware graph convolutional neural network for vibrational free‑energy prediction",
+          "ML vibrational free-energy model"
+        ],
+        "hier_node_ids": [
+          "tech_00158",
+          "meth_00384",
+          "comp_00102",
+          "meth_00387",
+          "meth_00392"
+        ],
+        "hier_surface_forms": [
+          "ML‑driven molecular dynamics",
+          "First-principles molecular dynamics",
+          "ML vibrational free-energy model",
+          "Classical Force Field Molecular Dynamics",
+          "Deep Molecular Dynamics"
+        ],
+        "flat_inspected": 2682,
+        "hier_inspected": 1164,
+        "centroid_visits": 4,
+        "ranked_clusters": [
+          "8",
+          "10",
+          "4",
+          "0"
+        ],
+        "scoring_status": "NOT_SCORED_B: requires multi-claim source-grounded synthesis and citation verification; ranked candidate nodes alone cannot measure this truth."
+      },
+      {
+        "id": "Q18",
+        "type": "B",
+        "question": "What mechanisms embed physical constraints, i.e., symmetry, locality, and size extensivity, into machine-learned interatomic potential architectures, and what evidence bears on whether these constraints improve transfer to system sizes and conditions beyond the training set (by Feb 2026)?",
+        "flat_node_ids": [
+          "tech_00906",
+          "comp_00627",
+          "comp_00633",
+          "tech_00658",
+          "tech_00332"
+        ],
+        "flat_surface_forms": [
+          "Force locality test",
+          "Training set cleaning pipeline",
+          "Training set cleaning procedure",
+          "Oxidation-state balancing with relaxed constraints",
+          "Transfer learning for new loading conditions"
+        ],
+        "hier_node_ids": [
+          "tech_00906",
+          "comp_00627",
+          "comp_00633",
+          "tech_00703",
+          "tech_00381"
+        ],
+        "hier_surface_forms": [
+          "Force locality test",
+          "Training set cleaning pipeline",
+          "Training set cleaning procedure",
+          "Training set augmentation via intermediate MD",
+          "Reaction enumeration with stoichiometric constraints"
+        ],
+        "flat_inspected": 2682,
+        "hier_inspected": 1057,
+        "centroid_visits": 4,
+        "ranked_clusters": [
+          "2",
+          "7",
+          "8",
+          "3"
+        ],
+        "scoring_status": "NOT_SCORED_B: requires multi-claim source-grounded synthesis and citation verification; ranked candidate nodes alone cannot measure this truth."
+      }
+    ]
+  },
+  "label_audit": {
+    "2020": {
+      "automatic_membership_claims_audited": 60,
+      "unsupported_membership_claims": 3,
+      "bounded_structural_claim_error_rate": 0.05,
+      "independent_semantic_overclaim_rate": null,
+      "independent_semantic_overclaim_status": "NOT_EVALUATED_NO_BLIND_REVIEW",
+      "description": "All cluster glosses assert exactly recorded membership, counts and surface-name phrases. This is a machine-verifiable factual overclaim proxy, NOT independent literature-level entailment."
+    },
+    "2022": {
+      "automatic_membership_claims_audited": 60,
+      "unsupported_membership_claims": 2,
+      "bounded_structural_claim_error_rate": 0.03333333333333333,
+      "independent_semantic_overclaim_rate": null,
+      "independent_semantic_overclaim_status": "NOT_EVALUATED_NO_BLIND_REVIEW",
+      "description": "All cluster glosses assert exactly recorded membership, counts and surface-name phrases. This is a machine-verifiable factual overclaim proxy, NOT independent literature-level entailment."
+    },
+    "2024": {
+      "automatic_membership_claims_audited": 60,
+      "unsupported_membership_claims": 0,
+      "bounded_structural_claim_error_rate": 0.0,
+      "independent_semantic_overclaim_rate": null,
+      "independent_semantic_overclaim_status": "NOT_EVALUATED_NO_BLIND_REVIEW",
+      "description": "All cluster glosses assert exactly recorded membership, counts and surface-name phrases. This is a machine-verifiable factual overclaim proxy, NOT independent literature-level entailment."
+    },
+    "2025": {
+      "automatic_membership_claims_audited": 60,
+      "unsupported_membership_claims": 0,
+      "bounded_structural_claim_error_rate": 0.0,
+      "independent_semantic_overclaim_rate": null,
+      "independent_semantic_overclaim_status": "NOT_EVALUATED_NO_BLIND_REVIEW",
+      "description": "All cluster glosses assert exactly recorded membership, counts and surface-name phrases. This is a machine-verifiable factual overclaim proxy, NOT independent literature-level entailment."
+    }
+  },
+  "limitations": [
+    "The 52-paper sample is narrow, with strongly article-linked extracted entities; labels describe membership not expert ontology.",
+    "Independent article-title coherence still shares publication-derived vocabulary; no blind expert semantic rating was obtained.",
+    "The structural label membership audit does not replace an independent semantic over-claim score; this is explicitly NOT_EVALUATED.",
+    "With 5 perturbations, bootstrap confidence intervals are descriptive, not strong significance claims.",
+    "February 2026 cutoff questions are evaluated using all data evidenced by end of 2025; unseen 2026-month data cannot be assumed available in February.",
+    "Question types B require multi-claim source citation checking and are reported as not scored rather than guessed.",
+    "Original hyperedge event identity retained at each coarse level; no unique inversion is possible from a clique projection alone.",
+    "Supernode temporal matching events are heuristic, not verified real scientific birth/death events."
+  ],
+  "ablations_2024": {
+    "semantic": {
+      "coherence": {
+        "source": "provenance-linked scientific article titles, char 3-5-gram TF-IDF; not clustering node embeddings",
+        "n_valid_nodes": 4094,
+        "observed": 0.11806619101619208,
+        "random_size_matched_mean": 0.10052145327819777,
+        "random_size_matched_sd": 0.006018500109215599,
+        "effect_delta": 0.01754473773799431,
+        "randomization_p_ge": 0.058823529411764705,
+        "null_draws": 16,
+        "limitations": "Article titles are distinct from the input surface forms/embeddings but correlated by publication; this is an independent evidence VIEW, not human-judged semantic correctness. Null labels exactly preserve sizes."
+      },
+      "heldout_hyperedge_normalized_connectivity": 0.6198630434003526,
+      "hypergraph_native_diagnostic": {
+        "normalized_hyperedge_connectivity": 0.366455078125,
+        "n_hyperedges": 800,
+        "hyperedges_with_3plus_endpoints": 620,
+        "fraction_of_3plus_hyperedge_events_lost_as_unique_when_cliquified": 0.775,
+        "pairwise_projection_note": "Clique expansion is many-to-one: original event ID, relation grouping, and multiplicity provenance are not uniquely recoverable. Fraction is diagnostic, not exact information-theoretic loss."
+      }
+    },
+    "structure": {
+      "coherence": {
+        "source": "provenance-linked scientific article titles, char 3-5-gram TF-IDF; not clustering node embeddings",
+        "n_valid_nodes": 4094,
+        "observed": 0.1408804054928718,
+        "random_size_matched_mean": 0.10091381661733662,
+        "random_size_matched_sd": 0.005759850237091794,
+        "effect_delta": 0.0399665888755352,
+        "randomization_p_ge": 0.058823529411764705,
+        "null_draws": 16,
+        "limitations": "Article titles are distinct from the input surface forms/embeddings but correlated by publication; this is an independent evidence VIEW, not human-judged semantic correctness. Null labels exactly preserve sizes."
+      },
+      "heldout_hyperedge_normalized_connectivity": 0.7097710906077215,
+      "hypergraph_native_diagnostic": {
+        "normalized_hyperedge_connectivity": 0.13037109375,
+        "n_hyperedges": 800,
+        "hyperedges_with_3plus_endpoints": 620,
+        "fraction_of_3plus_hyperedge_events_lost_as_unique_when_cliquified": 0.775,
+        "pairwise_projection_note": "Clique expansion is many-to-one: original event ID, relation grouping, and multiplicity provenance are not uniquely recoverable. Fraction is diagnostic, not exact information-theoretic loss."
+      }
+    },
+    "joint": {
+      "coherence": {
+        "source": "provenance-linked scientific article titles, char 3-5-gram TF-IDF; not clustering node embeddings",
+        "n_valid_nodes": 4094,
+        "observed": 0.11827266888744849,
+        "random_size_matched_mean": 0.0995469521255751,
+        "random_size_matched_sd": 0.004689102211909835,
+        "effect_delta": 0.018725716761873387,
+        "randomization_p_ge": 0.058823529411764705,
+        "null_draws": 16,
+        "limitations": "Article titles are distinct from the input surface forms/embeddings but correlated by publication; this is an independent evidence VIEW, not human-judged semantic correctness. Null labels exactly preserve sizes."
+      },
+      "heldout_hyperedge_normalized_connectivity": 0.7215775825371642,
+      "hypergraph_native_diagnostic": {
+        "normalized_hyperedge_connectivity": 0.25830078125,
+        "n_hyperedges": 800,
+        "hyperedges_with_3plus_endpoints": 620,
+        "fraction_of_3plus_hyperedge_events_lost_as_unique_when_cliquified": 0.775,
+        "pairwise_projection_note": "Clique expansion is many-to-one: original event ID, relation grouping, and multiplicity provenance are not uniquely recoverable. Fraction is diagnostic, not exact information-theoretic loss."
+      }
+    }
+  },
+  "structural_null_2024": {
+    "measure": "Heldout paper hyperedge normalized connectivity (smaller is better)",
+    "observed": 0.7046412156007973,
+    "null_mean": 0.733420462498508,
+    "null_scores": [
+      0.7430372223758319,
+      0.7311968036317951,
+      0.7400839092402123,
+      0.7264473143924812,
+      0.7324065885894604,
+      0.7354281565700447,
+      0.740314032894587,
+      0.7139703111367895,
+      0.742023974231436,
+      0.7420093593214001,
+      0.7215978188278924,
+      0.7404214492541232,
+      0.7343367420176352,
+      0.7419840652387288,
+      0.7144035817792177,
+      0.7350660704744936
+    ],
+    "shuffle_count": 16,
+    "successful_swaps": [
+      12890,
+      12894,
+      12880,
+      12877,
+      12874,
+      12897,
+      12885,
+      12895,
+      12860,
+      12889,
+      12881,
+      12898,
+      12882,
+      12873,
+      12891,
+      12902
+    ],
+    "randomization_p_le": 0.058823529411764705,
+    "constraints": "exact node incidence degrees, exact hyperedge arities; swaps within relation type and asserting article year",
+    "limitations": "Constrained null with few repeats; heldout paper split independent of cluster-training hyperedges. Semantic features of heldout paper nodes may still overlap."
+  },
+  "elapsed_seconds": 29.96
+}

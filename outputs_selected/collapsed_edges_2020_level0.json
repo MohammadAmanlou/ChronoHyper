@@ -1,0 +1,4041 @@
+[
+  {
+    "id": "h_00001",
+    "original_arity": 5,
+    "coarse_members": [
+      0,
+      1,
+      10,
+      11
+    ],
+    "multiplicity": {
+      "0": 2,
+      "1": 1,
+      "10": 1,
+      "11": 1
+    },
+    "internal": false,
+    "relation_type": "addresses",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 4166,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_00002",
+    "original_arity": 2,
+    "coarse_members": [
+      2,
+      11
+    ],
+    "multiplicity": {
+      "2": 1,
+      "11": 1
+    },
+    "internal": false,
+    "relation_type": "evaluated_on",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 4166,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_00003",
+    "original_arity": 8,
+    "coarse_members": [
+      11
+    ],
+    "multiplicity": {
+      "11": 8
+    },
+    "internal": true,
+    "relation_type": "extends",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 4166,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_00004",
+    "original_arity": 5,
+    "coarse_members": [
+      5,
+      9,
+      11
+    ],
+    "multiplicity": {
+      "5": 1,
+      "9": 2,
+      "11": 2
+    },
+    "internal": false,
+    "relation_type": "solves",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 4166,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_00005",
+    "original_arity": 10,
+    "coarse_members": [
+      6,
+      8,
+      11
+    ],
+    "multiplicity": {
+      "6": 3,
+      "8": 5,
+      "11": 2
+    },
+    "internal": false,
+    "relation_type": "uses_component",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 4166,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_00006",
+    "original_arity": 10,
+    "coarse_members": [
+      0,
+      6,
+      8,
+      11
+    ],
+    "multiplicity": {
+      "0": 4,
+      "6": 3,
+      "8": 2,
+      "11": 1
+    },
+    "internal": false,
+    "relation_type": "uses_technique",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 4166,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_00007",
+    "original_arity": 6,
+    "coarse_members": [
+      0,
+      1,
+      3,
+      5
+    ],
+    "multiplicity": {
+      "0": 2,
+      "1": 1,
+      "3": 1,
+      "5": 2
+    },
+    "internal": false,
+    "relation_type": "addresses",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 4167,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_00008",
+    "original_arity": 6,
+    "coarse_members": [
+      3,
+      10,
+      11
+    ],
+    "multiplicity": {
+      "3": 1,
+      "10": 1,
+      "11": 4
+    },
+    "internal": false,
+    "relation_type": "extends",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 4167,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_00009",
+    "original_arity": 5,
+    "coarse_members": [
+      3,
+      4,
+      7
+    ],
+    "multiplicity": {
+      "3": 1,
+      "4": 3,
+      "7": 1
+    },
+    "internal": false,
+    "relation_type": "solves",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 4167,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_00010",
+    "original_arity": 8,
+    "coarse_members": [
+      2,
+      3,
+      4,
+      11
+    ],
+    "multiplicity": {
+      "2": 3,
+      "3": 1,
+      "4": 2,
+      "11": 2
+    },
+    "internal": false,
+    "relation_type": "uses_component",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 4167,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_00011",
+    "original_arity": 7,
+    "coarse_members": [
+      3,
+      4,
+      10
+    ],
+    "multiplicity": {
+      "3": 2,
+      "4": 1,
+      "10": 4
+    },
+    "internal": false,
+    "relation_type": "uses_technique",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 4167,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_00082",
+    "original_arity": 10,
+    "coarse_members": [
+      1,
+      4,
+      8
+    ],
+    "multiplicity": {
+      "1": 1,
+      "4": 3,
+      "8": 6
+    },
+    "internal": false,
+    "relation_type": "addresses",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5392,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_00083",
+    "original_arity": 11,
+    "coarse_members": [
+      2,
+      4
+    ],
+    "multiplicity": {
+      "2": 9,
+      "4": 2
+    },
+    "internal": false,
+    "relation_type": "evaluated_on",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5392,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_00084",
+    "original_arity": 12,
+    "coarse_members": [
+      0,
+      4,
+      7,
+      8,
+      10,
+      11
+    ],
+    "multiplicity": {
+      "0": 2,
+      "4": 1,
+      "7": 2,
+      "8": 3,
+      "10": 2,
+      "11": 2
+    },
+    "internal": false,
+    "relation_type": "extends",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5392,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_00085",
+    "original_arity": 7,
+    "coarse_members": [
+      0,
+      3,
+      4,
+      5,
+      6
+    ],
+    "multiplicity": {
+      "0": 2,
+      "3": 1,
+      "4": 1,
+      "5": 1,
+      "6": 2
+    },
+    "internal": false,
+    "relation_type": "solves",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5392,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_00086",
+    "original_arity": 13,
+    "coarse_members": [
+      2,
+      4,
+      6,
+      8,
+      11
+    ],
+    "multiplicity": {
+      "2": 2,
+      "4": 3,
+      "6": 2,
+      "8": 4,
+      "11": 2
+    },
+    "internal": false,
+    "relation_type": "uses_component",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5392,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_00087",
+    "original_arity": 13,
+    "coarse_members": [
+      2,
+      4,
+      6,
+      10
+    ],
+    "multiplicity": {
+      "2": 3,
+      "4": 3,
+      "6": 5,
+      "10": 2
+    },
+    "internal": false,
+    "relation_type": "uses_technique",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5392,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_00106",
+    "original_arity": 6,
+    "coarse_members": [
+      0,
+      1,
+      4,
+      11
+    ],
+    "multiplicity": {
+      "0": 2,
+      "1": 2,
+      "4": 1,
+      "11": 1
+    },
+    "internal": false,
+    "relation_type": "addresses",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5396,
+      "article_year": 2018
+    }
+  },
+  {
+    "id": "h_00107",
+    "original_arity": 9,
+    "coarse_members": [
+      1,
+      2,
+      4,
+      11
+    ],
+    "multiplicity": {
+      "1": 1,
+      "2": 3,
+      "4": 3,
+      "11": 2
+    },
+    "internal": false,
+    "relation_type": "evaluated_on",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5396,
+      "article_year": 2018
+    }
+  },
+  {
+    "id": "h_00108",
+    "original_arity": 5,
+    "coarse_members": [
+      10,
+      11
+    ],
+    "multiplicity": {
+      "10": 1,
+      "11": 4
+    },
+    "internal": false,
+    "relation_type": "extends",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5396,
+      "article_year": 2018
+    }
+  },
+  {
+    "id": "h_00109",
+    "original_arity": 6,
+    "coarse_members": [
+      1,
+      5,
+      11
+    ],
+    "multiplicity": {
+      "1": 2,
+      "5": 1,
+      "11": 3
+    },
+    "internal": false,
+    "relation_type": "solves",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5396,
+      "article_year": 2018
+    }
+  },
+  {
+    "id": "h_00110",
+    "original_arity": 9,
+    "coarse_members": [
+      6,
+      10,
+      11
+    ],
+    "multiplicity": {
+      "6": 4,
+      "10": 2,
+      "11": 3
+    },
+    "internal": false,
+    "relation_type": "uses_component",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5396,
+      "article_year": 2018
+    }
+  },
+  {
+    "id": "h_00111",
+    "original_arity": 8,
+    "coarse_members": [
+      6,
+      8,
+      11
+    ],
+    "multiplicity": {
+      "6": 3,
+      "8": 2,
+      "11": 3
+    },
+    "internal": false,
+    "relation_type": "uses_technique",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5396,
+      "article_year": 2018
+    }
+  },
+  {
+    "id": "h_00118",
+    "original_arity": 5,
+    "coarse_members": [
+      1,
+      6
+    ],
+    "multiplicity": {
+      "1": 3,
+      "6": 2
+    },
+    "internal": false,
+    "relation_type": "addresses",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5398,
+      "article_year": 2020
+    }
+  },
+  {
+    "id": "h_00119",
+    "original_arity": 2,
+    "coarse_members": [
+      6
+    ],
+    "multiplicity": {
+      "6": 2
+    },
+    "internal": true,
+    "relation_type": "extends",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5398,
+      "article_year": 2020
+    }
+  },
+  {
+    "id": "h_00120",
+    "original_arity": 4,
+    "coarse_members": [
+      6,
+      7
+    ],
+    "multiplicity": {
+      "6": 3,
+      "7": 1
+    },
+    "internal": false,
+    "relation_type": "solves",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5398,
+      "article_year": 2020
+    }
+  },
+  {
+    "id": "h_00121",
+    "original_arity": 7,
+    "coarse_members": [
+      2,
+      6
+    ],
+    "multiplicity": {
+      "2": 3,
+      "6": 4
+    },
+    "internal": false,
+    "relation_type": "uses_component",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5398,
+      "article_year": 2020
+    }
+  },
+  {
+    "id": "h_00122",
+    "original_arity": 7,
+    "coarse_members": [
+      0,
+      6
+    ],
+    "multiplicity": {
+      "0": 1,
+      "6": 6
+    },
+    "internal": false,
+    "relation_type": "uses_technique",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5398,
+      "article_year": 2020
+    }
+  },
+  {
+    "id": "h_00146",
+    "original_arity": 14,
+    "coarse_members": [
+      1,
+      2,
+      5,
+      6,
+      8
+    ],
+    "multiplicity": {
+      "1": 5,
+      "2": 2,
+      "5": 1,
+      "6": 3,
+      "8": 3
+    },
+    "internal": false,
+    "relation_type": "addresses",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5403,
+      "article_year": 2013
+    }
+  },
+  {
+    "id": "h_00147",
+    "original_arity": 2,
+    "coarse_members": [
+      1
+    ],
+    "multiplicity": {
+      "1": 2
+    },
+    "internal": true,
+    "relation_type": "evaluated_on",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5403,
+      "article_year": 2013
+    }
+  },
+  {
+    "id": "h_00148",
+    "original_arity": 13,
+    "coarse_members": [
+      1,
+      2,
+      6,
+      8,
+      9
+    ],
+    "multiplicity": {
+      "1": 1,
+      "2": 2,
+      "6": 3,
+      "8": 6,
+      "9": 1
+    },
+    "internal": false,
+    "relation_type": "extends",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5403,
+      "article_year": 2013
+    }
+  },
+  {
+    "id": "h_00149",
+    "original_arity": 10,
+    "coarse_members": [
+      1,
+      2,
+      8,
+      9
+    ],
+    "multiplicity": {
+      "1": 3,
+      "2": 2,
+      "8": 2,
+      "9": 3
+    },
+    "internal": false,
+    "relation_type": "solves",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5403,
+      "article_year": 2013
+    }
+  },
+  {
+    "id": "h_00150",
+    "original_arity": 16,
+    "coarse_members": [
+      1,
+      2,
+      3,
+      8,
+      9,
+      10
+    ],
+    "multiplicity": {
+      "1": 1,
+      "2": 3,
+      "3": 2,
+      "8": 3,
+      "9": 2,
+      "10": 5
+    },
+    "internal": false,
+    "relation_type": "uses_component",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5403,
+      "article_year": 2013
+    }
+  },
+  {
+    "id": "h_00151",
+    "original_arity": 16,
+    "coarse_members": [
+      1,
+      2,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "multiplicity": {
+      "1": 1,
+      "2": 2,
+      "6": 3,
+      "7": 1,
+      "8": 4,
+      "9": 2,
+      "10": 3
+    },
+    "internal": false,
+    "relation_type": "uses_technique",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5403,
+      "article_year": 2013
+    }
+  },
+  {
+    "id": "h_00168",
+    "original_arity": 9,
+    "coarse_members": [
+      1,
+      4
+    ],
+    "multiplicity": {
+      "1": 7,
+      "4": 2
+    },
+    "internal": false,
+    "relation_type": "addresses",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5408,
+      "article_year": 2013
+    }
+  },
+  {
+    "id": "h_00169",
+    "original_arity": 3,
+    "coarse_members": [
+      1,
+      8
+    ],
+    "multiplicity": {
+      "1": 1,
+      "8": 2
+    },
+    "internal": false,
+    "relation_type": "extends",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5408,
+      "article_year": 2013
+    }
+  },
+  {
+    "id": "h_00170",
+    "original_arity": 5,
+    "coarse_members": [
+      1,
+      8
+    ],
+    "multiplicity": {
+      "1": 3,
+      "8": 2
+    },
+    "internal": false,
+    "relation_type": "solves",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5408,
+      "article_year": 2013
+    }
+  },
+  {
+    "id": "h_00171",
+    "original_arity": 8,
+    "coarse_members": [
+      1,
+      7,
+      8
+    ],
+    "multiplicity": {
+      "1": 5,
+      "7": 1,
+      "8": 2
+    },
+    "internal": false,
+    "relation_type": "uses_component",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5408,
+      "article_year": 2013
+    }
+  },
+  {
+    "id": "h_00172",
+    "original_arity": 7,
+    "coarse_members": [
+      0,
+      1
+    ],
+    "multiplicity": {
+      "0": 3,
+      "1": 4
+    },
+    "internal": false,
+    "relation_type": "uses_technique",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5408,
+      "article_year": 2013
+    }
+  },
+  {
+    "id": "h_00173",
+    "original_arity": 21,
+    "coarse_members": [
+      0,
+      1,
+      3,
+      4,
+      5,
+      8
+    ],
+    "multiplicity": {
+      "0": 4,
+      "1": 3,
+      "3": 1,
+      "4": 2,
+      "5": 2,
+      "8": 9
+    },
+    "internal": false,
+    "relation_type": "addresses",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5435,
+      "article_year": 2019
+    }
+  },
+  {
+    "id": "h_00174",
+    "original_arity": 7,
+    "coarse_members": [
+      0,
+      3
+    ],
+    "multiplicity": {
+      "0": 4,
+      "3": 3
+    },
+    "internal": false,
+    "relation_type": "evaluated_on",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5435,
+      "article_year": 2019
+    }
+  },
+  {
+    "id": "h_00175",
+    "original_arity": 9,
+    "coarse_members": [
+      3,
+      4,
+      8,
+      11
+    ],
+    "multiplicity": {
+      "3": 2,
+      "4": 1,
+      "8": 4,
+      "11": 2
+    },
+    "internal": false,
+    "relation_type": "extends",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5435,
+      "article_year": 2019
+    }
+  },
+  {
+    "id": "h_00176",
+    "original_arity": 11,
+    "coarse_members": [
+      1,
+      3,
+      4,
+      8,
+      11
+    ],
+    "multiplicity": {
+      "1": 1,
+      "3": 5,
+      "4": 1,
+      "8": 2,
+      "11": 2
+    },
+    "internal": false,
+    "relation_type": "solves",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5435,
+      "article_year": 2019
+    }
+  },
+  {
+    "id": "h_00177",
+    "original_arity": 14,
+    "coarse_members": [
+      0,
+      3,
+      8,
+      10,
+      11
+    ],
+    "multiplicity": {
+      "0": 2,
+      "3": 6,
+      "8": 4,
+      "10": 1,
+      "11": 1
+    },
+    "internal": false,
+    "relation_type": "uses_component",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5435,
+      "article_year": 2019
+    }
+  },
+  {
+    "id": "h_00178",
+    "original_arity": 18,
+    "coarse_members": [
+      0,
+      3,
+      8,
+      10
+    ],
+    "multiplicity": {
+      "0": 2,
+      "3": 8,
+      "8": 5,
+      "10": 3
+    },
+    "internal": false,
+    "relation_type": "uses_technique",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5435,
+      "article_year": 2019
+    }
+  },
+  {
+    "id": "h_00268",
+    "original_arity": 27,
+    "coarse_members": [
+      1,
+      4,
+      5,
+      8,
+      9
+    ],
+    "multiplicity": {
+      "1": 9,
+      "4": 5,
+      "5": 3,
+      "8": 8,
+      "9": 2
+    },
+    "internal": false,
+    "relation_type": "addresses",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5452,
+      "article_year": 2015
+    }
+  },
+  {
+    "id": "h_00269",
+    "original_arity": 23,
+    "coarse_members": [
+      0,
+      6,
+      8,
+      9,
+      10
+    ],
+    "multiplicity": {
+      "0": 4,
+      "6": 3,
+      "8": 12,
+      "9": 2,
+      "10": 2
+    },
+    "internal": false,
+    "relation_type": "extends",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5452,
+      "article_year": 2015
+    }
+  },
+  {
+    "id": "h_00270",
+    "original_arity": 16,
+    "coarse_members": [
+      1,
+      2,
+      8,
+      9
+    ],
+    "multiplicity": {
+      "1": 3,
+      "2": 2,
+      "8": 4,
+      "9": 7
+    },
+    "internal": false,
+    "relation_type": "solves",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5452,
+      "article_year": 2015
+    }
+  },
+  {
+    "id": "h_00271",
+    "original_arity": 17,
+    "coarse_members": [
+      0,
+      2,
+      4,
+      6,
+      9
+    ],
+    "multiplicity": {
+      "0": 7,
+      "2": 4,
+      "4": 3,
+      "6": 2,
+      "9": 1
+    },
+    "internal": false,
+    "relation_type": "uses_component",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5452,
+      "article_year": 2015
+    }
+  },
+  {
+    "id": "h_00272",
+    "original_arity": 28,
+    "coarse_members": [
+      0,
+      4,
+      6,
+      8,
+      9,
+      10
+    ],
+    "multiplicity": {
+      "0": 8,
+      "4": 3,
+      "6": 7,
+      "8": 5,
+      "9": 3,
+      "10": 2
+    },
+    "internal": false,
+    "relation_type": "uses_technique",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5452,
+      "article_year": 2015
+    }
+  },
+  {
+    "id": "h_00290",
+    "original_arity": 2,
+    "coarse_members": [
+      11
+    ],
+    "multiplicity": {
+      "11": 2
+    },
+    "internal": true,
+    "relation_type": "presents",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5396,
+      "article_year": 2018
+    }
+  },
+  {
+    "id": "h_00291",
+    "original_arity": 2,
+    "coarse_members": [
+      1
+    ],
+    "multiplicity": {
+      "1": 2
+    },
+    "internal": true,
+    "relation_type": "presents",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5408,
+      "article_year": 2013
+    }
+  },
+  {
+    "id": "h_00297",
+    "original_arity": 2,
+    "coarse_members": [
+      3,
+      11
+    ],
+    "multiplicity": {
+      "3": 1,
+      "11": 1
+    },
+    "internal": false,
+    "relation_type": "presents",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 4167,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_00301",
+    "original_arity": 2,
+    "coarse_members": [
+      11
+    ],
+    "multiplicity": {
+      "11": 2
+    },
+    "internal": true,
+    "relation_type": "presents",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 4166,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_00308",
+    "original_arity": 2,
+    "coarse_members": [
+      1,
+      9
+    ],
+    "multiplicity": {
+      "1": 1,
+      "9": 1
+    },
+    "internal": false,
+    "relation_type": "presents",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5452,
+      "article_year": 2015
+    }
+  },
+  {
+    "id": "h_00324",
+    "original_arity": 2,
+    "coarse_members": [
+      3
+    ],
+    "multiplicity": {
+      "3": 2
+    },
+    "internal": true,
+    "relation_type": "presents",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5435,
+      "article_year": 2019
+    }
+  },
+  {
+    "id": "h_00328",
+    "original_arity": 2,
+    "coarse_members": [
+      6
+    ],
+    "multiplicity": {
+      "6": 2
+    },
+    "internal": true,
+    "relation_type": "presents",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5398,
+      "article_year": 2020
+    }
+  },
+  {
+    "id": "h_00332",
+    "original_arity": 2,
+    "coarse_members": [
+      4,
+      8
+    ],
+    "multiplicity": {
+      "4": 1,
+      "8": 1
+    },
+    "internal": false,
+    "relation_type": "presents",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5392,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_00340",
+    "original_arity": 2,
+    "coarse_members": [
+      1
+    ],
+    "multiplicity": {
+      "1": 2
+    },
+    "internal": true,
+    "relation_type": "presents",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5403,
+      "article_year": 2013
+    }
+  },
+  {
+    "id": "h_00342",
+    "original_arity": 3,
+    "coarse_members": [
+      1,
+      4,
+      11
+    ],
+    "multiplicity": {
+      "1": 1,
+      "4": 1,
+      "11": 1
+    },
+    "internal": false,
+    "relation_type": "evaluated_on",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5396,
+      "article_year": 2018
+    }
+  },
+  {
+    "id": "h_00343",
+    "original_arity": 3,
+    "coarse_members": [
+      4,
+      11
+    ],
+    "multiplicity": {
+      "4": 1,
+      "11": 2
+    },
+    "internal": false,
+    "relation_type": "evaluated_on",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5396,
+      "article_year": 2018
+    }
+  },
+  {
+    "id": "h_00344",
+    "original_arity": 3,
+    "coarse_members": [
+      4,
+      11
+    ],
+    "multiplicity": {
+      "4": 1,
+      "11": 2
+    },
+    "internal": false,
+    "relation_type": "evaluated_on",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5396,
+      "article_year": 2018
+    }
+  },
+  {
+    "id": "h_00345",
+    "original_arity": 3,
+    "coarse_members": [
+      11
+    ],
+    "multiplicity": {
+      "11": 3
+    },
+    "internal": true,
+    "relation_type": "evaluated_on",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5396,
+      "article_year": 2018
+    }
+  },
+  {
+    "id": "h_00346",
+    "original_arity": 3,
+    "coarse_members": [
+      4,
+      11
+    ],
+    "multiplicity": {
+      "4": 1,
+      "11": 2
+    },
+    "internal": false,
+    "relation_type": "evaluated_on",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5396,
+      "article_year": 2018
+    }
+  },
+  {
+    "id": "h_00347",
+    "original_arity": 3,
+    "coarse_members": [
+      2,
+      11
+    ],
+    "multiplicity": {
+      "2": 1,
+      "11": 2
+    },
+    "internal": false,
+    "relation_type": "evaluated_on",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5396,
+      "article_year": 2018
+    }
+  },
+  {
+    "id": "h_00348",
+    "original_arity": 3,
+    "coarse_members": [
+      2,
+      11
+    ],
+    "multiplicity": {
+      "2": 1,
+      "11": 2
+    },
+    "internal": false,
+    "relation_type": "evaluated_on",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5396,
+      "article_year": 2018
+    }
+  },
+  {
+    "id": "h_00349",
+    "original_arity": 3,
+    "coarse_members": [
+      2,
+      11
+    ],
+    "multiplicity": {
+      "2": 1,
+      "11": 2
+    },
+    "internal": false,
+    "relation_type": "evaluated_on",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5396,
+      "article_year": 2018
+    }
+  },
+  {
+    "id": "h_00371",
+    "original_arity": 3,
+    "coarse_members": [
+      2,
+      11
+    ],
+    "multiplicity": {
+      "2": 2,
+      "11": 1
+    },
+    "internal": false,
+    "relation_type": "evaluated_on",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 4166,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_00487",
+    "original_arity": 3,
+    "coarse_members": [
+      0,
+      3
+    ],
+    "multiplicity": {
+      "0": 2,
+      "3": 1
+    },
+    "internal": false,
+    "relation_type": "evaluated_on",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5435,
+      "article_year": 2019
+    }
+  },
+  {
+    "id": "h_00488",
+    "original_arity": 3,
+    "coarse_members": [
+      0,
+      3
+    ],
+    "multiplicity": {
+      "0": 2,
+      "3": 1
+    },
+    "internal": false,
+    "relation_type": "evaluated_on",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5435,
+      "article_year": 2019
+    }
+  },
+  {
+    "id": "h_00489",
+    "original_arity": 3,
+    "coarse_members": [
+      0,
+      3
+    ],
+    "multiplicity": {
+      "0": 1,
+      "3": 2
+    },
+    "internal": false,
+    "relation_type": "evaluated_on",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5435,
+      "article_year": 2019
+    }
+  },
+  {
+    "id": "h_00490",
+    "original_arity": 3,
+    "coarse_members": [
+      0,
+      3
+    ],
+    "multiplicity": {
+      "0": 1,
+      "3": 2
+    },
+    "internal": false,
+    "relation_type": "evaluated_on",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5435,
+      "article_year": 2019
+    }
+  },
+  {
+    "id": "h_00491",
+    "original_arity": 3,
+    "coarse_members": [
+      3
+    ],
+    "multiplicity": {
+      "3": 3
+    },
+    "internal": true,
+    "relation_type": "evaluated_on",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5435,
+      "article_year": 2019
+    }
+  },
+  {
+    "id": "h_00492",
+    "original_arity": 3,
+    "coarse_members": [
+      3
+    ],
+    "multiplicity": {
+      "3": 3
+    },
+    "internal": true,
+    "relation_type": "evaluated_on",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5435,
+      "article_year": 2019
+    }
+  },
+  {
+    "id": "h_00512",
+    "original_arity": 3,
+    "coarse_members": [
+      2,
+      4
+    ],
+    "multiplicity": {
+      "2": 1,
+      "4": 2
+    },
+    "internal": false,
+    "relation_type": "evaluated_on",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5392,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_00513",
+    "original_arity": 3,
+    "coarse_members": [
+      4
+    ],
+    "multiplicity": {
+      "4": 3
+    },
+    "internal": true,
+    "relation_type": "evaluated_on",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5392,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_00514",
+    "original_arity": 3,
+    "coarse_members": [
+      4
+    ],
+    "multiplicity": {
+      "4": 3
+    },
+    "internal": true,
+    "relation_type": "evaluated_on",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5392,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_00515",
+    "original_arity": 3,
+    "coarse_members": [
+      4
+    ],
+    "multiplicity": {
+      "4": 3
+    },
+    "internal": true,
+    "relation_type": "evaluated_on",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5392,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_00516",
+    "original_arity": 3,
+    "coarse_members": [
+      2,
+      4
+    ],
+    "multiplicity": {
+      "2": 1,
+      "4": 2
+    },
+    "internal": false,
+    "relation_type": "evaluated_on",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5392,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_00517",
+    "original_arity": 3,
+    "coarse_members": [
+      2,
+      4
+    ],
+    "multiplicity": {
+      "2": 1,
+      "4": 2
+    },
+    "internal": false,
+    "relation_type": "evaluated_on",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5392,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_00518",
+    "original_arity": 3,
+    "coarse_members": [
+      2,
+      4
+    ],
+    "multiplicity": {
+      "2": 1,
+      "4": 2
+    },
+    "internal": false,
+    "relation_type": "evaluated_on",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5392,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_00519",
+    "original_arity": 3,
+    "coarse_members": [
+      2,
+      4
+    ],
+    "multiplicity": {
+      "2": 1,
+      "4": 2
+    },
+    "internal": false,
+    "relation_type": "evaluated_on",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5392,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_00520",
+    "original_arity": 3,
+    "coarse_members": [
+      2,
+      4
+    ],
+    "multiplicity": {
+      "2": 1,
+      "4": 2
+    },
+    "internal": false,
+    "relation_type": "evaluated_on",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5392,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_00521",
+    "original_arity": 3,
+    "coarse_members": [
+      2,
+      4
+    ],
+    "multiplicity": {
+      "2": 1,
+      "4": 2
+    },
+    "internal": false,
+    "relation_type": "evaluated_on",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5392,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_00522",
+    "original_arity": 3,
+    "coarse_members": [
+      2,
+      4
+    ],
+    "multiplicity": {
+      "2": 1,
+      "4": 2
+    },
+    "internal": false,
+    "relation_type": "evaluated_on",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5392,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_00523",
+    "original_arity": 3,
+    "coarse_members": [
+      2,
+      4
+    ],
+    "multiplicity": {
+      "2": 1,
+      "4": 2
+    },
+    "internal": false,
+    "relation_type": "evaluated_on",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5392,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_00589",
+    "original_arity": 3,
+    "coarse_members": [
+      1
+    ],
+    "multiplicity": {
+      "1": 3
+    },
+    "internal": true,
+    "relation_type": "evaluated_on",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5403,
+      "article_year": 2013
+    }
+  },
+  {
+    "id": "h_00607",
+    "original_arity": 2,
+    "coarse_members": [
+      2,
+      11
+    ],
+    "multiplicity": {
+      "2": 1,
+      "11": 1
+    },
+    "internal": false,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5396,
+      "article_year": 2018
+    }
+  },
+  {
+    "id": "h_00608",
+    "original_arity": 2,
+    "coarse_members": [
+      11
+    ],
+    "multiplicity": {
+      "11": 2
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5396,
+      "article_year": 2018
+    }
+  },
+  {
+    "id": "h_00609",
+    "original_arity": 2,
+    "coarse_members": [
+      11
+    ],
+    "multiplicity": {
+      "11": 2
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5396,
+      "article_year": 2018
+    }
+  },
+  {
+    "id": "h_00610",
+    "original_arity": 2,
+    "coarse_members": [
+      2,
+      11
+    ],
+    "multiplicity": {
+      "2": 1,
+      "11": 1
+    },
+    "internal": false,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5396,
+      "article_year": 2018
+    }
+  },
+  {
+    "id": "h_00611",
+    "original_arity": 2,
+    "coarse_members": [
+      11
+    ],
+    "multiplicity": {
+      "11": 2
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5396,
+      "article_year": 2018
+    }
+  },
+  {
+    "id": "h_00612",
+    "original_arity": 2,
+    "coarse_members": [
+      3,
+      11
+    ],
+    "multiplicity": {
+      "3": 1,
+      "11": 1
+    },
+    "internal": false,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5396,
+      "article_year": 2018
+    }
+  },
+  {
+    "id": "h_00613",
+    "original_arity": 2,
+    "coarse_members": [
+      11
+    ],
+    "multiplicity": {
+      "11": 2
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5396,
+      "article_year": 2018
+    }
+  },
+  {
+    "id": "h_00614",
+    "original_arity": 2,
+    "coarse_members": [
+      1
+    ],
+    "multiplicity": {
+      "1": 2
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5408,
+      "article_year": 2013
+    }
+  },
+  {
+    "id": "h_00615",
+    "original_arity": 2,
+    "coarse_members": [
+      1
+    ],
+    "multiplicity": {
+      "1": 2
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5408,
+      "article_year": 2013
+    }
+  },
+  {
+    "id": "h_00616",
+    "original_arity": 2,
+    "coarse_members": [
+      1
+    ],
+    "multiplicity": {
+      "1": 2
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5408,
+      "article_year": 2013
+    }
+  },
+  {
+    "id": "h_00617",
+    "original_arity": 2,
+    "coarse_members": [
+      1
+    ],
+    "multiplicity": {
+      "1": 2
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5408,
+      "article_year": 2013
+    }
+  },
+  {
+    "id": "h_00618",
+    "original_arity": 2,
+    "coarse_members": [
+      1,
+      7
+    ],
+    "multiplicity": {
+      "1": 1,
+      "7": 1
+    },
+    "internal": false,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5408,
+      "article_year": 2013
+    }
+  },
+  {
+    "id": "h_00619",
+    "original_arity": 2,
+    "coarse_members": [
+      1
+    ],
+    "multiplicity": {
+      "1": 2
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5408,
+      "article_year": 2013
+    }
+  },
+  {
+    "id": "h_00620",
+    "original_arity": 2,
+    "coarse_members": [
+      1
+    ],
+    "multiplicity": {
+      "1": 2
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5408,
+      "article_year": 2013
+    }
+  },
+  {
+    "id": "h_00621",
+    "original_arity": 2,
+    "coarse_members": [
+      1
+    ],
+    "multiplicity": {
+      "1": 2
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5408,
+      "article_year": 2013
+    }
+  },
+  {
+    "id": "h_00622",
+    "original_arity": 2,
+    "coarse_members": [
+      1
+    ],
+    "multiplicity": {
+      "1": 2
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5408,
+      "article_year": 2013
+    }
+  },
+  {
+    "id": "h_00623",
+    "original_arity": 2,
+    "coarse_members": [
+      1
+    ],
+    "multiplicity": {
+      "1": 2
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5408,
+      "article_year": 2013
+    }
+  },
+  {
+    "id": "h_00624",
+    "original_arity": 2,
+    "coarse_members": [
+      1,
+      7
+    ],
+    "multiplicity": {
+      "1": 1,
+      "7": 1
+    },
+    "internal": false,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5408,
+      "article_year": 2013
+    }
+  },
+  {
+    "id": "h_00625",
+    "original_arity": 2,
+    "coarse_members": [
+      1
+    ],
+    "multiplicity": {
+      "1": 2
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5408,
+      "article_year": 2013
+    }
+  },
+  {
+    "id": "h_00626",
+    "original_arity": 2,
+    "coarse_members": [
+      1
+    ],
+    "multiplicity": {
+      "1": 2
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5408,
+      "article_year": 2013
+    }
+  },
+  {
+    "id": "h_00684",
+    "original_arity": 3,
+    "coarse_members": [
+      3,
+      11
+    ],
+    "multiplicity": {
+      "3": 1,
+      "11": 2
+    },
+    "internal": false,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 4167,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_00685",
+    "original_arity": 3,
+    "coarse_members": [
+      3,
+      4,
+      11
+    ],
+    "multiplicity": {
+      "3": 1,
+      "4": 1,
+      "11": 1
+    },
+    "internal": false,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 4167,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_00686",
+    "original_arity": 3,
+    "coarse_members": [
+      3,
+      4,
+      11
+    ],
+    "multiplicity": {
+      "3": 1,
+      "4": 1,
+      "11": 1
+    },
+    "internal": false,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 4167,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_00687",
+    "original_arity": 3,
+    "coarse_members": [
+      3,
+      11
+    ],
+    "multiplicity": {
+      "3": 2,
+      "11": 1
+    },
+    "internal": false,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 4167,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_00688",
+    "original_arity": 3,
+    "coarse_members": [
+      3,
+      11
+    ],
+    "multiplicity": {
+      "3": 2,
+      "11": 1
+    },
+    "internal": false,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 4167,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_00689",
+    "original_arity": 3,
+    "coarse_members": [
+      3,
+      11
+    ],
+    "multiplicity": {
+      "3": 2,
+      "11": 1
+    },
+    "internal": false,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 4167,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_00690",
+    "original_arity": 3,
+    "coarse_members": [
+      3,
+      11
+    ],
+    "multiplicity": {
+      "3": 2,
+      "11": 1
+    },
+    "internal": false,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 4167,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_00691",
+    "original_arity": 3,
+    "coarse_members": [
+      3,
+      11
+    ],
+    "multiplicity": {
+      "3": 2,
+      "11": 1
+    },
+    "internal": false,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 4167,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_00692",
+    "original_arity": 3,
+    "coarse_members": [
+      3,
+      4,
+      11
+    ],
+    "multiplicity": {
+      "3": 1,
+      "4": 1,
+      "11": 1
+    },
+    "internal": false,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 4167,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_00693",
+    "original_arity": 3,
+    "coarse_members": [
+      3,
+      4,
+      11
+    ],
+    "multiplicity": {
+      "3": 1,
+      "4": 1,
+      "11": 1
+    },
+    "internal": false,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 4167,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_00694",
+    "original_arity": 3,
+    "coarse_members": [
+      3,
+      11
+    ],
+    "multiplicity": {
+      "3": 2,
+      "11": 1
+    },
+    "internal": false,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 4167,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_00736",
+    "original_arity": 2,
+    "coarse_members": [
+      11
+    ],
+    "multiplicity": {
+      "11": 2
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 4166,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_00737",
+    "original_arity": 2,
+    "coarse_members": [
+      9,
+      11
+    ],
+    "multiplicity": {
+      "9": 1,
+      "11": 1
+    },
+    "internal": false,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 4166,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_00738",
+    "original_arity": 2,
+    "coarse_members": [
+      11
+    ],
+    "multiplicity": {
+      "11": 2
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 4166,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_00739",
+    "original_arity": 2,
+    "coarse_members": [
+      3,
+      11
+    ],
+    "multiplicity": {
+      "3": 1,
+      "11": 1
+    },
+    "internal": false,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 4166,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_00740",
+    "original_arity": 2,
+    "coarse_members": [
+      11
+    ],
+    "multiplicity": {
+      "11": 2
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 4166,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_00741",
+    "original_arity": 2,
+    "coarse_members": [
+      2,
+      11
+    ],
+    "multiplicity": {
+      "2": 1,
+      "11": 1
+    },
+    "internal": false,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 4166,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_00742",
+    "original_arity": 2,
+    "coarse_members": [
+      11
+    ],
+    "multiplicity": {
+      "11": 2
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 4166,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_00743",
+    "original_arity": 2,
+    "coarse_members": [
+      11
+    ],
+    "multiplicity": {
+      "11": 2
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 4166,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_00744",
+    "original_arity": 2,
+    "coarse_members": [
+      5,
+      11
+    ],
+    "multiplicity": {
+      "5": 1,
+      "11": 1
+    },
+    "internal": false,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 4166,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_00745",
+    "original_arity": 2,
+    "coarse_members": [
+      11
+    ],
+    "multiplicity": {
+      "11": 2
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 4166,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_00746",
+    "original_arity": 2,
+    "coarse_members": [
+      4,
+      11
+    ],
+    "multiplicity": {
+      "4": 1,
+      "11": 1
+    },
+    "internal": false,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 4166,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_00818",
+    "original_arity": 3,
+    "coarse_members": [
+      1,
+      9
+    ],
+    "multiplicity": {
+      "1": 1,
+      "9": 2
+    },
+    "internal": false,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5452,
+      "article_year": 2015
+    }
+  },
+  {
+    "id": "h_00819",
+    "original_arity": 3,
+    "coarse_members": [
+      1,
+      9
+    ],
+    "multiplicity": {
+      "1": 2,
+      "9": 1
+    },
+    "internal": false,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5452,
+      "article_year": 2015
+    }
+  },
+  {
+    "id": "h_00820",
+    "original_arity": 3,
+    "coarse_members": [
+      1,
+      9
+    ],
+    "multiplicity": {
+      "1": 2,
+      "9": 1
+    },
+    "internal": false,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5452,
+      "article_year": 2015
+    }
+  },
+  {
+    "id": "h_00821",
+    "original_arity": 3,
+    "coarse_members": [
+      1,
+      9
+    ],
+    "multiplicity": {
+      "1": 1,
+      "9": 2
+    },
+    "internal": false,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5452,
+      "article_year": 2015
+    }
+  },
+  {
+    "id": "h_00822",
+    "original_arity": 3,
+    "coarse_members": [
+      1,
+      9
+    ],
+    "multiplicity": {
+      "1": 1,
+      "9": 2
+    },
+    "internal": false,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5452,
+      "article_year": 2015
+    }
+  },
+  {
+    "id": "h_00823",
+    "original_arity": 3,
+    "coarse_members": [
+      1,
+      4,
+      9
+    ],
+    "multiplicity": {
+      "1": 1,
+      "4": 1,
+      "9": 1
+    },
+    "internal": false,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5452,
+      "article_year": 2015
+    }
+  },
+  {
+    "id": "h_00824",
+    "original_arity": 3,
+    "coarse_members": [
+      1,
+      9
+    ],
+    "multiplicity": {
+      "1": 1,
+      "9": 2
+    },
+    "internal": false,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5452,
+      "article_year": 2015
+    }
+  },
+  {
+    "id": "h_00825",
+    "original_arity": 3,
+    "coarse_members": [
+      1,
+      9
+    ],
+    "multiplicity": {
+      "1": 1,
+      "9": 2
+    },
+    "internal": false,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5452,
+      "article_year": 2015
+    }
+  },
+  {
+    "id": "h_00826",
+    "original_arity": 3,
+    "coarse_members": [
+      1,
+      9
+    ],
+    "multiplicity": {
+      "1": 1,
+      "9": 2
+    },
+    "internal": false,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5452,
+      "article_year": 2015
+    }
+  },
+  {
+    "id": "h_00827",
+    "original_arity": 3,
+    "coarse_members": [
+      1,
+      9
+    ],
+    "multiplicity": {
+      "1": 1,
+      "9": 2
+    },
+    "internal": false,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5452,
+      "article_year": 2015
+    }
+  },
+  {
+    "id": "h_00828",
+    "original_arity": 3,
+    "coarse_members": [
+      1,
+      9
+    ],
+    "multiplicity": {
+      "1": 2,
+      "9": 1
+    },
+    "internal": false,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5452,
+      "article_year": 2015
+    }
+  },
+  {
+    "id": "h_00829",
+    "original_arity": 3,
+    "coarse_members": [
+      1,
+      9
+    ],
+    "multiplicity": {
+      "1": 1,
+      "9": 2
+    },
+    "internal": false,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5452,
+      "article_year": 2015
+    }
+  },
+  {
+    "id": "h_00830",
+    "original_arity": 3,
+    "coarse_members": [
+      1,
+      7,
+      9
+    ],
+    "multiplicity": {
+      "1": 1,
+      "7": 1,
+      "9": 1
+    },
+    "internal": false,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5452,
+      "article_year": 2015
+    }
+  },
+  {
+    "id": "h_01081",
+    "original_arity": 3,
+    "coarse_members": [
+      3
+    ],
+    "multiplicity": {
+      "3": 3
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5435,
+      "article_year": 2019
+    }
+  },
+  {
+    "id": "h_01082",
+    "original_arity": 3,
+    "coarse_members": [
+      3,
+      4
+    ],
+    "multiplicity": {
+      "3": 2,
+      "4": 1
+    },
+    "internal": false,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5435,
+      "article_year": 2019
+    }
+  },
+  {
+    "id": "h_01083",
+    "original_arity": 3,
+    "coarse_members": [
+      3
+    ],
+    "multiplicity": {
+      "3": 3
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5435,
+      "article_year": 2019
+    }
+  },
+  {
+    "id": "h_01084",
+    "original_arity": 3,
+    "coarse_members": [
+      3,
+      4
+    ],
+    "multiplicity": {
+      "3": 2,
+      "4": 1
+    },
+    "internal": false,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5435,
+      "article_year": 2019
+    }
+  },
+  {
+    "id": "h_01085",
+    "original_arity": 3,
+    "coarse_members": [
+      3
+    ],
+    "multiplicity": {
+      "3": 3
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5435,
+      "article_year": 2019
+    }
+  },
+  {
+    "id": "h_01086",
+    "original_arity": 3,
+    "coarse_members": [
+      3
+    ],
+    "multiplicity": {
+      "3": 3
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5435,
+      "article_year": 2019
+    }
+  },
+  {
+    "id": "h_01087",
+    "original_arity": 3,
+    "coarse_members": [
+      3
+    ],
+    "multiplicity": {
+      "3": 3
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5435,
+      "article_year": 2019
+    }
+  },
+  {
+    "id": "h_01088",
+    "original_arity": 3,
+    "coarse_members": [
+      3
+    ],
+    "multiplicity": {
+      "3": 3
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5435,
+      "article_year": 2019
+    }
+  },
+  {
+    "id": "h_01089",
+    "original_arity": 3,
+    "coarse_members": [
+      3
+    ],
+    "multiplicity": {
+      "3": 3
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5435,
+      "article_year": 2019
+    }
+  },
+  {
+    "id": "h_01090",
+    "original_arity": 3,
+    "coarse_members": [
+      3
+    ],
+    "multiplicity": {
+      "3": 3
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5435,
+      "article_year": 2019
+    }
+  },
+  {
+    "id": "h_01091",
+    "original_arity": 3,
+    "coarse_members": [
+      3
+    ],
+    "multiplicity": {
+      "3": 3
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5435,
+      "article_year": 2019
+    }
+  },
+  {
+    "id": "h_01092",
+    "original_arity": 3,
+    "coarse_members": [
+      3
+    ],
+    "multiplicity": {
+      "3": 3
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5435,
+      "article_year": 2019
+    }
+  },
+  {
+    "id": "h_01093",
+    "original_arity": 3,
+    "coarse_members": [
+      3
+    ],
+    "multiplicity": {
+      "3": 3
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5435,
+      "article_year": 2019
+    }
+  },
+  {
+    "id": "h_01126",
+    "original_arity": 3,
+    "coarse_members": [
+      6
+    ],
+    "multiplicity": {
+      "6": 3
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5398,
+      "article_year": 2020
+    }
+  },
+  {
+    "id": "h_01127",
+    "original_arity": 3,
+    "coarse_members": [
+      6
+    ],
+    "multiplicity": {
+      "6": 3
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5398,
+      "article_year": 2020
+    }
+  },
+  {
+    "id": "h_01128",
+    "original_arity": 3,
+    "coarse_members": [
+      6
+    ],
+    "multiplicity": {
+      "6": 3
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5398,
+      "article_year": 2020
+    }
+  },
+  {
+    "id": "h_01129",
+    "original_arity": 3,
+    "coarse_members": [
+      6
+    ],
+    "multiplicity": {
+      "6": 3
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5398,
+      "article_year": 2020
+    }
+  },
+  {
+    "id": "h_01130",
+    "original_arity": 3,
+    "coarse_members": [
+      6
+    ],
+    "multiplicity": {
+      "6": 3
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5398,
+      "article_year": 2020
+    }
+  },
+  {
+    "id": "h_01131",
+    "original_arity": 3,
+    "coarse_members": [
+      6
+    ],
+    "multiplicity": {
+      "6": 3
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5398,
+      "article_year": 2020
+    }
+  },
+  {
+    "id": "h_01132",
+    "original_arity": 3,
+    "coarse_members": [
+      6
+    ],
+    "multiplicity": {
+      "6": 3
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5398,
+      "article_year": 2020
+    }
+  },
+  {
+    "id": "h_01133",
+    "original_arity": 3,
+    "coarse_members": [
+      6
+    ],
+    "multiplicity": {
+      "6": 3
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5398,
+      "article_year": 2020
+    }
+  },
+  {
+    "id": "h_01134",
+    "original_arity": 3,
+    "coarse_members": [
+      6
+    ],
+    "multiplicity": {
+      "6": 3
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5398,
+      "article_year": 2020
+    }
+  },
+  {
+    "id": "h_01135",
+    "original_arity": 3,
+    "coarse_members": [
+      6
+    ],
+    "multiplicity": {
+      "6": 3
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5398,
+      "article_year": 2020
+    }
+  },
+  {
+    "id": "h_01175",
+    "original_arity": 2,
+    "coarse_members": [
+      4,
+      8
+    ],
+    "multiplicity": {
+      "4": 1,
+      "8": 1
+    },
+    "internal": false,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5392,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_01176",
+    "original_arity": 2,
+    "coarse_members": [
+      8
+    ],
+    "multiplicity": {
+      "8": 2
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5392,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_01177",
+    "original_arity": 2,
+    "coarse_members": [
+      4,
+      8
+    ],
+    "multiplicity": {
+      "4": 1,
+      "8": 1
+    },
+    "internal": false,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5392,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_01178",
+    "original_arity": 2,
+    "coarse_members": [
+      8
+    ],
+    "multiplicity": {
+      "8": 2
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5392,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_01179",
+    "original_arity": 2,
+    "coarse_members": [
+      8
+    ],
+    "multiplicity": {
+      "8": 2
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5392,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_01180",
+    "original_arity": 2,
+    "coarse_members": [
+      2,
+      8
+    ],
+    "multiplicity": {
+      "2": 1,
+      "8": 1
+    },
+    "internal": false,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5392,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_01181",
+    "original_arity": 2,
+    "coarse_members": [
+      3,
+      8
+    ],
+    "multiplicity": {
+      "3": 1,
+      "8": 1
+    },
+    "internal": false,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5392,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_01182",
+    "original_arity": 2,
+    "coarse_members": [
+      8
+    ],
+    "multiplicity": {
+      "8": 2
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5392,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_01183",
+    "original_arity": 2,
+    "coarse_members": [
+      8
+    ],
+    "multiplicity": {
+      "8": 2
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5392,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_01267",
+    "original_arity": 3,
+    "coarse_members": [
+      1
+    ],
+    "multiplicity": {
+      "1": 3
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5403,
+      "article_year": 2013
+    }
+  },
+  {
+    "id": "h_01268",
+    "original_arity": 3,
+    "coarse_members": [
+      1
+    ],
+    "multiplicity": {
+      "1": 3
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5403,
+      "article_year": 2013
+    }
+  },
+  {
+    "id": "h_01269",
+    "original_arity": 3,
+    "coarse_members": [
+      1
+    ],
+    "multiplicity": {
+      "1": 3
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5403,
+      "article_year": 2013
+    }
+  },
+  {
+    "id": "h_01270",
+    "original_arity": 3,
+    "coarse_members": [
+      1,
+      7
+    ],
+    "multiplicity": {
+      "1": 2,
+      "7": 1
+    },
+    "internal": false,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5403,
+      "article_year": 2013
+    }
+  },
+  {
+    "id": "h_01271",
+    "original_arity": 3,
+    "coarse_members": [
+      1
+    ],
+    "multiplicity": {
+      "1": 3
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5403,
+      "article_year": 2013
+    }
+  },
+  {
+    "id": "h_01272",
+    "original_arity": 3,
+    "coarse_members": [
+      1
+    ],
+    "multiplicity": {
+      "1": 3
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5403,
+      "article_year": 2013
+    }
+  },
+  {
+    "id": "h_01273",
+    "original_arity": 3,
+    "coarse_members": [
+      1
+    ],
+    "multiplicity": {
+      "1": 3
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5403,
+      "article_year": 2013
+    }
+  },
+  {
+    "id": "h_01274",
+    "original_arity": 3,
+    "coarse_members": [
+      1,
+      9
+    ],
+    "multiplicity": {
+      "1": 2,
+      "9": 1
+    },
+    "internal": false,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5403,
+      "article_year": 2013
+    }
+  },
+  {
+    "id": "h_01275",
+    "original_arity": 3,
+    "coarse_members": [
+      1
+    ],
+    "multiplicity": {
+      "1": 3
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5403,
+      "article_year": 2013
+    }
+  },
+  {
+    "id": "h_01276",
+    "original_arity": 3,
+    "coarse_members": [
+      1
+    ],
+    "multiplicity": {
+      "1": 3
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5403,
+      "article_year": 2013
+    }
+  },
+  {
+    "id": "h_01277",
+    "original_arity": 3,
+    "coarse_members": [
+      1
+    ],
+    "multiplicity": {
+      "1": 3
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5403,
+      "article_year": 2013
+    }
+  },
+  {
+    "id": "h_01278",
+    "original_arity": 3,
+    "coarse_members": [
+      1
+    ],
+    "multiplicity": {
+      "1": 3
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5403,
+      "article_year": 2013
+    }
+  },
+  {
+    "id": "h_01279",
+    "original_arity": 3,
+    "coarse_members": [
+      1,
+      9
+    ],
+    "multiplicity": {
+      "1": 2,
+      "9": 1
+    },
+    "internal": false,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5403,
+      "article_year": 2013
+    }
+  },
+  {
+    "id": "h_01280",
+    "original_arity": 3,
+    "coarse_members": [
+      1
+    ],
+    "multiplicity": {
+      "1": 3
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5403,
+      "article_year": 2013
+    }
+  },
+  {
+    "id": "h_01281",
+    "original_arity": 3,
+    "coarse_members": [
+      1
+    ],
+    "multiplicity": {
+      "1": 3
+    },
+    "internal": true,
+    "relation_type": "claims",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5403,
+      "article_year": 2013
+    }
+  },
+  {
+    "id": "h_01297",
+    "original_arity": 25,
+    "coarse_members": [
+      0,
+      6,
+      8,
+      11
+    ],
+    "multiplicity": {
+      "0": 6,
+      "6": 2,
+      "8": 4,
+      "11": 13
+    },
+    "internal": false,
+    "relation_type": "cites",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 4166,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_01307",
+    "original_arity": 5,
+    "coarse_members": [
+      8,
+      10,
+      11
+    ],
+    "multiplicity": {
+      "8": 2,
+      "10": 2,
+      "11": 1
+    },
+    "internal": false,
+    "relation_type": "cites",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5392,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_01311",
+    "original_arity": 11,
+    "coarse_members": [
+      6,
+      8
+    ],
+    "multiplicity": {
+      "6": 4,
+      "8": 7
+    },
+    "internal": false,
+    "relation_type": "cites",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5398,
+      "article_year": 2020
+    }
+  },
+  {
+    "id": "h_01315",
+    "original_arity": 8,
+    "coarse_members": [
+      3,
+      6,
+      8,
+      11
+    ],
+    "multiplicity": {
+      "3": 2,
+      "6": 2,
+      "8": 2,
+      "11": 2
+    },
+    "internal": false,
+    "relation_type": "cites",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5435,
+      "article_year": 2019
+    }
+  },
+  {
+    "id": "h_01330",
+    "original_arity": 29,
+    "coarse_members": [
+      0,
+      1,
+      3,
+      6,
+      8,
+      9
+    ],
+    "multiplicity": {
+      "0": 6,
+      "1": 3,
+      "3": 1,
+      "6": 5,
+      "8": 11,
+      "9": 3
+    },
+    "internal": false,
+    "relation_type": "cites",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5452,
+      "article_year": 2015
+    }
+  },
+  {
+    "id": "h_01334",
+    "original_arity": 6,
+    "coarse_members": [
+      7,
+      8,
+      10,
+      11
+    ],
+    "multiplicity": {
+      "7": 1,
+      "8": 2,
+      "10": 2,
+      "11": 1
+    },
+    "internal": false,
+    "relation_type": "authored_by",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 4166,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_01335",
+    "original_arity": 7,
+    "coarse_members": [
+      0,
+      2,
+      5,
+      11
+    ],
+    "multiplicity": {
+      "0": 3,
+      "2": 2,
+      "5": 1,
+      "11": 1
+    },
+    "internal": false,
+    "relation_type": "authored_by",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 4167,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_01349",
+    "original_arity": 6,
+    "coarse_members": [
+      8
+    ],
+    "multiplicity": {
+      "8": 6
+    },
+    "internal": true,
+    "relation_type": "authored_by",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5392,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_01353",
+    "original_arity": 3,
+    "coarse_members": [
+      8,
+      11
+    ],
+    "multiplicity": {
+      "8": 2,
+      "11": 1
+    },
+    "internal": false,
+    "relation_type": "authored_by",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5396,
+      "article_year": 2018
+    }
+  },
+  {
+    "id": "h_01355",
+    "original_arity": 2,
+    "coarse_members": [
+      0,
+      6
+    ],
+    "multiplicity": {
+      "0": 1,
+      "6": 1
+    },
+    "internal": false,
+    "relation_type": "authored_by",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5398,
+      "article_year": 2020
+    }
+  },
+  {
+    "id": "h_01360",
+    "original_arity": 15,
+    "coarse_members": [
+      1,
+      3,
+      7,
+      8,
+      10
+    ],
+    "multiplicity": {
+      "1": 1,
+      "3": 1,
+      "7": 2,
+      "8": 7,
+      "10": 4
+    },
+    "internal": false,
+    "relation_type": "authored_by",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5403,
+      "article_year": 2013
+    }
+  },
+  {
+    "id": "h_01365",
+    "original_arity": 12,
+    "coarse_members": [
+      0,
+      1,
+      8
+    ],
+    "multiplicity": {
+      "0": 2,
+      "1": 2,
+      "8": 8
+    },
+    "internal": false,
+    "relation_type": "authored_by",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5408,
+      "article_year": 2013
+    }
+  },
+  {
+    "id": "h_01366",
+    "original_arity": 5,
+    "coarse_members": [
+      0,
+      3,
+      8
+    ],
+    "multiplicity": {
+      "0": 2,
+      "3": 1,
+      "8": 2
+    },
+    "internal": false,
+    "relation_type": "authored_by",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5435,
+      "article_year": 2019
+    }
+  },
+  {
+    "id": "h_01382",
+    "original_arity": 12,
+    "coarse_members": [
+      0,
+      1,
+      2,
+      3,
+      8,
+      10
+    ],
+    "multiplicity": {
+      "0": 2,
+      "1": 1,
+      "2": 2,
+      "3": 1,
+      "8": 4,
+      "10": 2
+    },
+    "internal": false,
+    "relation_type": "authored_by",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5452,
+      "article_year": 2015
+    }
+  },
+  {
+    "id": "h_01385",
+    "original_arity": 6,
+    "coarse_members": [
+      1,
+      11
+    ],
+    "multiplicity": {
+      "1": 2,
+      "11": 4
+    },
+    "internal": false,
+    "relation_type": "proposes_future_work",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 4166,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_01386",
+    "original_arity": 5,
+    "coarse_members": [
+      0,
+      10,
+      11
+    ],
+    "multiplicity": {
+      "0": 2,
+      "10": 2,
+      "11": 1
+    },
+    "internal": false,
+    "relation_type": "proposes_future_work",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 4167,
+      "article_year": 2017
+    }
+  },
+  {
+    "id": "h_01402",
+    "original_arity": 5,
+    "coarse_members": [
+      1,
+      6,
+      11
+    ],
+    "multiplicity": {
+      "1": 2,
+      "6": 2,
+      "11": 1
+    },
+    "internal": false,
+    "relation_type": "proposes_future_work",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5396,
+      "article_year": 2018
+    }
+  },
+  {
+    "id": "h_01412",
+    "original_arity": 4,
+    "coarse_members": [
+      1
+    ],
+    "multiplicity": {
+      "1": 4
+    },
+    "internal": true,
+    "relation_type": "proposes_future_work",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5408,
+      "article_year": 2013
+    }
+  },
+  {
+    "id": "h_01413",
+    "original_arity": 4,
+    "coarse_members": [
+      0,
+      3
+    ],
+    "multiplicity": {
+      "0": 3,
+      "3": 1
+    },
+    "internal": false,
+    "relation_type": "proposes_future_work",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5435,
+      "article_year": 2019
+    }
+  },
+  {
+    "id": "h_01427",
+    "original_arity": 4,
+    "coarse_members": [
+      0,
+      1
+    ],
+    "multiplicity": {
+      "0": 3,
+      "1": 1
+    },
+    "internal": false,
+    "relation_type": "proposes_future_work",
+    "provenance": {
+      "source": "mvkg",
+      "article_id": 5452,
+      "article_year": 2015
+    }
+  }
+]

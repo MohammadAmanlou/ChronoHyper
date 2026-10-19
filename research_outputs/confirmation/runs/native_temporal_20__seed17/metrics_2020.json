@@ -1,0 +1,33 @@
+{
+  "actual_train_edge_ids_preserved": 209,
+  "cross_year_shared_node_ari": null,
+  "elapsed_seconds": 0.237,
+  "family": "native",
+  "fraction_train_events_internal": 0.3684210526315789,
+  "heldout_group_bootstrap_ci95": [
+    0.6770236270236271,
+    0.7755059523809523
+  ],
+  "heldout_normalized_connectivity_lower_better": 0.7186125933113885,
+  "heldout_paper_scores": {
+    "5397": 0.7453571428571428,
+    "5402": 0.7151265401265402,
+    "5406": 0.7855555555555556,
+    "5445": 0.6643226559893227
+  },
+  "independent_article_title_view_coherence_higher_better": 0.21031227223590707,
+  "method": "native joint high-order local refinement",
+  "model": "native_temporal_20",
+  "n_clusters": 12,
+  "n_heldout_edges": 83,
+  "n_heldout_papers": 4,
+  "n_nodes": 1505,
+  "n_train_edges": 209,
+  "native_training_connectivity_lambda_minus_one": 1.1626794258373205,
+  "projected_pair_events": 0,
+  "run_id": "native_temporal_20__seed17",
+  "seed": 17,
+  "shared_node_count": 0,
+  "train_highorder_events_still_3plus_coarse": 54,
+  "year": 2020
+}

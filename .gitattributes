@@ -1,0 +1,4 @@
+# Keep ALL committed file bytes untouched: model-lock digests and reproducibility
+# manifest include experiment outputs, Markdown, PowerShell and reports. Default
+# Git text normalization otherwise changes CRLF and breaks SHA256 verification.
+* -text

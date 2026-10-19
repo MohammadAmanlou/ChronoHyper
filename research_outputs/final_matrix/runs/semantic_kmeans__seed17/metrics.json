@@ -1,0 +1,117 @@
+{
+  "elapsed_seconds": 0.307,
+  "method": {
+    "expensive": false,
+    "explanation": "Frozen 2020-only word feature KMeans baseline",
+    "family": "semantic",
+    "hyper": 0,
+    "id": "semantic_kmeans",
+    "init": "kmeans",
+    "semantic": 1,
+    "temporal": 0
+  },
+  "run_id": "semantic_kmeans__seed17",
+  "seed": 17,
+  "status": "complete",
+  "years": [
+    {
+      "actual_train_edge_ids_preserved": 209,
+      "cross_year_shared_node_ari": null,
+      "elapsed_seconds": 0.066,
+      "family": "semantic",
+      "fraction_train_events_internal": 0.13875598086124402,
+      "heldout_group_bootstrap_ci95": [
+        0.5752319344189647,
+        0.8324420677361853
+      ],
+      "heldout_normalized_connectivity_lower_better": 0.7334523737859463,
+      "heldout_paper_scores": {
+        "5400": 0.4576225361939648,
+        "5404": 0.8194976076555024,
+        "5451": 0.8324420677361853
+      },
+      "independent_article_title_view_coherence_higher_better": 0.19676954468781957,
+      "method": "semantic-only KMeans",
+      "model": "semantic_kmeans",
+      "n_clusters": 12,
+      "n_heldout_edges": 82,
+      "n_heldout_papers": 3,
+      "n_nodes": 1505,
+      "n_train_edges": 209,
+      "native_training_connectivity_lambda_minus_one": 1.9186602870813396,
+      "projected_pair_events": 0,
+      "run_id": "semantic_kmeans__seed17",
+      "seed": 17,
+      "shared_node_count": 0,
+      "train_highorder_events_still_3plus_coarse": 105,
+      "year": 2020
+    },
+    {
+      "actual_train_edge_ids_preserved": 339,
+      "cross_year_shared_node_ari": 0.3796399070091992,
+      "elapsed_seconds": 0.08,
+      "family": "semantic",
+      "fraction_train_events_internal": 0.0943952802359882,
+      "heldout_group_bootstrap_ci95": [
+        0.6091086691086691,
+        0.7834341312282489
+      ],
+      "heldout_normalized_connectivity_lower_better": 0.7224508549795494,
+      "heldout_paper_scores": {
+        "5400": 0.6091086691086691,
+        "5404": 0.7129186602870813,
+        "5451": 0.7834341312282489
+      },
+      "independent_article_title_view_coherence_higher_better": 0.14629294523519418,
+      "method": "semantic-only KMeans",
+      "model": "semantic_kmeans",
+      "n_clusters": 12,
+      "n_heldout_edges": 82,
+      "n_heldout_papers": 3,
+      "n_nodes": 2164,
+      "n_train_edges": 339,
+      "native_training_connectivity_lambda_minus_one": 2.1150442477876106,
+      "projected_pair_events": 0,
+      "run_id": "semantic_kmeans__seed17",
+      "seed": 17,
+      "shared_node_count": 1505,
+      "train_highorder_events_still_3plus_coarse": 159,
+      "year": 2022
+    },
+    {
+      "actual_train_edge_ids_preserved": 645,
+      "cross_year_shared_node_ari": 0.3106935928184742,
+      "elapsed_seconds": 0.141,
+      "family": "semantic",
+      "fraction_train_events_internal": 0.08992248062015504,
+      "heldout_group_bootstrap_ci95": [
+        0.4952876820025147,
+        0.7165857355476439
+      ],
+      "heldout_normalized_connectivity_lower_better": 0.5997006703679845,
+      "heldout_paper_scores": {
+        "5382": 0.37036541889483066,
+        "5394": 0.7801463293650794,
+        "5400": 0.6284702598988312,
+        "5404": 0.7410287081339713,
+        "5451": 0.6374229995028313,
+        "5455": 0.4523193241943242
+      },
+      "independent_article_title_view_coherence_higher_better": 0.10132995559482144,
+      "method": "semantic-only KMeans",
+      "model": "semantic_kmeans",
+      "n_clusters": 12,
+      "n_heldout_edges": 159,
+      "n_heldout_papers": 6,
+      "n_nodes": 4164,
+      "n_train_edges": 645,
+      "native_training_connectivity_lambda_minus_one": 1.965891472868217,
+      "projected_pair_events": 0,
+      "run_id": "semantic_kmeans__seed17",
+      "seed": 17,
+      "shared_node_count": 2164,
+      "train_highorder_events_still_3plus_coarse": 306,
+      "year": 2024
+    }
+  ]
+}

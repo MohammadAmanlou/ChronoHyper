@@ -1,0 +1,612 @@
+{
+  "schema": "constructor-ckl-selected-v1",
+  "status": "SOURCE_BACKED_WORKING_RESULTS_NOT_YET_SCIENTIFICALLY_COMPLETE",
+  "original_source_data_sha256": "414867a07e5fdc4b38f9ad4e96bd5253d31e239012173ca439a1c5441553b4e1",
+  "locked_method": "native_temporal_20",
+  "frozen_seeds": [
+    11,
+    17,
+    29,
+    41,
+    53
+  ],
+  "frozen_development_protocol_sha256": "5406906bb2f5276bc450103a2d8d548db941710a08c4d42e7071524a0b86dcb2",
+  "confirmation_protocol_sha256": "278f848a7e48dd9c2721132a42cef9daf46d0576430b1fb87c21fa4fd4eddb3d",
+  "snapshot_output_summaries": {
+    "2020": {
+      "nodes": 1505,
+      "train_edges": 209,
+      "top_clusters": 12,
+      "clusters_per_level": [
+        12,
+        48,
+        141,
+        1505
+      ],
+      "automatic_label_audit": {
+        "automatic_membership_claims_audited": 60,
+        "unsupported_membership_claims": 3,
+        "bounded_structural_claim_error_rate": 0.05,
+        "independent_semantic_overclaim_rate": null,
+        "independent_semantic_overclaim_status": "NOT_EVALUATED_NO_BLIND_REVIEW",
+        "description": "All cluster glosses assert exactly recorded membership, counts and surface-name phrases. This is a machine-verifiable factual overclaim proxy, NOT independent literature-level entailment."
+      },
+      "confirmed_assignment_identical": true
+    },
+    "2022": {
+      "nodes": 2164,
+      "train_edges": 339,
+      "top_clusters": 12,
+      "clusters_per_level": [
+        12,
+        48,
+        144,
+        2164
+      ],
+      "automatic_label_audit": {
+        "automatic_membership_claims_audited": 60,
+        "unsupported_membership_claims": 2,
+        "bounded_structural_claim_error_rate": 0.03333333333333333,
+        "independent_semantic_overclaim_rate": null,
+        "independent_semantic_overclaim_status": "NOT_EVALUATED_NO_BLIND_REVIEW",
+        "description": "All cluster glosses assert exactly recorded membership, counts and surface-name phrases. This is a machine-verifiable factual overclaim proxy, NOT independent literature-level entailment."
+      },
+      "confirmed_assignment_identical": true
+    },
+    "2024": {
+      "nodes": 4164,
+      "train_edges": 645,
+      "top_clusters": 12,
+      "clusters_per_level": [
+        12,
+        48,
+        144,
+        4164
+      ],
+      "automatic_label_audit": {
+        "automatic_membership_claims_audited": 60,
+        "unsupported_membership_claims": 0,
+        "bounded_structural_claim_error_rate": 0.0,
+        "independent_semantic_overclaim_rate": null,
+        "independent_semantic_overclaim_status": "NOT_EVALUATED_NO_BLIND_REVIEW",
+        "description": "All cluster glosses assert exactly recorded membership, counts and surface-name phrases. This is a machine-verifiable factual overclaim proxy, NOT independent literature-level entailment."
+      },
+      "confirmed_assignment_identical": true
+    },
+    "2025": {
+      "nodes": 4995,
+      "train_edges": 736,
+      "top_clusters": 12,
+      "clusters_per_level": [
+        12,
+        48,
+        144,
+        4995
+      ],
+      "automatic_label_audit": {
+        "automatic_membership_claims_audited": 60,
+        "unsupported_membership_claims": 0,
+        "bounded_structural_claim_error_rate": 0.0,
+        "independent_semantic_overclaim_rate": null,
+        "independent_semantic_overclaim_status": "NOT_EVALUATED_NO_BLIND_REVIEW",
+        "description": "All cluster glosses assert exactly recorded membership, counts and surface-name phrases. This is a machine-verifiable factual overclaim proxy, NOT independent literature-level entailment."
+      },
+      "confirmed_assignment_identical": true
+    }
+  },
+  "source_grouped_development": {
+    "frozen_previous": {
+      "2020": {
+        "seed_count": 5,
+        "heldout_hyperedge_cut_lower_better": 0.6763813677952846,
+        "heldout_hyperedge_cut_sd_across_seeds": 0.05769967599992564,
+        "article_title_coherence_proxy_higher_better": 0.18730639119012102,
+        "temporal_ari_shared_nodes": null,
+        "runtime_seconds_per_snapshot_mean": 0.1916,
+        "n_heldout_source_papers": 3.0
+      },
+      "2022": {
+        "seed_count": 5,
+        "heldout_hyperedge_cut_lower_better": 0.6763813677952846,
+        "heldout_hyperedge_cut_sd_across_seeds": 0.05769967599992564,
+        "article_title_coherence_proxy_higher_better": 0.15935249849611446,
+        "temporal_ari_shared_nodes": 1.0,
+        "runtime_seconds_per_snapshot_mean": 0.055,
+        "n_heldout_source_papers": 3.0
+      },
+      "2024": {
+        "seed_count": 5,
+        "heldout_hyperedge_cut_lower_better": 0.6571292448867365,
+        "heldout_hyperedge_cut_sd_across_seeds": 0.05591657360134996,
+        "article_title_coherence_proxy_higher_better": 0.11045280382559394,
+        "temporal_ari_shared_nodes": 1.0,
+        "runtime_seconds_per_snapshot_mean": 0.075,
+        "n_heldout_source_papers": 6.0
+      }
+    },
+    "incidence_svd": {
+      "2020": {
+        "seed_count": 5,
+        "heldout_hyperedge_cut_lower_better": 0.6594839304645618,
+        "heldout_hyperedge_cut_sd_across_seeds": 0.03606622938157968,
+        "article_title_coherence_proxy_higher_better": 0.26559271826928554,
+        "temporal_ari_shared_nodes": null,
+        "runtime_seconds_per_snapshot_mean": 0.1296,
+        "n_heldout_source_papers": 3.0
+      },
+      "2022": {
+        "seed_count": 5,
+        "heldout_hyperedge_cut_lower_better": 0.5730678489372893,
+        "heldout_hyperedge_cut_sd_across_seeds": 0.052032518921057445,
+        "article_title_coherence_proxy_higher_better": 0.22889436820474707,
+        "temporal_ari_shared_nodes": 0.1376707505739538,
+        "runtime_seconds_per_snapshot_mean": 0.185,
+        "n_heldout_source_papers": 3.0
+      },
+      "2024": {
+        "seed_count": 5,
+        "heldout_hyperedge_cut_lower_better": 0.6662210562385368,
+        "heldout_hyperedge_cut_sd_across_seeds": 0.039262006430891366,
+        "article_title_coherence_proxy_higher_better": 0.17824181037232972,
+        "temporal_ari_shared_nodes": 0.11654929430253555,
+        "runtime_seconds_per_snapshot_mean": 0.33240000000000003,
+        "n_heldout_source_papers": 6.0
+      }
+    },
+    "native_arity_normalized": {
+      "2020": {
+        "seed_count": 5,
+        "heldout_hyperedge_cut_lower_better": 0.6718429428056402,
+        "heldout_hyperedge_cut_sd_across_seeds": 0.05486254642549609,
+        "article_title_coherence_proxy_higher_better": 0.19830044223889481,
+        "temporal_ari_shared_nodes": null,
+        "runtime_seconds_per_snapshot_mean": 0.1834,
+        "n_heldout_source_papers": 3.0
+      },
+      "2022": {
+        "seed_count": 5,
+        "heldout_hyperedge_cut_lower_better": 0.6797784828753265,
+        "heldout_hyperedge_cut_sd_across_seeds": 0.04654269534273383,
+        "article_title_coherence_proxy_higher_better": 0.1706595447534631,
+        "temporal_ari_shared_nodes": 0.8532984610909933,
+        "runtime_seconds_per_snapshot_mean": 0.2624,
+        "n_heldout_source_papers": 3.0
+      },
+      "2024": {
+        "seed_count": 5,
+        "heldout_hyperedge_cut_lower_better": 0.6649267473595998,
+        "heldout_hyperedge_cut_sd_across_seeds": 0.03367706252614996,
+        "article_title_coherence_proxy_higher_better": 0.11705416193957972,
+        "temporal_ari_shared_nodes": 0.7213578798722978,
+        "runtime_seconds_per_snapshot_mean": 0.5074,
+        "n_heldout_source_papers": 6.0
+      }
+    },
+    "native_balanced_50": {
+      "2020": {
+        "seed_count": 5,
+        "heldout_hyperedge_cut_lower_better": 0.6680437799885433,
+        "heldout_hyperedge_cut_sd_across_seeds": 0.05858386292924828,
+        "article_title_coherence_proxy_higher_better": 0.2163754410201396,
+        "temporal_ari_shared_nodes": null,
+        "runtime_seconds_per_snapshot_mean": 0.1808,
+        "n_heldout_source_papers": 3.0
+      },
+      "2022": {
+        "seed_count": 5,
+        "heldout_hyperedge_cut_lower_better": 0.6603560368373854,
+        "heldout_hyperedge_cut_sd_across_seeds": 0.0850708130631052,
+        "article_title_coherence_proxy_higher_better": 0.1686293178894555,
+        "temporal_ari_shared_nodes": 0.21297229478822297,
+        "runtime_seconds_per_snapshot_mean": 0.2776,
+        "n_heldout_source_papers": 3.0
+      },
+      "2024": {
+        "seed_count": 5,
+        "heldout_hyperedge_cut_lower_better": 0.654717746531842,
+        "heldout_hyperedge_cut_sd_across_seeds": 0.08881828588425957,
+        "article_title_coherence_proxy_higher_better": 0.12986276796841972,
+        "temporal_ari_shared_nodes": 0.2715877000759024,
+        "runtime_seconds_per_snapshot_mean": 0.516,
+        "n_heldout_source_papers": 6.0
+      }
+    },
+    "native_joint_70": {
+      "2020": {
+        "seed_count": 5,
+        "heldout_hyperedge_cut_lower_better": 0.6703619668232293,
+        "heldout_hyperedge_cut_sd_across_seeds": 0.06022007667089166,
+        "article_title_coherence_proxy_higher_better": 0.20197666744285359,
+        "temporal_ari_shared_nodes": null,
+        "runtime_seconds_per_snapshot_mean": 0.1842,
+        "n_heldout_source_papers": 3.0
+      },
+      "2022": {
+        "seed_count": 5,
+        "heldout_hyperedge_cut_lower_better": 0.6392724676089094,
+        "heldout_hyperedge_cut_sd_across_seeds": 0.061013913023805655,
+        "article_title_coherence_proxy_higher_better": 0.16927039470127875,
+        "temporal_ari_shared_nodes": 0.22341159708151023,
+        "runtime_seconds_per_snapshot_mean": 0.26780000000000004,
+        "n_heldout_source_papers": 3.0
+      },
+      "2024": {
+        "seed_count": 5,
+        "heldout_hyperedge_cut_lower_better": 0.6529478265188587,
+        "heldout_hyperedge_cut_sd_across_seeds": 0.08402709065616885,
+        "article_title_coherence_proxy_higher_better": 0.11681884668624573,
+        "temporal_ari_shared_nodes": 0.29948661154188577,
+        "runtime_seconds_per_snapshot_mean": 0.508,
+        "n_heldout_source_papers": 6.0
+      }
+    },
+    "native_paper_balanced": {
+      "2020": {
+        "seed_count": 5,
+        "heldout_hyperedge_cut_lower_better": 0.670501479391006,
+        "heldout_hyperedge_cut_sd_across_seeds": 0.05564880264756884,
+        "article_title_coherence_proxy_higher_better": 0.19722333263572855,
+        "temporal_ari_shared_nodes": null,
+        "runtime_seconds_per_snapshot_mean": 0.17300000000000001,
+        "n_heldout_source_papers": 3.0
+      },
+      "2022": {
+        "seed_count": 5,
+        "heldout_hyperedge_cut_lower_better": 0.6784370194606923,
+        "heldout_hyperedge_cut_sd_across_seeds": 0.04742354858883097,
+        "article_title_coherence_proxy_higher_better": 0.1694141094582027,
+        "temporal_ari_shared_nodes": 0.860377343732454,
+        "runtime_seconds_per_snapshot_mean": 0.25980000000000003,
+        "n_heldout_source_papers": 3.0
+      },
+      "2024": {
+        "seed_count": 5,
+        "heldout_hyperedge_cut_lower_better": 0.6554083284968412,
+        "heldout_hyperedge_cut_sd_across_seeds": 0.038376520814793334,
+        "article_title_coherence_proxy_higher_better": 0.11633834571894315,
+        "temporal_ari_shared_nodes": 0.7643006069141522,
+        "runtime_seconds_per_snapshot_mean": 0.5286,
+        "n_heldout_source_papers": 6.0
+      }
+    },
+    "native_semantic_85": {
+      "2020": {
+        "seed_count": 5,
+        "heldout_hyperedge_cut_lower_better": 0.6775224486178575,
+        "heldout_hyperedge_cut_sd_across_seeds": 0.05864659810056577,
+        "article_title_coherence_proxy_higher_better": 0.18708789062651696,
+        "temporal_ari_shared_nodes": null,
+        "runtime_seconds_per_snapshot_mean": 0.184,
+        "n_heldout_source_papers": 3.0
+      },
+      "2022": {
+        "seed_count": 5,
+        "heldout_hyperedge_cut_lower_better": 0.6368305054581955,
+        "heldout_hyperedge_cut_sd_across_seeds": 0.06476529183067359,
+        "article_title_coherence_proxy_higher_better": 0.15916038334158558,
+        "temporal_ari_shared_nodes": 0.23194036674212,
+        "runtime_seconds_per_snapshot_mean": 0.279,
+        "n_heldout_source_papers": 3.0
+      },
+      "2024": {
+        "seed_count": 5,
+        "heldout_hyperedge_cut_lower_better": 0.6475872960639887,
+        "heldout_hyperedge_cut_sd_across_seeds": 0.07257344955076794,
+        "article_title_coherence_proxy_higher_better": 0.1159773683141,
+        "temporal_ari_shared_nodes": 0.31203990775359236,
+        "runtime_seconds_per_snapshot_mean": 0.5214,
+        "n_heldout_source_papers": 6.0
+      }
+    },
+    "native_structure": {
+      "2020": {
+        "seed_count": 5,
+        "heldout_hyperedge_cut_lower_better": 0.6549403434919935,
+        "heldout_hyperedge_cut_sd_across_seeds": 0.06790363356573806,
+        "article_title_coherence_proxy_higher_better": 0.20497026604543234,
+        "temporal_ari_shared_nodes": null,
+        "runtime_seconds_per_snapshot_mean": 0.1952,
+        "n_heldout_source_papers": 3.0
+      },
+      "2022": {
+        "seed_count": 5,
+        "heldout_hyperedge_cut_lower_better": 0.6523602889219818,
+        "heldout_hyperedge_cut_sd_across_seeds": 0.09776477904407421,
+        "article_title_coherence_proxy_higher_better": 0.1743311012704556,
+        "temporal_ari_shared_nodes": 0.21741950764823129,
+        "runtime_seconds_per_snapshot_mean": 0.2984,
+        "n_heldout_source_papers": 3.0
+      },
+      "2024": {
+        "seed_count": 5,
+        "heldout_hyperedge_cut_lower_better": 0.6531658412701699,
+        "heldout_hyperedge_cut_sd_across_seeds": 0.07607998368493626,
+        "article_title_coherence_proxy_higher_better": 0.12818898423043942,
+        "temporal_ari_shared_nodes": 0.265307421310318,
+        "runtime_seconds_per_snapshot_mean": 0.5346,
+        "n_heldout_source_papers": 6.0
+      }
+    },
+    "native_structure_75": {
+      "2020": {
+        "seed_count": 5,
+        "heldout_hyperedge_cut_lower_better": 0.6633919139206084,
+        "heldout_hyperedge_cut_sd_across_seeds": 0.05887933851901042,
+        "article_title_coherence_proxy_higher_better": 0.21234276782873757,
+        "temporal_ari_shared_nodes": null,
+        "runtime_seconds_per_snapshot_mean": 0.1802,
+        "n_heldout_source_papers": 3.0
+      },
+      "2022": {
+        "seed_count": 5,
+        "heldout_hyperedge_cut_lower_better": 0.65368400896091,
+        "heldout_hyperedge_cut_sd_across_seeds": 0.09069725526393123,
+        "article_title_coherence_proxy_higher_better": 0.17286367717539866,
+        "temporal_ari_shared_nodes": 0.20594315411636438,
+        "runtime_seconds_per_snapshot_mean": 0.2664,
+        "n_heldout_source_papers": 3.0
+      },
+      "2024": {
+        "seed_count": 5,
+        "heldout_hyperedge_cut_lower_better": 0.6443228421904893,
+        "heldout_hyperedge_cut_sd_across_seeds": 0.07972011234081411,
+        "article_title_coherence_proxy_higher_better": 0.12799368079024614,
+        "temporal_ari_shared_nodes": 0.26090534197993953,
+        "runtime_seconds_per_snapshot_mean": 0.518,
+        "n_heldout_source_papers": 6.0
+      }
+    },
+    "native_temporal_03": {
+      "2020": {
+        "seed_count": 5,
+        "heldout_hyperedge_cut_lower_better": 0.6703619668232293,
+        "heldout_hyperedge_cut_sd_across_seeds": 0.06022007667089166,
+        "article_title_coherence_proxy_higher_better": 0.20197666744285359,
+        "temporal_ari_shared_nodes": null,
+        "runtime_seconds_per_snapshot_mean": 0.1792,
+        "n_heldout_source_papers": 3.0
+      },
+      "2022": {
+        "seed_count": 5,
+        "heldout_hyperedge_cut_lower_better": 0.6795537831369969,
+        "heldout_hyperedge_cut_sd_across_seeds": 0.06242023101532474,
+        "article_title_coherence_proxy_higher_better": 0.16251407278003763,
+        "temporal_ari_shared_nodes": 0.6899582380706095,
+        "runtime_seconds_per_snapshot_mean": 0.2656,
+        "n_heldout_source_papers": 3.0
+      },
+      "2024": {
+        "seed_count": 5,
+        "heldout_hyperedge_cut_lower_better": 0.6817699944442452,
+        "heldout_hyperedge_cut_sd_across_seeds": 0.03031396529837571,
+        "article_title_coherence_proxy_higher_better": 0.11649665302096399,
+        "temporal_ari_shared_nodes": 0.685957521055341,
+        "runtime_seconds_per_snapshot_mean": 0.5146000000000001,
+        "n_heldout_source_papers": 6.0
+      }
+    },
+    "native_temporal_08": {
+      "2020": {
+        "seed_count": 5,
+        "heldout_hyperedge_cut_lower_better": 0.6703619668232293,
+        "heldout_hyperedge_cut_sd_across_seeds": 0.06022007667089166,
+        "article_title_coherence_proxy_higher_better": 0.20197666744285359,
+        "temporal_ari_shared_nodes": null,
+        "runtime_seconds_per_snapshot_mean": 0.1902,
+        "n_heldout_source_papers": 3.0
+      },
+      "2022": {
+        "seed_count": 5,
+        "heldout_hyperedge_cut_lower_better": 0.6799638040104324,
+        "heldout_hyperedge_cut_sd_across_seeds": 0.0510968024589923,
+        "article_title_coherence_proxy_higher_better": 0.16629653565153985,
+        "temporal_ari_shared_nodes": 0.8434230603526433,
+        "runtime_seconds_per_snapshot_mean": 0.271,
+        "n_heldout_source_papers": 3.0
+      },
+      "2024": {
+        "seed_count": 5,
+        "heldout_hyperedge_cut_lower_better": 0.6689972952706027,
+        "heldout_hyperedge_cut_sd_across_seeds": 0.024902437291586765,
+        "article_title_coherence_proxy_higher_better": 0.11815303587178878,
+        "temporal_ari_shared_nodes": 0.8309479601223624,
+        "runtime_seconds_per_snapshot_mean": 0.5282,
+        "n_heldout_source_papers": 6.0
+      }
+    },
+    "native_temporal_20": {
+      "2020": {
+        "seed_count": 5,
+        "heldout_hyperedge_cut_lower_better": 0.6703619668232293,
+        "heldout_hyperedge_cut_sd_across_seeds": 0.06022007667089166,
+        "article_title_coherence_proxy_higher_better": 0.20197666744285359,
+        "temporal_ari_shared_nodes": null,
+        "runtime_seconds_per_snapshot_mean": 0.178,
+        "n_heldout_source_papers": 3.0
+      },
+      "2022": {
+        "seed_count": 5,
+        "heldout_hyperedge_cut_lower_better": 0.6768580073680505,
+        "heldout_hyperedge_cut_sd_across_seeds": 0.05408855473754761,
+        "article_title_coherence_proxy_higher_better": 0.15978355590370721,
+        "temporal_ari_shared_nodes": 0.93960273290712,
+        "runtime_seconds_per_snapshot_mean": 0.2726,
+        "n_heldout_source_papers": 3.0
+      },
+      "2024": {
+        "seed_count": 5,
+        "heldout_hyperedge_cut_lower_better": 0.6622658275768709,
+        "heldout_hyperedge_cut_sd_across_seeds": 0.03281662543760169,
+        "article_title_coherence_proxy_higher_better": 0.1229422894543772,
+        "temporal_ari_shared_nodes": 0.8930162239756508,
+        "runtime_seconds_per_snapshot_mean": 0.5256,
+        "n_heldout_source_papers": 6.0
+      }
+    },
+    "semantic_kmeans": {
+      "2020": {
+        "seed_count": 5,
+        "heldout_hyperedge_cut_lower_better": 0.7042309139927504,
+        "heldout_hyperedge_cut_sd_across_seeds": 0.041376762424757595,
+        "article_title_coherence_proxy_higher_better": 0.18467649464532723,
+        "temporal_ari_shared_nodes": null,
+        "runtime_seconds_per_snapshot_mean": 0.0776,
+        "n_heldout_source_papers": 3.0
+      },
+      "2022": {
+        "seed_count": 5,
+        "heldout_hyperedge_cut_lower_better": 0.6038594915366795,
+        "heldout_hyperedge_cut_sd_across_seeds": 0.06856790002461823,
+        "article_title_coherence_proxy_higher_better": 0.1524406582138876,
+        "temporal_ari_shared_nodes": 0.20129114910470927,
+        "runtime_seconds_per_snapshot_mean": 0.0836,
+        "n_heldout_source_papers": 3.0
+      },
+      "2024": {
+        "seed_count": 5,
+        "heldout_hyperedge_cut_lower_better": 0.5705032153791865,
+        "heldout_hyperedge_cut_sd_across_seeds": 0.1278037967678026,
+        "article_title_coherence_proxy_higher_better": 0.11467498401217609,
+        "temporal_ari_shared_nodes": 0.37179951014219276,
+        "runtime_seconds_per_snapshot_mean": 0.1336,
+        "n_heldout_source_papers": 6.0
+      }
+    }
+  },
+  "source_grouped_confirmation_selected_only": {
+    "native_temporal_20": {
+      "2020": {
+        "seed_count": 5,
+        "heldout_hyperedge_cut_lower_better": 0.7151348291709737,
+        "heldout_hyperedge_cut_sd_across_seeds": 0.009253517168685776,
+        "article_title_coherence_proxy_higher_better": 0.20197666744285359,
+        "temporal_ari_shared_nodes": null,
+        "runtime_seconds_per_snapshot_mean": 0.2076,
+        "n_heldout_source_papers": 4.0
+      },
+      "2022": {
+        "seed_count": 5,
+        "heldout_hyperedge_cut_lower_better": 0.7051891121152205,
+        "heldout_hyperedge_cut_sd_across_seeds": 0.012215113433039654,
+        "article_title_coherence_proxy_higher_better": 0.15978355590370721,
+        "temporal_ari_shared_nodes": 0.93960273290712,
+        "runtime_seconds_per_snapshot_mean": 0.28500000000000003,
+        "n_heldout_source_papers": 5.0
+      },
+      "2024": {
+        "seed_count": 5,
+        "heldout_hyperedge_cut_lower_better": 0.7172031555127298,
+        "heldout_hyperedge_cut_sd_across_seeds": 0.012919175655216988,
+        "article_title_coherence_proxy_higher_better": 0.1229422894543772,
+        "temporal_ari_shared_nodes": 0.8930162239756508,
+        "runtime_seconds_per_snapshot_mean": 0.5954,
+        "n_heldout_source_papers": 7.0
+      }
+    }
+  },
+  "pairwise_projection_development": {
+    "clique_pairwise": {
+      "2020": {
+        "seed_count": 5,
+        "heldout_hyperedge_cut_lower_better": 0.6793181748906283,
+        "heldout_hyperedge_cut_sd_across_seeds": 0.05545695478555854,
+        "article_title_coherence_proxy_higher_better": 0.1957896658142453,
+        "temporal_ari_shared_nodes": null,
+        "runtime_seconds_per_snapshot_mean": 0.2082,
+        "n_heldout_source_papers": 3.0
+      },
+      "2022": {
+        "seed_count": 5,
+        "heldout_hyperedge_cut_lower_better": 0.6354611569683306,
+        "heldout_hyperedge_cut_sd_across_seeds": 0.05245953143405338,
+        "article_title_coherence_proxy_higher_better": 0.16052326926232144,
+        "temporal_ari_shared_nodes": 0.22864382281271153,
+        "runtime_seconds_per_snapshot_mean": 0.3716,
+        "n_heldout_source_papers": 3.0
+      },
+      "2024": {
+        "seed_count": 5,
+        "heldout_hyperedge_cut_lower_better": 0.6219345832878019,
+        "heldout_hyperedge_cut_sd_across_seeds": 0.08212460909516932,
+        "article_title_coherence_proxy_higher_better": 0.11670654881724087,
+        "temporal_ari_shared_nodes": 0.31367003603291066,
+        "runtime_seconds_per_snapshot_mean": 0.8882,
+        "n_heldout_source_papers": 6.0
+      }
+    }
+  },
+  "heldout_cut_2024_selected_dev_vs_confirmation": {
+    "development": 0.6622658275768709,
+    "confirmation": 0.7172031555127298,
+    "absolute_higher_is_worse": 0.054937327935858926,
+    "relative_higher_is_worse": 0.08295359000609497,
+    "important": "Only heldout-cut eval paper set changes; fixed learned assignments yield identical title coherence and temporal ARI. Do not count those as new independent confirmation signals."
+  },
+  "stress_selected_2024_seed17": {
+    "n_edge_deletion_trials": 5,
+    "deletion_ari_mean": 0.9665552540134255,
+    "deletion_ari_values": [
+      0.9707010835535838,
+      0.9677161319542659,
+      0.9703771706397543,
+      0.9631732099906272,
+      0.960808673928896
+    ],
+    "null_count": 99,
+    "randomization_p_lower_better": 0.69,
+    "null_hypothesis_note": "99 degree-and-arity preserving shuffles; no significant superiority at alpha=.05 (observed p>=.05).",
+    "source": "research_outputs/stress_temporal20_extended/result.json"
+  },
+  "label_audit": {
+    "n_requested": 48,
+    "title_ratings": {
+      "accurate": 8,
+      "vague": 28,
+      "wrong": 12
+    },
+    "n_overclaim_determinately_evaluable": 8,
+    "n_overclaim": 0,
+    "n_overclaim_unclear": 40,
+    "conditional_overclaim_rate_evaluable_only": 0.0,
+    "wilson95_evaluable_only": [
+      0.0,
+      0.3244156195108769
+    ],
+    "independent_blind_overclaim_rate": null,
+    "honesty": "40/48 gloss judgments unclear; 8 not overclaims among only 8 resolvable, not 0/48 and not independent blind review; 12/48 wrong topic titles and 28/48 vague.",
+    "source": "outputs_selected/label_review_results.json"
+  },
+  "retrieval_exploratory_2025": {
+    "evaluated_type_A": 14,
+    "type_B_not_scored": 4,
+    "flat_hit_at_5": 0.07142857142857142,
+    "hier_hit_at_5": 0.14285714285714285,
+    "flat_recall_at_5": 0.03571428571428571,
+    "hier_recall_at_5": 0.04591836734693877,
+    "mean_flat_nodes_scored": 2682.0,
+    "mean_hier_nodes_scored": 1088.142857142857,
+    "mean_available_gold_per_question": 3.2142857142857144,
+    "mean_absent_gold_per_question": 1.2857142857142858,
+    "comparison": "same question/candidates/TF-IDF ranker; flat scores all, hierarchy scores top 4 concept centroids then scores only their descendant candidates. Both inspect top 5 result items. Centroid computations excluded from nodes_scored count but reported separately.",
+    "caveat": "14 type-A lists scored using exact case/spacing/punctuation-normalized surface matches; aliases may undercount recall; 4 type-B reasoning/synthesis questions transparently not scored. 2025 cutoff conservatively avoids month-unknown 2026 data."
+  },
+  "source_map": {
+    "experiment_registry": "research_outputs/final_matrix/experiment_registry.csv",
+    "development_per_method": "research_outputs/final_matrix/method_summary.csv",
+    "confirmation_per_seed": "research_outputs/confirmation/all_runs.csv",
+    "confirmation_protocol": "research_outputs/confirmation/protocol.json",
+    "source_group_split": "research_outputs/confirmation/paper_split.json",
+    "pairwise_comparison": "research_outputs/projection_5seed/method_summary.csv",
+    "selected_export": "outputs_selected/selected_export_manifest.json",
+    "label_worksheet": "outputs_selected/label_review_sheet.csv",
+    "label_result": "outputs_selected/label_review_results.json"
+  },
+  "critical_notes": [
+    "Title-source coherence is a related second view; it is NOT a blind external semantic judgement.",
+    "The number of papers is small; bootstrap intervals and 5 random seeds do not prove across-corpus generalization.",
+    "The training objective is a bounded local heuristic surrogate, not a proven globally optimized objective.",
+    "Selected 2025 question evaluation uses already-inspected questions: exploratory only; 4 multi-claim Type B questions unscored.",
+    "The displayed score count excludes centroid computations and is NOT a verified latency speedup.",
+    "Some source audit and gloss semantic validity remain unresolved; see current report and LABEL_AUDIT_STATUS.md."
+  ]
+}

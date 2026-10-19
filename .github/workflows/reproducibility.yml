@@ -1,0 +1,22 @@
+name: Unit and hierarchy integrity
+on:
+  push:
+  pull_request:
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: python -m pip install -r requirements.txt
+      - name: Original contract and artifact tests
+        run: python -m unittest discover -s tests -v
+      - name: Research-lab tests
+        run: python -m unittest research_lab.tests_lab -v
+      - name: Locked hierarchy structural verification
+        run: python verify_selected_outputs.py --out outputs_selected
+      - name: Regenerate selected measured metrics without changing selection
+        run: python scripts/generate_selected_metrics.py

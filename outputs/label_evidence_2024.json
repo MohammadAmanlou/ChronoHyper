@@ -1,0 +1,4510 @@
+{
+  "L0_concept_0011": {
+    "label": "Network / Networks",
+    "gloss": "Observed cluster of 392 exported entities; member labels document \"network\", \"networks\".",
+    "evidence": {
+      "source_node_ids": [
+        "arti_00002",
+        "arti_00004",
+        "arti_00005",
+        "arti_00006",
+        "arti_00012",
+        "arti_00015",
+        "arti_00020",
+        "arti_00023",
+        "arti_00036",
+        "arti_00043",
+        "comp_00014",
+        "comp_00020",
+        "comp_00075",
+        "comp_00109",
+        "comp_00117",
+        "comp_00135",
+        "comp_00226",
+        "comp_00238",
+        "comp_00242",
+        "comp_00256"
+      ],
+      "member_count": 392,
+      "type_counts": {
+        "article": 11,
+        "author": 5,
+        "cited_work": 73,
+        "claim": 56,
+        "component": 83,
+        "dataset": 15,
+        "future_topic": 8,
+        "method": 86,
+        "metric": 6,
+        "problem": 10,
+        "task": 3,
+        "technique": 36
+      },
+      "evidence_phrases": [
+        "network",
+        "networks"
+      ],
+      "support_node_ids_per_phrase": {
+        "network": [
+          "arti_00002",
+          "arti_00005",
+          "arti_00015",
+          "arti_00036",
+          "arti_00043",
+          "comp_00014",
+          "comp_00020",
+          "comp_00075",
+          "comp_00109",
+          "comp_00117",
+          "comp_00135",
+          "comp_00226",
+          "comp_00238",
+          "comp_00242",
+          "comp_00256",
+          "comp_00257",
+          "comp_00282",
+          "comp_00293",
+          "comp_00520",
+          "comp_00529"
+        ],
+        "networks": [
+          "arti_00004",
+          "arti_00006",
+          "arti_00012",
+          "arti_00020",
+          "arti_00023",
+          "comp_00606",
+          "futu_00157",
+          "futu_00165",
+          "meth_00001",
+          "meth_00021",
+          "meth_00023",
+          "meth_00026",
+          "meth_00042",
+          "meth_00043",
+          "meth_00046",
+          "meth_00111",
+          "meth_00119",
+          "meth_00120",
+          "meth_00148",
+          "meth_00172"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 0
+  },
+  "L0_concept_0008": {
+    "label": "Structure / Simulation",
+    "gloss": "Observed cluster of 836 exported entities; member labels document \"structure\", \"simulation\".",
+    "evidence": {
+      "source_node_ids": [
+        "comp_00119",
+        "comp_00159",
+        "comp_00214",
+        "comp_00449",
+        "comp_00569",
+        "comp_00635",
+        "futu_00053",
+        "futu_00054",
+        "meth_00084",
+        "meth_00154",
+        "meth_00255",
+        "meth_00350",
+        "meth_00374",
+        "prob_00035",
+        "prob_00075",
+        "prob_00107",
+        "prob_00181",
+        "prob_00183",
+        "prob_00217",
+        "prob_00252"
+      ],
+      "member_count": 836,
+      "type_counts": {
+        "article": 5,
+        "author": 85,
+        "cited_work": 71,
+        "claim": 47,
+        "component": 118,
+        "dataset": 49,
+        "future_topic": 34,
+        "method": 71,
+        "metric": 7,
+        "problem": 97,
+        "task": 143,
+        "technique": 109
+      },
+      "evidence_phrases": [
+        "structure",
+        "simulation"
+      ],
+      "support_node_ids_per_phrase": {
+        "structure": [
+          "comp_00159",
+          "comp_00449",
+          "comp_00569",
+          "futu_00053",
+          "futu_00054",
+          "meth_00350",
+          "meth_00374",
+          "prob_00035",
+          "prob_00075",
+          "prob_00181",
+          "prob_00183",
+          "prob_00217",
+          "prob_00252",
+          "prob_00376",
+          "prob_00377",
+          "prob_00396",
+          "prob_00483",
+          "prob_00615",
+          "task_00045",
+          "task_00046"
+        ],
+        "simulation": [
+          "comp_00119",
+          "comp_00214",
+          "comp_00635",
+          "meth_00084",
+          "meth_00154",
+          "meth_00255",
+          "prob_00107",
+          "prob_00411",
+          "prob_00491",
+          "prob_00605",
+          "task_00035",
+          "task_00036",
+          "task_00044",
+          "task_00072",
+          "task_00087",
+          "task_00091",
+          "task_00158",
+          "task_00175",
+          "task_00176",
+          "task_00402"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 0
+  },
+  "L0_concept_0010": {
+    "label": "Feature / Rate",
+    "gloss": "Observed cluster of 308 exported entities; member labels document \"feature\", \"rate\".",
+    "evidence": {
+      "source_node_ids": [
+        "comp_00076",
+        "comp_00134",
+        "comp_00263",
+        "comp_00264",
+        "comp_00272",
+        "comp_00445",
+        "comp_00613",
+        "comp_00855",
+        "metr_00057",
+        "prob_00282",
+        "prob_00358",
+        "prob_00623",
+        "prob_00629",
+        "prob_00630",
+        "task_00096",
+        "task_00722",
+        "tech_00013",
+        "tech_00039",
+        "tech_00056",
+        "tech_00058"
+      ],
+      "member_count": 308,
+      "type_counts": {
+        "article": 7,
+        "author": 5,
+        "cited_work": 18,
+        "claim": 21,
+        "component": 67,
+        "future_topic": 14,
+        "method": 24,
+        "metric": 3,
+        "problem": 10,
+        "task": 27,
+        "technique": 112
+      },
+      "evidence_phrases": [
+        "feature",
+        "rate"
+      ],
+      "support_node_ids_per_phrase": {
+        "feature": [
+          "comp_00076",
+          "comp_00134",
+          "comp_00263",
+          "comp_00264",
+          "comp_00445",
+          "comp_00613",
+          "comp_00855",
+          "prob_00282",
+          "prob_00623",
+          "prob_00629",
+          "prob_00630",
+          "task_00722",
+          "tech_00104",
+          "tech_00172",
+          "tech_00183",
+          "tech_00217",
+          "tech_00231",
+          "tech_00317",
+          "tech_00357",
+          "tech_00457"
+        ],
+        "rate": [
+          "comp_00272",
+          "metr_00057",
+          "prob_00358",
+          "task_00096",
+          "tech_00013",
+          "tech_00039",
+          "tech_00056",
+          "tech_00058",
+          "tech_00059",
+          "tech_00288",
+          "tech_00470",
+          "tech_00544",
+          "tech_00598",
+          "tech_00671"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 0
+  },
+  "L0_concept_0007": {
+    "label": "Potential / Interatomic",
+    "gloss": "Observed cluster of 240 exported entities; member labels document \"potential\", \"interatomic\".",
+    "evidence": {
+      "source_node_ids": [
+        "arti_00014",
+        "arti_00028",
+        "arti_00045",
+        "comp_00137",
+        "comp_00210",
+        "comp_00217",
+        "comp_00523",
+        "comp_00524",
+        "comp_00533",
+        "comp_00562",
+        "comp_00595",
+        "futu_00065",
+        "futu_00143",
+        "meth_00178",
+        "meth_00183",
+        "meth_00189",
+        "meth_00196",
+        "meth_00209",
+        "meth_00210",
+        "meth_00332"
+      ],
+      "member_count": 240,
+      "type_counts": {
+        "article": 3,
+        "author": 33,
+        "cited_work": 25,
+        "claim": 33,
+        "component": 22,
+        "dataset": 4,
+        "future_topic": 6,
+        "method": 35,
+        "metric": 1,
+        "problem": 32,
+        "task": 17,
+        "technique": 29
+      },
+      "evidence_phrases": [
+        "potential",
+        "interatomic"
+      ],
+      "support_node_ids_per_phrase": {
+        "potential": [
+          "arti_00014",
+          "arti_00028",
+          "arti_00045",
+          "comp_00137",
+          "comp_00210",
+          "comp_00217",
+          "comp_00523",
+          "comp_00524",
+          "comp_00533",
+          "comp_00562",
+          "comp_00595",
+          "futu_00143",
+          "meth_00178",
+          "meth_00183",
+          "meth_00189",
+          "meth_00196",
+          "meth_00209",
+          "meth_00210",
+          "meth_00332",
+          "meth_00333"
+        ],
+        "interatomic": [
+          "arti_00014",
+          "arti_00028",
+          "futu_00065",
+          "futu_00143",
+          "meth_00416",
+          "prob_00090",
+          "prob_00111",
+          "prob_00119",
+          "prob_00122",
+          "prob_00162",
+          "prob_00247",
+          "prob_00346",
+          "prob_00487",
+          "prob_00492",
+          "prob_00606",
+          "task_00052",
+          "task_00116",
+          "task_00162",
+          "task_00165",
+          "task_00504"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 0
+  },
+  "L0_concept_0006": {
+    "label": "Expansion / Linear",
+    "gloss": "Observed cluster of 469 exported entities; member labels document \"expansion\", \"linear\".",
+    "evidence": {
+      "source_node_ids": [
+        "arti_00022",
+        "comp_00038",
+        "comp_00050",
+        "comp_00053",
+        "comp_00114",
+        "comp_00132",
+        "comp_00155",
+        "comp_00156",
+        "comp_00186",
+        "comp_00195",
+        "comp_00202",
+        "comp_00208",
+        "comp_00224",
+        "comp_00250",
+        "comp_00267",
+        "comp_00285",
+        "comp_00286",
+        "comp_00419",
+        "comp_00424",
+        "comp_00426"
+      ],
+      "member_count": 469,
+      "type_counts": {
+        "article": 2,
+        "author": 21,
+        "cited_work": 47,
+        "claim": 30,
+        "component": 114,
+        "dataset": 17,
+        "method": 40,
+        "metric": 4,
+        "problem": 31,
+        "task": 21,
+        "technique": 142
+      },
+      "evidence_phrases": [
+        "expansion",
+        "linear"
+      ],
+      "support_node_ids_per_phrase": {
+        "expansion": [
+          "arti_00022",
+          "comp_00050",
+          "comp_00053",
+          "comp_00114",
+          "comp_00132",
+          "comp_00156",
+          "comp_00186",
+          "comp_00195",
+          "comp_00202",
+          "comp_00224",
+          "comp_00250",
+          "comp_00285",
+          "comp_00286",
+          "meth_00077",
+          "meth_00145",
+          "meth_00229",
+          "task_00144",
+          "task_00146",
+          "task_00272",
+          "tech_00071"
+        ],
+        "linear": [
+          "comp_00038",
+          "comp_00155",
+          "comp_00208",
+          "comp_00267",
+          "comp_00419",
+          "comp_00424",
+          "comp_00426",
+          "comp_00706",
+          "meth_00072",
+          "meth_00224",
+          "meth_00269",
+          "meth_00288",
+          "prob_00603",
+          "tech_00083",
+          "tech_00114",
+          "tech_00115",
+          "tech_00127",
+          "tech_00192",
+          "tech_00209",
+          "tech_00276"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 0
+  },
+  "L0_concept_0001": {
+    "label": "Materials / Discovery",
+    "gloss": "Observed cluster of 280 exported entities; member labels document \"materials\", \"discovery\".",
+    "evidence": {
+      "source_node_ids": [
+        "arti_00024",
+        "arti_00026",
+        "arti_00027",
+        "arti_00032",
+        "arti_00046",
+        "arti_00049",
+        "arti_00052",
+        "comp_00138",
+        "comp_00142",
+        "comp_00199",
+        "comp_00304",
+        "comp_00305",
+        "comp_00826",
+        "comp_00833",
+        "data_00042",
+        "data_00043",
+        "data_00044",
+        "data_00061",
+        "data_00125",
+        "data_00219"
+      ],
+      "member_count": 280,
+      "type_counts": {
+        "article": 7,
+        "author": 2,
+        "cited_work": 5,
+        "claim": 93,
+        "component": 14,
+        "dataset": 8,
+        "future_topic": 28,
+        "method": 10,
+        "metric": 3,
+        "problem": 37,
+        "task": 63,
+        "technique": 10
+      },
+      "evidence_phrases": [
+        "materials",
+        "discovery"
+      ],
+      "support_node_ids_per_phrase": {
+        "materials": [
+          "arti_00024",
+          "arti_00026",
+          "arti_00027",
+          "arti_00032",
+          "arti_00046",
+          "arti_00049",
+          "arti_00052",
+          "comp_00199",
+          "comp_00304",
+          "comp_00305",
+          "comp_00826",
+          "comp_00833",
+          "data_00042",
+          "data_00043",
+          "data_00061",
+          "data_00125",
+          "data_00219",
+          "data_00259",
+          "futu_00004",
+          "futu_00005"
+        ],
+        "discovery": [
+          "arti_00026",
+          "arti_00027",
+          "arti_00052",
+          "comp_00138",
+          "comp_00142",
+          "data_00044",
+          "futu_00040",
+          "futu_00142",
+          "futu_00144",
+          "meth_00159",
+          "meth_00282",
+          "metr_00052",
+          "prob_00080",
+          "prob_00085",
+          "prob_00087",
+          "prob_00094",
+          "prob_00099",
+          "prob_00113",
+          "prob_00171",
+          "prob_00204"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 0
+  },
+  "L0_concept_0003": {
+    "label": "Training / Set",
+    "gloss": "Observed cluster of 239 exported entities; member labels document \"training\", \"set\".",
+    "evidence": {
+      "source_node_ids": [
+        "arti_00033",
+        "comp_00061",
+        "comp_00068",
+        "comp_00072",
+        "comp_00080",
+        "comp_00143",
+        "comp_00144",
+        "comp_00146",
+        "comp_00219",
+        "comp_00295",
+        "comp_00356",
+        "comp_00625",
+        "comp_00627",
+        "comp_00632",
+        "comp_00633",
+        "comp_00636",
+        "comp_00801",
+        "comp_00823",
+        "data_00016",
+        "data_00134"
+      ],
+      "member_count": 239,
+      "type_counts": {
+        "article": 1,
+        "author": 24,
+        "cited_work": 30,
+        "claim": 42,
+        "component": 33,
+        "dataset": 16,
+        "future_topic": 1,
+        "method": 17,
+        "metric": 3,
+        "problem": 22,
+        "task": 3,
+        "technique": 47
+      },
+      "evidence_phrases": [
+        "training",
+        "set"
+      ],
+      "support_node_ids_per_phrase": {
+        "training": [
+          "arti_00033",
+          "comp_00061",
+          "comp_00068",
+          "comp_00072",
+          "comp_00080",
+          "comp_00143",
+          "comp_00295",
+          "comp_00625",
+          "comp_00627",
+          "comp_00632",
+          "comp_00633",
+          "comp_00636",
+          "comp_00823",
+          "futu_00107",
+          "meth_00383",
+          "prob_00041",
+          "prob_00124",
+          "prob_00132",
+          "prob_00242",
+          "prob_00356"
+        ],
+        "set": [
+          "comp_00144",
+          "comp_00146",
+          "comp_00219",
+          "comp_00356",
+          "comp_00627",
+          "comp_00633",
+          "comp_00801",
+          "data_00016",
+          "data_00134",
+          "data_00139",
+          "data_00209",
+          "data_00214",
+          "prob_00416",
+          "tech_00703"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 0
+  },
+  "L0_concept_0005": {
+    "label": "Property / Phonon",
+    "gloss": "Observed cluster of 245 exported entities; member labels document \"property\", \"phonon\".",
+    "evidence": {
+      "source_node_ids": [
+        "arti_00042",
+        "comp_00837",
+        "comp_00843",
+        "comp_00854",
+        "metr_00060",
+        "prob_00117",
+        "prob_00175",
+        "prob_00176",
+        "prob_00178",
+        "prob_00195",
+        "prob_00199",
+        "prob_00259",
+        "prob_00269",
+        "prob_00271",
+        "prob_00304",
+        "prob_00307",
+        "prob_00308",
+        "prob_00309",
+        "prob_00311",
+        "prob_00315"
+      ],
+      "member_count": 245,
+      "type_counts": {
+        "article": 2,
+        "author": 6,
+        "cited_work": 11,
+        "claim": 18,
+        "component": 8,
+        "dataset": 1,
+        "future_topic": 2,
+        "method": 5,
+        "metric": 3,
+        "problem": 53,
+        "task": 129,
+        "technique": 7
+      },
+      "evidence_phrases": [
+        "property",
+        "phonon"
+      ],
+      "support_node_ids_per_phrase": {
+        "property": [
+          "arti_00042",
+          "comp_00837",
+          "comp_00843",
+          "comp_00854",
+          "prob_00175",
+          "prob_00176",
+          "prob_00178",
+          "prob_00195",
+          "prob_00199",
+          "prob_00259",
+          "prob_00269",
+          "prob_00271",
+          "prob_00304",
+          "prob_00330",
+          "prob_00348",
+          "prob_00410",
+          "prob_00632",
+          "prob_00633",
+          "task_00007",
+          "task_00016"
+        ],
+        "phonon": [
+          "metr_00060",
+          "prob_00117",
+          "prob_00307",
+          "prob_00308",
+          "prob_00309",
+          "prob_00311",
+          "prob_00315",
+          "prob_00317",
+          "prob_00318",
+          "prob_00319",
+          "prob_00321",
+          "task_00064",
+          "task_00236",
+          "task_00279",
+          "task_00347",
+          "task_00377",
+          "task_00378",
+          "task_00379",
+          "task_00383",
+          "task_00384"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 0
+  },
+  "L0_concept_0000": {
+    "label": "Modeling / Regression",
+    "gloss": "Observed cluster of 379 exported entities; member labels document \"modeling\", \"regression\".",
+    "evidence": {
+      "source_node_ids": [
+        "comp_00294",
+        "comp_00829",
+        "comp_00851",
+        "futu_00023",
+        "meth_00020",
+        "meth_00041",
+        "meth_00061",
+        "meth_00064",
+        "meth_00068",
+        "meth_00352",
+        "meth_00353",
+        "prob_00013",
+        "prob_00170",
+        "prob_00324",
+        "prob_00329",
+        "prob_00342",
+        "prob_00596",
+        "prob_00609",
+        "task_00026",
+        "task_00037"
+      ],
+      "member_count": 379,
+      "type_counts": {
+        "author": 25,
+        "cited_work": 50,
+        "claim": 18,
+        "component": 44,
+        "dataset": 22,
+        "future_topic": 18,
+        "method": 33,
+        "metric": 10,
+        "problem": 37,
+        "task": 36,
+        "technique": 86
+      },
+      "evidence_phrases": [
+        "modeling",
+        "regression"
+      ],
+      "support_node_ids_per_phrase": {
+        "modeling": [
+          "futu_00023",
+          "meth_00352",
+          "meth_00353",
+          "prob_00013",
+          "prob_00170",
+          "prob_00324",
+          "prob_00329",
+          "prob_00342",
+          "prob_00596",
+          "prob_00609",
+          "task_00026",
+          "task_00048",
+          "task_00121",
+          "task_00406",
+          "task_00434",
+          "task_00462",
+          "task_00465",
+          "task_00524",
+          "task_00525",
+          "task_00526"
+        ],
+        "regression": [
+          "comp_00294",
+          "comp_00829",
+          "comp_00851",
+          "meth_00020",
+          "meth_00041",
+          "meth_00061",
+          "meth_00064",
+          "meth_00068",
+          "task_00037",
+          "task_00186",
+          "task_00339",
+          "task_00350",
+          "task_00351",
+          "tech_00048",
+          "tech_00129",
+          "tech_00191",
+          "tech_00262",
+          "tech_00334",
+          "tech_00932",
+          "tech_00954"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 0
+  },
+  "L0_concept_0002": {
+    "label": "Error / Optimization",
+    "gloss": "Observed cluster of 300 exported entities; member labels document \"error\", \"optimization\".",
+    "evidence": {
+      "source_node_ids": [
+        "comp_00387",
+        "comp_00578",
+        "meth_00008",
+        "metr_00013",
+        "metr_00022",
+        "metr_00045",
+        "metr_00046",
+        "metr_00053",
+        "prob_00079",
+        "prob_00280",
+        "prob_00284",
+        "prob_00354",
+        "prob_00366",
+        "prob_00374",
+        "prob_00383",
+        "task_00169",
+        "tech_00125",
+        "tech_00147",
+        "tech_00206",
+        "tech_00216"
+      ],
+      "member_count": 300,
+      "type_counts": {
+        "author": 36,
+        "cited_work": 10,
+        "claim": 46,
+        "component": 59,
+        "dataset": 32,
+        "future_topic": 1,
+        "method": 14,
+        "metric": 7,
+        "problem": 33,
+        "task": 8,
+        "technique": 54
+      },
+      "evidence_phrases": [
+        "error",
+        "optimization"
+      ],
+      "support_node_ids_per_phrase": {
+        "error": [
+          "comp_00387",
+          "comp_00578",
+          "metr_00013",
+          "metr_00022",
+          "metr_00045",
+          "metr_00046",
+          "metr_00053",
+          "prob_00079",
+          "prob_00280",
+          "prob_00354",
+          "prob_00366",
+          "task_00169",
+          "tech_00125",
+          "tech_00147",
+          "tech_00206",
+          "tech_00268",
+          "tech_00283",
+          "tech_00358",
+          "tech_00396",
+          "tech_00497"
+        ],
+        "optimization": [
+          "meth_00008",
+          "prob_00284",
+          "prob_00374",
+          "prob_00383",
+          "tech_00216",
+          "tech_00331",
+          "tech_00337",
+          "tech_00481",
+          "tech_00802",
+          "tech_00943",
+          "tech_00944"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 0
+  },
+  "L0_concept_0004": {
+    "label": "Energy / Calculation",
+    "gloss": "Observed cluster of 248 exported entities; member labels document \"energy\", \"calculation\".",
+    "evidence": {
+      "source_node_ids": [
+        "comp_00025",
+        "comp_00062",
+        "comp_00065",
+        "comp_00078",
+        "comp_00108",
+        "comp_00111",
+        "comp_00112",
+        "comp_00141",
+        "comp_00162",
+        "comp_00169",
+        "comp_00197",
+        "comp_00239",
+        "comp_00243",
+        "comp_00271",
+        "comp_00585",
+        "comp_00588",
+        "comp_00619",
+        "comp_00839",
+        "comp_00841",
+        "data_00062"
+      ],
+      "member_count": 248,
+      "type_counts": {
+        "cited_work": 3,
+        "claim": 56,
+        "component": 27,
+        "dataset": 27,
+        "future_topic": 4,
+        "method": 5,
+        "metric": 20,
+        "problem": 23,
+        "task": 57,
+        "technique": 26
+      },
+      "evidence_phrases": [
+        "energy",
+        "calculation"
+      ],
+      "support_node_ids_per_phrase": {
+        "energy": [
+          "comp_00025",
+          "comp_00062",
+          "comp_00065",
+          "comp_00078",
+          "comp_00108",
+          "comp_00111",
+          "comp_00112",
+          "comp_00141",
+          "comp_00162",
+          "comp_00169",
+          "comp_00197",
+          "comp_00239",
+          "comp_00243",
+          "comp_00271",
+          "comp_00585",
+          "comp_00619",
+          "comp_00839",
+          "comp_00841",
+          "data_00062",
+          "data_00063"
+        ],
+        "calculation": [
+          "comp_00112",
+          "comp_00588",
+          "prob_00077",
+          "prob_00343",
+          "task_00071",
+          "task_00073",
+          "task_00189",
+          "task_00192",
+          "task_00208",
+          "task_00294",
+          "task_00301",
+          "task_00428",
+          "task_00469",
+          "task_00471",
+          "task_00472",
+          "task_00476",
+          "task_00479",
+          "task_00708",
+          "tech_00314",
+          "tech_00665"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 0
+  },
+  "L0_concept_0009": {
+    "label": "Dft / Band Gap",
+    "gloss": "Observed cluster of 228 exported entities; member labels document \"dft\", \"band gap\".",
+    "evidence": {
+      "source_node_ids": [
+        "comp_00113",
+        "comp_00131",
+        "comp_00276",
+        "comp_00335",
+        "comp_00564",
+        "data_00045",
+        "data_00210",
+        "futu_00109",
+        "futu_00112",
+        "futu_00155",
+        "meth_00102",
+        "meth_00155",
+        "meth_00205",
+        "metr_00020",
+        "prob_00017",
+        "prob_00029",
+        "prob_00032",
+        "prob_00039",
+        "prob_00084",
+        "prob_00115"
+      ],
+      "member_count": 228,
+      "type_counts": {
+        "author": 8,
+        "cited_work": 68,
+        "claim": 45,
+        "component": 19,
+        "dataset": 10,
+        "future_topic": 5,
+        "method": 12,
+        "metric": 6,
+        "problem": 30,
+        "task": 10,
+        "technique": 15
+      },
+      "evidence_phrases": [
+        "dft",
+        "band gap"
+      ],
+      "support_node_ids_per_phrase": {
+        "dft": [
+          "comp_00113",
+          "comp_00131",
+          "comp_00276",
+          "comp_00335",
+          "comp_00564",
+          "data_00045",
+          "data_00210",
+          "futu_00109",
+          "futu_00112",
+          "futu_00155",
+          "meth_00102",
+          "meth_00155",
+          "meth_00205",
+          "metr_00020",
+          "prob_00017",
+          "prob_00029",
+          "prob_00032",
+          "prob_00039",
+          "prob_00084",
+          "prob_00115"
+        ],
+        "band gap": [
+          "task_00340",
+          "task_00343",
+          "tech_00612"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 0
+  },
+  "L1_concept_0012": {
+    "label": "Database / Uncertainty Quantification",
+    "gloss": "Observed cluster of 162 exported entities; member labels document \"database\", \"uncertainty quantification\".",
+    "evidence": {
+      "source_node_ids": [
+        "comp_00220",
+        "comp_00346",
+        "comp_00354",
+        "comp_00360",
+        "comp_00817",
+        "data_00094",
+        "data_00121",
+        "data_00122",
+        "data_00123",
+        "data_00124",
+        "futu_00147",
+        "futu_00156",
+        "meth_00257",
+        "meth_00377",
+        "meth_00378",
+        "prob_00194",
+        "prob_00325",
+        "tech_00258",
+        "tech_00356",
+        "tech_00657"
+      ],
+      "member_count": 162,
+      "type_counts": {
+        "author": 16,
+        "cited_work": 32,
+        "claim": 2,
+        "component": 19,
+        "dataset": 8,
+        "future_topic": 6,
+        "method": 20,
+        "metric": 7,
+        "problem": 10,
+        "task": 10,
+        "technique": 32
+      },
+      "evidence_phrases": [
+        "database",
+        "uncertainty quantification"
+      ],
+      "support_node_ids_per_phrase": {
+        "database": [
+          "comp_00346",
+          "comp_00354",
+          "comp_00360",
+          "comp_00817",
+          "data_00094",
+          "data_00121",
+          "data_00122",
+          "data_00123",
+          "data_00124",
+          "futu_00156",
+          "meth_00257",
+          "meth_00377",
+          "meth_00378",
+          "tech_00903"
+        ],
+        "uncertainty quantification": [
+          "comp_00220",
+          "futu_00147",
+          "prob_00194",
+          "prob_00325",
+          "tech_00258",
+          "tech_00356",
+          "tech_00657",
+          "tech_00676"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 1
+  },
+  "L1_concept_0014": {
+    "label": "Regression / Normalization",
+    "gloss": "Observed cluster of 52 exported entities; member labels document \"regression\", \"normalization\".",
+    "evidence": {
+      "source_node_ids": [
+        "comp_00294",
+        "comp_00418",
+        "comp_00428",
+        "comp_00829",
+        "comp_00851",
+        "meth_00014",
+        "meth_00020",
+        "meth_00041",
+        "meth_00061",
+        "meth_00064",
+        "meth_00068",
+        "task_00037",
+        "task_00186",
+        "task_00339",
+        "task_00350",
+        "task_00351",
+        "tech_00012",
+        "tech_00048",
+        "tech_00121",
+        "tech_00129"
+      ],
+      "member_count": 52,
+      "type_counts": {
+        "cited_work": 6,
+        "claim": 1,
+        "component": 8,
+        "method": 8,
+        "problem": 2,
+        "task": 6,
+        "technique": 21
+      },
+      "evidence_phrases": [
+        "regression",
+        "normalization"
+      ],
+      "support_node_ids_per_phrase": {
+        "regression": [
+          "comp_00294",
+          "comp_00829",
+          "comp_00851",
+          "meth_00020",
+          "meth_00041",
+          "meth_00061",
+          "meth_00064",
+          "meth_00068",
+          "task_00037",
+          "task_00186",
+          "task_00339",
+          "task_00350",
+          "task_00351",
+          "tech_00048",
+          "tech_00129",
+          "tech_00191",
+          "tech_00262",
+          "tech_00334",
+          "tech_00932",
+          "tech_00954"
+        ],
+        "normalization": [
+          "comp_00418",
+          "comp_00428",
+          "meth_00014",
+          "tech_00012",
+          "tech_00121",
+          "tech_00447",
+          "tech_00453",
+          "tech_00493",
+          "tech_00545"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 1
+  },
+  "L1_concept_0015": {
+    "label": "Convergence / Automatic",
+    "gloss": "Observed cluster of 110 exported entities; member labels document \"convergence\", \"automatic\".",
+    "evidence": {
+      "source_node_ids": [
+        "comp_00342",
+        "comp_00628",
+        "futu_00110",
+        "prob_00149",
+        "prob_00152",
+        "prob_00155",
+        "task_00194",
+        "tech_00089",
+        "tech_00354",
+        "tech_00368",
+        "tech_00582",
+        "tech_00583",
+        "tech_00584",
+        "tech_00613",
+        "tech_00634",
+        "tech_00640",
+        "tech_00645",
+        "tech_00646",
+        "tech_00650"
+      ],
+      "member_count": 110,
+      "type_counts": {
+        "author": 8,
+        "cited_work": 10,
+        "claim": 13,
+        "component": 13,
+        "dataset": 9,
+        "future_topic": 10,
+        "method": 3,
+        "metric": 2,
+        "problem": 12,
+        "task": 9,
+        "technique": 21
+      },
+      "evidence_phrases": [
+        "convergence",
+        "automatic"
+      ],
+      "support_node_ids_per_phrase": {
+        "convergence": [
+          "comp_00342",
+          "comp_00628",
+          "futu_00110",
+          "prob_00149",
+          "prob_00152",
+          "prob_00155",
+          "task_00194",
+          "tech_00354",
+          "tech_00368",
+          "tech_00613",
+          "tech_00640",
+          "tech_00645",
+          "tech_00646"
+        ],
+        "automatic": [
+          "comp_00342",
+          "tech_00089",
+          "tech_00354",
+          "tech_00582",
+          "tech_00583",
+          "tech_00584",
+          "tech_00634",
+          "tech_00650"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 1
+  },
+  "L1_concept_0239": {
+    "label": "Modeling / Kernel",
+    "gloss": "Observed cluster of 55 exported entities; member labels document \"modeling\", \"kernel\".",
+    "evidence": {
+      "source_node_ids": [
+        "comp_00218",
+        "comp_00222",
+        "comp_00802",
+        "comp_00807",
+        "futu_00023",
+        "meth_00352",
+        "meth_00353",
+        "prob_00013",
+        "prob_00170",
+        "prob_00324",
+        "prob_00329",
+        "prob_00342",
+        "prob_00596",
+        "prob_00609",
+        "task_00026",
+        "task_00048",
+        "task_00121",
+        "task_00406",
+        "task_00434",
+        "task_00462"
+      ],
+      "member_count": 55,
+      "type_counts": {
+        "author": 1,
+        "cited_work": 2,
+        "claim": 2,
+        "component": 4,
+        "dataset": 5,
+        "future_topic": 2,
+        "method": 2,
+        "metric": 1,
+        "problem": 13,
+        "task": 11,
+        "technique": 12
+      },
+      "evidence_phrases": [
+        "modeling",
+        "kernel"
+      ],
+      "support_node_ids_per_phrase": {
+        "modeling": [
+          "futu_00023",
+          "meth_00352",
+          "meth_00353",
+          "prob_00013",
+          "prob_00170",
+          "prob_00324",
+          "prob_00329",
+          "prob_00342",
+          "prob_00596",
+          "prob_00609",
+          "task_00026",
+          "task_00048",
+          "task_00121",
+          "task_00406",
+          "task_00434",
+          "task_00462",
+          "task_00465",
+          "task_00524",
+          "task_00525",
+          "task_00526"
+        ],
+        "kernel": [
+          "comp_00218",
+          "comp_00222",
+          "comp_00802",
+          "comp_00807",
+          "tech_00900"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 1
+  },
+  "L1_concept_0018": {
+    "label": "Materials / Discovery",
+    "gloss": "Observed cluster of 123 exported entities; member labels document \"materials\", \"discovery\".",
+    "evidence": {
+      "source_node_ids": [
+        "arti_00024",
+        "arti_00026",
+        "arti_00032",
+        "arti_00046",
+        "arti_00052",
+        "comp_00199",
+        "comp_00304",
+        "comp_00305",
+        "comp_00826",
+        "comp_00833",
+        "data_00042",
+        "data_00043",
+        "data_00061",
+        "data_00125",
+        "data_00219",
+        "data_00259",
+        "futu_00005",
+        "futu_00006",
+        "futu_00007",
+        "futu_00009"
+      ],
+      "member_count": 123,
+      "type_counts": {
+        "article": 5,
+        "cited_work": 1,
+        "claim": 34,
+        "component": 6,
+        "dataset": 6,
+        "future_topic": 17,
+        "method": 5,
+        "problem": 18,
+        "task": 31
+      },
+      "evidence_phrases": [
+        "materials",
+        "discovery"
+      ],
+      "support_node_ids_per_phrase": {
+        "materials": [
+          "arti_00024",
+          "arti_00026",
+          "arti_00032",
+          "arti_00046",
+          "arti_00052",
+          "comp_00199",
+          "comp_00304",
+          "comp_00305",
+          "comp_00826",
+          "comp_00833",
+          "data_00042",
+          "data_00043",
+          "data_00061",
+          "data_00125",
+          "data_00219",
+          "data_00259",
+          "futu_00005",
+          "futu_00006",
+          "futu_00007",
+          "futu_00009"
+        ],
+        "discovery": [
+          "arti_00026",
+          "arti_00052",
+          "futu_00142",
+          "prob_00080",
+          "prob_00094",
+          "prob_00099",
+          "prob_00113",
+          "prob_00171",
+          "prob_00388",
+          "prob_00392",
+          "task_00015",
+          "task_00115",
+          "task_00188",
+          "task_00376",
+          "task_00441",
+          "task_00492"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 1
+  },
+  "L1_concept_0017": {
+    "label": "Throughput / High-Throughput",
+    "gloss": "Observed cluster of 56 exported entities; member labels document \"throughput\", \"high-throughput\".",
+    "evidence": {
+      "source_node_ids": [
+        "arti_00027",
+        "arti_00049",
+        "futu_00004",
+        "futu_00169",
+        "meth_00231",
+        "meth_00282",
+        "meth_00355",
+        "prob_00085",
+        "prob_00146",
+        "prob_00215",
+        "prob_00223",
+        "prob_00373",
+        "task_00060",
+        "task_00063",
+        "task_00105",
+        "task_00153",
+        "task_00206",
+        "task_00240",
+        "task_00246",
+        "task_00264"
+      ],
+      "member_count": 56,
+      "type_counts": {
+        "article": 2,
+        "author": 1,
+        "cited_work": 1,
+        "claim": 16,
+        "future_topic": 3,
+        "method": 4,
+        "problem": 7,
+        "task": 16,
+        "technique": 6
+      },
+      "evidence_phrases": [
+        "throughput",
+        "high-throughput"
+      ],
+      "support_node_ids_per_phrase": {
+        "throughput": [
+          "futu_00004",
+          "futu_00169",
+          "meth_00231",
+          "prob_00085",
+          "prob_00146",
+          "prob_00215",
+          "prob_00223",
+          "task_00060",
+          "task_00063",
+          "task_00105",
+          "task_00153",
+          "task_00206",
+          "task_00240",
+          "task_00246",
+          "task_00264",
+          "tech_00103",
+          "tech_00321",
+          "tech_00361"
+        ],
+        "high-throughput": [
+          "arti_00027",
+          "arti_00049",
+          "meth_00282",
+          "meth_00355",
+          "prob_00373",
+          "task_00374",
+          "task_00439",
+          "task_00473",
+          "task_00482",
+          "task_00483",
+          "tech_00637",
+          "tech_00667"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 1
+  },
+  "L1_concept_0203": {
+    "label": "Discovery / Design",
+    "gloss": "Observed cluster of 58 exported entities; member labels document \"discovery\", \"design\".",
+    "evidence": {
+      "source_node_ids": [
+        "comp_00138",
+        "comp_00142",
+        "data_00044",
+        "futu_00040",
+        "futu_00144",
+        "meth_00159",
+        "metr_00052",
+        "prob_00087",
+        "prob_00177",
+        "prob_00179",
+        "prob_00182",
+        "prob_00201",
+        "prob_00204",
+        "prob_00205",
+        "prob_00389",
+        "prob_00399",
+        "prob_00404",
+        "prob_00405",
+        "task_00006",
+        "task_00215"
+      ],
+      "member_count": 58,
+      "type_counts": {
+        "author": 1,
+        "cited_work": 3,
+        "claim": 10,
+        "component": 8,
+        "dataset": 1,
+        "future_topic": 5,
+        "method": 1,
+        "metric": 1,
+        "problem": 12,
+        "task": 15,
+        "technique": 1
+      },
+      "evidence_phrases": [
+        "discovery",
+        "design"
+      ],
+      "support_node_ids_per_phrase": {
+        "discovery": [
+          "comp_00138",
+          "comp_00142",
+          "data_00044",
+          "futu_00040",
+          "futu_00144",
+          "meth_00159",
+          "metr_00052",
+          "prob_00087",
+          "prob_00204",
+          "prob_00205",
+          "prob_00389",
+          "prob_00399",
+          "prob_00404",
+          "prob_00405",
+          "task_00006",
+          "task_00268",
+          "task_00445",
+          "task_00446",
+          "task_00495",
+          "task_00498"
+        ],
+        "design": [
+          "prob_00177",
+          "prob_00179",
+          "prob_00182",
+          "prob_00201",
+          "task_00215",
+          "task_00218",
+          "task_00221",
+          "task_00223",
+          "task_00464"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 1
+  },
+  "L1_concept_0016": {
+    "label": "Properties",
+    "gloss": "Observed cluster of 43 exported entities; member labels document \"properties\".",
+    "evidence": {
+      "source_node_ids": [
+        "futu_00163",
+        "task_00172"
+      ],
+      "member_count": 43,
+      "type_counts": {
+        "claim": 33,
+        "dataset": 1,
+        "future_topic": 3,
+        "metric": 2,
+        "task": 1,
+        "technique": 3
+      },
+      "evidence_phrases": [
+        "properties"
+      ],
+      "support_node_ids_per_phrase": {
+        "properties": [
+          "futu_00163",
+          "task_00172"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 1
+  },
+  "L1_concept_0022": {
+    "label": "Selection / Bias",
+    "gloss": "Observed cluster of 58 exported entities; member labels document \"selection\", \"bias\".",
+    "evidence": {
+      "source_node_ids": [
+        "prob_00265",
+        "prob_00266",
+        "prob_00267",
+        "prob_00281",
+        "prob_00352",
+        "prob_00353",
+        "tech_00475",
+        "tech_00590"
+      ],
+      "member_count": 58,
+      "type_counts": {
+        "author": 1,
+        "claim": 12,
+        "component": 18,
+        "method": 5,
+        "problem": 13,
+        "task": 3,
+        "technique": 6
+      },
+      "evidence_phrases": [
+        "selection",
+        "bias"
+      ],
+      "support_node_ids_per_phrase": {
+        "selection": [
+          "prob_00265",
+          "prob_00266",
+          "prob_00267",
+          "prob_00281",
+          "tech_00475",
+          "tech_00590"
+        ],
+        "bias": [
+          "prob_00265",
+          "prob_00266",
+          "prob_00352",
+          "prob_00353"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 1
+  },
+  "L1_concept_0020": {
+    "label": "Optimization / Force",
+    "gloss": "Observed cluster of 85 exported entities; member labels document \"optimization\", \"force\".",
+    "evidence": {
+      "source_node_ids": [
+        "comp_00291",
+        "comp_00318",
+        "comp_00583",
+        "meth_00008",
+        "meth_00191",
+        "meth_00192",
+        "prob_00284",
+        "prob_00374",
+        "prob_00383",
+        "task_00169",
+        "tech_00331",
+        "tech_00337",
+        "tech_00363",
+        "tech_00481",
+        "tech_00573",
+        "tech_00802",
+        "tech_00906",
+        "tech_00943",
+        "tech_00944"
+      ],
+      "member_count": 85,
+      "type_counts": {
+        "author": 16,
+        "cited_work": 3,
+        "claim": 6,
+        "component": 14,
+        "dataset": 9,
+        "method": 4,
+        "metric": 1,
+        "problem": 11,
+        "task": 5,
+        "technique": 16
+      },
+      "evidence_phrases": [
+        "optimization",
+        "force"
+      ],
+      "support_node_ids_per_phrase": {
+        "optimization": [
+          "meth_00008",
+          "prob_00284",
+          "prob_00374",
+          "prob_00383",
+          "tech_00331",
+          "tech_00337",
+          "tech_00481",
+          "tech_00802",
+          "tech_00943",
+          "tech_00944"
+        ],
+        "force": [
+          "comp_00291",
+          "comp_00318",
+          "comp_00583",
+          "meth_00191",
+          "meth_00192",
+          "prob_00383",
+          "task_00169",
+          "tech_00363",
+          "tech_00573",
+          "tech_00906"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 1
+  },
+  "L1_concept_0023": {
+    "label": "Error / Block",
+    "gloss": "Observed cluster of 124 exported entities; member labels document \"error\", \"block\".",
+    "evidence": {
+      "source_node_ids": [
+        "comp_00021",
+        "comp_00046",
+        "comp_00047",
+        "comp_00048",
+        "comp_00168",
+        "comp_00193",
+        "comp_00281",
+        "comp_00387",
+        "comp_00501",
+        "comp_00578",
+        "metr_00013",
+        "metr_00022",
+        "metr_00045",
+        "metr_00046",
+        "metr_00053",
+        "prob_00079",
+        "prob_00280",
+        "prob_00354",
+        "prob_00366",
+        "tech_00125"
+      ],
+      "member_count": 124,
+      "type_counts": {
+        "author": 17,
+        "cited_work": 5,
+        "claim": 27,
+        "component": 25,
+        "dataset": 3,
+        "future_topic": 1,
+        "method": 4,
+        "metric": 6,
+        "problem": 9,
+        "technique": 27
+      },
+      "evidence_phrases": [
+        "error",
+        "block"
+      ],
+      "support_node_ids_per_phrase": {
+        "error": [
+          "comp_00387",
+          "comp_00578",
+          "metr_00013",
+          "metr_00022",
+          "metr_00045",
+          "metr_00046",
+          "metr_00053",
+          "prob_00079",
+          "prob_00280",
+          "prob_00354",
+          "prob_00366",
+          "tech_00125",
+          "tech_00147",
+          "tech_00268",
+          "tech_00283",
+          "tech_00358",
+          "tech_00396",
+          "tech_00497",
+          "tech_00543",
+          "tech_00910"
+        ],
+        "block": [
+          "comp_00021",
+          "comp_00046",
+          "comp_00047",
+          "comp_00048",
+          "comp_00168",
+          "comp_00193",
+          "comp_00281",
+          "comp_00501"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 1
+  },
+  "L1_concept_0021": {
+    "label": "Md-17 / Salicylic Acid",
+    "gloss": "Observed cluster of 33 exported entities; member labels document \"md-17\", \"salicylic acid\".",
+    "evidence": {
+      "source_node_ids": [
+        "data_00017",
+        "data_00018",
+        "data_00019",
+        "data_00020",
+        "data_00021",
+        "data_00022",
+        "data_00023",
+        "data_00024",
+        "data_00025",
+        "data_00026",
+        "data_00052"
+      ],
+      "member_count": 33,
+      "type_counts": {
+        "author": 2,
+        "cited_work": 2,
+        "claim": 1,
+        "component": 2,
+        "dataset": 20,
+        "method": 1,
+        "technique": 5
+      },
+      "evidence_phrases": [
+        "md-17",
+        "salicylic acid"
+      ],
+      "support_node_ids_per_phrase": {
+        "md-17": [
+          "data_00017",
+          "data_00018",
+          "data_00019",
+          "data_00020",
+          "data_00021",
+          "data_00022",
+          "data_00023",
+          "data_00024",
+          "data_00025",
+          "data_00026"
+        ],
+        "salicylic acid": [
+          "data_00024",
+          "data_00052"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 1
+  },
+  "L1_concept_0027": {
+    "label": "Virtual Node / Nasicon",
+    "gloss": "Observed cluster of 88 exported entities; member labels document \"virtual node\", \"nasicon\".",
+    "evidence": {
+      "source_node_ids": [
+        "data_00150",
+        "data_00257",
+        "meth_00126",
+        "tech_00527"
+      ],
+      "member_count": 88,
+      "type_counts": {
+        "article": 1,
+        "author": 12,
+        "cited_work": 23,
+        "claim": 18,
+        "component": 6,
+        "dataset": 3,
+        "method": 10,
+        "metric": 1,
+        "problem": 4,
+        "task": 1,
+        "technique": 9
+      },
+      "evidence_phrases": [
+        "virtual node",
+        "nasicon"
+      ],
+      "support_node_ids_per_phrase": {
+        "virtual node": [
+          "meth_00126",
+          "tech_00527"
+        ],
+        "nasicon": [
+          "data_00150",
+          "data_00257"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 1
+  },
+  "L1_concept_0025": {
+    "label": "Training / Iterative",
+    "gloss": "Observed cluster of 102 exported entities; member labels document \"training\", \"iterative\".",
+    "evidence": {
+      "source_node_ids": [
+        "comp_00061",
+        "comp_00068",
+        "comp_00072",
+        "comp_00080",
+        "comp_00143",
+        "comp_00295",
+        "comp_00625",
+        "comp_00627",
+        "comp_00632",
+        "comp_00633",
+        "comp_00636",
+        "comp_00823",
+        "futu_00107",
+        "meth_00161",
+        "prob_00124",
+        "prob_00132",
+        "prob_00242",
+        "prob_00356",
+        "prob_00401",
+        "prob_00415"
+      ],
+      "member_count": 102,
+      "type_counts": {
+        "author": 4,
+        "cited_work": 5,
+        "claim": 21,
+        "component": 17,
+        "dataset": 6,
+        "future_topic": 1,
+        "method": 4,
+        "problem": 14,
+        "task": 2,
+        "technique": 28
+      },
+      "evidence_phrases": [
+        "training",
+        "iterative"
+      ],
+      "support_node_ids_per_phrase": {
+        "training": [
+          "comp_00061",
+          "comp_00068",
+          "comp_00072",
+          "comp_00080",
+          "comp_00143",
+          "comp_00295",
+          "comp_00625",
+          "comp_00627",
+          "comp_00632",
+          "comp_00633",
+          "comp_00636",
+          "comp_00823",
+          "futu_00107",
+          "prob_00124",
+          "prob_00132",
+          "prob_00242",
+          "prob_00356",
+          "prob_00401",
+          "prob_00415",
+          "prob_00416"
+        ],
+        "iterative": [
+          "comp_00625",
+          "comp_00632",
+          "comp_00823",
+          "meth_00161",
+          "tech_00053",
+          "tech_00595",
+          "tech_00699"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 1
+  },
+  "L1_concept_0240": {
+    "label": "Loss / Huber",
+    "gloss": "Observed cluster of 24 exported entities; member labels document \"loss\", \"huber\".",
+    "evidence": {
+      "source_node_ids": [
+        "comp_00064",
+        "comp_00241",
+        "comp_00245",
+        "metr_00061",
+        "tech_00031",
+        "tech_00134",
+        "tech_00239",
+        "tech_00469",
+        "tech_00533",
+        "tech_00685",
+        "tech_00797"
+      ],
+      "member_count": 24,
+      "type_counts": {
+        "author": 5,
+        "claim": 2,
+        "component": 3,
+        "method": 3,
+        "metric": 1,
+        "problem": 2,
+        "technique": 8
+      },
+      "evidence_phrases": [
+        "loss",
+        "huber"
+      ],
+      "support_node_ids_per_phrase": {
+        "loss": [
+          "comp_00064",
+          "comp_00241",
+          "comp_00245",
+          "metr_00061",
+          "tech_00031",
+          "tech_00134",
+          "tech_00239",
+          "tech_00469",
+          "tech_00533",
+          "tech_00685",
+          "tech_00797"
+        ],
+        "huber": [
+          "tech_00031",
+          "tech_00239",
+          "tech_00797"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 1
+  },
+  "L1_concept_0024": {
+    "label": "Test Set / Custom",
+    "gloss": "Observed cluster of 25 exported entities; member labels document \"test set\", \"custom\".",
+    "evidence": {
+      "source_node_ids": [
+        "comp_00144",
+        "comp_00146",
+        "data_00016",
+        "data_00134",
+        "data_00139",
+        "data_00209",
+        "data_00214",
+        "tech_00559"
+      ],
+      "member_count": 25,
+      "type_counts": {
+        "author": 3,
+        "cited_work": 2,
+        "claim": 1,
+        "component": 7,
+        "dataset": 7,
+        "metric": 1,
+        "problem": 2,
+        "technique": 2
+      },
+      "evidence_phrases": [
+        "test set",
+        "custom"
+      ],
+      "support_node_ids_per_phrase": {
+        "test set": [
+          "comp_00144",
+          "comp_00146",
+          "data_00016",
+          "data_00134",
+          "data_00139",
+          "data_00209",
+          "data_00214"
+        ],
+        "custom": [
+          "data_00214",
+          "tech_00559"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 1
+  },
+  "L1_concept_0029": {
+    "label": "Energy / Activation",
+    "gloss": "Observed cluster of 171 exported entities; member labels document \"energy\", \"activation\".",
+    "evidence": {
+      "source_node_ids": [
+        "comp_00023",
+        "comp_00025",
+        "comp_00062",
+        "comp_00065",
+        "comp_00078",
+        "comp_00108",
+        "comp_00111",
+        "comp_00141",
+        "comp_00162",
+        "comp_00239",
+        "comp_00243",
+        "comp_00271",
+        "comp_00284",
+        "comp_00417",
+        "comp_00436",
+        "comp_00619",
+        "comp_00839",
+        "comp_00841",
+        "data_00062",
+        "data_00063"
+      ],
+      "member_count": 171,
+      "type_counts": {
+        "cited_work": 2,
+        "claim": 45,
+        "component": 19,
+        "dataset": 11,
+        "future_topic": 4,
+        "method": 4,
+        "metric": 18,
+        "problem": 14,
+        "task": 38,
+        "technique": 16
+      },
+      "evidence_phrases": [
+        "energy",
+        "activation"
+      ],
+      "support_node_ids_per_phrase": {
+        "energy": [
+          "comp_00025",
+          "comp_00062",
+          "comp_00065",
+          "comp_00078",
+          "comp_00108",
+          "comp_00111",
+          "comp_00141",
+          "comp_00162",
+          "comp_00239",
+          "comp_00243",
+          "comp_00271",
+          "comp_00619",
+          "comp_00839",
+          "comp_00841",
+          "data_00062",
+          "data_00063",
+          "data_00065",
+          "data_00089",
+          "futu_00104",
+          "futu_00130"
+        ],
+        "activation": [
+          "comp_00023",
+          "comp_00284",
+          "comp_00417",
+          "comp_00436",
+          "meth_00301",
+          "meth_00302",
+          "prob_00256",
+          "prob_00421",
+          "task_00523",
+          "task_00533",
+          "tech_00033",
+          "tech_00273",
+          "tech_00287",
+          "tech_00446",
+          "tech_00452",
+          "tech_00464"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 1
+  },
+  "L1_concept_0028": {
+    "label": "Force / Energy",
+    "gloss": "Observed cluster of 35 exported entities; member labels document \"force\", \"energy\".",
+    "evidence": {
+      "source_node_ids": [
+        "comp_00169",
+        "comp_00197",
+        "comp_00198",
+        "metr_00047",
+        "metr_00090",
+        "prob_00012",
+        "prob_00015",
+        "prob_00092",
+        "prob_00260",
+        "task_00173",
+        "task_00306",
+        "tech_00072",
+        "tech_00223",
+        "tech_00247",
+        "tech_00274",
+        "tech_00277",
+        "tech_00355"
+      ],
+      "member_count": 35,
+      "type_counts": {
+        "cited_work": 1,
+        "claim": 10,
+        "component": 3,
+        "method": 1,
+        "metric": 2,
+        "problem": 6,
+        "task": 4,
+        "technique": 8
+      },
+      "evidence_phrases": [
+        "force",
+        "energy"
+      ],
+      "support_node_ids_per_phrase": {
+        "force": [
+          "comp_00169",
+          "comp_00198",
+          "metr_00047",
+          "prob_00012",
+          "prob_00092",
+          "prob_00260",
+          "task_00173",
+          "task_00306",
+          "tech_00072",
+          "tech_00223",
+          "tech_00247",
+          "tech_00274",
+          "tech_00277",
+          "tech_00355"
+        ],
+        "energy": [
+          "comp_00169",
+          "comp_00197",
+          "metr_00090",
+          "prob_00012",
+          "prob_00015",
+          "prob_00092",
+          "prob_00260",
+          "task_00173",
+          "task_00306",
+          "tech_00072",
+          "tech_00223",
+          "tech_00247",
+          "tech_00274",
+          "tech_00355"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 1
+  },
+  "L1_concept_0031": {
+    "label": "Energy Calculation / Static",
+    "gloss": "Observed cluster of 26 exported entities; member labels document \"energy calculation\", \"static\".",
+    "evidence": {
+      "source_node_ids": [
+        "comp_00575",
+        "comp_00621",
+        "prob_00077",
+        "prob_00343",
+        "task_00071",
+        "task_00073",
+        "task_00189",
+        "task_00192",
+        "task_00208",
+        "task_00294",
+        "task_00301",
+        "task_00428",
+        "task_00469",
+        "task_00476",
+        "task_00479",
+        "task_00484",
+        "task_00708",
+        "tech_00314",
+        "tech_00665"
+      ],
+      "member_count": 26,
+      "type_counts": {
+        "claim": 1,
+        "component": 5,
+        "problem": 3,
+        "task": 15,
+        "technique": 2
+      },
+      "evidence_phrases": [
+        "energy calculation",
+        "static"
+      ],
+      "support_node_ids_per_phrase": {
+        "energy calculation": [
+          "prob_00077",
+          "prob_00343",
+          "task_00071",
+          "task_00073",
+          "task_00189",
+          "task_00192",
+          "task_00208",
+          "task_00294",
+          "task_00301",
+          "task_00428",
+          "task_00469",
+          "task_00476",
+          "task_00479",
+          "task_00708",
+          "tech_00314",
+          "tech_00665"
+        ],
+        "static": [
+          "comp_00575",
+          "comp_00621",
+          "task_00479",
+          "task_00484"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 1
+  },
+  "L1_concept_0241": {
+    "label": "Md-17 / Original",
+    "gloss": "Observed cluster of 16 exported entities; member labels document \"md-17\", \"original\".",
+    "evidence": {
+      "source_node_ids": [
+        "data_00221",
+        "data_00222",
+        "data_00223",
+        "data_00224",
+        "data_00225",
+        "data_00226",
+        "data_00227",
+        "data_00228",
+        "data_00229",
+        "data_00230",
+        "data_00231",
+        "data_00232",
+        "data_00233",
+        "data_00234",
+        "data_00235"
+      ],
+      "member_count": 16,
+      "type_counts": {
+        "dataset": 16
+      },
+      "evidence_phrases": [
+        "md-17",
+        "original"
+      ],
+      "support_node_ids_per_phrase": {
+        "md-17": [
+          "data_00221",
+          "data_00222",
+          "data_00223",
+          "data_00224",
+          "data_00225",
+          "data_00226",
+          "data_00227",
+          "data_00228",
+          "data_00229",
+          "data_00230",
+          "data_00231",
+          "data_00232",
+          "data_00233",
+          "data_00234",
+          "data_00235"
+        ],
+        "original": [
+          "data_00221",
+          "data_00222",
+          "data_00223",
+          "data_00224",
+          "data_00225",
+          "data_00226",
+          "data_00227",
+          "data_00228",
+          "data_00229",
+          "data_00230"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 1
+  },
+  "L1_concept_0033": {
+    "label": "Property / Materials",
+    "gloss": "Observed cluster of 49 exported entities; member labels document \"property\", \"materials\".",
+    "evidence": {
+      "source_node_ids": [
+        "arti_00042",
+        "comp_00837",
+        "comp_00843",
+        "comp_00854",
+        "prob_00175",
+        "prob_00176",
+        "prob_00178",
+        "prob_00195",
+        "prob_00199",
+        "prob_00259",
+        "prob_00269",
+        "prob_00271",
+        "prob_00304",
+        "prob_00330",
+        "prob_00348",
+        "prob_00410",
+        "prob_00632",
+        "prob_00633",
+        "task_00007",
+        "task_00016"
+      ],
+      "member_count": 49,
+      "type_counts": {
+        "article": 1,
+        "claim": 2,
+        "component": 3,
+        "problem": 16,
+        "task": 27
+      },
+      "evidence_phrases": [
+        "property",
+        "materials"
+      ],
+      "support_node_ids_per_phrase": {
+        "property": [
+          "arti_00042",
+          "comp_00837",
+          "comp_00843",
+          "comp_00854",
+          "prob_00175",
+          "prob_00176",
+          "prob_00178",
+          "prob_00195",
+          "prob_00199",
+          "prob_00259",
+          "prob_00269",
+          "prob_00271",
+          "prob_00304",
+          "prob_00330",
+          "prob_00348",
+          "prob_00410",
+          "prob_00632",
+          "prob_00633",
+          "task_00007",
+          "task_00016"
+        ],
+        "materials": [
+          "arti_00042",
+          "prob_00269",
+          "prob_00271",
+          "prob_00632",
+          "prob_00633",
+          "task_00239",
+          "task_00337",
+          "task_00344",
+          "task_00345",
+          "task_00346"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 1
+  },
+  "L1_concept_0035": {
+    "label": "Phonon / Melting Temperature",
+    "gloss": "Observed cluster of 147 exported entities; member labels document \"phonon\", \"melting temperature\".",
+    "evidence": {
+      "source_node_ids": [
+        "arti_00051",
+        "meth_00437",
+        "metr_00060",
+        "prob_00307",
+        "prob_00308",
+        "prob_00309",
+        "prob_00311",
+        "prob_00315",
+        "prob_00317",
+        "prob_00318",
+        "prob_00319",
+        "prob_00321",
+        "prob_00617",
+        "prob_00620",
+        "prob_00624",
+        "prob_00626",
+        "task_00064",
+        "task_00279",
+        "task_00347",
+        "task_00377"
+      ],
+      "member_count": 147,
+      "type_counts": {
+        "article": 1,
+        "author": 2,
+        "cited_work": 1,
+        "claim": 9,
+        "component": 3,
+        "dataset": 1,
+        "future_topic": 2,
+        "method": 2,
+        "metric": 2,
+        "problem": 31,
+        "task": 88,
+        "technique": 5
+      },
+      "evidence_phrases": [
+        "phonon",
+        "melting temperature"
+      ],
+      "support_node_ids_per_phrase": {
+        "phonon": [
+          "metr_00060",
+          "prob_00307",
+          "prob_00308",
+          "prob_00309",
+          "prob_00311",
+          "prob_00315",
+          "prob_00317",
+          "prob_00318",
+          "prob_00319",
+          "prob_00321",
+          "task_00064",
+          "task_00279",
+          "task_00347",
+          "task_00377",
+          "task_00378",
+          "task_00379",
+          "task_00383",
+          "task_00384",
+          "task_00385",
+          "task_00386"
+        ],
+        "melting temperature": [
+          "arti_00051",
+          "meth_00437",
+          "prob_00617",
+          "prob_00620",
+          "prob_00624",
+          "prob_00626",
+          "task_00554",
+          "task_00717",
+          "task_00729"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 1
+  },
+  "L1_concept_0034": {
+    "label": "Force / Energy",
+    "gloss": "Observed cluster of 22 exported entities; member labels document \"force\", \"energy\".",
+    "evidence": {
+      "source_node_ids": [
+        "comp_00152",
+        "prob_00112",
+        "prob_00131",
+        "prob_00240",
+        "prob_00249",
+        "task_00024",
+        "task_00025",
+        "task_00065",
+        "task_00113",
+        "task_00154",
+        "task_00213",
+        "task_00251",
+        "task_00276",
+        "task_00281",
+        "task_00390",
+        "task_00512"
+      ],
+      "member_count": 22,
+      "type_counts": {
+        "claim": 3,
+        "component": 1,
+        "problem": 5,
+        "task": 13
+      },
+      "evidence_phrases": [
+        "force",
+        "energy"
+      ],
+      "support_node_ids_per_phrase": {
+        "force": [
+          "comp_00152",
+          "prob_00112",
+          "prob_00131",
+          "prob_00240",
+          "prob_00249",
+          "task_00025",
+          "task_00065",
+          "task_00113",
+          "task_00154",
+          "task_00281",
+          "task_00512"
+        ],
+        "energy": [
+          "prob_00112",
+          "task_00024",
+          "task_00065",
+          "task_00154",
+          "task_00213",
+          "task_00251",
+          "task_00276",
+          "task_00390"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 1
+  },
+  "L1_concept_0204": {
+    "label": "Crack / Stability",
+    "gloss": "Observed cluster of 27 exported entities; member labels document \"crack\", \"stability\".",
+    "evidence": {
+      "source_node_ids": [
+        "meth_00273",
+        "task_00393",
+        "tech_00313",
+        "tech_00316"
+      ],
+      "member_count": 27,
+      "type_counts": {
+        "author": 4,
+        "cited_work": 10,
+        "claim": 4,
+        "component": 1,
+        "method": 3,
+        "metric": 1,
+        "problem": 1,
+        "task": 1,
+        "technique": 2
+      },
+      "evidence_phrases": [
+        "crack",
+        "stability"
+      ],
+      "support_node_ids_per_phrase": {
+        "crack": [
+          "tech_00313",
+          "tech_00316"
+        ],
+        "stability": [
+          "meth_00273",
+          "task_00393"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 1
+  },
+  "L1_concept_0038": {
+    "label": "Expansion / Basis",
+    "gloss": "Observed cluster of 169 exported entities; member labels document \"expansion\", \"basis\".",
+    "evidence": {
+      "source_node_ids": [
+        "arti_00022",
+        "comp_00037",
+        "comp_00050",
+        "comp_00052",
+        "comp_00053",
+        "comp_00058",
+        "comp_00114",
+        "comp_00132",
+        "comp_00156",
+        "comp_00186",
+        "comp_00195",
+        "comp_00202",
+        "comp_00224",
+        "comp_00247",
+        "comp_00250",
+        "comp_00258",
+        "comp_00285",
+        "comp_00286",
+        "comp_00427",
+        "comp_00432"
+      ],
+      "member_count": 169,
+      "type_counts": {
+        "article": 1,
+        "author": 5,
+        "cited_work": 19,
+        "claim": 13,
+        "component": 45,
+        "dataset": 2,
+        "method": 11,
+        "problem": 8,
+        "task": 12,
+        "technique": 53
+      },
+      "evidence_phrases": [
+        "expansion",
+        "basis"
+      ],
+      "support_node_ids_per_phrase": {
+        "expansion": [
+          "arti_00022",
+          "comp_00050",
+          "comp_00053",
+          "comp_00114",
+          "comp_00132",
+          "comp_00156",
+          "comp_00186",
+          "comp_00195",
+          "comp_00202",
+          "comp_00224",
+          "comp_00250",
+          "comp_00285",
+          "comp_00286",
+          "meth_00077",
+          "meth_00145",
+          "meth_00229",
+          "task_00144",
+          "task_00146",
+          "task_00272",
+          "tech_00071"
+        ],
+        "basis": [
+          "comp_00037",
+          "comp_00050",
+          "comp_00052",
+          "comp_00053",
+          "comp_00058",
+          "comp_00186",
+          "comp_00195",
+          "comp_00247",
+          "comp_00258",
+          "comp_00285",
+          "comp_00427",
+          "comp_00432",
+          "comp_00438",
+          "comp_00496",
+          "comp_00614",
+          "prob_00150",
+          "prob_00153",
+          "tech_00071",
+          "tech_00075",
+          "tech_00111"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 1
+  },
+  "L1_concept_0039": {
+    "label": "Linear / Scaling",
+    "gloss": "Observed cluster of 130 exported entities; member labels document \"linear\", \"scaling\".",
+    "evidence": {
+      "source_node_ids": [
+        "arti_00041",
+        "comp_00038",
+        "comp_00155",
+        "comp_00208",
+        "comp_00267",
+        "comp_00419",
+        "comp_00424",
+        "comp_00426",
+        "comp_00607",
+        "comp_00706",
+        "data_00248",
+        "data_00249",
+        "data_00250",
+        "data_00251",
+        "data_00252",
+        "data_00253",
+        "meth_00072",
+        "meth_00224",
+        "meth_00269",
+        "meth_00288"
+      ],
+      "member_count": 130,
+      "type_counts": {
+        "article": 1,
+        "author": 2,
+        "cited_work": 11,
+        "claim": 9,
+        "component": 24,
+        "dataset": 6,
+        "method": 16,
+        "problem": 5,
+        "task": 3,
+        "technique": 53
+      },
+      "evidence_phrases": [
+        "linear",
+        "scaling"
+      ],
+      "support_node_ids_per_phrase": {
+        "linear": [
+          "comp_00038",
+          "comp_00155",
+          "comp_00208",
+          "comp_00267",
+          "comp_00419",
+          "comp_00424",
+          "comp_00426",
+          "comp_00706",
+          "meth_00072",
+          "meth_00224",
+          "meth_00269",
+          "meth_00288",
+          "prob_00603",
+          "tech_00083",
+          "tech_00114",
+          "tech_00115",
+          "tech_00127",
+          "tech_00192",
+          "tech_00209",
+          "tech_00276"
+        ],
+        "scaling": [
+          "arti_00041",
+          "comp_00607",
+          "data_00248",
+          "data_00249",
+          "data_00250",
+          "data_00251",
+          "data_00252",
+          "data_00253",
+          "prob_00239",
+          "prob_00279",
+          "tech_00127",
+          "tech_00276",
+          "tech_00297",
+          "tech_00298",
+          "tech_00384",
+          "tech_00454",
+          "tech_00455",
+          "tech_00456",
+          "tech_00649",
+          "tech_00662"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 1
+  },
+  "L1_concept_0037": {
+    "label": "Random / Atomic",
+    "gloss": "Observed cluster of 148 exported entities; member labels document \"random\", \"atomic\".",
+    "evidence": {
+      "source_node_ids": [
+        "comp_00235",
+        "comp_00514",
+        "meth_00002",
+        "meth_00013",
+        "meth_00063",
+        "meth_00256",
+        "prob_00248",
+        "prob_00488",
+        "task_00302",
+        "tech_00786",
+        "tech_00907",
+        "tech_00918",
+        "tech_00927",
+        "tech_00928",
+        "tech_00942",
+        "tech_00960"
+      ],
+      "member_count": 148,
+      "type_counts": {
+        "author": 14,
+        "cited_work": 15,
+        "claim": 8,
+        "component": 29,
+        "dataset": 9,
+        "method": 11,
+        "metric": 4,
+        "problem": 18,
+        "task": 6,
+        "technique": 34
+      },
+      "evidence_phrases": [
+        "random",
+        "atomic"
+      ],
+      "support_node_ids_per_phrase": {
+        "random": [
+          "meth_00013",
+          "meth_00063",
+          "tech_00907",
+          "tech_00918",
+          "tech_00927",
+          "tech_00928",
+          "tech_00942",
+          "tech_00960"
+        ],
+        "atomic": [
+          "comp_00235",
+          "comp_00514",
+          "meth_00002",
+          "meth_00256",
+          "prob_00248",
+          "prob_00488",
+          "task_00302",
+          "tech_00786",
+          "tech_00927"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 1
+  },
+  "L1_concept_0036": {
+    "label": "Featurizer / Features",
+    "gloss": "Observed cluster of 22 exported entities; member labels document \"featurizer\", \"features\".",
+    "evidence": {
+      "source_node_ids": [
+        "comp_00163",
+        "comp_00422",
+        "comp_00443",
+        "comp_00444",
+        "comp_00459",
+        "comp_00461",
+        "comp_00462",
+        "comp_00463",
+        "comp_00464",
+        "comp_00465",
+        "comp_00466",
+        "comp_00467",
+        "comp_00468",
+        "comp_00469",
+        "comp_00603",
+        "comp_00830",
+        "meth_00311",
+        "tech_00440"
+      ],
+      "member_count": 22,
+      "type_counts": {
+        "cited_work": 2,
+        "component": 16,
+        "method": 2,
+        "technique": 2
+      },
+      "evidence_phrases": [
+        "featurizer",
+        "features"
+      ],
+      "support_node_ids_per_phrase": {
+        "featurizer": [
+          "comp_00443",
+          "comp_00459",
+          "comp_00461",
+          "comp_00462",
+          "comp_00463",
+          "comp_00464",
+          "comp_00465",
+          "comp_00466",
+          "comp_00467",
+          "comp_00468",
+          "comp_00469",
+          "comp_00603",
+          "meth_00311"
+        ],
+        "features": [
+          "comp_00163",
+          "comp_00422",
+          "comp_00444",
+          "comp_00830",
+          "tech_00440"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 1
+  },
+  "L1_concept_0051": {
+    "label": "Interatomic Potential / Silicon",
+    "gloss": "Observed cluster of 34 exported entities; member labels document \"interatomic potential\", \"silicon\".",
+    "evidence": {
+      "source_node_ids": [
+        "arti_00014",
+        "arti_00028",
+        "futu_00143",
+        "meth_00196",
+        "prob_00111",
+        "prob_00119",
+        "prob_00162",
+        "prob_00346",
+        "prob_00492",
+        "task_00052",
+        "task_00162",
+        "task_00165",
+        "task_00504",
+        "task_00696",
+        "tech_00250"
+      ],
+      "member_count": 34,
+      "type_counts": {
+        "article": 2,
+        "claim": 7,
+        "component": 1,
+        "future_topic": 2,
+        "method": 5,
+        "problem": 7,
+        "task": 8,
+        "technique": 2
+      },
+      "evidence_phrases": [
+        "interatomic potential",
+        "silicon"
+      ],
+      "support_node_ids_per_phrase": {
+        "interatomic potential": [
+          "arti_00014",
+          "arti_00028",
+          "futu_00143",
+          "prob_00111",
+          "prob_00119",
+          "prob_00162",
+          "prob_00346",
+          "prob_00492",
+          "task_00052",
+          "task_00162",
+          "task_00165",
+          "task_00504",
+          "task_00696",
+          "tech_00250"
+        ],
+        "silicon": [
+          "arti_00028",
+          "meth_00196",
+          "prob_00119",
+          "task_00162",
+          "task_00165"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 1
+  },
+  "L1_concept_0041": {
+    "label": "Potential / Hull Distance",
+    "gloss": "Observed cluster of 75 exported entities; member labels document \"potential\", \"hull distance\".",
+    "evidence": {
+      "source_node_ids": [
+        "arti_00045",
+        "comp_00137",
+        "comp_00140",
+        "comp_00149",
+        "comp_00210",
+        "comp_00523",
+        "comp_00524",
+        "comp_00533",
+        "comp_00562",
+        "comp_00568",
+        "comp_00595",
+        "meth_00178",
+        "meth_00183",
+        "meth_00189",
+        "meth_00209",
+        "meth_00210",
+        "meth_00332",
+        "meth_00333",
+        "meth_00334",
+        "meth_00403"
+      ],
+      "member_count": 75,
+      "type_counts": {
+        "article": 1,
+        "author": 6,
+        "cited_work": 22,
+        "claim": 8,
+        "component": 10,
+        "method": 16,
+        "problem": 4,
+        "task": 2,
+        "technique": 6
+      },
+      "evidence_phrases": [
+        "potential",
+        "hull distance"
+      ],
+      "support_node_ids_per_phrase": {
+        "potential": [
+          "arti_00045",
+          "comp_00137",
+          "comp_00210",
+          "comp_00523",
+          "comp_00524",
+          "comp_00533",
+          "comp_00562",
+          "comp_00595",
+          "meth_00178",
+          "meth_00183",
+          "meth_00189",
+          "meth_00209",
+          "meth_00210",
+          "meth_00332",
+          "meth_00333",
+          "meth_00334",
+          "meth_00403",
+          "meth_00430",
+          "meth_00431",
+          "meth_00432"
+        ],
+        "hull distance": [
+          "comp_00140",
+          "comp_00149",
+          "comp_00568",
+          "task_00107",
+          "tech_00205",
+          "tech_00596",
+          "tech_00618"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 1
+  },
+  "L1_concept_0043": {
+    "label": "Experimental / Efficiency",
+    "gloss": "Observed cluster of 81 exported entities; member labels document \"experimental\", \"efficiency\".",
+    "evidence": {
+      "source_node_ids": [
+        "data_00211",
+        "prob_00004",
+        "prob_00026",
+        "prob_00030",
+        "prob_00196",
+        "prob_00247",
+        "prob_00254",
+        "prob_00618",
+        "task_00348",
+        "tech_00133",
+        "tech_00137"
+      ],
+      "member_count": 81,
+      "type_counts": {
+        "author": 6,
+        "cited_work": 3,
+        "claim": 17,
+        "component": 8,
+        "dataset": 2,
+        "future_topic": 3,
+        "method": 1,
+        "metric": 1,
+        "problem": 15,
+        "task": 4,
+        "technique": 21
+      },
+      "evidence_phrases": [
+        "experimental",
+        "efficiency"
+      ],
+      "support_node_ids_per_phrase": {
+        "experimental": [
+          "data_00211",
+          "prob_00196",
+          "prob_00618",
+          "task_00348",
+          "tech_00133",
+          "tech_00137"
+        ],
+        "efficiency": [
+          "prob_00004",
+          "prob_00026",
+          "prob_00030",
+          "prob_00247",
+          "prob_00254"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 1
+  },
+  "L1_concept_0205": {
+    "label": "Interatomic Potentials / Uncertainty",
+    "gloss": "Observed cluster of 50 exported entities; member labels document \"interatomic potentials\", \"uncertainty\".",
+    "evidence": {
+      "source_node_ids": [
+        "futu_00065",
+        "meth_00416",
+        "prob_00007",
+        "prob_00120",
+        "prob_00122",
+        "prob_00487",
+        "task_00116"
+      ],
+      "member_count": 50,
+      "type_counts": {
+        "author": 21,
+        "claim": 1,
+        "component": 3,
+        "dataset": 2,
+        "future_topic": 1,
+        "method": 13,
+        "problem": 6,
+        "task": 3
+      },
+      "evidence_phrases": [
+        "interatomic potentials",
+        "uncertainty"
+      ],
+      "support_node_ids_per_phrase": {
+        "interatomic potentials": [
+          "futu_00065",
+          "meth_00416",
+          "prob_00122",
+          "prob_00487",
+          "task_00116"
+        ],
+        "uncertainty": [
+          "futu_00065",
+          "prob_00007",
+          "prob_00120"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 1
+  },
+  "L1_concept_0047": {
+    "label": "Descriptor / Computational",
+    "gloss": "Observed cluster of 249 exported entities; member labels document \"descriptor\", \"computational\".",
+    "evidence": {
+      "source_node_ids": [
+        "comp_00221",
+        "comp_00516",
+        "comp_00517",
+        "comp_00519",
+        "comp_00527",
+        "comp_00528",
+        "comp_00546",
+        "comp_00548",
+        "comp_00554",
+        "comp_00805",
+        "comp_00808",
+        "comp_00809",
+        "comp_00810",
+        "comp_00814",
+        "comp_00815",
+        "comp_00816",
+        "futu_00100",
+        "futu_00146",
+        "futu_00158",
+        "meth_00434"
+      ],
+      "member_count": 249,
+      "type_counts": {
+        "article": 2,
+        "author": 27,
+        "cited_work": 24,
+        "claim": 10,
+        "component": 34,
+        "dataset": 9,
+        "future_topic": 13,
+        "method": 27,
+        "metric": 3,
+        "problem": 36,
+        "task": 35,
+        "technique": 29
+      },
+      "evidence_phrases": [
+        "descriptor",
+        "computational"
+      ],
+      "support_node_ids_per_phrase": {
+        "descriptor": [
+          "comp_00221",
+          "comp_00516",
+          "comp_00517",
+          "comp_00519",
+          "comp_00527",
+          "comp_00528",
+          "comp_00546",
+          "comp_00548",
+          "comp_00554",
+          "comp_00805",
+          "comp_00808",
+          "comp_00809",
+          "comp_00810",
+          "comp_00814",
+          "comp_00815",
+          "comp_00816",
+          "meth_00434",
+          "prob_00326",
+          "prob_00622",
+          "tech_00260"
+        ],
+        "computational": [
+          "futu_00100",
+          "futu_00146",
+          "futu_00158",
+          "prob_00005",
+          "prob_00023",
+          "prob_00148",
+          "prob_00174",
+          "prob_00184",
+          "prob_00238",
+          "prob_00241",
+          "prob_00253",
+          "prob_00255",
+          "prob_00276",
+          "prob_00283",
+          "prob_00305",
+          "prob_00316",
+          "prob_00347",
+          "prob_00369",
+          "prob_00408",
+          "task_00005"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 1
+  },
+  "L1_concept_0046": {
+    "label": "Simulation / Molecular Dynamics",
+    "gloss": "Observed cluster of 125 exported entities; member labels document \"simulation\", \"molecular dynamics\".",
+    "evidence": {
+      "source_node_ids": [
+        "arti_00016",
+        "comp_00119",
+        "comp_00214",
+        "comp_00620",
+        "comp_00635",
+        "futu_00051",
+        "meth_00084",
+        "meth_00089",
+        "meth_00101",
+        "meth_00130",
+        "meth_00154",
+        "meth_00207",
+        "meth_00233",
+        "meth_00236",
+        "meth_00255",
+        "meth_00384",
+        "meth_00387",
+        "prob_00107",
+        "prob_00322",
+        "prob_00411"
+      ],
+      "member_count": 125,
+      "type_counts": {
+        "article": 1,
+        "author": 11,
+        "cited_work": 5,
+        "claim": 13,
+        "component": 11,
+        "dataset": 9,
+        "future_topic": 7,
+        "method": 14,
+        "metric": 1,
+        "problem": 9,
+        "task": 35,
+        "technique": 9
+      },
+      "evidence_phrases": [
+        "simulation",
+        "molecular dynamics"
+      ],
+      "support_node_ids_per_phrase": {
+        "simulation": [
+          "comp_00119",
+          "comp_00214",
+          "comp_00635",
+          "meth_00084",
+          "meth_00154",
+          "meth_00255",
+          "prob_00107",
+          "prob_00411",
+          "prob_00491",
+          "task_00035",
+          "task_00036",
+          "task_00044",
+          "task_00072",
+          "task_00087",
+          "task_00091",
+          "task_00158",
+          "task_00175",
+          "task_00176",
+          "task_00402",
+          "task_00403"
+        ],
+        "molecular dynamics": [
+          "arti_00016",
+          "comp_00620",
+          "futu_00051",
+          "meth_00089",
+          "meth_00101",
+          "meth_00130",
+          "meth_00207",
+          "meth_00233",
+          "meth_00236",
+          "meth_00384",
+          "meth_00387",
+          "prob_00322",
+          "prob_00411",
+          "prob_00412",
+          "prob_00494",
+          "task_00034",
+          "task_00036",
+          "task_00140",
+          "task_00145",
+          "task_00151"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 1
+  },
+  "L1_concept_0044": {
+    "label": "Structure / Simulations",
+    "gloss": "Observed cluster of 111 exported entities; member labels document \"structure\", \"simulations\".",
+    "evidence": {
+      "source_node_ids": [
+        "comp_00159",
+        "comp_00246",
+        "comp_00449",
+        "comp_00569",
+        "futu_00053",
+        "futu_00054",
+        "futu_00125",
+        "futu_00176",
+        "meth_00350",
+        "meth_00374",
+        "prob_00035",
+        "prob_00049",
+        "prob_00073",
+        "prob_00075",
+        "prob_00110",
+        "prob_00181",
+        "prob_00183",
+        "prob_00191",
+        "prob_00217",
+        "prob_00252"
+      ],
+      "member_count": 111,
+      "type_counts": {
+        "article": 2,
+        "author": 2,
+        "cited_work": 2,
+        "claim": 14,
+        "component": 9,
+        "dataset": 1,
+        "future_topic": 7,
+        "method": 3,
+        "problem": 24,
+        "task": 37,
+        "technique": 10
+      },
+      "evidence_phrases": [
+        "structure",
+        "simulations"
+      ],
+      "support_node_ids_per_phrase": {
+        "structure": [
+          "comp_00159",
+          "comp_00449",
+          "comp_00569",
+          "futu_00053",
+          "futu_00054",
+          "meth_00350",
+          "meth_00374",
+          "prob_00035",
+          "prob_00075",
+          "prob_00181",
+          "prob_00183",
+          "prob_00217",
+          "prob_00252",
+          "prob_00376",
+          "prob_00377",
+          "prob_00396",
+          "prob_00483",
+          "prob_00615",
+          "task_00045",
+          "task_00046"
+        ],
+        "simulations": [
+          "comp_00246",
+          "futu_00125",
+          "futu_00176",
+          "prob_00049",
+          "prob_00073",
+          "prob_00110",
+          "prob_00191",
+          "prob_00341",
+          "prob_00349",
+          "prob_00485",
+          "prob_00493",
+          "prob_00588",
+          "prob_00619",
+          "task_00164",
+          "task_00263",
+          "task_00427",
+          "task_00517",
+          "task_00614",
+          "task_00686",
+          "task_00687"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 1
+  },
+  "L1_concept_0045": {
+    "label": "Potentials / Calculation",
+    "gloss": "Observed cluster of 351 exported entities; member labels document \"potentials\", \"calculation\".",
+    "evidence": {
+      "source_node_ids": [
+        "comp_00115",
+        "comp_00594",
+        "comp_00622",
+        "futu_00064",
+        "futu_00068",
+        "futu_00126",
+        "futu_00138",
+        "futu_00150",
+        "meth_00075",
+        "meth_00076",
+        "meth_00162",
+        "meth_00375",
+        "prob_00037",
+        "prob_00038",
+        "prob_00216",
+        "prob_00375",
+        "prob_00420",
+        "prob_00490",
+        "prob_00589",
+        "prob_00591"
+      ],
+      "member_count": 351,
+      "type_counts": {
+        "author": 45,
+        "cited_work": 40,
+        "claim": 10,
+        "component": 64,
+        "dataset": 30,
+        "future_topic": 7,
+        "method": 27,
+        "metric": 3,
+        "problem": 28,
+        "task": 36,
+        "technique": 61
+      },
+      "evidence_phrases": [
+        "potentials",
+        "calculation"
+      ],
+      "support_node_ids_per_phrase": {
+        "potentials": [
+          "comp_00115",
+          "comp_00594",
+          "comp_00622",
+          "futu_00064",
+          "futu_00068",
+          "futu_00126",
+          "futu_00138",
+          "futu_00150",
+          "meth_00075",
+          "meth_00076",
+          "meth_00162",
+          "meth_00375",
+          "prob_00037",
+          "prob_00038",
+          "prob_00420",
+          "prob_00490",
+          "prob_00589",
+          "prob_00591",
+          "task_00067",
+          "task_00075"
+        ],
+        "calculation": [
+          "prob_00216",
+          "prob_00375",
+          "task_00061",
+          "task_00412",
+          "task_00413",
+          "task_00417",
+          "task_00418",
+          "task_00448",
+          "task_00449",
+          "task_00451",
+          "task_00454",
+          "task_00481",
+          "task_00509",
+          "task_00610",
+          "task_00611",
+          "tech_00187",
+          "tech_00369",
+          "tech_00402",
+          "tech_00567",
+          "tech_00569"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 1
+  },
+  "L1_concept_0050": {
+    "label": "Band Gap / Is2Re",
+    "gloss": "Observed cluster of 52 exported entities; member labels document \"band gap\", \"is2re\".",
+    "evidence": {
+      "source_node_ids": [
+        "task_00031",
+        "task_00308",
+        "task_00311",
+        "task_00340",
+        "task_00343",
+        "tech_00612"
+      ],
+      "member_count": 52,
+      "type_counts": {
+        "author": 1,
+        "cited_work": 18,
+        "claim": 15,
+        "dataset": 4,
+        "metric": 2,
+        "problem": 1,
+        "task": 10,
+        "technique": 1
+      },
+      "evidence_phrases": [
+        "band gap",
+        "is2re"
+      ],
+      "support_node_ids_per_phrase": {
+        "band gap": [
+          "task_00340",
+          "task_00343",
+          "tech_00612"
+        ],
+        "is2re": [
+          "task_00031",
+          "task_00308",
+          "task_00311"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 1
+  },
+  "L1_concept_0206": {
+    "label": "Carbon / Transferability",
+    "gloss": "Observed cluster of 38 exported entities; member labels document \"carbon\", \"transferability\".",
+    "evidence": {
+      "source_node_ids": [
+        "prob_00391",
+        "prob_00598",
+        "prob_00602",
+        "prob_00604"
+      ],
+      "member_count": 38,
+      "type_counts": {
+        "cited_work": 25,
+        "claim": 2,
+        "component": 2,
+        "metric": 2,
+        "problem": 6,
+        "technique": 1
+      },
+      "evidence_phrases": [
+        "carbon",
+        "transferability"
+      ],
+      "support_node_ids_per_phrase": {
+        "carbon": [
+          "prob_00598",
+          "prob_00602",
+          "prob_00604"
+        ],
+        "transferability": [
+          "prob_00391",
+          "prob_00604"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 1
+  },
+  "L1_concept_0049": {
+    "label": "Dft / Dft+U",
+    "gloss": "Observed cluster of 99 exported entities; member labels document \"dft\", \"dft+u\".",
+    "evidence": {
+      "source_node_ids": [
+        "comp_00113",
+        "comp_00131",
+        "comp_00276",
+        "comp_00335",
+        "comp_00398",
+        "comp_00564",
+        "data_00045",
+        "data_00210",
+        "futu_00109",
+        "futu_00112",
+        "futu_00155",
+        "meth_00100",
+        "meth_00102",
+        "meth_00155",
+        "meth_00205",
+        "metr_00020",
+        "prob_00017",
+        "prob_00029",
+        "prob_00032",
+        "prob_00039"
+      ],
+      "member_count": 99,
+      "type_counts": {
+        "author": 1,
+        "cited_work": 17,
+        "claim": 26,
+        "component": 13,
+        "dataset": 2,
+        "future_topic": 5,
+        "method": 6,
+        "metric": 1,
+        "problem": 18,
+        "technique": 10
+      },
+      "evidence_phrases": [
+        "dft",
+        "dft+u"
+      ],
+      "support_node_ids_per_phrase": {
+        "dft": [
+          "comp_00113",
+          "comp_00131",
+          "comp_00276",
+          "comp_00335",
+          "comp_00564",
+          "data_00045",
+          "data_00210",
+          "futu_00109",
+          "futu_00112",
+          "futu_00155",
+          "meth_00102",
+          "meth_00155",
+          "meth_00205",
+          "metr_00020",
+          "prob_00017",
+          "prob_00029",
+          "prob_00032",
+          "prob_00039",
+          "prob_00084",
+          "prob_00126"
+        ],
+        "dft+u": [
+          "comp_00398",
+          "meth_00100",
+          "tech_00167",
+          "tech_00174"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 1
+  },
+  "L1_concept_0207": {
+    "label": "High-Throughput Dft / Gnome",
+    "gloss": "Observed cluster of 39 exported entities; member labels document \"high-throughput dft\", \"gnome\".",
+    "evidence": {
+      "source_node_ids": [
+        "comp_00589",
+        "data_00144",
+        "meth_00169",
+        "prob_00378",
+        "prob_00385",
+        "tech_00597",
+        "tech_00616"
+      ],
+      "member_count": 39,
+      "type_counts": {
+        "author": 6,
+        "cited_work": 8,
+        "claim": 2,
+        "component": 4,
+        "dataset": 4,
+        "method": 6,
+        "metric": 1,
+        "problem": 5,
+        "technique": 3
+      },
+      "evidence_phrases": [
+        "high-throughput dft",
+        "gnome"
+      ],
+      "support_node_ids_per_phrase": {
+        "high-throughput dft": [
+          "prob_00378",
+          "prob_00385",
+          "tech_00597",
+          "tech_00616"
+        ],
+        "gnome": [
+          "comp_00589",
+          "data_00144",
+          "meth_00169"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 1
+  },
+  "L1_concept_0052": {
+    "label": "Rate / Active",
+    "gloss": "Observed cluster of 107 exported entities; member labels document \"rate\", \"active\".",
+    "evidence": {
+      "source_node_ids": [
+        "comp_00118",
+        "comp_00136",
+        "comp_00272",
+        "comp_00630",
+        "metr_00057",
+        "task_00096",
+        "task_00101",
+        "tech_00013",
+        "tech_00038",
+        "tech_00039",
+        "tech_00055",
+        "tech_00056",
+        "tech_00058",
+        "tech_00059",
+        "tech_00170",
+        "tech_00179",
+        "tech_00196",
+        "tech_00288",
+        "tech_00470",
+        "tech_00544"
+      ],
+      "member_count": 107,
+      "type_counts": {
+        "article": 7,
+        "author": 1,
+        "cited_work": 6,
+        "claim": 17,
+        "component": 11,
+        "future_topic": 12,
+        "method": 5,
+        "metric": 1,
+        "problem": 2,
+        "task": 15,
+        "technique": 30
+      },
+      "evidence_phrases": [
+        "rate",
+        "active"
+      ],
+      "support_node_ids_per_phrase": {
+        "rate": [
+          "comp_00272",
+          "metr_00057",
+          "task_00096",
+          "tech_00013",
+          "tech_00039",
+          "tech_00056",
+          "tech_00058",
+          "tech_00059",
+          "tech_00288",
+          "tech_00470",
+          "tech_00544",
+          "tech_00598",
+          "tech_00671"
+        ],
+        "active": [
+          "comp_00118",
+          "comp_00136",
+          "comp_00630",
+          "task_00101",
+          "tech_00038",
+          "tech_00055",
+          "tech_00170",
+          "tech_00179",
+          "tech_00196",
+          "tech_00655",
+          "tech_00682"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 1
+  },
+  "L1_concept_0055": {
+    "label": "Gradient / Optimizer",
+    "gloss": "Observed cluster of 57 exported entities; member labels document \"gradient\", \"optimizer\".",
+    "evidence": {
+      "source_node_ids": [
+        "comp_00129",
+        "comp_00296",
+        "comp_00315",
+        "comp_00322",
+        "comp_00446",
+        "meth_00018",
+        "meth_00079",
+        "meth_00259",
+        "tech_00007",
+        "tech_00010",
+        "tech_00021",
+        "tech_00032",
+        "tech_00296"
+      ],
+      "member_count": 57,
+      "type_counts": {
+        "cited_work": 7,
+        "component": 13,
+        "method": 12,
+        "problem": 3,
+        "task": 5,
+        "technique": 17
+      },
+      "evidence_phrases": [
+        "gradient",
+        "optimizer"
+      ],
+      "support_node_ids_per_phrase": {
+        "gradient": [
+          "comp_00129",
+          "comp_00296",
+          "meth_00079",
+          "meth_00259",
+          "tech_00007",
+          "tech_00021",
+          "tech_00296"
+        ],
+        "optimizer": [
+          "comp_00315",
+          "comp_00322",
+          "comp_00446",
+          "meth_00018",
+          "tech_00010",
+          "tech_00032"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 1
+  },
+  "L1_concept_0242": {
+    "label": "Feature / Matrix",
+    "gloss": "Observed cluster of 68 exported entities; member labels document \"feature\", \"matrix\".",
+    "evidence": {
+      "source_node_ids": [
+        "comp_00076",
+        "comp_00263",
+        "comp_00264",
+        "comp_00298",
+        "comp_00490",
+        "comp_00491",
+        "comp_00503",
+        "comp_00506",
+        "comp_00511",
+        "comp_00512",
+        "comp_00513",
+        "comp_00613",
+        "comp_00855",
+        "prob_00282",
+        "prob_00623",
+        "prob_00629",
+        "prob_00630",
+        "task_00722",
+        "tech_00104",
+        "tech_00172"
+      ],
+      "member_count": 68,
+      "type_counts": {
+        "claim": 2,
+        "component": 20,
+        "method": 2,
+        "metric": 2,
+        "problem": 5,
+        "task": 2,
+        "technique": 35
+      },
+      "evidence_phrases": [
+        "feature",
+        "matrix"
+      ],
+      "support_node_ids_per_phrase": {
+        "feature": [
+          "comp_00076",
+          "comp_00263",
+          "comp_00264",
+          "comp_00613",
+          "comp_00855",
+          "prob_00282",
+          "prob_00623",
+          "prob_00629",
+          "prob_00630",
+          "task_00722",
+          "tech_00104",
+          "tech_00172",
+          "tech_00183",
+          "tech_00217",
+          "tech_00231",
+          "tech_00317",
+          "tech_00357",
+          "tech_00457",
+          "tech_00463",
+          "tech_00473"
+        ],
+        "matrix": [
+          "comp_00298",
+          "comp_00490",
+          "comp_00491",
+          "comp_00503",
+          "comp_00506",
+          "comp_00511",
+          "comp_00512",
+          "comp_00513",
+          "tech_00538",
+          "tech_00549"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 1
+  },
+  "L1_concept_0054": {
+    "label": "Composition-Based / Encoding",
+    "gloss": "Observed cluster of 76 exported entities; member labels document \"composition-based\", \"encoding\".",
+    "evidence": {
+      "source_node_ids": [
+        "comp_00254",
+        "comp_00312",
+        "comp_00605",
+        "comp_00608",
+        "comp_00836",
+        "comp_00853",
+        "tech_00034",
+        "tech_00282",
+        "tech_00315",
+        "tech_00576",
+        "tech_00678",
+        "tech_00688"
+      ],
+      "member_count": 76,
+      "type_counts": {
+        "author": 4,
+        "cited_work": 5,
+        "claim": 2,
+        "component": 23,
+        "future_topic": 2,
+        "method": 5,
+        "task": 5,
+        "technique": 30
+      },
+      "evidence_phrases": [
+        "composition-based",
+        "encoding"
+      ],
+      "support_node_ids_per_phrase": {
+        "composition-based": [
+          "comp_00605",
+          "comp_00608",
+          "comp_00836",
+          "comp_00853",
+          "tech_00678",
+          "tech_00688"
+        ],
+        "encoding": [
+          "comp_00254",
+          "comp_00312",
+          "comp_00605",
+          "tech_00034",
+          "tech_00282",
+          "tech_00315",
+          "tech_00576"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 1
+  },
+  "L1_concept_0058": {
+    "label": "Message / Passing",
+    "gloss": "Observed cluster of 52 exported entities; member labels document \"message\", \"passing\".",
+    "evidence": {
+      "source_node_ids": [
+        "arti_00001",
+        "arti_00004",
+        "comp_00014",
+        "comp_00029",
+        "comp_00034",
+        "comp_00187",
+        "comp_00252",
+        "comp_00253",
+        "comp_00592",
+        "meth_00122",
+        "meth_00214",
+        "meth_00220",
+        "meth_00341",
+        "meth_00393",
+        "tech_00060",
+        "tech_00088",
+        "tech_00120",
+        "tech_00229",
+        "tech_00336",
+        "tech_00448"
+      ],
+      "member_count": 52,
+      "type_counts": {
+        "article": 2,
+        "cited_work": 9,
+        "claim": 9,
+        "component": 11,
+        "method": 10,
+        "problem": 1,
+        "technique": 10
+      },
+      "evidence_phrases": [
+        "message",
+        "passing"
+      ],
+      "support_node_ids_per_phrase": {
+        "message": [
+          "arti_00001",
+          "arti_00004",
+          "comp_00014",
+          "comp_00029",
+          "comp_00034",
+          "comp_00187",
+          "comp_00252",
+          "comp_00253",
+          "comp_00592",
+          "meth_00122",
+          "meth_00214",
+          "meth_00220",
+          "meth_00341",
+          "meth_00393",
+          "tech_00060",
+          "tech_00088",
+          "tech_00120",
+          "tech_00229",
+          "tech_00336",
+          "tech_00448"
+        ],
+        "passing": [
+          "arti_00001",
+          "arti_00004",
+          "comp_00187",
+          "comp_00252",
+          "comp_00253",
+          "meth_00122",
+          "meth_00214",
+          "meth_00220",
+          "meth_00341",
+          "meth_00393",
+          "tech_00120",
+          "tech_00229",
+          "tech_00336",
+          "tech_00528",
+          "tech_00668"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 1
+  },
+  "L1_concept_0056": {
+    "label": "Network / Equivariant",
+    "gloss": "Observed cluster of 154 exported entities; member labels document \"network\", \"equivariant\".",
+    "evidence": {
+      "source_node_ids": [
+        "arti_00002",
+        "arti_00005",
+        "arti_00015",
+        "arti_00036",
+        "arti_00043",
+        "comp_00020",
+        "comp_00070",
+        "comp_00075",
+        "comp_00109",
+        "comp_00117",
+        "comp_00135",
+        "comp_00226",
+        "comp_00238",
+        "comp_00242",
+        "comp_00256",
+        "comp_00257",
+        "comp_00293",
+        "comp_00520",
+        "comp_00529",
+        "comp_00530"
+      ],
+      "member_count": 154,
+      "type_counts": {
+        "article": 6,
+        "cited_work": 30,
+        "claim": 21,
+        "component": 31,
+        "dataset": 6,
+        "future_topic": 3,
+        "method": 43,
+        "metric": 2,
+        "problem": 4,
+        "task": 1,
+        "technique": 7
+      },
+      "evidence_phrases": [
+        "network",
+        "equivariant"
+      ],
+      "support_node_ids_per_phrase": {
+        "network": [
+          "arti_00002",
+          "arti_00005",
+          "arti_00015",
+          "arti_00036",
+          "arti_00043",
+          "comp_00020",
+          "comp_00075",
+          "comp_00109",
+          "comp_00117",
+          "comp_00135",
+          "comp_00226",
+          "comp_00238",
+          "comp_00242",
+          "comp_00256",
+          "comp_00257",
+          "comp_00293",
+          "comp_00520",
+          "comp_00529",
+          "comp_00530",
+          "comp_00531"
+        ],
+        "equivariant": [
+          "arti_00005",
+          "comp_00070",
+          "comp_00075",
+          "comp_00226",
+          "comp_00611",
+          "futu_00157",
+          "meth_00103",
+          "meth_00120",
+          "meth_00121",
+          "meth_00123",
+          "meth_00128",
+          "meth_00171",
+          "meth_00199",
+          "meth_00200",
+          "meth_00202",
+          "meth_00217",
+          "meth_00237",
+          "tech_00124"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 1
+  },
+  "L1_concept_0059": {
+    "label": "Convolution / Layer",
+    "gloss": "Observed cluster of 130 exported entities; member labels document \"convolution\", \"layer\".",
+    "evidence": {
+      "source_node_ids": [
+        "comp_00012",
+        "comp_00019",
+        "comp_00035",
+        "comp_00041",
+        "comp_00042",
+        "comp_00044",
+        "comp_00045",
+        "comp_00054",
+        "comp_00164",
+        "comp_00188",
+        "comp_00201",
+        "comp_00205",
+        "comp_00207",
+        "comp_00228",
+        "comp_00229",
+        "comp_00230",
+        "comp_00265",
+        "comp_00421",
+        "comp_00470",
+        "comp_00507"
+      ],
+      "member_count": 130,
+      "type_counts": {
+        "article": 2,
+        "cited_work": 24,
+        "claim": 6,
+        "component": 40,
+        "dataset": 4,
+        "future_topic": 2,
+        "method": 29,
+        "metric": 1,
+        "problem": 3,
+        "technique": 19
+      },
+      "evidence_phrases": [
+        "convolution",
+        "layer"
+      ],
+      "support_node_ids_per_phrase": {
+        "convolution": [
+          "comp_00019",
+          "comp_00164",
+          "comp_00205",
+          "comp_00265",
+          "comp_00421",
+          "comp_00470",
+          "comp_00508",
+          "comp_00572",
+          "comp_00702",
+          "meth_00043",
+          "meth_00047",
+          "meth_00049",
+          "meth_00168",
+          "meth_00323",
+          "tech_00052",
+          "tech_00218",
+          "tech_00249",
+          "tech_00444",
+          "tech_00542",
+          "tech_00628"
+        ],
+        "layer": [
+          "comp_00012",
+          "comp_00019",
+          "comp_00035",
+          "comp_00041",
+          "comp_00042",
+          "comp_00044",
+          "comp_00045",
+          "comp_00054",
+          "comp_00188",
+          "comp_00201",
+          "comp_00207",
+          "comp_00228",
+          "comp_00229",
+          "comp_00230",
+          "comp_00265",
+          "comp_00507",
+          "comp_00508",
+          "tech_00245",
+          "tech_00266"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 1
+  },
+  "L1_concept_0243": {
+    "label": "Twisted Bilayer / Datasets",
+    "gloss": "Observed cluster of 56 exported entities; member labels document \"twisted bilayer\", \"datasets\".",
+    "evidence": {
+      "source_node_ids": [
+        "data_00049",
+        "data_00247",
+        "futu_00037",
+        "task_00160"
+      ],
+      "member_count": 56,
+      "type_counts": {
+        "article": 1,
+        "author": 5,
+        "cited_work": 10,
+        "claim": 20,
+        "component": 1,
+        "dataset": 5,
+        "future_topic": 3,
+        "method": 4,
+        "metric": 3,
+        "problem": 2,
+        "task": 2
+      },
+      "evidence_phrases": [
+        "twisted bilayer",
+        "datasets"
+      ],
+      "support_node_ids_per_phrase": {
+        "twisted bilayer": [
+          "data_00049",
+          "data_00247"
+        ],
+        "datasets": [
+          "futu_00037",
+          "task_00160"
+        ]
+      },
+      "support_mode": "Exact n-gram in original node names, with timestamp <= cutoff; not scientific implication or human entailment."
+    },
+    "cutoff": 2024,
+    "level": 1
+  }
+}

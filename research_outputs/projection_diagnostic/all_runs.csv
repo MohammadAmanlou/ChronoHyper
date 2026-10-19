@@ -1,0 +1,4 @@
+﻿cross_year_shared_node_ari,elapsed_seconds,family,fraction_train_events_internal,heldout_normalized_connectivity_lower_better,independent_article_title_view_coherence_higher_better,model,n_clusters,n_heldout_edges,n_heldout_papers,n_nodes,n_train_edges,projected_pair_events,run_id,seed,train_highorder_events_still_3plus_coarse,year
+,0.315,projection,0.3349282296650718,0.7469310579425357,0.1830342218445844,clique_pairwise,12,82,3,1505,209,4600,clique_pairwise__seed17,17,78,2020
+0.34202973181232726,0.462,projection,0.2920353982300885,0.6873167614308218,0.16107426117624563,clique_pairwise,12,82,3,2164,339,11148,clique_pairwise__seed17,17,131,2022
+0.29363607427466815,1.077,projection,0.20930232558139536,0.694871962059809,0.12192912050435252,clique_pairwise,12,159,6,4164,645,32145,clique_pairwise__seed17,17,226,2024

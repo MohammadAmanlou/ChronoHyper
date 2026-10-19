@@ -1,0 +1,20 @@
+[
+  {
+    "level": 0,
+    "n_edges": 988,
+    "internal": 282,
+    "highorder_remaining": 298
+  },
+  {
+    "level": 1,
+    "n_edges": 988,
+    "internal": 160,
+    "highorder_remaining": 410
+  },
+  {
+    "level": 2,
+    "n_edges": 988,
+    "internal": 89,
+    "highorder_remaining": 476
+  }
+]

@@ -1,0 +1,9 @@
+{
+  "all_expected_runs": 1,
+  "failed": [],
+  "finished_this_invocation": 1,
+  "no_methods_discarded": true,
+  "protocol_sha256": "24456e7a30e5b736da8c75ed4111d7154aa03bf6dba7df0a1ad16311f127f85d",
+  "skipped_previously_completed": [],
+  "total_elapsed_metric": "See every run own metrics.json"
+}

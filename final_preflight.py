@@ -1,0 +1,144 @@
+#!/usr/bin/env python3
+"""Read-only pre-submission audit for Constructor CKL selected research outputs.
+
+Run in applicant's project root:
+ python final_preflight.py --project . --write research_outputs/final_preflight.json
+
+Uses only Python standard library. Never modifies research runs, reports, or labels.
+"""
+import argparse, json, csv, hashlib, statistics
+from pathlib import Path
+
+def read(p):
+    if not p.is_file():
+        return None
+    try:
+        return json.loads(p.read_text(encoding='utf-8-sig'))
+    except (ValueError, UnicodeError) as e:
+        return {'_read_error': str(e)}
+
+def digest(path):
+    h=hashlib.sha256()
+    with path.open('rb') as stream:
+        for buf in iter(lambda: stream.read(1<<20),b''):
+            h.update(buf)
+    return h.hexdigest()
+
+def mean(x):
+    return statistics.mean(x) if x else None
+
+def audit(root):
+    errors=[];warnings=[];passed=[];details={}
+    lock_path=root/'research_outputs/model_lock.json'
+    lock=read(lock_path)
+    confirm=root/'research_outputs/confirmation'; protocol=read(confirm/'protocol.json')
+    man=read(root/'outputs_selected/selected_export_manifest.json')
+    if lock is None:errors.append('Model lock missing')
+    elif '_read_error' in lock:errors.append('Model lock JSON unreadable: '+lock['_read_error'])
+    else:
+        details['locked_method']=lock.get('method')
+        if lock.get('method')!='native_temporal_20':warnings.append('Selected method not native_temporal_20; verify intentionally')
+    if protocol is None:errors.append('Confirmation protocol missing')
+    elif '_read_error' in protocol:errors.append('Confirmation protocol unreadable')
+    if isinstance(lock,dict) and isinstance(protocol,dict) and '_read_error' not in protocol:
+        if protocol.get('method_ids')!=[lock.get('method')]:errors.append('Confirmation model differs from frozen selection')
+        if protocol.get('seeds')!=lock.get('seeds') or protocol.get('years')!=lock.get('years'):errors.append('Confirmation seed/year protocol differs from lock')
+        if protocol.get('selection_lock')!=digest(lock_path):errors.append('Confirmation uses different selection lock content')
+        input_path=root/'inputs/data.zip'
+        if not input_path.is_file():errors.append('Original data.zip missing')
+        elif digest(input_path)!=lock.get('data_sha256'):errors.append('Original data fingerprint does not match lock')
+        else:passed.append('Original data hash equals frozen lock')
+    elif not (root/'inputs/data.zip').exists():errors.append('Original dataset missing')
+    if not isinstance(man,dict) or '_read_error' in man:
+        errors.append('Selected export manifest missing or unreadable')
+    else:
+        if isinstance(lock,dict) and man.get('locked_method')!=lock.get('method'):errors.append('Selected hierarchy model differs from lock')
+        if (root/'inputs/data.zip').is_file() and man.get('dataset_sha256')!=digest(root/'inputs/data.zip'):errors.append('Selected output built from different dataset')
+        if (root/'research_outputs/model_lock.json').is_file() and man.get('lock_sha256')!=digest(lock_path):errors.append('Selected output built using another lock')
+        missing=[]
+        for year in ['2020','2022','2024']:
+            for f in [f'hierarchy_{year}.json',f'collapsed_edges_{year}_level0.json',f'label_evidence_{year}.json']:
+                if not (root/'outputs_selected'/f).is_file():missing.append(f)
+        if missing:errors.append('Missing selected outputs: '+', '.join(missing))
+        elif (root/'outputs_selected/temporal_events.json').is_file():passed.append('Selected 3-year hierarchies, collapsed edges, labels, temporal events present')
+        else:errors.append('Temporal events missing')
+        details['selected_snapshots']=man.get('snapshot_summaries')
+        if not (root/'outputs_selected/hierarchy_2025.json').exists():warnings.append('Optional exploratory 2025 snapshot absent')
+    if not (root/'research_outputs/final_matrix/experiment_registry.csv').exists():warnings.append('Development experiment registry absent')
+    if not (root/'research_outputs/projection_5seed/experiment_registry.csv').exists():warnings.append('Five-seed pairwise experiment registry absent')
+    if not (root/'research_outputs/final_matrix/paired_paper_bootstrap.csv').exists():warnings.append('Paired paper bootstrap comparison absent')
+    method=lock.get('method') if isinstance(lock,dict) else 'native_temporal_20'
+    seeds=lock.get('seeds',[]) if isinstance(lock,dict) else [11,17,29,41,53]
+    details['per_seed_comparison_2024']=[]
+    dev_vals=[];conf_vals=[]
+    for seed in seeds:
+        rid=f'{method}__seed{seed}'
+        dt=read(root/'research_outputs/final_matrix/runs'/rid/'metrics_2024.json')
+        ct=read(confirm/'runs'/rid/'metrics_2024.json')
+        status=read(confirm/'runs'/rid/'status.json')
+        if dt is None or ct is None:errors.append(f'Missing development or confirmation metrics for {rid}') ;continue
+        if status is None or status.get('status')!='complete':errors.append(f'Confirmation {rid} is not complete');continue
+        if '_read_error' in dt or '_read_error' in ct:errors.append(f'Malformed numerical output for {rid}');continue
+        dv=dt.get('heldout_normalized_connectivity_lower_better');cv=ct.get('heldout_normalized_connectivity_lower_better')
+        if dv is not None and cv is not None:dev_vals.append(float(dv));conf_vals.append(float(cv))
+        details['per_seed_comparison_2024'].append({'seed':seed,'development_cut':dv,'confirmation_cut':cv,'confirmation_minus_development':cv-dv if dv is not None and cv is not None else None,'development_n_heldout_papers':dt.get('n_heldout_papers'),'confirmation_n_heldout_papers':ct.get('n_heldout_papers'),'title_view_identical':dt.get('independent_article_title_view_coherence_higher_better')==ct.get('independent_article_title_view_coherence_higher_better'),'temporal_ari_identical':dt.get('cross_year_shared_node_ari')==ct.get('cross_year_shared_node_ari')})
+    if len(details['per_seed_comparison_2024'])==len(seeds):passed.append('All five development-vs-confirmation pair records available')
+    details['development_2024_mean_cut']=mean(dev_vals)
+    details['confirmation_2024_mean_cut']=mean(conf_vals)
+    details['confirmation_minus_development_2024_mean_cut']=(mean(conf_vals)-mean(dev_vals)) if dev_vals and conf_vals else None
+    if details['confirmation_minus_development_2024_mean_cut'] is not None and details['confirmation_minus_development_2024_mean_cut']>0:
+        warnings.append('Heldout cut worsens from development to confirmation; report gap (DO NOT call independent gain)')
+    details['label_audit']=read(root/'outputs_selected/label_review_results.json')
+    la=details['label_audit']
+    if not isinstance(la,dict) or '_read_error' in la:errors.append('Human label faithfulness audit results missing')
+    elif la.get('n_evaluable',0)==0:errors.append('Zero independently evaluated label glosses: overclaim rate UNMEASURED (0 / 48 is NOT 0%)')
+    elif la.get('n_evaluable',0)<la.get('n_requested',48):warnings.append(f'Only {la["n_evaluable"]}/{la.get("n_requested",48)} label glosses evaluated; report partial annotation')
+    else:passed.append('All 48 label audit overclaim judgments present (verify ratings and reviewer independence manually)')
+    if isinstance(la,dict) and la.get('status')=='HUMAN_ANNOTATED':
+        sheet=root/'outputs_selected/label_review_sheet.csv'
+        try:
+            rows=list(csv.DictReader(sheet.open(encoding='utf-8-sig',newline='')))
+            missing_rating=[i+2 for i,r in enumerate(rows) if r.get('label_rating_accurate_vague_wrong') not in ('accurate','vague','wrong') or r.get('adequate_evidence_yes_no') not in ('yes','no') or not r.get('reviewer_id','').strip()]
+            if missing_rating:errors.append(f'Label audit may claim HUMAN_ANNOTATED while {len(missing_rating)} rating/evidence/reviewer rows incomplete')
+            else:passed.append('All annotation columns and reviewer IDs present')
+        except Exception as e:errors.append('Cannot recheck human audit CSV: '+str(e))
+    retrieval=read(root/'outputs_selected/selected_retrieval_EXPLORATORY_2025.json')
+    if isinstance(retrieval,dict) and 'summary' in retrieval:
+        details['retrieval_2025_exploratory']=retrieval['summary']
+        if retrieval['summary'].get('type_B_not_scored',0)>0:warnings.append('Type-B benchmark questions are unscored and must be noted')
+        warnings.append('Original benchmark questions previously inspected: 2025 retrieval is EXPLORATORY, not an unseen test')
+    else:warnings.append('No optional 2025 retrieval result; still need an extrinsic-task score')
+    stress=read(root/'research_outputs/stress_temporal20_extended/result.json')
+    if stress is None:
+        # documented prior path
+        stress=read(root/f'research_outputs/final_matrix/stress/{method}__seed17__2024/result.json')
+    if isinstance(stress,dict) and '_read_error' not in stress:details['stress_result_raw']=stress
+    else:warnings.append('Selected method stress result not found; include stress directory in hand-in')
+    for path in ['report.pdf','report.md','README.md','AI_USAGE.md','requirements.txt']:
+        if not (root/path).exists():errors.append('Missing required deliverable: '+path)
+    if (root/'report.pdf').exists() and (root/'outputs_selected/selected_export_manifest.json').exists():
+        manuscript=(root/'report.md').read_text(encoding='utf-8', errors='replace') if (root/'report.md').exists() else ''
+        if method in manuscript and 'confirmation' in manuscript.lower():
+            passed.append('Working report.md refers to selected locked method and source-grouped confirmation')
+            warnings.append('Manually verify that report.pdf renders the current report.md; this preflight does not parse PDFs')
+        else:
+            warnings.append('report.md may be STALE: missing locked method or confirmation discussion; regenerate before employer delivery')
+    details['read_only']=True
+    details['scientific_boundary']='Read-only structural/evidence audit. Does not check scientific novelty, accuracy of reviewer judgments, code correctness, confidence interval construction, PDF page count, or truthful literature reading.'
+    return {'ready_for_submission_without_caveat':len(errors)==0 and len(warnings)==0,'blocking_items':errors,'qualifications':warnings,'checks_passed':passed,'details':details}
+
+def main():
+    ap=argparse.ArgumentParser()
+    ap.add_argument('--project',default='.')
+    ap.add_argument('--write',default='research_outputs/final_preflight.json')
+    args=ap.parse_args()
+    root=Path(args.project).resolve()
+    result=audit(root)
+    for name,tag in [('checks_passed','PASS'),('blocking_items','BLOCK'),('qualifications','WARN')]:
+        for msg in result[name]:print(tag,msg)
+    dst=root/args.write
+    dst.parent.mkdir(parents=True,exist_ok=True)
+    dst.write_text(json.dumps(result,indent=2,ensure_ascii=False,default=str),encoding='utf-8')
+    print('PREFLIGHT:', 'PASS' if result['ready_for_submission_without_caveat'] else 'ACTION REQUIRED', 'saved',dst)
+    # Exit 0 to allow user to inspect even when scientific work is incomplete.
+if __name__=='__main__':main()

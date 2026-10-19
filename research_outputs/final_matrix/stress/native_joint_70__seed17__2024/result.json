@@ -1,0 +1,86 @@
+{
+  "assessment_stage": "development",
+  "elapsed_seconds": 17.21,
+  "heldout_cut_observed": 0.7267077302399167,
+  "limitations": [
+    "Only sample-paper article holdout, not new corpus generalization",
+    "Same transductive node surface/text available to fit even when assertions held out",
+    "Five edge-deletion replicates yield very uncertain descriptive CIs",
+    "Multiple models/years tried: adjust any inferential interpretation for selection",
+    "Null swaps are constrained by relation+article_year; few swaps may cause null degeneracy"
+  ],
+  "method": "native_joint_70",
+  "null_count": 19,
+  "null_degree_arity_preserved": true,
+  "null_scores": [
+    0.680467625183219,
+    0.6762357284984921,
+    0.7305692705678833,
+    0.6787423195664039,
+    0.6837080674289332,
+    0.7248731785232896,
+    0.6783087140384588,
+    0.7333421920908048,
+    0.7335974032852501,
+    0.7244533808157559,
+    0.7174512503466444,
+    0.6825981928520775,
+    0.7289242829559146,
+    0.7302387380162075,
+    0.73017857112058,
+    0.7261902794866171,
+    0.6776692006866812,
+    0.6840119407558365,
+    0.728455667836911
+  ],
+  "null_successful_swaps": [
+    10650,
+    10658,
+    10664,
+    10643,
+    10653,
+    10658,
+    10658,
+    10651,
+    10643,
+    10655,
+    10649,
+    10656,
+    10659,
+    10662,
+    10664,
+    10661,
+    10650,
+    10661,
+    10664
+  ],
+  "perturbation_10pct_ARI": [
+    0.9333986968073573,
+    0.9299867757503418,
+    0.9234732126883229,
+    0.9104126347802926,
+    0.9176093159916273
+  ],
+  "perturbation_bootstrap_descriptive": {
+    "ci95": [
+      0.9157667992165693,
+      0.9293664473493412
+    ],
+    "individual_values": [
+      0.9333986968073573,
+      0.9299867757503418,
+      0.9234732126883229,
+      0.9104126347802926,
+      0.9176093159916273
+    ],
+    "mean": 0.9229761272035883,
+    "n": 5
+  },
+  "randomization_p_lower_better": 0.65,
+  "same_encoder_seed": 17,
+  "same_previous_partition_for_every_refit": true,
+  "seed": 17,
+  "source_data_sha256": "414867a07e5fdc4b38f9ad4e96bd5253d31e239012173ca439a1c5441553b4e1",
+  "status": "complete",
+  "year": 2024
+}
