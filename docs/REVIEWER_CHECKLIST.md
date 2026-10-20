@@ -15,6 +15,15 @@ materials remain authorized-user-only. Original locked artifacts stay unchanged.
 | 10% | Reproducibility | lock, 65 development + 5 confirmation + 5 clique jobs, pinned requirements, source hashes, verifier, tests | Validate on applicant's actual machine; do not call synthetically tested code a reproduced original-corpus result |
 | 10% | Clear 3–5-page paper with genuine AI disclosure | `report.pdf`, `scripts/report.tex`, `AI_USAGE.md` | Check PDF pagination, formula/figure legibility, consistency with `report.md` and recipient access |
 
+## Positioning relative to existing methods (no unverified novelty claim)
+
+- **Zhou, Huang & Schölkopf (NeurIPS 2006)** established spectral learning directly on hypergraphs ([paper](https://papers.nips.cc/paper/2006/hash/dff8e9c2ac33381546d96deea9922999-Abstract.html)); merely using hyperedges is not a new idea.
+- **Chakrabarti, Kumar & Tomkins (KDD 2006)** introduced evolutionary clustering; temporal inertia/matching alone is not new.
+- **Schlag et al. (ACM JEA 2022), KaHyPar** describe multilevel high-quality native hypergraph partitioning ([DOI:10.1145/3529090](https://doi.org/10.1145/3529090)); ChronoHyper is not claiming a superior partitioning optimizer.
+- **Kamiński et al. (2024), h-Louvain**, address direct hypergraph modularity with graph/hypergraph interpolation ([preprint](https://arxiv.org/abs/2406.17556)). Their setting differs from the non-overlapping, source-dated scientific-label+retrieval assessment here.
+
+**Candidate positioning:** A traceable combination of *dated scientific evidence, native event-preserving coarsening, laminar visual budgets, persistent temporal IDs and abstaining provenance-linked labels*, rather than inventing a new foundational hypergraph objective. Its added value is a tested integrated workflow, not proof of state-of-the-art superiority. Independent semantic and downstream validation remain unproven.
+
 ## Predefined scientific decision rules
 
 1. **No retroactive test conversion.** Existing 14 Type-A and 4 Type-B questions were inspected. New routing-budget scores on them are DEVELOPMENT diagnostics, even if measured after freezing rankings.
