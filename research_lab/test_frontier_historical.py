@@ -29,7 +29,7 @@ class HistoricalFrontierTests(unittest.TestCase):
             'results': [
                 {'question_id': 'Q1', 'type': 'A',
                  'flat': {'top5': [{'normalized': 'mace'}]},
-                 'routes': {'1': {'top5': [{'normalized': 'nequip'}]},
+                 'routes': {'1': {'top5': [{'normalized': 'alpha'}]},
                             '2': {'top5': [{'normalized': 'mace'}]}}},
                 {'question_id': 'Q2', 'type': 'B',
                  'flat': {'top5': [{'normalized': 'alpha'}]},
@@ -85,13 +85,13 @@ class HistoricalFrontierTests(unittest.TestCase):
     def test_genuinely_unavailable_gold_is_separate_from_retrieval_failure(self):
         rank=self.frozen_fixture()
         gold={'Q1':['MACE','NequIP']}
-        details, arms=historical._per_question(rank,gold,{'mace'})
+        details, arms=historical._per_question(rank,gold,{'mace','alpha'})
         self.assertEqual(details[0]['eligible_count'],1)
         self.assertEqual(details[0]['unavailable_count'],1)
         self.assertEqual(details[0]['scores']['flat']['hit_at_5'],1)
         self.assertEqual(details[0]['scores']['flat']['recall_at_5_all_expected'],.5)
         self.assertEqual(details[0]['scores']['flat']['recall_at_5_available'],1.)
-        self.assertEqual(details[0]['scores']['route_1']['hit_at_5'],1)  # name seen, regardless of index set
+        self.assertEqual(details[0]['scores']['route_1']['hit_at_5'],0)
 
     def test_not_a_confirmatory_result(self):
         rank=self.frozen_fixture()
@@ -106,7 +106,7 @@ class HistoricalFrontierTests(unittest.TestCase):
         self.assertFalse(report['external_full_paper_entailment_verified'])
         self.assertEqual(report['quality_measures']['flat']['hit_at_5'],1)
         self.assertEqual(report['quality_measures']['route_2']['hit_at_5'],1)
-        self.assertEqual(report['quality_measures']['route_1']['hit_minus_flat'],0.)
+        self.assertEqual(report['quality_measures']['route_1']['hit_minus_flat'],-1.)
 
 
 if __name__=='__main__':
