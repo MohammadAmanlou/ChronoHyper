@@ -140,11 +140,26 @@ def _summarize(rank, details, by_arm, candidate_aliases):
     n = len(details)
     if n != EXPECTED_A:
         raise ValueError('Historical benchmark must have 14 scored Type A questions')
-    budgets = rank['ungraded_budget_summary']
+    # The quality numerator is 14 Type-A tasks. Cost/timing uses EXACTLY the
+    # same 14 tasks, not the 18-question (Type A+B) ungraded budget average.
+    type_a = {r['question_id']: r for r in rank['results'] if r['question_id']
+              in {d['question_id'] for d in details}}
+    if len(type_a) != n:
+        raise AssertionError('Missing ranked Type-A tasks for matched compute costs')
     per_arm = {}
     for arm, rows in by_arm.items():
         eligible = [r['recall_at_5_available'] for r in rows
                     if r['recall_at_5_available'] is not None]
+        timings = []
+        dot_products = []
+        for qid in sorted(type_a):
+            item = type_a[qid]
+            record = item['flat'] if arm == 'flat' else item['routes'][arm[6:]]
+            dot_products.append(record['candidates_scored'] +
+                                (0 if arm == 'flat' else record['centroid_scores']))
+            tkey = ('median_online_ms_including_top5' if arm == 'flat'
+                    else 'median_online_ms_including_routing_and_top5')
+            timings.append(record[tkey])
         per_arm[arm] = {
             'n_questions': len(rows),
             'hit_at_5': statistics.mean(r['hit_at_5'] for r in rows),
@@ -152,8 +167,8 @@ def _summarize(rank, details, by_arm, candidate_aliases):
                 r['recall_at_5_all_expected'] for r in rows),
             'macro_recall_at_5_available': statistics.mean(eligible) if eligible else None,
             'n_questions_with_available_targets': len(eligible),
-            'mean_total_online_dot_products': budgets[arm]['mean_total_dot_products'],
-            'mean_query_median_online_ms': budgets[arm]['mean_query_median_online_ms'],
+            'mean_total_online_dot_products': statistics.mean(dot_products),
+            'mean_query_median_online_ms': statistics.mean(timings),
             'hit_minus_flat': (statistics.mean(r['hit_at_5'] for r in rows) -
                                statistics.mean(r['hit_at_5'] for r in by_arm['flat'])),
         }
@@ -180,6 +195,8 @@ def _summarize(rank, details, by_arm, candidate_aliases):
         'total_expected_normalized_targets': sum(x['expected_count'] for x in details),
         'total_eligible_normalized_targets': sum(x['eligible_count'] for x in details),
         'quality_measures': per_arm,
+        'quality_cost_denominator': 'same 14 Type-A questions for quality, compute and timing',
+        'separate_all_18_question_ungraded_budget_summary': rank['ungraded_budget_summary'],
         'paired_hit_at_5_contrasts': contrasts,
         'per_question': details,
         'limitations': [
