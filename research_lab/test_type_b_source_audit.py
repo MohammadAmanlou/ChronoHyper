@@ -46,3 +46,31 @@ class TypeBSourceAudit(unittest.TestCase):
         self.assertNotEqual(name_key('inter-atomic'),name_key('intra-atomic'))
 
 if __name__=='__main__':unittest.main()
+
+class ClaimReviewValidation(unittest.TestCase):
+    def test_unrated_sheet_stays_unrated_and_review_is_never_answer_accuracy(self):
+        import csv
+        from research_lab.type_b_source_audit import review_claims
+        original=ROOT/'research_outputs/type_b_audit/CLAIM_LEVEL_REVIEW_BLANK.csv'
+        if not original.exists():self.skipTest('Original reference sheet unavailable')
+        with tempfile.TemporaryDirectory() as d:
+            result=review_claims(original,original,Path(d))
+            self.assertEqual(result['n_claims'],36)
+            self.assertEqual(result['source_claim_support_counts']['pending'],36)
+            self.assertIsNone(result['support_rate_among_definite'])
+            self.assertFalse(result['factual_answer_correctness_measured'])
+    def test_faked_ratings_without_evidence_rejected(self):
+        import csv
+        from research_lab.type_b_source_audit import review_claims
+        source=ROOT/'research_outputs/type_b_audit/CLAIM_LEVEL_REVIEW_BLANK.csv'
+        if not source.exists():self.skipTest('Original reference sheet unavailable')
+        with tempfile.TemporaryDirectory() as d:
+            out=Path(d)/'rated.csv'
+            with source.open(encoding='utf-8-sig',newline='') as fp:
+                rows=list(csv.DictReader(fp))
+            rows[0]['manual_claim_supported_yes_no_unclear']='yes'
+            rows[0]['human_reviewer']='Person X'
+            with out.open('w',encoding='utf-8',newline='') as fp:
+                writer=csv.DictWriter(fp,fieldnames=list(rows[0]));writer.writeheader();writer.writerows(rows)
+            with self.assertRaisesRegex(ValueError,'evidence notes'):
+                review_claims(out,source,Path(d))

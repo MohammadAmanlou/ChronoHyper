@@ -201,13 +201,83 @@ def score(project, out, n_random=2000, random_seed=101):
     print('TYPE B SCORE',json.dumps({'n':len(qs),'summary':summary,'random_reference_recall_p':pval,'human_answer_accuracy':'NOT_MEASURED'},indent=2,ensure_ascii=False))
     return result
 
+
+def review_claims(review_file, original_file, out):
+    """Score an authorized, separately completed source-audit sheet, never answers.
+
+    Reviewer identity and independent source checking are externally verified
+    procedures. A filled 'yes' cannot be trusted as proof by this code.
+    """
+    def read_csv(path):
+        with Path(path).open(encoding='utf-8-sig', newline='') as fp:
+            return list(csv.DictReader(fp))
+    raw=read_csv(original_file)
+    reviewed=read_csv(review_file)
+    index={row['claim_id']:row for row in raw}
+    if len(raw)!=36 or len(index)!=36 or len(reviewed)!=36:
+        raise ValueError('Expected 36 unique original and reviewed claims')
+    valid={'yes','no','unclear'}
+    observed=set()
+    totals={'yes':0,'no':0,'unclear':0,'pending':0}
+    citation={'yes':0,'no':0,'unclear':0,'pending':0}
+    reviewer_ids=set()
+    by_question={}
+    for row in reviewed:
+        ident=row.get('claim_id','')
+        if ident not in index or ident in observed:
+            raise ValueError('Duplicate or unknown claim ID: '+ident)
+        observed.add(ident)
+        baseline=index[ident]
+        if row.get('question_id')!=baseline['question_id'] or row.get('required_claim')!=baseline['required_claim']:
+            raise ValueError('Frozen claim text changed: '+ident)
+        value=row.get('manual_claim_supported_yes_no_unclear','').strip().lower()
+        cited=row.get('manual_source_citation_verified_yes_no_unclear','').strip().lower()
+        name=row.get('human_reviewer','').strip()
+        notes=row.get('reviewer_notes','').strip()
+        if value not in valid|{''} or cited not in valid|{''}:
+            raise ValueError('Invalid yes/no/unclear rating: '+ident)
+        if (value or cited) and (not name or not notes):
+            raise ValueError('Recorded judgment requires genuine reviewer name and evidence notes: '+ident)
+        if cited=='yes' and ('http' not in notes.lower() and 'doi:' not in notes.lower()):
+            raise ValueError('Source verification requires URL/DOI in reviewer notes: '+ident)
+        totals[value or 'pending']+=1
+        citation[cited or 'pending']+=1
+        if name:reviewer_ids.add(name)
+        q=row['question_id']
+        if q not in by_question:by_question[q]={'yes':0,'no':0,'unclear':0,'pending':0}
+        by_question[q][value or 'pending']+=1
+    if observed!=set(index):raise ValueError('Missing claim IDs')
+    n=totals['yes']+totals['no']
+    result={
+        'schema':'type_b_source_entailment_review_v1',
+        'status':'COMPLETE_REVIEWER_REPORTED' if not totals['pending'] and not citation['pending'] else 'PARTIAL_REVIEW',
+        'n_claims':len(reviewed),
+        'source_claim_support_counts':totals,
+        'source_citation_verified_counts':citation,
+        'support_rate_among_definite':totals['yes']/n if n else None,
+        'evaluable_n':n,
+        'per_question':by_question,
+        'reviewer_ids_reported':sorted(reviewer_ids),
+        'independent_reviewer_verified_by_code':False,
+        'factual_answer_correctness_measured':False,
+        'evidence_warning':'The software checks form consistency only. Verify full text, access permission, reviewer identity, passage locations, and disagreement resolution manually. Neither citation existence nor claim source support equals a generated-answer accuracy score.'
+    }
+    out=Path(out);out.mkdir(parents=True,exist_ok=True)
+    (out/'type_b_claim_review_summary.json').write_text(json.dumps(result,indent=2,ensure_ascii=False)+'\\n',encoding='utf-8',newline='\\n')
+    print('TYPE-B CLAIM EVIDENCE REVIEW',json.dumps(result,indent=2,ensure_ascii=False))
+    return result
+
 def main():
     ap=argparse.ArgumentParser()
-    ap.add_argument('stage',choices=['rank','score'])
+    ap.add_argument('stage',choices=['rank','score','review'])
     ap.add_argument('--project',default='.')
     ap.add_argument('--out',default='research_outputs/type_b_audit')
     ap.add_argument('--cutoff',type=int,default=CUTOFF)
+    ap.add_argument('--review-file',default=None,help='Separately rated private CSV file; do not modify the empty baseline')
     a=ap.parse_args()
     if a.stage=='rank':rank(a.project,a.out,a.cutoff)
-    else:score(a.project,a.out)
+    elif a.stage=='score':score(a.project,a.out)
+    else:
+        if not a.review_file:ap.error('--review-file is required for review stage')
+        review_claims(a.review_file,Path(a.project)/'research_outputs/type_b_audit/CLAIM_LEVEL_REVIEW_BLANK.csv',a.out)
 if __name__=='__main__':main()
