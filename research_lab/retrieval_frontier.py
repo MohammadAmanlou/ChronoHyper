@@ -103,6 +103,27 @@ def rank(project='.', out='local_only/retrieval_frontier/rankings.json',
                        'flat': {'top5': baseline, 'candidates_scored': len(entries),
                                 'median_online_ms_including_top5': flat_ms},
                        'routes': route})
+    ungraded = {
+        'flat': {
+            'mean_candidate_dot_products': float(len(entries)),
+            'mean_centroid_dot_products': 0.0,
+            'mean_total_dot_products': float(len(entries)),
+            'mean_query_median_online_ms': float(statistics.mean(
+                x['flat']['median_online_ms_including_top5'] for x in output)),
+        }
+    }
+    for k in budgets:
+        key = str(k)
+        mean_c = float(statistics.mean(x['routes'][key]['candidates_scored'] for x in output))
+        ungraded['route_' + key] = {
+            'mean_candidate_dot_products': mean_c,
+            'mean_centroid_dot_products': float(len(roots)),
+            'mean_total_dot_products': mean_c + len(roots),
+            'fraction_of_flat_online_dot_products': (mean_c + len(roots)) / len(entries),
+            'mean_query_median_online_ms': float(statistics.mean(
+                x['routes'][key]['median_online_ms_including_routing_and_top5']
+                for x in output)),
+        }
     result = {
         'schema': 'chronohyper_gold_separated_budget_frontier_v1',
         'evaluation_stage': ('HISTORICAL_REUSED_QUESTIONS_DEVELOPMENT_ONLY'
@@ -118,6 +139,7 @@ def rank(project='.', out='local_only/retrieval_frontier/rankings.json',
         'timing_scope': ('Online candidate scores, centroid routing and top-5; '
                          'shared query vector construction and offline indexing excluded. '
                          'Order-dependent CPU timings are diagnostics, not speedup guarantees.'),
+        'ungraded_budget_summary': ungraded,
         'machine': {'python': platform.python_version(), 'system': platform.system(),
                     'processor': platform.processor()},
         'results': output,
@@ -127,6 +149,10 @@ def rank(project='.', out='local_only/retrieval_frontier/rankings.json',
     dest.write_text(json.dumps(result, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
     print('RANK FRONTIER', len(output), 'queries;', len(roots), 'roots;',
           len(entries), 'entities; no gold accessed;', dest)
+    for arm, stats in ungraded.items():
+        print(arm, 'mean total dot-products',
+              round(stats['mean_total_dot_products'], 1),
+              'mean query-median ms', round(stats['mean_query_median_online_ms'], 4))
     return result
 
 
