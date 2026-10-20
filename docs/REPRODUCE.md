@@ -125,3 +125,28 @@ Read `local_only/reviews/scores/type_b_claim_review_summary.json`. This is sourc
 **Optional extension — independent corpus.** Follow Option B in `docs/ASSIGNMENT_SOURCE.md`: collect ~300–500 dated 2019–2024 arXiv abstracts in one predeclared category, form 2020/2022/2024 snapshots and distinct-mention within-abstract **co-occurrence** hyperedges (not factual relations), with reproducible provenance. Keep old model-selection weights, budgets, baseline choices and seeds fixed. Pre-register disjoint papers/questions and new domain-expert reference judgments before inspecting model outputs. Evaluate held-out independent-signal coherence vs null, temporal and perturbation stability, label faithfulness, Type-A hits and Type-B source-grounded answers, with meaningful uncertainty. New corpus construction and answer-generation code **do not currently exist**; write them only after data and annotation permissions are settled.
 
 **Final release after genuine T5/T6 evidence.** Once new actual evidence exists, update `docs/EVALUATION.md`, `report.md` and `scripts/report.tex`, rebuild only `report.pdf`, disclose AI usage and unverified residual claims, run tests and final preflight. Keep 65+5+5 archived runs, model lock and original gold fixed, and keep all secret keys and private reviews under ignored paths. Work only on `main`; do not create extra branches, READMEs or report copies.
+
+## 9 · Fresh, *key-isolated* AI coherence protocol (do not reuse the previous 48 examples)
+
+**Pre-registration:** `research_lab/blind_paper_eval.py` selects **24 previously unseen level-1 clusters**: 8 each from 2020, 2022 and 2024, excluding the 24 V1/V2 examples already inspected. It makes 24 new within-cluster 14-member samples and 24 year-, type- and size-matched mixtures from other clusters, with a fixed seed. All samples show original node names and at most eight time-eligible linked paper **titles**; no gold answer/question is accessed. This is a fresh blind LLM name+paper-title judgment, **not independent full-paper semantic entailment** and not a replacement for the negative arity/degree-preserving shuffle.
+
+First, run in PowerShell:
+```powershell
+git switch main
+git pull --ff-only origin main
+.\.venv\Scripts\python.exe -m research_lab.blind_paper_eval --project . --prepare
+git status --short
+```
+The only new files should be ignored under `local_only/reviews/fresh_semantic/`: `blind_review_48.csv`, **`condition_key_PRIVATE.csv`**, and `JUDGE_INSTRUCTIONS.txt`. **Never submit, upload or send the key**; do not push private rated forms to GitHub. Do not use this same ChatGPT project or a model with knowledge of the previous keys to rate the blind file.
+
+**External AI/data-sharing gate:** The employer-provided corpus is private. Get explicit authority for sending member names/paper links outside approved infrastructure before giving `blind_review_48.csv` to ChatGPT or any external API. Otherwise use an authorized isolated/local model. Choose a fresh model session with no prior case/condition exposure and disable cross-chat memory/project attachments as appropriate. Only the blind CSV and `JUDGE_INSTRUCTIONS.txt` should be visible to that evaluator. It must return the same 48 IDs and all original evidence columns, plus `coherence_score_1_to_5` (1–5 for enough evidence), `evidence_sufficient_yes_no`, a truthful model identifier and row-specific evidence notes. Record the exact model name, prompt and data permission in AI_USAGE.
+
+Once the rated CSV has been saved locally, for example as `local_only/reviews/fresh_semantic/ratings_fresh_48.csv`, score it:
+```powershell
+.\.venv\Scripts\python.exe -m research_lab.blind_paper_eval --project . --score --ratings .\local_only\reviews\fresh_semantic\ratings_fresh_48.csv
+Get-Content .\local_only\reviews\fresh_semantic\score_summary.json
+git status --short
+```
+The scorer rejects modified original case content, missing ratings, forged control columns and mismatched IDs. It excludes insufficient-evidence **pairs**; reports paired difference, exact descriptive sign test, year-specific performance and a paired bootstrap interval. Treat the judge's self-reported isolation as a procedural claim, not machine-verified independence. A high real-vs-mixed score cannot erase the preserved constrained structural null `p=0.69` or establish scientific title entailment from full papers.
+
+**Do not treat any AI response in the existing ChronoHyper conversation as a fresh blind rating:** this conversation has seen partial keys and previous scores. If permission for a genuinely isolated model/evidence is unavailable, preserve `P3/P6` as unconfirmed rather than manufacturing ratings.

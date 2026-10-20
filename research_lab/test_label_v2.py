@@ -256,3 +256,43 @@ class V2GlossAuditCLI(unittest.TestCase):
             self.assertEqual((r["n_literal_count_claims"], r["n_qualitative_abstentions"]),(23,1))
             self.assertEqual(r["full_text_scientific_overclaim_unclear_n"], 24)
             self.assertIsNone(r["full_text_scientific_overclaim_rate"])
+
+
+class FreshSemanticBlindPacket(unittest.TestCase):
+    def test_new_48_blind_samples_and_local_scoring(self):
+        import csv
+        from research_lab.blind_paper_eval import prepare, score
+        root=Path(__file__).resolve().parents[1]
+        if not (root/'inputs/data.zip').exists():
+            self.skipTest('Employer dataset unavailable')
+        with tempfile.TemporaryDirectory() as tmp:
+            packet=Path(tmp)/'private_packet'
+            forms,keys=prepare(root,packet)
+            self.assertEqual(len(forms),48)
+            self.assertEqual(len(keys),48)
+            self.assertEqual(len({x['blind_id'] for x in forms}),48)
+            self.assertEqual(sum(x['condition']=='REAL' for x in keys),24)
+            self.assertEqual(sum(x['condition']=='MIXED_CONTROL' for x in keys),24)
+            for year in (2020,2022,2024):
+                self.assertEqual(sum(int(x['snapshot_year'])==year for x in forms),16)
+            old=root/'research_outputs/label_v2/BLIND_LABEL_COMPARISON_TO_FILL.csv'
+            with old.open(encoding='utf-8-sig',newline='') as f:
+                previous={(int(x['year']),x['stable_id']) for x in csv.DictReader(f)}
+            self.assertTrue(all((int(k['snapshot_year']),k['target_cluster']) not in previous for k in keys))
+            self.assertFalse(any('condition' in row or 'target_cluster' in row for row in forms))
+            for row in forms:
+                row['coherence_score_1_to_5']='3'
+                row['evidence_sufficient_yes_no']='yes'
+                row['reviewer_id']='TEST_SIMULATED_NOT_AN_ACTUAL_ASSESSOR'
+                row['evidence_notes']='Test-only fixture, not scientific evidence'
+            ratings=packet/'fake_test_only.csv'
+            with ratings.open('w',encoding='utf-8-sig',newline='') as f:
+                writer=csv.DictWriter(f,fieldnames=list(forms[0]));writer.writeheader();writer.writerows(forms)
+            result=score(root,ratings,packet,packet/'test_result.json')
+            self.assertEqual(result['evaluable_pairs'],24)
+            self.assertEqual((result['real_higher_pairs'],result['control_higher_pairs'],result['ties']),(0,0,24))
+            forms[0]['member_names']='ILLICIT CHANGE'
+            with ratings.open('w',encoding='utf-8-sig',newline='') as f:
+                writer=csv.DictWriter(f,fieldnames=list(forms[0]));writer.writeheader();writer.writerows(forms)
+            with self.assertRaisesRegex(ValueError,'changed frozen evidence'):
+                score(root,ratings,packet,packet/'bad.json')
