@@ -445,6 +445,147 @@ def summarize_ai_review(project='.', output=None):
     print('AI-ONLY DIAGNOSTIC: V2',wins,'V1',losses,'ties',ties,'sign p (descriptive only)',sign_p)
     return result
 
+
+def audit_v2_24_literal_source_claims(project='.', out='research_outputs/label_v2'):
+    """Check 24 V2 glosses against FULL original node records, not sampled names.
+
+    This performs factual/count/provenance verification; it does not perform a
+    blinded independent assessment of scientific meaning or full-paper entailment.
+    No source model, original frozen result, A/B key or human worksheet is changed.
+    """
+    root=Path(project);out=Path(out);out.mkdir(parents=True,exist_ok=True)
+    base=root/'research_outputs/label_v2'
+    with (base/'BLIND_LABEL_COMPARISON_TO_FILL.csv').open(encoding='utf-8-sig',newline='') as f:
+        case_rows=list(csv.DictReader(f))
+    if len(case_rows)!=24 or len({(x['year'],x['stable_id']) for x in case_rows})!=24:
+        raise ValueError('Expected 24 unique frozen A/B cases')
+    all_candidates=[]
+    for year in (2022,2024):
+        all_candidates+=json.loads((base/f'candidates_v2_{year}.json').read_text(encoding='utf-8'))
+    c_by_id={(str(c['year']),c['stable_id']):c for c in all_candidates}
+    graph,articles,_,_=parse_archive(root/'inputs/data.zip')
+    nodes={n['id']:n for n in graph['nodes']}
+    hierarchy={}
+    for year in (2022,2024):
+        h=json.loads((root/f'outputs_selected/hierarchy_{year}.json').read_text(encoding='utf-8'))
+        hierarchy[year]={x['id']:x for x in h['supernodes'] if x['level']==1}
+    fields=['year','stable_id','level','title','gloss','member_count','eligible_member_count',
+        'claimed_year','primary_phrase','gloss_numerical_support_count',
+        'generator_supporter_count','source_support_node_ids',
+        'machine_lexical_claim_status','lexical_overclaim_status',
+        'independent_scientific_overclaim_status','label_semantic_status','audit_scope']
+    rows=[];n_literal=0;n_qualitative=0
+    rx=re.compile(r'^At the (\d+) cutoff, (\d+) of (\d+) non-metadata members explicitly mention "([^"]+)" in their exported names; this does not imply that every cluster member shares the topic\.
+    ap=argparse.ArgumentParser()
+    ap.add_argument('--project',default='.')
+    ap.add_argument('--out',default='research_outputs/label_v2')
+    ap.add_argument('--years',default='2020,2022,2024')
+    ap.add_argument('--score-blind',default=None,help='CSV with human A/B judgments; do not set this until actually completed')
+    ap.add_argument('--key',default=None,help='Local A/B key kept away from the reviewer')
+    ap.add_argument('--summarize-ai',action='store_true',help='Score existing AI-only diagnostic review separately, NOT human ratings')
+    ap.add_argument('--recover-key',action='store_true',help='Safely recover frozen A/B mapping into ignored local secret; do not share')
+    ap.add_argument('--audit-v2-gloss',action='store_true',help='Verify 24 frozen V2 gloss literal counts on full source-node membership (NOT independent scientific entailment)')
+    a=ap.parse_args()
+    if a.audit_v2_gloss:
+        audit_v2_24_literal_source_claims(a.project,a.out)
+        return
+    if a.recover_key:
+        recover_frozen_blind_key(a.project, a.key)
+        return
+    if a.summarize_ai:
+        summarize_ai_review(a.project, Path(a.out)/'ai_paired_summary.json')
+        return
+    if a.score_blind:
+        if not a.key:ap.error('--score-blind requires --key')
+        score_blind(a.score_blind,a.key,a.out)
+        return
+    m=write_outputs(a.project,a.out,[int(y) for y in a.years.split(',')])
+    for y,row in m['years'].items():print(f'V2 {y}: {row["labels"]} labels; {row["with_abstention"]} abstentions; {row["lexical_source_assertions_checked"]} cited node-name occurrences source-verified')
+    print('NO LABEL ADVANTAGE CLAIMED until external blinded evaluation is completed.')
+
+if __name__=='__main__':main()
+)
+    for case in case_rows:
+        key=(case['year'],case['stable_id'])
+        if key not in c_by_id:raise ValueError('Missing V2 candidate: '+str(key))
+        c=c_by_id[key];year=int(case['year'])
+        same_a=(case['label_A']==c['v2_label'] and case['gloss_A']==c['v2_gloss'])
+        same_b=(case['label_B']==c['v2_label'] and case['gloss_B']==c['v2_gloss'])
+        if same_a==same_b:raise ValueError('Frozen A/B text mismatch: '+str(key))
+        if c['level']!=int(case['level']) or c['member_count']!=int(case['cluster_member_count']):
+            raise ValueError('Frozen cluster metadata mismatch: '+str(key))
+        sn=hierarchy[year].get(c['stable_id'])
+        if sn is None or sorted(sn['member_ids'])!=sorted(c['member_ids']):
+            raise ValueError('Frozen hierarchy membership differs from candidate: '+str(key))
+        members=[]
+        for ident in c['member_ids']:
+            n=nodes[ident]
+            if int(n['first_seen_year'])>year:raise ValueError('Future node in cluster: '+ident)
+            members.append(n)
+        eligible=[n for n in members if n['type'] not in EXCLUDED_TYPES]
+        if len(eligible)!=c['eligible_member_count']:raise ValueError('Nonmetadata denominator mismatch: '+str(key))
+        found=rx.fullmatch(c['v2_gloss'])
+        if found:
+            claimed_year,claimed_num,claimed_den,phrase=found.groups()
+            supporters=sorted(n['id'] for n in eligible if phrase in phrases(n['surface_form']))
+            evidence=c['phrase_evidence'].get(phrase)
+            if (int(claimed_year)!=year or int(claimed_num)!=len(supporters)
+                or int(claimed_den)!=len(eligible) or not evidence
+                or evidence['support_count']!=len(supporters)
+                or sorted(evidence['support_node_ids'])!=supporters):
+                raise ValueError('Unsupported V2 literal count or phrase evidence: '+str(key))
+            n_literal+=1
+            claim='PASS_FULL_MEMBER_RECOUNT';overclaim='no'
+            source_ids='|'.join(supporters)
+            claimed_num=int(claimed_num)
+            claimed_year=int(claimed_year)
+        else:
+            if not (c['v2_label']=='Unresolved heterogeneous cluster'
+                    and c['v2_gloss']==f'This snapshot contains {len(members)} exported entities, with insufficient contrastive lexical evidence to name a unified scientific topic.'
+                    and c['confidence']=='abstain'):
+                raise ValueError('Unsupported/unknown qualitative gloss: '+str(key))
+            claim='QUALITATIVE_ABSTENTION_NOT_ENTAILMENT_VERIFIED';overclaim='unclear'
+            claimed_num='';claimed_year='';phrase='';source_ids=''
+            n_qualitative+=1
+        rows.append({'year':year,'stable_id':c['stable_id'],'level':c['level'],
+            'title':c['v2_label'],'gloss':c['v2_gloss'],
+            'member_count':len(members),'eligible_member_count':len(eligible),
+            'claimed_year':claimed_year,'primary_phrase':phrase,
+            'gloss_numerical_support_count':claimed_num,
+            'generator_supporter_count':len(source_ids.split('|')) if source_ids else '',
+            'source_support_node_ids':source_ids,'machine_lexical_claim_status':claim,
+            'lexical_overclaim_status':overclaim,
+            'independent_scientific_overclaim_status':'unclear',
+            'label_semantic_status':'AI_DIAGNOSTIC_NOT_INDEPENDENT',
+            'audit_scope':'Complete original source-node membership, year and literal phrase count only; NOT full-paper semantic entailment'})
+    if (n_literal,n_qualitative)!=(23,1):raise ValueError('Expected 23 literal glosses and one epistemic abstention')
+    with (out/'v2_gloss_source_audit_24.csv').open('w',encoding='utf-8-sig',newline='') as f:
+        writer=csv.DictWriter(f,fieldnames=fields);writer.writeheader();writer.writerows(rows)
+    from math import sqrt
+    z=1.959963984540054
+    upper=z*z/(n_literal+z*z)
+    summary={
+        'schema':'ckl_v2_24_claim_scoped_audit_v1','n_selected_v2_glosses':len(rows),
+        'n_literal_count_claims':n_literal,'n_qualitative_abstentions':n_qualitative,
+        'source_scope_full_member_recounts_verified':n_literal,
+        'source_scope_false_literal_claims_found':0,
+        'source_scope_limited_overclaim_evaluable_n':n_literal,
+        'source_scope_limited_overclaim_rate':0.0,
+        'source_scope_limited_overclaim_wilson95_upper':upper,
+        'source_scope_limited_overclaim_unclear_n':n_qualitative,
+        'full_text_scientific_overclaim_evaluable_n':0,
+        'full_text_scientific_overclaim_unclear_n':len(rows),
+        'full_text_scientific_overclaim_rate':None,
+        'independent_semantic_title_accuracy':None,
+        'independent_expert_review':False,
+        'audit_caveat':'Literal occurrence counts verified on all frozen member node names and year cutoffs, not just samples. This is NOT independent scientific title/gloss entailment. All 24 full-text semantic overclaim statuses remain UNCLEAR. No human annotation is claimed.'
+    }
+    (out/'v2_gloss_source_summary_24.json').write_text(
+        json.dumps(summary,indent=2,ensure_ascii=False)+'\n',encoding='utf-8',newline='\n')
+    print('V2 source-literal audit',n_literal,'verified count glosses;',n_qualitative,
+          'qualitative unclear; scientific-entailment unclear',len(rows))
+    return summary
+
 def main():
     ap=argparse.ArgumentParser()
     ap.add_argument('--project',default='.')

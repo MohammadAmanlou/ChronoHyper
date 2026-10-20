@@ -178,3 +178,22 @@ class ReviewOriginSafety(unittest.TestCase):
             self.assertEqual(result['status'],'COMPLETE_AI_ONLY_DIAGNOSTIC')
             self.assertTrue(result['all_reported_reviewers_explicitly_ai'])
             self.assertFalse(result['human_independence_verified'])
+
+
+class V2FullMembershipSourceAudit(unittest.TestCase):
+    def test_frozen_24_glosses_are_scoped_correctly(self):
+        import csv
+        from research_lab.label_v2 import audit_v2_24_literal_source_claims
+        project=Path(__file__).resolve().parents[1]
+        if not (project/'inputs/data.zip').is_file():self.skipTest('Original data archive not available')
+        with tempfile.TemporaryDirectory() as temp:
+            summary=audit_v2_24_literal_source_claims(project,temp)
+            self.assertEqual(summary['n_literal_count_claims'],23)
+            self.assertEqual(summary['n_qualitative_abstentions'],1)
+            self.assertIsNone(summary['full_text_scientific_overclaim_rate'])
+            self.assertEqual(summary['full_text_scientific_overclaim_unclear_n'],24)
+            with (Path(temp)/'v2_gloss_source_audit_24.csv').open(encoding='utf-8-sig',newline='') as fp:
+                rows=list(csv.DictReader(fp))
+            self.assertEqual(len(rows),24)
+            self.assertEqual(sum(r['machine_lexical_claim_status']=='PASS_FULL_MEMBER_RECOUNT' for r in rows),23)
+            self.assertTrue(all(r['independent_scientific_overclaim_status']=='unclear' for r in rows))
