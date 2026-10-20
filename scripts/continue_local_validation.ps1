@@ -53,7 +53,7 @@ try {
     Write-Host "[2/6] Research tests"
     Run-Python @("-m","unittest","research_lab.tests_lab","research_lab.test_label_v2","research_lab.test_type_b_source_audit","-v")
     Write-Host "[2b/6] Test retrieval budget frontier"
-    Run-Python @("-m","unittest","research_lab.test_retrieval_frontier","research_lab.test_frontier_historical","-v")
+    Run-Python @("-m","unittest","research_lab.test_retrieval_frontier","research_lab.test_frontier_historical","research_lab.test_v3_provenance_audit","-v")
     Write-Host "[3/6] Validate frozen selected outputs"
     Run-Python @("verify_selected_outputs.py","--out","outputs_selected")
 
@@ -63,6 +63,8 @@ try {
     } else {
         Write-Host "Existing V3 development summary retained: $v3summary"
     }
+    Write-Host "[4b/6] Exhaustively audit all 180 V3 phrase claims against dated original evidence"
+    Run-Python @("-m","research_lab.v3_provenance_audit","--project",".")
     Write-Host "[5/6] Run gold-separated retrieval V2 diagnostics"
     if (-not (Test-Path $retrieval)) {
         Run-Python @("-m","research_lab.retrieval_v2","--project",".","--rank")
@@ -110,6 +112,7 @@ try {
         frozen_selected_output_verification_completed = $true
         label_v3_development_cases = 180
         v3_development_summary = "local_only/label_v3_dev/summary.json"
+        v3_full_member_provenance_audit = "local_only/label_v3_dev/provenance_audit.json"
         retrieval_rankings = "local_only/retrieval_v2/rankings.json"
         retrieval_frontier_rankings = "local_only/retrieval_frontier/rankings.json"
         historical_frontier_audit = "local_only/retrieval_frontier/historical_v2/historical_audit.json"
