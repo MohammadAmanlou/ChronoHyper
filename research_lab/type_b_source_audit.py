@@ -263,7 +263,7 @@ def review_claims(review_file, original_file, out):
         'evidence_warning':'The software checks form consistency only. Verify full text, access permission, reviewer identity, passage locations, and disagreement resolution manually. Neither citation existence nor claim source support equals a generated-answer accuracy score.'
     }
     out=Path(out);out.mkdir(parents=True,exist_ok=True)
-    (out/'type_b_claim_review_summary.json').write_text(json.dumps(result,indent=2,ensure_ascii=False)+'\\n',encoding='utf-8',newline='\\n')
+    (out/'type_b_claim_review_summary.json').write_text(json.dumps(result,indent=2,ensure_ascii=False)+'\n',encoding='utf-8',newline='\n')
     print('TYPE-B CLAIM EVIDENCE REVIEW',json.dumps(result,indent=2,ensure_ascii=False))
     return result
 
