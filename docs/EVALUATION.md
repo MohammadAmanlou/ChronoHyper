@@ -3,6 +3,16 @@
 
 **Interpretation is deliberately conservative.** All quantitative claims below refer to the Constructor-supplied corpus, not a claim of novelty on unseen corpora.
 
+## Latest post-lock same-corpus AI evaluations (20 October 2026)
+
+The applicant has now submitted independently packaged *key-separated*, anonymized worksheets to AI reviewers. File-level integrity checks passed and scorer outputs were obtained locally (full private forms are intentionally git-ignored). A **24-pair** V2–V3 title/gloss comparison has **21 evaluable pairs** with V3 **10 wins/4 losses/7 ties**, mean rating delta **+0.2857/2**, unadjusted paired sign **p=0.1796** (not significant). Conditional gloss overclaim flags were **0/21 evaluable V2** and **0/14 evaluable V3**, with **3 and 10 unclear**, respectively. These are not full-text semantic overclaim rates.
+
+A second score of the **same 24 matched real-versus-mixed clusters** from a 48-row blinded worksheet produced AI means **3.5417 vs 2.7500**, paired delta **+0.7917/5**, 15 wins/5 losses/4 ties, exploratory unadjusted **p=0.0414**, bootstrap CI **[0.2917, 1.25]**. This is not an independent corpus, does not establish paper text entailment and does **not** cancel the nonsignificant structural incidence-shuffle null (`p=0.69`). Neither the reviewer identifier nor lack of access to private historical keys can be externally proven by this scorer.
+
+The complete source hashes, denominator-aware uncertainty caveats and precise T1–T7 rubric mapping are in [ASSESSMENT_STATUS.md](ASSESSMENT_STATUS.md). All original source-group confirmation and old AI-only results remain immutable.
+
+
+
 ## Verified on applicant's Windows run: historical retrieval frontier (20 October 2026)
 
 The applicant's run of commit `8b0dcfb` passed **10 core, 33 earlier research, and 9 retrieval regression tests** (52 tests total). Four selected hierarchies also passed structural verification. The source ranking artifact was created before reference gold was opened; this is still a **previously inspected, exploratory** 14-question Type-A benchmark.
