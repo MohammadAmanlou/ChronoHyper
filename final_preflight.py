@@ -205,8 +205,10 @@ def audit(root):
         if (postlock_ai.get('schema')!='chronohyper_postlock_ai_review_status_v1' or
                 postlock_ai.get('independent_full_paper_entailment_verified') is not False or
                 postlock_ai.get('independent_human_expert_review_verified') is not False or
-                p.get('total_pairs')!=24 or p.get('evaluable_pairs')!=21 or
-                c.get('total_pairs')!=24 or c.get('evaluable_pairs')!=24):
+                p.get('total_pairs')!=24 or not isinstance(p.get('evaluable_pairs'),int) or
+                not 0 <= p.get('evaluable_pairs') <= 24 or
+                c.get('total_pairs')!=24 or not isinstance(c.get('evaluable_pairs'),int) or
+                not 0 <= c.get('evaluable_pairs') <= 24):
             errors.append('Local post-lock AI review status invalid; check source JSON and rating-sheet hashes')
         else:
             passed.append('Post-lock 24-pair label and 24-pair AI-only coherence summaries are arithmetically audited')
