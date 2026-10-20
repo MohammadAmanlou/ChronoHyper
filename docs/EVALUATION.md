@@ -174,3 +174,15 @@ The limited external check independently corroborates particular narrower observ
 - [ ] Confirm assessor can access the **private** repository or send a confidential ZIP. A URL alone is insufficient.
 
 Prior unhelpful/duplicate how-to documents were removed from the current snapshot to keep navigation simple. Their original text remains retrievable from Git commit history.
+
+
+## Additional frontier study (20 October; implementation only, not new measured evidence)
+
+The opt-in `research_lab/retrieval_frontier.py` evaluates a predeclared routed
+budget sequence (1/2/4/8/12 root clusters) using one shared source-dated index.
+It has an exact top-5 equivalence invariant at 12 roots, separate gold ranking
+and scoring modes, candidate + centroid counts, and source-isolated output under
+`local_only/`. Toy-fixture unit tests cover the control logic; no new original-data
+frontier outputs or independent gold scores are claimed yet. See
+[REPRODUCE §14](REPRODUCE.md) and [reviewer checklist](REVIEWER_CHECKLIST.md).
+
