@@ -1,0 +1,75 @@
+name: Published PDF reproducibility
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'report.pdf'
+      - 'scripts/report.tex'
+      - '.github/workflows/published-report.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install deterministic TeX build and PDF inspection stack
+        run: |
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq --no-install-recommends \
+            texlive-xetex texlive-pictures texlive-latex-extra \
+            texlive-fonts-recommended fonts-liberation poppler-utils
+      - name: Build author-source PDF in an ignored, isolated directory
+        run: |
+          mkdir -p local_only/published_pdf_audit
+          xelatex -interaction=nonstopmode -halt-on-error \
+            -output-directory=local_only/published_pdf_audit scripts/report.tex > local_only/published_pdf_audit/xelatex1.txt
+          xelatex -interaction=nonstopmode -halt-on-error \
+            -output-directory=local_only/published_pdf_audit scripts/report.tex > local_only/published_pdf_audit/xelatex2.txt
+      - name: Verify published PDF matches authored source text and page count
+        run: |
+          set -eu
+          raw="report.pdf"
+          rebuilt="local_only/published_pdf_audit/report.pdf"
+          for f in "$raw" "$rebuilt"; do
+            test -s "$f"
+            pages="$(pdfinfo "$f" | awk '/^Pages:/ {print $2}')"
+            echo "$f -> pages=$pages"
+            test "$pages" -ge 3 && test "$pages" -le 5
+          done
+          pdftotext -layout "$raw" local_only/published_pdf_audit/published.txt
+          pdftotext -layout "$rebuilt" local_only/published_pdf_audit/rebuilt.txt
+          python - <<'PY'
+          from pathlib import Path
+          p=Path("local_only/published_pdf_audit")
+          published=(p/"published.txt").read_text(encoding="utf-8")
+          rebuilt=(p/"rebuilt.txt").read_text(encoding="utf-8")
+          def normalize(text):
+              return " ".join(text.split())
+          if normalize(published) != normalize(rebuilt):
+              import difflib
+              mismatch="".join(difflib.unified_diff(
+                  published.splitlines(keepends=True),
+                  rebuilt.splitlines(keepends=True),
+                  fromfile="published",tofile="built",n=2))
+              print(mismatch[:6500])
+              raise SystemExit("ERROR: canonical report.pdf differs from scripts/report.tex")
+          for expected in ("57.9", "115/180", "coherence", "Conclusion"):
+              if expected.casefold() not in normalize(published).casefold():
+                  raise SystemExit("Missing required current claim or section: "+expected)
+          print("PASS identical normalized PDF text across published and rebuilt copies")
+          PY
+          test -z "$(git status --porcelain)"
+      - name: Upload private text-diff evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: Published-report-verification
+          path: |
+            local_only/published_pdf_audit/published.txt
+            local_only/published_pdf_audit/rebuilt.txt
+          retention-days: 7
