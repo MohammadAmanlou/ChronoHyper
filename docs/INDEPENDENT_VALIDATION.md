@@ -58,3 +58,55 @@ one task-grounded evaluation; reproducible pinned tests; truthful, visually
 checked 3-5-page PDF and complete AI_USAGE.md disclosure.
 
 Passing source checks alone does not prove independent semantic correctness.
+
+
+## Permission-gated key-free ZIP export and response validation (added 20 October)
+
+The script `research_lab/review_handoff.py` **does not upload data or manufacture ratings**.
+It refuses to make any private reviewer ZIP unless the operator explicitly
+attests permission using `--authorized-share`. The flag records only an
+operator assertion; it does **not** itself grant or verify the data owner's
+permission. Do not send confidential Constructor information to a public AI
+service or unauthorized person.
+
+First check the source sheets exist under `local_only/reviews`. Do
+not regenerate or overwrite a saved blind mapping unless its original sheet was
+lost and the recovery is independently checked. With sharing permission,
+the following commands create **ZIPs containing only worksheet + rubric +
+scope disclaimer**, not mapping keys:
+
+
+```powershell
+.\.venv\Scripts\python.exe -m research_lab.review_handoff --pack --kind label24 --project . --authorized-share
+.\.venv\Scripts\python.exe -m research_lab.review_handoff --pack --kind coherence48 --project . --authorized-share
+Get-ChildItem .\local_only\reviewer_exports
+
+```
+
+
+Give each permitted evaluator only the ZIP for the relevant task. Ensure they
+have no key, prior score, or decision logic; ask them to preserve every header,
+row and source cell. A **truly independent new reviewer** must be a fresh
+assessor with no old-key exposure, not this same chat.
+
+After the completed real reviewer CSVs are returned, save to:
+
+- `local_only/reviews/label_v3_fresh/rated_24.csv`
+- `local_only/reviews/fresh_semantic/ratings_fresh_48.csv`
+
+Then validate the unchanged evidence **without first unblinding**:
+
+
+```powershell
+.\.venv\Scripts\python.exe -m research_lab.review_handoff --validate --kind label24 --project . --response .\local_only\reviews\label_v3_fresh\rated_24.csv
+.\.venv\Scripts\python.exe -m research_lab.review_handoff --validate --kind coherence48 --project . --response .\local_only\reviews\fresh_semantic\ratings_fresh_48.csv
+
+```
+
+
+If both pass, the two existing local scorers can read their local PRIVATE keys
+and compute paired results. The validator checks the **form**, not the truth
+of the reported reviewer identity, source accessibility, or scientific
+entailment. If no authorized independent judgments exist, leave these gates
+clearly **PENDING**; do not fill rows with guesses or AI-generated confidence
+to make a scoring command pass.
