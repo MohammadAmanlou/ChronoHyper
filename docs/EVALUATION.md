@@ -3,6 +3,23 @@
 
 **Interpretation is deliberately conservative.** All quantitative claims below refer to the Constructor-supplied corpus, not a claim of novelty on unseen corpora.
 
+## Constructor assessment requirements: evidence-based acceptance gates
+
+This table follows the original [PhD assessment](ASSIGNMENT_SOURCE.md), not proposed extra experiments. Code tests establish technical integrity; they do not substitute for scientific validity. **Current stage: viable and reproducible partial validation, not 100% scientific completeness.**
+
+| Original requirement | Evidence currently in `main` | Remaining acceptance condition |
+|---|---|---|
+| Deliverable 0, P1–P2, T2: formal heuristic, laminar hierarchy, 10–15 coarse budgets | `report.pdf`, `src/core.py`, 2020/22/24 hierarchies and `verify_selected_outputs.py` | Demonstrated implementation/structural invariants; no global objective optimum claimed |
+| T1: real temporal corpus and hyperedge distributions | `inputs/data.zip`, snapshot stats and `outputs/eda_summary.json` | Verified original dataset, year cutoff and counts; no alternate corpus **required** because Option A was supplied |
+| P3, T6: *non-circular* semantic coherence and meaningful null | held-out source-paper connectivity, publication-title second view, 99 constrained null shuffles | Second view remains correlated with name input; domain-blind paper-content or expert coherence validation would strengthen independence. Null `p=0.69` is **not significant** |
+| P4, T4: implemented native high-order coarsening | selected collapsed hyperedges and multiplicity verifier | Original-arity and relation provenance verified; no pairwise reinterpretation |
+| P5, T3, T6: real temporal IDs, cross-year ARI, five 10% deletion perturbations | temporal event logs, development runs, stress metrics, seeds and bootstrap intervals | ARI can be gamed by freezing old IDs; report measured changes and uncertainty |
+| P6, T5–T6: **scientifically faithful titles/glosses and overclaim rate** | four-snapshot generated labels, 48 AI-reviewed samples and blank 24-case A/B form | **PENDING actual independent review**. All 48 earlier reviewer IDs say GPT-6; 8/48 gloss cases determinate, 40 unclear. Completed A/B human reviews cannot be fabricated |
+| T6: **one** extrinsic task with flat control | 14 exploratory Type-A retrieval questions, Type-B source-recall pilot, 18-query exact retrieval control | Honest initial Type-A result 2/14 hier vs 1/14 flat; previously inspected questions and small N. **Original evaluator computes all candidate dot-products for both arms before routing**: 1088 visited nodes is NOT a speedup |
+| T7: 3–5 page paper and AI disclosure | 3-page `report.pdf`, `scripts/report.tex`, `AI_USAGE.md`, pinned `requirements.txt` | Confirm assessor access to private repo and inspect final PDF; disclose remaining gaps |
+
+**Not required by the original assessment:** an additional 300–500-paper arXiv corpus (Option B is an **alternative** to the supplied Option A), an LLM answering all four Type-B questions (one genuine extrinsic task suffices), a production front-end, graph database or model fine-tuning. These may improve research, but should not delay honest completion of mandatory T5/T6 validation. The most important open gates are **independent label/gloss faithfulness** and a genuinely independent coherence assessment with transparent uncertainty; negative results do not constitute a software defect.
+
 ## Requirement-to-evidence index
 
 | Required work | Files | Verified status / limitation |

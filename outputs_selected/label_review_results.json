@@ -2,9 +2,9 @@
   "n_requested": 48,
   "n_evaluable": 8,
   "n_overclaim": 0,
-  "overclaim_rate": 0.0,
+  "overclaim_rate": 0,
   "wilson_95_ci": [
-    0.0,
+    0,
     0.3244156195108769
   ],
   "n_unclear": 40,
@@ -14,6 +14,8 @@
     "vague": 28,
     "wrong": 12
   },
-  "status": "PARTIAL_HUMAN_ANNOTATION",
-  "note": "Reviewer identity, independence and visibility to algorithm must be reported truthfully; Wilson CI measures annotation sample only, not paper-level uncertainty."
+  "status": "PARTIAL_AI_ASSISTED_DIAGNOSTIC",
+  "note": "All 48 label reviewer IDs identify ChatGPT, not human or independent adjudicators. Of 48 glosses only 8 were determinate (no overclaims in those eight); the other 40 are unclear. Historical numerical observations are preserved; status metadata has been corrected for reviewer provenance.",
+  "reviewer_type": "GPT-6 AI-assisted (non-human, non-blind); all 48 review rows",
+  "independent_human_ratings_completed": false
 }

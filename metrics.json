@@ -66,7 +66,7 @@
       "automatic_label_audit": {
         "automatic_membership_claims_audited": 60,
         "unsupported_membership_claims": 0,
-        "bounded_structural_claim_error_rate": 0.0,
+        "bounded_structural_claim_error_rate": 0,
         "independent_semantic_overclaim_rate": null,
         "independent_semantic_overclaim_status": "NOT_EVALUATED_NO_BLIND_REVIEW",
         "description": "All cluster glosses assert exactly recorded membership, counts and surface-name phrases. This is a machine-verifiable factual overclaim proxy, NOT independent literature-level entailment."
@@ -86,7 +86,7 @@
       "automatic_label_audit": {
         "automatic_membership_claims_audited": 60,
         "unsupported_membership_claims": 0,
-        "bounded_structural_claim_error_rate": 0.0,
+        "bounded_structural_claim_error_rate": 0,
         "independent_semantic_overclaim_rate": null,
         "independent_semantic_overclaim_status": "NOT_EVALUATED_NO_BLIND_REVIEW",
         "description": "All cluster glosses assert exactly recorded membership, counts and surface-name phrases. This is a machine-verifiable factual overclaim proxy, NOT independent literature-level entailment."
@@ -103,25 +103,25 @@
         "article_title_coherence_proxy_higher_better": 0.18730639119012102,
         "temporal_ari_shared_nodes": null,
         "runtime_seconds_per_snapshot_mean": 0.1916,
-        "n_heldout_source_papers": 3.0
+        "n_heldout_source_papers": 3
       },
       "2022": {
         "seed_count": 5,
         "heldout_hyperedge_cut_lower_better": 0.6763813677952846,
         "heldout_hyperedge_cut_sd_across_seeds": 0.05769967599992564,
         "article_title_coherence_proxy_higher_better": 0.15935249849611446,
-        "temporal_ari_shared_nodes": 1.0,
+        "temporal_ari_shared_nodes": 1,
         "runtime_seconds_per_snapshot_mean": 0.055,
-        "n_heldout_source_papers": 3.0
+        "n_heldout_source_papers": 3
       },
       "2024": {
         "seed_count": 5,
         "heldout_hyperedge_cut_lower_better": 0.6571292448867365,
         "heldout_hyperedge_cut_sd_across_seeds": 0.05591657360134996,
         "article_title_coherence_proxy_higher_better": 0.11045280382559394,
-        "temporal_ari_shared_nodes": 1.0,
+        "temporal_ari_shared_nodes": 1,
         "runtime_seconds_per_snapshot_mean": 0.075,
-        "n_heldout_source_papers": 6.0
+        "n_heldout_source_papers": 6
       }
     },
     "incidence_svd": {
@@ -132,7 +132,7 @@
         "article_title_coherence_proxy_higher_better": 0.26559271826928554,
         "temporal_ari_shared_nodes": null,
         "runtime_seconds_per_snapshot_mean": 0.1296,
-        "n_heldout_source_papers": 3.0
+        "n_heldout_source_papers": 3
       },
       "2022": {
         "seed_count": 5,
@@ -141,7 +141,7 @@
         "article_title_coherence_proxy_higher_better": 0.22889436820474707,
         "temporal_ari_shared_nodes": 0.1376707505739538,
         "runtime_seconds_per_snapshot_mean": 0.185,
-        "n_heldout_source_papers": 3.0
+        "n_heldout_source_papers": 3
       },
       "2024": {
         "seed_count": 5,
@@ -150,7 +150,7 @@
         "article_title_coherence_proxy_higher_better": 0.17824181037232972,
         "temporal_ari_shared_nodes": 0.11654929430253555,
         "runtime_seconds_per_snapshot_mean": 0.33240000000000003,
-        "n_heldout_source_papers": 6.0
+        "n_heldout_source_papers": 6
       }
     },
     "native_arity_normalized": {
@@ -161,7 +161,7 @@
         "article_title_coherence_proxy_higher_better": 0.19830044223889481,
         "temporal_ari_shared_nodes": null,
         "runtime_seconds_per_snapshot_mean": 0.1834,
-        "n_heldout_source_papers": 3.0
+        "n_heldout_source_papers": 3
       },
       "2022": {
         "seed_count": 5,
@@ -170,7 +170,7 @@
         "article_title_coherence_proxy_higher_better": 0.1706595447534631,
         "temporal_ari_shared_nodes": 0.8532984610909933,
         "runtime_seconds_per_snapshot_mean": 0.2624,
-        "n_heldout_source_papers": 3.0
+        "n_heldout_source_papers": 3
       },
       "2024": {
         "seed_count": 5,
@@ -179,7 +179,7 @@
         "article_title_coherence_proxy_higher_better": 0.11705416193957972,
         "temporal_ari_shared_nodes": 0.7213578798722978,
         "runtime_seconds_per_snapshot_mean": 0.5074,
-        "n_heldout_source_papers": 6.0
+        "n_heldout_source_papers": 6
       }
     },
     "native_balanced_50": {
@@ -190,7 +190,7 @@
         "article_title_coherence_proxy_higher_better": 0.2163754410201396,
         "temporal_ari_shared_nodes": null,
         "runtime_seconds_per_snapshot_mean": 0.1808,
-        "n_heldout_source_papers": 3.0
+        "n_heldout_source_papers": 3
       },
       "2022": {
         "seed_count": 5,
@@ -199,7 +199,7 @@
         "article_title_coherence_proxy_higher_better": 0.1686293178894555,
         "temporal_ari_shared_nodes": 0.21297229478822297,
         "runtime_seconds_per_snapshot_mean": 0.2776,
-        "n_heldout_source_papers": 3.0
+        "n_heldout_source_papers": 3
       },
       "2024": {
         "seed_count": 5,
@@ -208,7 +208,7 @@
         "article_title_coherence_proxy_higher_better": 0.12986276796841972,
         "temporal_ari_shared_nodes": 0.2715877000759024,
         "runtime_seconds_per_snapshot_mean": 0.516,
-        "n_heldout_source_papers": 6.0
+        "n_heldout_source_papers": 6
       }
     },
     "native_joint_70": {
@@ -219,7 +219,7 @@
         "article_title_coherence_proxy_higher_better": 0.20197666744285359,
         "temporal_ari_shared_nodes": null,
         "runtime_seconds_per_snapshot_mean": 0.1842,
-        "n_heldout_source_papers": 3.0
+        "n_heldout_source_papers": 3
       },
       "2022": {
         "seed_count": 5,
@@ -228,7 +228,7 @@
         "article_title_coherence_proxy_higher_better": 0.16927039470127875,
         "temporal_ari_shared_nodes": 0.22341159708151023,
         "runtime_seconds_per_snapshot_mean": 0.26780000000000004,
-        "n_heldout_source_papers": 3.0
+        "n_heldout_source_papers": 3
       },
       "2024": {
         "seed_count": 5,
@@ -237,7 +237,7 @@
         "article_title_coherence_proxy_higher_better": 0.11681884668624573,
         "temporal_ari_shared_nodes": 0.29948661154188577,
         "runtime_seconds_per_snapshot_mean": 0.508,
-        "n_heldout_source_papers": 6.0
+        "n_heldout_source_papers": 6
       }
     },
     "native_paper_balanced": {
@@ -248,7 +248,7 @@
         "article_title_coherence_proxy_higher_better": 0.19722333263572855,
         "temporal_ari_shared_nodes": null,
         "runtime_seconds_per_snapshot_mean": 0.17300000000000001,
-        "n_heldout_source_papers": 3.0
+        "n_heldout_source_papers": 3
       },
       "2022": {
         "seed_count": 5,
@@ -257,7 +257,7 @@
         "article_title_coherence_proxy_higher_better": 0.1694141094582027,
         "temporal_ari_shared_nodes": 0.860377343732454,
         "runtime_seconds_per_snapshot_mean": 0.25980000000000003,
-        "n_heldout_source_papers": 3.0
+        "n_heldout_source_papers": 3
       },
       "2024": {
         "seed_count": 5,
@@ -266,7 +266,7 @@
         "article_title_coherence_proxy_higher_better": 0.11633834571894315,
         "temporal_ari_shared_nodes": 0.7643006069141522,
         "runtime_seconds_per_snapshot_mean": 0.5286,
-        "n_heldout_source_papers": 6.0
+        "n_heldout_source_papers": 6
       }
     },
     "native_semantic_85": {
@@ -277,7 +277,7 @@
         "article_title_coherence_proxy_higher_better": 0.18708789062651696,
         "temporal_ari_shared_nodes": null,
         "runtime_seconds_per_snapshot_mean": 0.184,
-        "n_heldout_source_papers": 3.0
+        "n_heldout_source_papers": 3
       },
       "2022": {
         "seed_count": 5,
@@ -286,7 +286,7 @@
         "article_title_coherence_proxy_higher_better": 0.15916038334158558,
         "temporal_ari_shared_nodes": 0.23194036674212,
         "runtime_seconds_per_snapshot_mean": 0.279,
-        "n_heldout_source_papers": 3.0
+        "n_heldout_source_papers": 3
       },
       "2024": {
         "seed_count": 5,
@@ -295,7 +295,7 @@
         "article_title_coherence_proxy_higher_better": 0.1159773683141,
         "temporal_ari_shared_nodes": 0.31203990775359236,
         "runtime_seconds_per_snapshot_mean": 0.5214,
-        "n_heldout_source_papers": 6.0
+        "n_heldout_source_papers": 6
       }
     },
     "native_structure": {
@@ -306,7 +306,7 @@
         "article_title_coherence_proxy_higher_better": 0.20497026604543234,
         "temporal_ari_shared_nodes": null,
         "runtime_seconds_per_snapshot_mean": 0.1952,
-        "n_heldout_source_papers": 3.0
+        "n_heldout_source_papers": 3
       },
       "2022": {
         "seed_count": 5,
@@ -315,7 +315,7 @@
         "article_title_coherence_proxy_higher_better": 0.1743311012704556,
         "temporal_ari_shared_nodes": 0.21741950764823129,
         "runtime_seconds_per_snapshot_mean": 0.2984,
-        "n_heldout_source_papers": 3.0
+        "n_heldout_source_papers": 3
       },
       "2024": {
         "seed_count": 5,
@@ -324,7 +324,7 @@
         "article_title_coherence_proxy_higher_better": 0.12818898423043942,
         "temporal_ari_shared_nodes": 0.265307421310318,
         "runtime_seconds_per_snapshot_mean": 0.5346,
-        "n_heldout_source_papers": 6.0
+        "n_heldout_source_papers": 6
       }
     },
     "native_structure_75": {
@@ -335,7 +335,7 @@
         "article_title_coherence_proxy_higher_better": 0.21234276782873757,
         "temporal_ari_shared_nodes": null,
         "runtime_seconds_per_snapshot_mean": 0.1802,
-        "n_heldout_source_papers": 3.0
+        "n_heldout_source_papers": 3
       },
       "2022": {
         "seed_count": 5,
@@ -344,7 +344,7 @@
         "article_title_coherence_proxy_higher_better": 0.17286367717539866,
         "temporal_ari_shared_nodes": 0.20594315411636438,
         "runtime_seconds_per_snapshot_mean": 0.2664,
-        "n_heldout_source_papers": 3.0
+        "n_heldout_source_papers": 3
       },
       "2024": {
         "seed_count": 5,
@@ -353,7 +353,7 @@
         "article_title_coherence_proxy_higher_better": 0.12799368079024614,
         "temporal_ari_shared_nodes": 0.26090534197993953,
         "runtime_seconds_per_snapshot_mean": 0.518,
-        "n_heldout_source_papers": 6.0
+        "n_heldout_source_papers": 6
       }
     },
     "native_temporal_03": {
@@ -364,7 +364,7 @@
         "article_title_coherence_proxy_higher_better": 0.20197666744285359,
         "temporal_ari_shared_nodes": null,
         "runtime_seconds_per_snapshot_mean": 0.1792,
-        "n_heldout_source_papers": 3.0
+        "n_heldout_source_papers": 3
       },
       "2022": {
         "seed_count": 5,
@@ -373,7 +373,7 @@
         "article_title_coherence_proxy_higher_better": 0.16251407278003763,
         "temporal_ari_shared_nodes": 0.6899582380706095,
         "runtime_seconds_per_snapshot_mean": 0.2656,
-        "n_heldout_source_papers": 3.0
+        "n_heldout_source_papers": 3
       },
       "2024": {
         "seed_count": 5,
@@ -382,7 +382,7 @@
         "article_title_coherence_proxy_higher_better": 0.11649665302096399,
         "temporal_ari_shared_nodes": 0.685957521055341,
         "runtime_seconds_per_snapshot_mean": 0.5146000000000001,
-        "n_heldout_source_papers": 6.0
+        "n_heldout_source_papers": 6
       }
     },
     "native_temporal_08": {
@@ -393,7 +393,7 @@
         "article_title_coherence_proxy_higher_better": 0.20197666744285359,
         "temporal_ari_shared_nodes": null,
         "runtime_seconds_per_snapshot_mean": 0.1902,
-        "n_heldout_source_papers": 3.0
+        "n_heldout_source_papers": 3
       },
       "2022": {
         "seed_count": 5,
@@ -402,7 +402,7 @@
         "article_title_coherence_proxy_higher_better": 0.16629653565153985,
         "temporal_ari_shared_nodes": 0.8434230603526433,
         "runtime_seconds_per_snapshot_mean": 0.271,
-        "n_heldout_source_papers": 3.0
+        "n_heldout_source_papers": 3
       },
       "2024": {
         "seed_count": 5,
@@ -411,7 +411,7 @@
         "article_title_coherence_proxy_higher_better": 0.11815303587178878,
         "temporal_ari_shared_nodes": 0.8309479601223624,
         "runtime_seconds_per_snapshot_mean": 0.5282,
-        "n_heldout_source_papers": 6.0
+        "n_heldout_source_papers": 6
       }
     },
     "native_temporal_20": {
@@ -422,7 +422,7 @@
         "article_title_coherence_proxy_higher_better": 0.20197666744285359,
         "temporal_ari_shared_nodes": null,
         "runtime_seconds_per_snapshot_mean": 0.178,
-        "n_heldout_source_papers": 3.0
+        "n_heldout_source_papers": 3
       },
       "2022": {
         "seed_count": 5,
@@ -431,7 +431,7 @@
         "article_title_coherence_proxy_higher_better": 0.15978355590370721,
         "temporal_ari_shared_nodes": 0.93960273290712,
         "runtime_seconds_per_snapshot_mean": 0.2726,
-        "n_heldout_source_papers": 3.0
+        "n_heldout_source_papers": 3
       },
       "2024": {
         "seed_count": 5,
@@ -440,7 +440,7 @@
         "article_title_coherence_proxy_higher_better": 0.1229422894543772,
         "temporal_ari_shared_nodes": 0.8930162239756508,
         "runtime_seconds_per_snapshot_mean": 0.5256,
-        "n_heldout_source_papers": 6.0
+        "n_heldout_source_papers": 6
       }
     },
     "semantic_kmeans": {
@@ -451,7 +451,7 @@
         "article_title_coherence_proxy_higher_better": 0.18467649464532723,
         "temporal_ari_shared_nodes": null,
         "runtime_seconds_per_snapshot_mean": 0.0776,
-        "n_heldout_source_papers": 3.0
+        "n_heldout_source_papers": 3
       },
       "2022": {
         "seed_count": 5,
@@ -460,7 +460,7 @@
         "article_title_coherence_proxy_higher_better": 0.1524406582138876,
         "temporal_ari_shared_nodes": 0.20129114910470927,
         "runtime_seconds_per_snapshot_mean": 0.0836,
-        "n_heldout_source_papers": 3.0
+        "n_heldout_source_papers": 3
       },
       "2024": {
         "seed_count": 5,
@@ -469,7 +469,7 @@
         "article_title_coherence_proxy_higher_better": 0.11467498401217609,
         "temporal_ari_shared_nodes": 0.37179951014219276,
         "runtime_seconds_per_snapshot_mean": 0.1336,
-        "n_heldout_source_papers": 6.0
+        "n_heldout_source_papers": 6
       }
     }
   },
@@ -482,7 +482,7 @@
         "article_title_coherence_proxy_higher_better": 0.20197666744285359,
         "temporal_ari_shared_nodes": null,
         "runtime_seconds_per_snapshot_mean": 0.2076,
-        "n_heldout_source_papers": 4.0
+        "n_heldout_source_papers": 4
       },
       "2022": {
         "seed_count": 5,
@@ -491,7 +491,7 @@
         "article_title_coherence_proxy_higher_better": 0.15978355590370721,
         "temporal_ari_shared_nodes": 0.93960273290712,
         "runtime_seconds_per_snapshot_mean": 0.28500000000000003,
-        "n_heldout_source_papers": 5.0
+        "n_heldout_source_papers": 5
       },
       "2024": {
         "seed_count": 5,
@@ -500,7 +500,7 @@
         "article_title_coherence_proxy_higher_better": 0.1229422894543772,
         "temporal_ari_shared_nodes": 0.8930162239756508,
         "runtime_seconds_per_snapshot_mean": 0.5954,
-        "n_heldout_source_papers": 7.0
+        "n_heldout_source_papers": 7
       }
     }
   },
@@ -513,7 +513,7 @@
         "article_title_coherence_proxy_higher_better": 0.1957896658142453,
         "temporal_ari_shared_nodes": null,
         "runtime_seconds_per_snapshot_mean": 0.2082,
-        "n_heldout_source_papers": 3.0
+        "n_heldout_source_papers": 3
       },
       "2022": {
         "seed_count": 5,
@@ -522,7 +522,7 @@
         "article_title_coherence_proxy_higher_better": 0.16052326926232144,
         "temporal_ari_shared_nodes": 0.22864382281271153,
         "runtime_seconds_per_snapshot_mean": 0.3716,
-        "n_heldout_source_papers": 3.0
+        "n_heldout_source_papers": 3
       },
       "2024": {
         "seed_count": 5,
@@ -531,7 +531,7 @@
         "article_title_coherence_proxy_higher_better": 0.11670654881724087,
         "temporal_ari_shared_nodes": 0.31367003603291066,
         "runtime_seconds_per_snapshot_mean": 0.8882,
-        "n_heldout_source_papers": 6.0
+        "n_heldout_source_papers": 6
       }
     }
   },
@@ -567,9 +567,9 @@
     "n_overclaim_determinately_evaluable": 8,
     "n_overclaim": 0,
     "n_overclaim_unclear": 40,
-    "conditional_overclaim_rate_evaluable_only": 0.0,
+    "conditional_overclaim_rate_evaluable_only": 0,
     "wilson95_evaluable_only": [
-      0.0,
+      0,
       0.3244156195108769
     ],
     "independent_blind_overclaim_rate": null,
@@ -583,12 +583,12 @@
     "hier_hit_at_5": 0.14285714285714285,
     "flat_recall_at_5": 0.03571428571428571,
     "hier_recall_at_5": 0.04591836734693877,
-    "mean_flat_nodes_scored": 2682.0,
+    "mean_flat_nodes_scored": 2682,
     "mean_hier_nodes_scored": 1088.142857142857,
     "mean_available_gold_per_question": 3.2142857142857144,
     "mean_absent_gold_per_question": 1.2857142857142858,
-    "comparison": "same question/candidates/TF-IDF ranker; flat scores all, hierarchy scores top 4 concept centroids then scores only their descendant candidates. Both inspect top 5 result items. Centroid computations excluded from nodes_scored count but reported separately.",
-    "caveat": "14 type-A lists scored using exact case/spacing/punctuation-normalized surface matches; aliases may undercount recall; 4 type-B reasoning/synthesis questions transparently not scored. 2025 cutoff conservatively avoids month-unknown 2026 data."
+    "comparison": "Posthoc methodological correction: the archived implementation scored all 2682 candidate rows for BOTH flat and hierarchy before routing. Legacy mean_hier_nodes_scored=1088.14 is count of route-eligible nodes, NOT actual TF-IDF dot-products. It does NOT establish a computational speedup; hierarchy also incurs centroid overhead. Retrieval hit/recall numbers remain unchanged.",
+    "caveat": "14 type-A lists scored using exact case/spacing/punctuation-normalized surface matches; aliases may undercount recall; 4 type-B reasoning/synthesis questions transparently not scored. 2025 cutoff conservatively avoids month-unknown 2026 data. The benchmark was previously inspected (exploratory); all-candidate scoring prevents any measured online acceleration."
   },
   "source_map": {
     "experiment_registry": "research_outputs/final_matrix/experiment_registry.csv",
@@ -607,6 +607,6 @@
     "The training objective is a bounded local heuristic surrogate, not a proven globally optimized objective.",
     "Selected 2025 question evaluation uses already-inspected questions: exploratory only; 4 multi-claim Type B questions unscored.",
     "The displayed score count excludes centroid computations and is NOT a verified latency speedup.",
-    "Some source audit and gloss semantic validity remain unresolved; see current report and LABEL_AUDIT_STATUS.md."
+    "Some source audit and gloss semantic validity remain unresolved; see docs/EVALUATION.md and report.pdf."
   ]
 }

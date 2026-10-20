@@ -6,12 +6,12 @@
     "hier_hit_at_5": 0.14285714285714285,
     "flat_recall_at_5": 0.03571428571428571,
     "hier_recall_at_5": 0.04591836734693877,
-    "mean_flat_nodes_scored": 2682.0,
+    "mean_flat_nodes_scored": 2682,
     "mean_hier_nodes_scored": 1088.142857142857,
     "mean_available_gold_per_question": 3.2142857142857144,
     "mean_absent_gold_per_question": 1.2857142857142858,
-    "comparison": "same question/candidates/TF-IDF ranker; flat scores all, hierarchy scores top 4 concept centroids then scores only their descendant candidates. Both inspect top 5 result items. Centroid computations excluded from nodes_scored count but reported separately.",
-    "caveat": "14 type-A lists scored using exact case/spacing/punctuation-normalized surface matches; aliases may undercount recall; 4 type-B reasoning/synthesis questions transparently not scored. 2025 cutoff conservatively avoids month-unknown 2026 data."
+    "comparison": "Methodological correction (no new run): original code scored all candidate rows for both flat and routed hierarchy BEFORE filtering. The mean_hier_nodes_scored count is only cluster-route eligibility/visited membership, NOT reduced TF-IDF operations. Flat and routed hit/recall numbers are unchanged, latency advantage NOT measured.",
+    "caveat": "14 type-A lists scored using exact case/spacing/punctuation-normalized surface matches; aliases may undercount recall; 4 type-B reasoning/synthesis questions transparently not scored. 2025 cutoff conservatively avoids month-unknown 2026 data. Source questions already inspected. Candidate eligibility differs from actual compute: no speed claim."
   },
   "per_question": [
     {
@@ -80,9 +80,9 @@
       ],
       "flat_hit_at_5": false,
       "hier_hit_at_5": true,
-      "flat_recall_at_5": 0.0,
+      "flat_recall_at_5": 0,
       "hier_recall_at_5": 0.14285714285714285,
-      "flat_recall_given_available": 0.0,
+      "flat_recall_given_available": 0,
       "hier_recall_given_available": 0.14285714285714285
     },
     {
@@ -142,10 +142,10 @@
       "hier_hits": [],
       "flat_hit_at_5": false,
       "hier_hit_at_5": false,
-      "flat_recall_at_5": 0.0,
-      "hier_recall_at_5": 0.0,
-      "flat_recall_given_available": 0.0,
-      "hier_recall_given_available": 0.0
+      "flat_recall_at_5": 0,
+      "hier_recall_at_5": 0,
+      "flat_recall_given_available": 0,
+      "hier_recall_given_available": 0
     },
     {
       "id": "Q3",
@@ -202,10 +202,10 @@
       "hier_hits": [],
       "flat_hit_at_5": false,
       "hier_hit_at_5": false,
-      "flat_recall_at_5": 0.0,
-      "hier_recall_at_5": 0.0,
-      "flat_recall_given_available": 0.0,
-      "hier_recall_given_available": 0.0
+      "flat_recall_at_5": 0,
+      "hier_recall_at_5": 0,
+      "flat_recall_given_available": 0,
+      "hier_recall_given_available": 0
     },
     {
       "id": "Q4",
@@ -264,10 +264,10 @@
       "hier_hits": [],
       "flat_hit_at_5": false,
       "hier_hit_at_5": false,
-      "flat_recall_at_5": 0.0,
-      "hier_recall_at_5": 0.0,
-      "flat_recall_given_available": 0.0,
-      "hier_recall_given_available": 0.0
+      "flat_recall_at_5": 0,
+      "hier_recall_at_5": 0,
+      "flat_recall_given_available": 0,
+      "hier_recall_given_available": 0
     },
     {
       "id": "Q5",
@@ -323,8 +323,8 @@
       "hier_hits": [],
       "flat_hit_at_5": false,
       "hier_hit_at_5": false,
-      "flat_recall_at_5": 0.0,
-      "hier_recall_at_5": 0.0,
+      "flat_recall_at_5": 0,
+      "hier_recall_at_5": 0,
       "flat_recall_given_available": null,
       "hier_recall_given_available": null
     },
@@ -385,10 +385,10 @@
       "hier_hits": [],
       "flat_hit_at_5": false,
       "hier_hit_at_5": false,
-      "flat_recall_at_5": 0.0,
-      "hier_recall_at_5": 0.0,
-      "flat_recall_given_available": 0.0,
-      "hier_recall_given_available": 0.0
+      "flat_recall_at_5": 0,
+      "hier_recall_at_5": 0,
+      "flat_recall_given_available": 0,
+      "hier_recall_given_available": 0
     },
     {
       "id": "Q7",
@@ -445,10 +445,10 @@
       "hier_hits": [],
       "flat_hit_at_5": false,
       "hier_hit_at_5": false,
-      "flat_recall_at_5": 0.0,
-      "hier_recall_at_5": 0.0,
-      "flat_recall_given_available": 0.0,
-      "hier_recall_given_available": 0.0
+      "flat_recall_at_5": 0,
+      "hier_recall_at_5": 0,
+      "flat_recall_given_available": 0,
+      "hier_recall_given_available": 0
     },
     {
       "id": "Q8",
@@ -511,8 +511,8 @@
       "hier_hit_at_5": true,
       "flat_recall_at_5": 0.5,
       "hier_recall_at_5": 0.5,
-      "flat_recall_given_available": 1.0,
-      "hier_recall_given_available": 1.0
+      "flat_recall_given_available": 1,
+      "hier_recall_given_available": 1
     },
     {
       "id": "Q9",
@@ -571,10 +571,10 @@
       "hier_hits": [],
       "flat_hit_at_5": false,
       "hier_hit_at_5": false,
-      "flat_recall_at_5": 0.0,
-      "hier_recall_at_5": 0.0,
-      "flat_recall_given_available": 0.0,
-      "hier_recall_given_available": 0.0
+      "flat_recall_at_5": 0,
+      "hier_recall_at_5": 0,
+      "flat_recall_given_available": 0,
+      "hier_recall_given_available": 0
     },
     {
       "id": "Q10",
@@ -631,10 +631,10 @@
       "hier_hits": [],
       "flat_hit_at_5": false,
       "hier_hit_at_5": false,
-      "flat_recall_at_5": 0.0,
-      "hier_recall_at_5": 0.0,
-      "flat_recall_given_available": 0.0,
-      "hier_recall_given_available": 0.0
+      "flat_recall_at_5": 0,
+      "hier_recall_at_5": 0,
+      "flat_recall_given_available": 0,
+      "hier_recall_given_available": 0
     },
     {
       "id": "Q11",
@@ -690,8 +690,8 @@
       "hier_hits": [],
       "flat_hit_at_5": false,
       "hier_hit_at_5": false,
-      "flat_recall_at_5": 0.0,
-      "hier_recall_at_5": 0.0,
+      "flat_recall_at_5": 0,
+      "hier_recall_at_5": 0,
       "flat_recall_given_available": null,
       "hier_recall_given_available": null
     },
@@ -772,10 +772,10 @@
       "hier_hits": [],
       "flat_hit_at_5": false,
       "hier_hit_at_5": false,
-      "flat_recall_at_5": 0.0,
-      "hier_recall_at_5": 0.0,
-      "flat_recall_given_available": 0.0,
-      "hier_recall_given_available": 0.0
+      "flat_recall_at_5": 0,
+      "hier_recall_at_5": 0,
+      "flat_recall_given_available": 0,
+      "hier_recall_given_available": 0
     },
     {
       "id": "Q13",
@@ -843,10 +843,10 @@
       "hier_hits": [],
       "flat_hit_at_5": false,
       "hier_hit_at_5": false,
-      "flat_recall_at_5": 0.0,
-      "hier_recall_at_5": 0.0,
-      "flat_recall_given_available": 0.0,
-      "hier_recall_given_available": 0.0
+      "flat_recall_at_5": 0,
+      "hier_recall_at_5": 0,
+      "flat_recall_given_available": 0,
+      "hier_recall_given_available": 0
     },
     {
       "id": "Q14",
@@ -921,10 +921,10 @@
       "hier_hits": [],
       "flat_hit_at_5": false,
       "hier_hit_at_5": false,
-      "flat_recall_at_5": 0.0,
-      "hier_recall_at_5": 0.0,
-      "flat_recall_given_available": 0.0,
-      "hier_recall_given_available": 0.0
+      "flat_recall_at_5": 0,
+      "hier_recall_at_5": 0,
+      "flat_recall_given_available": 0,
+      "hier_recall_given_available": 0
     },
     {
       "id": "Q15",

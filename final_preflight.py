@@ -94,6 +94,9 @@ def audit(root):
     elif la.get('n_evaluable',0)==0:errors.append('Zero independently evaluated label glosses: overclaim rate UNMEASURED (0 / 48 is NOT 0%)')
     elif la.get('n_evaluable',0)<la.get('n_requested',48):warnings.append(f'Only {la["n_evaluable"]}/{la.get("n_requested",48)} label glosses evaluated; report partial annotation')
     else:passed.append('All 48 label audit overclaim judgments present (verify ratings and reviewer independence manually)')
+    if isinstance(la,dict) and la.get('status')=='PARTIAL_AI_ASSISTED_DIAGNOSTIC':
+        warnings.append('48-case label audit is ChatGPT AI-assisted and non-blind, NOT independent human label validation; 40 of 48 gloss overclaims remain unclear')
+        details['independent_label_review_verified']=False
     if isinstance(la,dict) and la.get('status')=='HUMAN_ANNOTATED':
         sheet=root/'outputs_selected/label_review_sheet.csv'
         try:

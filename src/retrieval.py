@@ -1,4 +1,4 @@
-"""Genuine held-out Constructor questions. Never reads answers until after rank lists freeze.
+"""Exploratory Constructor benchmark questions, inspected during development. Gold is used only for final scoring.
 Ranking features use only exported node/edge/public article titles, not reference answers.
 """
 from __future__ import annotations
@@ -35,9 +35,11 @@ def candidate_texts(nodes,edges,articles):
 
 
 def evaluate_retrieval(nodes,edges,articles,questions,ground_truth,coarse_assign,top_k=5,visit_clusters=4):
-    """Source-grounded, gold-blind ranking. Gold used only to score frozen outputs.
-    Flat: score all candidates. Hier: score top cluster centroid then subset members.
-    Both use identical TF-IDF representations & final candidate scoring.
+    """Exploratory candidate ranking; reference targets are used only for scoring.
+    CAUTION: BOTH routes first compute the global candidate score vector (M @ Q.T).
+    The hierarchy then restricts ranking to candidates within routed clusters.
+    Therefore hier_inspected is a route-eligibility count, NOT actual dot-product
+    work or demonstrated query-time acceleration. Historical values are retained.
     """
     corpus=candidate_texts(nodes,edges,articles)
     tf=TfidfVectorizer(ngram_range=(1,2),sublinear_tf=True,strip_accents='unicode',max_features=40000,stop_words='english')
@@ -97,6 +99,6 @@ def evaluate_retrieval(nodes,edges,articles,questions,ground_truth,coarse_assign
             'mean_hier_nodes_scored':float(np.mean([r['hier_inspected'] for r in records])),
             'mean_available_gold_per_question':float(np.mean([len(r['gold_present']) for r in records])),
             'mean_absent_gold_per_question':float(np.mean([len(r['gold_absent_in_snapshot']) for r in records])),
-            'comparison':'same question/candidates/TF-IDF ranker; flat scores all, hierarchy scores top 4 concept centroids then scores only their descendant candidates. Both inspect top 5 result items. Centroid computations excluded from nodes_scored count but reported separately.',
-            'caveat':'14 type-A lists scored using exact case/spacing/punctuation-normalized surface matches; aliases may undercount recall; 4 type-B reasoning/synthesis questions transparently not scored. 2025 cutoff conservatively avoids month-unknown 2026 data.'}
+            'comparison':'same question/candidates/TF-IDF ranker; GLOBAL scores for ALL candidates are computed for both flat and hierarchy. Hierarchy filters the ranked candidate pool after scoring; mean_hier_nodes_scored is a legacy MISNOMER that denotes eligible/visited route members, not the number of query dot-products. Centroid computations add work; this is not a verified speedup.',
+            'caveat':'14 Type-A lists use exact normalized surface matches; aliases may undercount recall. Benchmarks had been inspected previously (exploratory only). The current implementation scores ALL candidates even when hierarchy filters some out, so eligible-route counts are NOT savings in CPU time. Type-B answer correctness unmeasured. 2025 cutoff excludes unknown-month 2026 papers.'}
     return {'summary':counts,'per_question':per}
