@@ -47,6 +47,8 @@ class BudgetFrontierTests(unittest.TestCase):
             self.assertEqual(ranked['n_queries'], 2)
             self.assertFalse(ranked['gold_accessed_by_ranker'])
             self.assertEqual(ranked['budgets'], [1, 2])
+            self.assertEqual(ranked['ungraded_budget_summary']['flat']['mean_total_dot_products'], 4)
+            self.assertEqual(ranked['ungraded_budget_summary']['route_2']['mean_total_dot_products'], 6)
             for row in ranked['results']:
                 self.assertEqual(row['flat']['top5'], row['routes']['2']['top5'])
             references = root / 'references_PRIVATE.csv'
