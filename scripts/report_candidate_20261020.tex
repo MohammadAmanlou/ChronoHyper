@@ -8,7 +8,7 @@
 \usetikzlibrary{arrows.meta,positioning,calc,shapes.geometric,fit}
 \pgfplotsset{compat=1.18}
 \usepackage[colorlinks=true,urlcolor=blue!50!black,linkcolor=blue!50!black]{hyperref}
-\usepackage{titlesec,fancyhdr,enumitem,xcolor,multicol,balance}
+\usepackage{titlesec,fancyhdr,enumitem,xcolor,balance}
 \definecolor{navy}{HTML}{14263B}
 \definecolor{teal}{HTML}{0C7B78}
 \definecolor{rust}{HTML}{B65A3C}
@@ -32,7 +32,7 @@
 \fancyfoot[R]{\sffamily\fontsize{8}{9}\selectfont\color{navy}\thepage}
 \renewcommand{\headrulewidth}{0.3pt}
 \renewcommand{\headrule}{\hbox to\headwidth{\color{linecol}\leaders\hrule height \headrulewidth\hfill}}
-\setlength{\headheight}{17pt}
+\setlength{\headheight}{18pt}
 \pagestyle{fancy}
 \newcommand{\eyebrow}[1]{{\sffamily\bfseries\fontsize{7}{8}\selectfont\color{teal}\MakeUppercase{#1}}}
 \newcommand{\fcap}[1]{\par\vspace{2pt}{\sffamily\fontsize{7.3}{8.6}\selectfont\color{slate} #1}\par}
@@ -241,8 +241,19 @@ The paired AI diagnostic provides concrete, reproducible \emph{failure examples}
 \node[anchor=south west,slate,font=\sffamily\scriptsize] at (axis cs:.111,.39){semantic};
 \end{axis}
 \end{tikzpicture}
-\fcap{Fig. 8. 2024 development coherence versus temporal stability. The locked method prioritizes persistence; the separate low-ARI incidence method has the higher lexical proxy. These metrics alone do not certify correct topics.}
+\fcap{Fig. 8. 2024 coherence proxy versus ARI: the locked method favors stability; incidence-SVD scores higher lexically. Neither validates topics.}
 \end{center}
+
+\section{Construction guarantees and cost}
+\textbf{Verified versus empirical.} Laminar refinement and fixed super-node ceilings (\textbf{P1/P2}) hold by construction and were checked over all snapshots. Original event identity, coarse endpoints, provenance and multiplicities (\textbf{P4}) are preserved by the implemented hyperedge collapse. Semantic coherence (\textbf{P3}) is only a surrogate and requires an independent signal; overlap matching, temporal inertia and the event log (\textbf{P5}) encourage rather than guarantee scientific identity persistence. The automatic label/gloss policy (\textbf{P6}) guarantees dated \emph{lexical} provenance and can abstain; scientific correctness remains a measured-evidence gap.
+
+\textbf{Complexity.} A single coarse event map requires \(O(|e|)\) time, so coarsening all source events takes \(O(\sum_{e\in E}|e|)\) time and output proportional to the retained distinct incidences, plus event metadata. The full solver is more expensive: bounded-round KMeans and incidence-aware candidate moves recur at hierarchical levels, with data-dependent candidates and incident edges. We claim neither linear end-to-end runtime nor global objective optimality. Native collapse conserves evidence that an untyped clique projection erases, but not necessarily downstream accuracy.
+
+\textbf{Predeclared four-week extension.}
+\emph{Week 1:} obtain permitted full paper passages, recruit isolated reviewers, preregister evidence and new tasks before viewing system answers.
+\emph{Week 2:} independently judge 24 V2/V3 title/gloss pairs and matched coherence controls, reporting insufficiency rates and adjudicated disagreements.
+\emph{Week 3:} collect fresh question/reference sets and freeze routed/flat rankings before opening gold, including latency and paired uncertainty.
+\emph{Week 4:} repeat source-group and temporal analyses, catalogue negative failure cases and issue an independently traceable release.
 
 \section{Limits, reproducibility and conclusion}
 \textbf{Limitations.} The 52-paper corpus is small; paper titles and entity names share semantic information; confidence intervals from repeated seeds measure initialization, not cross-corpus stability. Source-group confirmation is narrower than a fully new-corpus holdout. Externally sourced abstracts cannot substitute for full-text claim adjudication. Neither exact source matching nor lexically constrained labels establish scientific fact correctness.
