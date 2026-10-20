@@ -1,3 +1,8 @@
+# Scientific evidence, open limitations, and next actions
+[← Main README](../README.md) · [Reproduce](REPRODUCE.md)
+
+**Interpretation is deliberately conservative.** All quantitative claims below refer to the Constructor-supplied corpus, not a claim of novelty on unseen corpora.
+
 ## Verified on applicant's Windows run: historical retrieval frontier (20 October 2026)
 
 The applicant's run of commit `8b0dcfb` passed **10 core, 33 earlier research, and 9 retrieval regression tests** (52 tests total). Four selected hierarchies also passed structural verification. The source ranking artifact was created before reference gold was opened; this is still a **previously inspected, exploratory** 14-question Type-A benchmark.
@@ -20,12 +25,6 @@ The source evidence for these *historical* numbers is the user's 20 October Wind
 ## New complete 180-label provenance checker (pending local execution)
 
 `research_lab/v3_provenance_audit.py` verifies, for **every** developmental V3 label from 2020/22/24, exact membership in the frozen hierarchy, nonmetadata denominators, literal phrase supporters in *all* eligible members, publication-year-eligible provenance, and byte-equivalent deterministic V3 output. Unlike small 14-name samples it does not skip members. The checker still cannot establish scientific semantic entailment, so its output explicitly sets independent accuracy and overclaim rate to `null`. Source-only regression tests and clean Linux CI are added; **this source audit is not claimed to have run successfully on the applicant's full original archive until its next local validation or CI completes**.
-
-
-# Scientific evidence, open limitations, and next actions
-[← Main README](../README.md) · [Reproduce](REPRODUCE.md)
-
-**Interpretation is deliberately conservative.** All quantitative claims below refer to the Constructor-supplied corpus, not a claim of novelty on unseen corpora.
 
 ## Stage 3: sampled-name AI coherence vs year/size-matched mixed controls
 
