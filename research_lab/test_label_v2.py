@@ -212,3 +212,30 @@ class ScopedV2TitleAITable(unittest.TestCase):
         self.assertEqual(sum(x['AI_views_agree']=='no' for x in rows),6)
         self.assertTrue(all(x['full_paper_semantic_entailment']=='NOT_VERIFIED' for x in rows))
         self.assertTrue(all('AI_ONLY' in x['independent_review_status'] for x in rows))
+
+class Stage3CoherenceAIRubric(unittest.TestCase):
+    def test_48_case_sample_name_coherence_reproduction_and_scoped_reporting(self):
+        from research_lab.coherence_ai import generate_form, analyze
+        import hashlib, shutil
+        root=Path(__file__).resolve().parents[1]
+        frozen=root/'research_outputs/label_v2/BLIND_LABEL_COMPARISON_TO_FILL.csv'
+        if not frozen.exists():self.skipTest('Frozen selected A/B cases not found')
+        with tempfile.TemporaryDirectory() as d:
+            base=Path(d)
+            target=base/'research_outputs/label_v2'
+            target.mkdir(parents=True)
+            shutil.copy2(frozen,target/frozen.name)
+            sample,key=generate_form(base)
+            self.assertEqual(len(sample),48)
+            self.assertEqual(len(key),48)
+            with (base/'local_only/reviews/coherence/coherence_blind_48.csv').open('rb') as fp:
+                self.assertEqual(hashlib.sha256(fp.read()).hexdigest(),'1721c535c698a455666ec8d631bbebc66de79180eddc0b857633255755b43313')
+            score_src=root/'research_outputs/coherence_ai/ratings_48_AI.csv'
+            score_dst=base/'research_outputs/coherence_ai/ratings_48_AI.csv'
+            score_dst.parent.mkdir(parents=True,exist_ok=True)
+            shutil.copy2(score_src,score_dst)
+            result=analyze(base)
+            self.assertEqual((result['n_pairs'],result['real_higher_pairs'],result['null_higher_pairs'],result['tie_pairs']),(24,19,2,3))
+            self.assertAlmostEqual(result['mean_real'],3.6666666666666665)
+            self.assertAlmostEqual(result['mean_null'],2.3333333333333335)
+            self.assertFalse(result['strict_blind_independence'])

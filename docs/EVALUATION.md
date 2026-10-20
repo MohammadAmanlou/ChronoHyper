@@ -3,6 +3,19 @@
 
 **Interpretation is deliberately conservative.** All quantitative claims below refer to the Constructor-supplied corpus, not a claim of novelty on unseen corpora.
 
+## Stage 3: sampled-name AI coherence vs year/size-matched mixed controls
+
+The [48 signed AI-only coherence ratings](../research_outputs/coherence_ai/ratings_48_AI.csv) have source-preserving ID-only comments. An additional reproducible script, `research_lab/coherence_ai.py`, regenerates from the 24 frozen label-review cases **24 actual 14-name cluster samples and 24 same-year, same-size mixes drawn from three other clusters**. The private condition key is generated **only under ignored `local_only/`**, never checked in. [Aggregate score](../research_outputs/coherence_ai/summary_AI_only.json): mean real **3.667/5**, mean mixed-control **2.333/5**, paired difference **+1.333**; across 24 matched pairs **19 real-higher, 2 control-higher, 3 ties** (descriptive sign p=0.000221, paired bootstrap exploratory 95% CI +0.792 to +1.875). No statistics were changed after seeing null labels.
+
+**Important non-independence:** The GPT-6 assistant generated AI rating opinions on names alone, but its conversation context had exposed a subset of the true/control key before ratings. It was NOT a strictly key-blind independent evaluator, and the rating samples contain only 14 node *names*, not full article evidence; some names are generic/author names and null samples may share scientific topics. **Do not present this as fully independent P3 semantic validation.** The independent structural degree/arity-null permutation remained **p=0.69**, and this positive but weakly independent sampled-name contrast cannot erase that negative result.
+
+Reproduce after pulling:
+```powershell
+.\.venv\Scripts\python.exe -m research_lab.coherence_ai --project . --generate
+.\.venv\Scripts\python.exe -m research_lab.coherence_ai --project . --score
+```
+Only the local generated key and score are created under `local_only/`. This study evaluates name-sample topicality, **not** training-holdout full-paper entailment or model output title faithfulness. No new cluster labels were deployed.
+
 ## Constructor assessment requirements: evidence-based acceptance gates
 
 This table follows the original [PhD assessment](ASSIGNMENT_SOURCE.md), not proposed extra experiments. Code tests establish technical integrity; they do not substitute for scientific validity. **Current stage: viable and reproducible partial validation, not 100% scientific completeness.**
@@ -19,6 +32,10 @@ This table follows the original [PhD assessment](ASSIGNMENT_SOURCE.md), not prop
 | T7: 3–5 page paper and AI disclosure | 3-page `report.pdf`, `scripts/report.tex`, `AI_USAGE.md`, pinned `requirements.txt` | Confirm assessor access to private repo and inspect final PDF; disclose remaining gaps |
 
 **Not required by the original assessment:** an additional 300–500-paper arXiv corpus (Option B is an **alternative** to the supplied Option A), an LLM answering all four Type-B questions (one genuine extrinsic task suffices), a production front-end, graph database or model fine-tuning. These may improve research, but should not delay honest completion of mandatory T5/T6 validation. The most important open gates are **independent label/gloss faithfulness** and a genuinely independent coherence assessment with transparent uncertainty; negative results do not constitute a software defect.
+
+## Stage 2: safe title proposals (24 cases; exploratory only)
+
+[Conservative alternatives to 24 V2 titles](../research_outputs/label_v2/v2_conservative_title_proposals_24.csv) were written **after** viewing AI title scores, so they are development-only and **not** evidence of improved held-out accuracy. **23 title changes were proposed; one pre-existing abstention was retained.** Weakly supported scientific nouns are scoped as subset/mixed topics, and unsupported concept claims are replaced by explicit abstention where necessary. Original locked hierarchies, original V1/V2 label/gloss pairs and gold questions were not changed. The [repair summary](../research_outputs/label_v2/v2_conservative_title_summary_24.json) states that fresh untouched evaluation is still needed; this does NOT resolve independent scientific label entailment.
 
 ## Frozen V2 gloss claim audit (source-scoped, 24 cases)
 

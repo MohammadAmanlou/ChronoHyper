@@ -1,0 +1,21 @@
+{
+  "schema": "chronohyper_coherence_AI_rubric_v1",
+  "ratings": "GPT-6_AI_ASSISTED_NONINDEPENDENT",
+  "n_pairs": 24,
+  "n_real": 24,
+  "n_mixed_null": 24,
+  "mean_real": 3.6666666666666665,
+  "mean_null": 2.3333333333333335,
+  "mean_paired_delta": 1.3333333333333333,
+  "real_higher_pairs": 19,
+  "null_higher_pairs": 2,
+  "tie_pairs": 3,
+  "exact_sign_p_descriptive_only": 0.00022125244140625,
+  "paired_bootstrap_95ci_exploratory": [
+    0.7916666666666666,
+    1.875
+  ],
+  "strict_blind_independence": false,
+  "independent_full_paper_semantic_validation": false,
+  "limited_scope": "14 sampled exported node names per cluster only, not all source papers; no independent human evaluator; analyst saw part of control key in context before scoring. Does not overrule degree-and-arity null p=0.69."
+}
