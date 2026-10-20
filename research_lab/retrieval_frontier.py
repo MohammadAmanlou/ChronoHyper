@@ -7,6 +7,7 @@ are local-only diagnostics unless independently sourced queries are supplied.
 from __future__ import annotations
 import argparse
 import csv
+import hashlib
 import json
 import platform
 import statistics
@@ -19,6 +20,30 @@ from sklearn.preprocessing import normalize
 from research_lab.retrieval_v2 import index, questions, top, norm
 
 ROUTE_BUDGETS = (1, 2, 4, 8, 12)
+
+
+def _rank_hash(data):
+    """Stable digest of the entire immutable ranking artifact, excluding the digest field."""
+    payload = {k: v for k, v in data.items() if k != 'ranking_sha256'}
+    encoded = json.dumps(payload, ensure_ascii=False, sort_keys=True,
+                         separators=(',', ':'), allow_nan=False).encode('utf-8')
+    return hashlib.sha256(encoded).hexdigest()
+
+
+def verify_rankings(data):
+    ranking_digest = verify_rankings(data)
+    digest = data.get('ranking_sha256')
+    if not digest:
+        raise ValueError('Unfrozen legacy rankings. Rerun the rank step into a NEW local-only path.')
+    if digest != _rank_hash(data):
+        raise ValueError('Frozen rankings were modified after rank-only stage')
+    if not data.get('full_root_exactness_asserted'):
+        raise ValueError('All-root exactness not confirmed')
+    if not data.get('results'):
+        raise ValueError('No ranked questions')
+    return digest
+
+
 
 
 def _path(root, value):
@@ -144,6 +169,7 @@ def rank(project='.', out='local_only/retrieval_frontier/rankings.json',
                     'processor': platform.processor()},
         'results': output,
     }
+    result['ranking_sha256'] = _rank_hash(result)
     dest = _path(root, out)
     dest.parent.mkdir(parents=True, exist_ok=True)
     dest.write_text(json.dumps(result, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
@@ -213,6 +239,7 @@ def score(project='.', rankings='local_only/retrieval_frontier/rankings.json',
     result = {
         'schema': 'chronohyper_budget_frontier_gold_score_v1',
         'n_evaluated': len(paired), 'n_references': len(rows),
+        'ranking_sha256_verified': ranking_digest,
         'evaluation_stage': data['evaluation_stage'],
         'independent_test_certified': False,
         'full_root_equivalent_to_flat': True,
