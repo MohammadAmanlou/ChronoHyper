@@ -1,0 +1,13 @@
+{
+  "schema": "ckl_v2_title_repairs_proposals_v1",
+  "year": "2026-10-20",
+  "n": 24,
+  "proposed_changes": 23,
+  "unchanged": 1,
+  "review_scope": "Post-hoc conservative development suggestions based on source names of frozen 24 examples. NOT a trained/validated new labeler, NOT a confirmed improvement. Original V1/V2 candidate text, cluster assignments, model lock, and blinded judgments unchanged.",
+  "evaluated_against_independent_holdout": false,
+  "semantics_full_text_verified": false,
+  "rule": "Avoid overnarrow subtopic, generic adjective/partially observed topic; explicitly tag mixed evidence or abstain on low support",
+  "source": "research_outputs/label_v2/candidates_v2_2022.json and candidates_v2_2024.json; original full-membership audits",
+  "should_replace_published_v2": false
+}
