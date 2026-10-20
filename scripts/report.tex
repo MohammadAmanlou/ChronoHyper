@@ -17,11 +17,11 @@
 \definecolor{pale}{HTML}{EAF2F3}
 \definecolor{linecol}{HTML}{D2DCE3}
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{2.8pt}
+\setlength{\parskip}{2.1pt}
 \setlength{\columnseprule}{0pt}
-\setlength{\textfloatsep}{7pt plus 1pt minus 1pt}
+\setlength{\textfloatsep}{6pt plus 1pt minus 1pt}
 \setlength{\intextsep}{6pt plus 1pt minus 1pt}
-\titlespacing*{\section}{0pt}{7pt}{3pt}
+\titlespacing*{\section}{0pt}{6pt}{2pt}
 \titlespacing*{\subsection}{0pt}{6pt}{2pt}
 \titleformat{\section}{\sffamily\bfseries\color{navy}\fontsize{10.2}{11}\selectfont}{\thesection}{6pt}{}
 \titleformat{\subsection}{\sffamily\bfseries\color{navy}\fontsize{9.3}{10.3}\selectfont}{\thesubsection}{5pt}{}
@@ -187,7 +187,8 @@ An exact-search audit returned identical top-5 rankings for all 18 inspected que
 \section{Scientific label faithfulness}
 Forty-eight earlier \emph{AI-assisted non-blind} V1 title judgments were 8 accurate, 28 vague and 12 wrong. Only 8 of 48 gloss-overclaim decisions were determinate (40 unclear); no meaningful 0/48 claim can be made. A contrastive, dated provenance-aware V2 labeler generates 60 candidate labels at levels 0--1 in each required snapshot. Its lexical supporter counts were audited (2020/22/24: 1,146 / 1,510 / 2,599), \emph{not} validated as scientific entailment.
 
-Twenty-four new V1/V2 candidate pairs were compared using sampled entities and visible paper titles by \textbf{ChatGPT, not an independent blinded expert}. An exact comparison of both title and gloss identified the V2 arm without relying on a private key. In a 0--2 \emph{AI accuracy judgment}, V2 wins 6, V1 wins 2 and 16 tie; mean delta \(+0.167\) and descriptive paired sign-test \(p=0.289\). In a \emph{subjective} title-plus-gloss preference, V2 wins 18, V1 3, and 3 tie. These endpoints must not be conflated, and neither proves independent semantic accuracy.
+Twenty-four new V1/V2 candidate pairs were compared using sampled entities and visible paper titles by \textbf{ChatGPT, not an independent blinded expert}. An exact comparison of both title and gloss identified the V2 arm without relying on a private key. In a 0--2 \emph{AI accuracy judgment}, V2 wins 6, V1 wins 2 and 16 tie; mean delta \(+0.167\) and descriptive paired sign-test \(p=0.289\). In a \emph{subjective} title-plus-gloss preference, V2 wins 18, V1 3, and 3 tie. These endpoints must not be conflated, and neither proves independent semantic accuracy. A full-member source check of the same 24 V2 glosses validated all \textbf{23/23} literal phrase counts (one epistemic abstention), but \textbf{24/24 full-paper semantic judgments remain unknown}; the scientific overclaim rate is unmeasured. Twenty-three conservative revised titles were proposed \emph{post hoc}, not deployed or scored as new held-out labels. Two further AI-only readings of the same 24 paired titles favored V2 by 7--1--16 and 9--3--12 (wins--losses--ties), still with no independent domain verdict.\par
+\textbf{Additional AI-only sampled-name coherence diagnostic:} 24 actual level-one samples received a mean 3.67/5 versus 2.33/5 for 24 matched three-cluster mixtures (19 real-higher, two null-higher, three tied; descriptive sign \(p=0.00022\)). Because this assistant previously saw part of the true/control key, that evaluation is \emph{not independently blinded}; it tests only 14 sampled exported names, not scientific article entailment, and does not overturn the structural null \(p=0.69\).
 \begin{center}
 \begin{tikzpicture}
 \begin{axis}[width=\columnwidth,height=47mm,xbar,bar width=10pt,xmin=0,xmax=25,
