@@ -1,0 +1,18 @@
+{
+  "schema": "ckl_v2_24_claim_scoped_audit_v1",
+  "n_selected_v2_glosses": 24,
+  "n_literal_count_claims": 23,
+  "n_qualitative_abstentions": 1,
+  "source_scope_full_member_recounts_verified": 23,
+  "source_scope_false_literal_claims_found": 0,
+  "source_scope_limited_overclaim_evaluable_n": 23,
+  "source_scope_limited_overclaim_rate": 0,
+  "source_scope_limited_overclaim_wilson95_upper": 0.14311661845042684,
+  "source_scope_limited_overclaim_unclear_n": 1,
+  "full_text_scientific_overclaim_evaluable_n": 0,
+  "full_text_scientific_overclaim_unclear_n": 24,
+  "full_text_scientific_overclaim_rate": null,
+  "independent_semantic_title_accuracy": null,
+  "independent_expert_review": false,
+  "audit_caveat": "Count/phrase/time checks use all original exported node names. This is not independent scientific entailment or expert validation; 24 semantic statuses remain unclear."
+}

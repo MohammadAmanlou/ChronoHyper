@@ -20,6 +20,15 @@ This table follows the original [PhD assessment](ASSIGNMENT_SOURCE.md), not prop
 
 **Not required by the original assessment:** an additional 300–500-paper arXiv corpus (Option B is an **alternative** to the supplied Option A), an LLM answering all four Type-B questions (one genuine extrinsic task suffices), a production front-end, graph database or model fine-tuning. These may improve research, but should not delay honest completion of mandatory T5/T6 validation. The most important open gates are **independent label/gloss faithfulness** and a genuinely independent coherence assessment with transparent uncertainty; negative results do not constitute a software defect.
 
+## Frozen V2 gloss claim audit (source-scoped, 24 cases)
+
+The [24-row V2 claim-by-claim audit](../research_outputs/label_v2/v2_gloss_source_audit_24.csv) and [machine-readable summary](../research_outputs/label_v2/v2_gloss_source_summary_24.json) provide a reproducible, read-only recount on **all members** of the frozen 2022/2024 clusters against the original Constructor archive. The case-by-case A/B worksheet, mapping key and model assignments were not modified.
+
+- **Literal provenance and count claims:** 23 of 23 explicit `N of M` gloss counts, cutoff years and supporting node IDs matched the entire original exported-node membership. **0/23 false count claims** among verifiable assertions (descriptive, not an independent estimate of scientific truth). The 24th gloss is a **qualitative abstention**, not a testable count: `unclear` for this narrower scope.
+- **Scientifically meaningful title / full-paper semantic entailment:** **0/24 independently established, 24/24 `unclear`**, so the independent semantic overclaim rate remains **`null`**, not 0%. The count tests validate literal *name occurrences*, not whether source research papers establish a scientifically coherent concept or whether the titles are accurate.
+- Two user-supplied AI-only 24-pair forms offer **non-independent exploratory title judgments**: on V2 alone, they agree on 18/24 titles and disagree on six. Some names remain weak (for example, `Set / Ccsd`, `Prediction / Accurate`, or `Stability / Heat Map Visualization`), despite their gloss counts being literally verifiable. Earlier `AI_PRELIM...` reviewer identities are not human evaluators.
+- Reproduce this scoped check with `python -m research_lab.label_v2 --project . --audit-v2-gloss`. This never re-runs or changes the frozen hierarchy. **Do not substitute its 0/23 source-count rate for the independent P6 scientific overclaim requirement.**
+
 ## Requirement-to-evidence index
 
 | Required work | Files | Verified status / limitation |
