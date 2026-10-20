@@ -68,3 +68,24 @@ GPT-6 wrote/tests-reviewed a **development-only, deterministic general V3** labe
 - **AI-authored changes:** `research_lab/retrieval_frontier.py` and toy-fixture tests; root-budget cost/quality experiment design; `docs/REVIEWER_CHECKLIST.md`; execution and caveat instructions.
 - **Validation status:** Python syntax and synthetic fixture tests were checked during authoring. The new frontier **has not yet been run on the applicant's real private local corpus**, and new paper-content reviewer/benchmark judgments have not been obtained. Neither the existing AI-only diagnostics nor fresh-looking reruns of previously inspected 2025 questions constitute independent confirmation.
 - **Isolation and integrity:** Ranker never reads gold; full-root top-five equality is an exactness control; timings are local diagnostics; results default to ignored `local_only/`. No locked weights, gold, prior runs, private review keys, `report.pdf` or frozen hierarchy were modified. The applicant must run and inspect new test outputs before updating any report findings.
+
+
+## Addendum — Historical Type-A frontier scorer and confidence intervals (20 October 2026)
+
+- **AI assistant:** ChatGPT GPT-6, implementing the user's request to advance
+  the existing assessment with a rigorous *next* experiment and a precise local
+  runbook, not fabricate a positive PhD assessment result.
+- **Substantive additions:** immutable SHA-256 on the rank-only frontier
+  artifact; separate original-ZIP gold retrieval only in the score step;
+  14-question Type-A route-budget metrics, eligible/absent targets, paired
+  bootstrap intervals and exact sign tests; local-only SVG figure, regression
+  tests, and integration into the protected Windows runner.
+- **Verification boundary:** Newly authored Python has not been executed on the
+  applicant's actual Windows installation in this conversation. Unit tests and
+  real-data numerical evidence must be verified locally. All original 18
+  questions were previously seen, so the added score is EXPLORATORY even after
+  a successful run. No independently new questions, domain reviewer, full-text
+  entailment, Type-B answer correctness or statistical superiority is claimed.
+- **Data confidentiality:** No raw questions, hidden A/B mapping, reference
+  method lists or private reviewer notes are included in this addendum; the
+  derived sensitive score and blind outputs remain ignored under `local_only/`.
