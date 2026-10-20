@@ -1,0 +1,83 @@
+name: One-time fair retrieval developmental audit
+on:
+  push:
+    paths:
+      - '.github/workflows/retrieval_dev_once.yml'
+permissions:
+  contents: write
+jobs:
+  diagnostic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install -r requirements.txt
+      - name: Rank without opening gold
+        run: |
+          python -m research_lab.retrieval_v2 --project . --rank
+      - name: Score archived previously inspected references separately
+        run: |
+          python - <<'PY'
+          import csv,io,json,statistics
+          from zipfile import ZipFile
+          from pathlib import Path
+          from research_lab.retrieval_v2 import norm
+          f=Path('local_only/retrieval_v2/rankings.json')
+          run=json.loads(f.read_text())
+          assert not run['gold_used_for_ranking']
+          assert run['freshness']=='PREVIOUSLY_INSPECTED_EXPLORATORY'
+          with ZipFile('inputs/data.zip') as z:
+              gold=json.loads(z.read('data/ground_truth.json'))
+              questions=list(csv.DictReader(io.StringIO(z.read('data/questions.csv').decode('utf-8-sig')),delimiter=';'))
+          qa={q['question_id']:q for q in questions if q['type']=='A'}
+          assert len(qa)==14
+          result=[]
+          for item in run['results']:
+              id=item['question_id']
+              if id not in qa:continue
+              expected={norm(x) for x in gold[id]['expected_methods'] if norm(x)}
+              s={}
+              for a in ('flat','hier'):
+                  hits={x['normalized'] for x in item[a]}&expected
+                  s[a]={'any_hit':int(bool(hits)),'recall':len(hits)/len(expected)}
+              result.append({'id':id,'flat':s['flat'],'hier':s['hier'],
+                             'flat_dot_products':item['flat_dot_products'],
+                             'hier_dot_products':item['hier_dot_products'],
+                             'centroid_dot_products':item['centroid_dot_products'],
+                             'flat_ms_median':item['flat_ms_median'],
+                             'hier_ms_median':item['hier_ms_median']})
+          assert len(result)==14
+          def avg(k):return statistics.mean(v[k] for v in result)
+          output={'schema':'chronohyper_v2_dev_gold_scored_after_ranking_v1',
+             'evidence_status':'HISTORICAL_14_QUESTIONS_PREVIOUSLY_INSPECTED_NOT_CONFIRMATORY',
+             'n_queries':14,'cutoff':2025,
+             'flat_hit_at_5':avg('flat')['any_hit'] if False else statistics.mean(v['flat']['any_hit'] for v in result),
+             'hier_hit_at_5':statistics.mean(v['hier']['any_hit'] for v in result),
+             'flat_macro_recall_at_5':statistics.mean(v['flat']['recall'] for v in result),
+             'hier_macro_recall_at_5':statistics.mean(v['hier']['recall'] for v in result),
+             'mean_flat_candidate_dots':avg('flat_dot_products'),
+             'mean_hier_candidate_dots':avg('hier_dot_products'),
+             'mean_centroid_dots':avg('centroid_dot_products'),
+             'mean_flat_score_ms':avg('flat_ms_median'),
+             'mean_hier_score_ms_including_routing':avg('hier_ms_median'),
+             'centroid_index_build_s':run['centroid_build_s'],
+             'n_canonical_entities':run['n_canonical_entities'],
+             'limitations':'Shared ranker and exact name gold matches; repeated CI runner timings noisy. Previously viewed user questions. Not independently validated or comparable without shared retrieval budget and data availability. Original 1/14 2/14 scores retained.'}
+          target=Path('research_outputs/retrieval_v2')
+          target.mkdir(parents=True,exist_ok=True)
+          (target/'dev_diagnostic_2025.json').write_text(json.dumps(output,indent=2)+'\n')
+          print(json.dumps(output,indent=2))
+          PY
+      - name: Commit only aggregate development diagnostic
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research_outputs/retrieval_v2/dev_diagnostic_2025.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Archive non-confirmatory paired retrieval diagnostics from old questions"
+            git push origin HEAD:main
+          fi
