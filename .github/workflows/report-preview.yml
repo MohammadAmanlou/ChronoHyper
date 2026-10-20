@@ -1,0 +1,57 @@
+name: Candidate PDF visual preflight
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/report_candidate_20261020.tex'
+      - '.github/workflows/report-preview.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install report compiler and PDF inspection tools
+        run: |
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq --no-install-recommends \
+            texlive-xetex texlive-pictures texlive-latex-extra fonts-liberation poppler-utils
+      - name: Build candidate without modifying delivered report.pdf
+        run: |
+          mkdir -p local_only/report_candidate
+          xelatex -interaction=nonstopmode -halt-on-error \
+            -output-directory=local_only/report_candidate scripts/report_candidate_20261020.tex
+          xelatex -interaction=nonstopmode -halt-on-error \
+            -output-directory=local_only/report_candidate scripts/report_candidate_20261020.tex
+          pdfinfo local_only/report_candidate/report_candidate_20261020.pdf \
+            | tee local_only/report_candidate/pdfinfo.txt
+          pdfinfo report.pdf | tee local_only/report_candidate/original_pdfinfo.txt
+      - name: Enforce official 3-5 page constraint and check PDF text
+        run: |
+          pages="$(pdfinfo local_only/report_candidate/report_candidate_20261020.pdf \
+            | awk '/^Pages:/ {print $2}')"
+          echo "Candidate page count: $pages"
+          test "$pages" -ge 3 && test "$pages" -le 5
+          pdftotext -layout local_only/report_candidate/report_candidate_20261020.pdf \
+            local_only/report_candidate/extracted.txt
+          grep -qi "Native Multi-Resolution" local_only/report_candidate/extracted.txt
+          grep -qi "Conclusion" local_only/report_candidate/extracted.txt
+          grep -qi "57.9" local_only/report_candidate/extracted.txt
+          grep -qi "115/180" local_only/report_candidate/extracted.txt
+          test -z "$(git status --porcelain)"
+      - name: Upload private report candidate for manual visual inspection
+        uses: actions/upload-artifact@v4
+        with:
+          name: ChronoHyper-report-candidate-private
+          path: |
+            local_only/report_candidate/report_candidate_20261020.pdf
+            local_only/report_candidate/pdfinfo.txt
+            local_only/report_candidate/original_pdfinfo.txt
+          if-no-files-found: error
+          retention-days: 7
