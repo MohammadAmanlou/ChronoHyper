@@ -281,6 +281,22 @@ def score_blind(sheet, key_file, out):
     """Paired scoring, preserving unrated/uncertain pairs instead of imputing them."""
     with Path(sheet).open(encoding='utf-8-sig', newline='') as fp:
         rows=list(csv.DictReader(fp))
+    # A reviewer is allowed to change ratings and notes, never frozen evidence or A/B texts.
+    # Check against the canonical 24-case sheet when running inside this repo.
+    canonical=Path(__file__).resolve().parents[1]/'research_outputs/label_v2/BLIND_LABEL_COMPARISON_TO_FILL.csv'
+    if len(rows)==24 and canonical.exists():
+        with canonical.open(encoding='utf-8-sig',newline='') as f:
+            baseline=list(csv.DictReader(f))
+        def identity(row):return (row['year'],row['stable_id'])
+        fixed=['year','level','stable_id','cluster_member_count',
+           'random_member_ids','random_member_names','linked_source_article_titles',
+           'label_A','gloss_A','label_B','gloss_B']
+        origin={identity(x):x for x in baseline}
+        if len(origin)!=24 or len(baseline)!=24 or {identity(x) for x in rows}!=set(origin):
+            raise ValueError('Rated sheet IDs differ from the 24 frozen reference cases')
+        for row in rows:
+            if any(row.get(field)!=origin[identity(row)].get(field) for field in fixed):
+                raise ValueError('Reviewer copy changed original evidence or A/B texts: '+str(identity(row)))
     key=json.loads(Path(key_file).read_text(encoding='utf-8'))
     scale={'accurate':2,'vague':1,'wrong':0}
     pairs=[];all_ids=set()

@@ -124,6 +124,38 @@ class FrozenKeyRecovery(unittest.TestCase):
             self.assertEqual(recover_frozen_blind_key(project,private),key)
 
 class ReviewOriginSafety(unittest.TestCase):
+
+    def test_raw_ai_review_status_is_not_human_confirmation(self):
+        from research_lab.label_v2 import score_blind
+        root=Path(__file__).resolve().parents[1]
+        blank=root/'research_outputs/label_v2/BLIND_LABEL_COMPARISON_TO_FILL.csv'
+        if not blank.exists():self.skipTest('Canonical review data unavailable')
+        import csv
+        with blank.open(encoding='utf-8-sig',newline='') as f:
+            cases=list(csv.DictReader(f))
+        with tempfile.TemporaryDirectory() as tmp:
+            p=Path(tmp)
+            # Exact frozen columns preserved; ratings are explicitly marked AI.
+            for case in cases:
+                case['A_accuracy_accurate_vague_wrong']='vague'
+                case['B_accuracy_accurate_vague_wrong']='vague'
+                case['A_gloss_overclaim_yes_no_unclear']='unclear'
+                case['B_gloss_overclaim_yes_no_unclear']='unclear'
+                case['reviewer_id']='AI_PRELIM_SANITY_CHECK'
+            with (p/'ai.csv').open('w',encoding='utf-8',newline='') as f:
+                writer=csv.DictWriter(f,fieldnames=list(cases[0]))
+                writer.writeheader();writer.writerows(cases)
+            from research_lab.label_v2 import recover_frozen_blind_key
+            recover_frozen_blind_key(root,p/'key.json')
+            out=score_blind(p/'ai.csv',p/'key.json',p/'out')
+            self.assertEqual(out['status'],'COMPLETE_AI_ONLY_DIAGNOSTIC')
+            self.assertEqual(out['paired_cases_with_both_ratings_and_reviewer_id'],24)
+            cases[0]['label_A']='TAMPERED'
+            with (p/'wrong.csv').open('w',encoding='utf-8',newline='') as f:
+                writer=csv.DictWriter(f,fieldnames=list(cases[0]))
+                writer.writeheader();writer.writerows(cases)
+            with self.assertRaisesRegex(ValueError,'changed original evidence'):
+                score_blind(p/'wrong.csv',p/'key.json',p/'out2')
     def test_ai_identified_rows_cannot_be_reported_as_human(self):
         import csv
         from research_lab.label_v2 import score_blind
