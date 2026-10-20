@@ -197,3 +197,18 @@ class V2FullMembershipSourceAudit(unittest.TestCase):
             self.assertEqual(len(rows),24)
             self.assertEqual(sum(r['machine_lexical_claim_status']=='PASS_FULL_MEMBER_RECOUNT' for r in rows),23)
             self.assertTrue(all(r['independent_scientific_overclaim_status']=='unclear' for r in rows))
+
+
+class ScopedV2TitleAITable(unittest.TestCase):
+    def test_ai_title_ratings_are_source_scoped_and_not_expert_verdicts(self):
+        import csv
+        root=Path(__file__).resolve().parents[1]
+        p=root/'research_outputs/label_v2/v2_title_ai_views_24.csv'
+        with p.open(encoding='utf-8-sig',newline='') as file:
+            rows=list(csv.DictReader(file))
+        self.assertEqual(len(rows),24)
+        self.assertEqual(len({(x['year'],x['stable_id']) for x in rows}),24)
+        self.assertEqual(sum(x['AI_views_agree']=='yes' for x in rows),18)
+        self.assertEqual(sum(x['AI_views_agree']=='no' for x in rows),6)
+        self.assertTrue(all(x['full_paper_semantic_entailment']=='NOT_VERIFIED' for x in rows))
+        self.assertTrue(all('AI_ONLY' in x['independent_review_status'] for x in rows))
