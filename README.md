@@ -67,6 +67,22 @@ also runs the source tests. These checks have **not yet been confirmed on the
 applicant's Windows machine**. Even a complete pass does not establish
 scientific full-paper entailment; authorized independent review remains pending.
 
+## Assessment report update and confidential review gate
+
+A four-page [LaTeX assessment candidate](scripts/report_candidate_20261020.tex)
+was built and checked by [private PDF preflight CI](.github/workflows/report-preview.yml)
+on 20 October. It records the verified Route-4 cost/quality pilot, 180-case
+V3 evidence provenance, explicit construction guarantees and complexity, and
+the predeclared four-week plan. The root delivered `report.pdf` is not
+automatically overwritten; promote the verified candidate only after final
+author review. The clean CI passed 10+33+18 tests.
+
+No real independent judge ratings have been filled in or fabricated.
+The offline [review handoff tool](research_lab/review_handoff.py)
+requires an explicit user-permission confirmation flag before packaging
+the 24/48-item confidential blind inputs and never uploads them. Instructions:
+[Independent Validation](docs/INDEPENDENT_VALIDATION.md).
+
 ## Research integrity and confidentiality
 
 - The 2024 held-out cut **worsened** from 0.6623 (development) to 0.7172 (source-group confirmation); lower is better.
