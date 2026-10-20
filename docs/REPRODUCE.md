@@ -85,3 +85,43 @@ xelatex -interaction=nonstopmode -halt-on-error -output-directory=. .\scripts\re
 ```
 
 Always check page count, charts, equations and citations before committing the PDF; keep the existing filename `report.pdf`. Temporary root files (`report.aux`, `report.log`, etc.) are excluded by `.gitignore`. New data claims must be reconciled in both the manuscript source and `report.md`.
+
+## 8 · Independent scientific validation — staged review protocol
+
+These tasks remain distinct from the completed AI-only diagnostic. They require real reviewers or new data; the existing code must not synthesize human judgments.
+
+**Stage 1 — 24 blind label pairs.** Get permission before sharing Constructor-provided data outside its authorized team. Use an independent qualified reviewer, unaware of V1/V2 mapping and previous ChatGPT ratings. Do not re-run default `python -m research_lab.label_v2` into canonical outputs: it regenerates the blank sheet. In PowerShell from a clean, updated `main`:
+
+```powershell
+New-Item -ItemType Directory -Force .\local_only\reviews | Out-Null
+Copy-Item .\research_outputs\label_v2\BLIND_LABEL_COMPARISON_TO_FILL.csv .\local_only\reviews\labels_for_reviewer.csv
+.\.venv\Scripts\python.exe -m research_lab.label_v2 --project . --recover-key
+```
+
+The recovered A/B key is in `research_outputs/label_v2/BLIND_KEY_KEEP_SEPARATE.json`, ignored by Git. Never share it with the reviewer. The reviewer fills 24 pairs for both A/B title accuracy `accurate/vague/wrong`, gloss overclaim `yes/no/unclear`, actual `reviewer_id`, and comments grounded in available source text. Store their completed sheet locally as `local_only/reviews/labels_rated.csv` and score it:
+
+```powershell
+.\.venv\Scripts\python.exe -m research_lab.label_v2 --score-blind .\local_only\reviews\labels_rated.csv --key .\research_outputs\label_v2\BLIND_KEY_KEEP_SEPARATE.json --out .\local_only\reviews\scores
+```
+
+Read `local_only/reviews/scores/v2_paired_blind_scores.json`. The scorer reports only genuinely completed ratings; independence is a procedural fact, never software-certified.
+
+**Stage 2 — 36 Type-B source claims.** Consult `research_outputs/type_b_audit/primary_source_audit.csv` (19 limited source excerpts, 17 rubric-only; no complete independent entailment assessment). Make the local working copy:
+
+```powershell
+Copy-Item .\research_outputs\type_b_audit\CLAIM_LEVEL_REVIEW_BLANK.csv .\local_only\reviews\claims_rated.csv
+```
+
+Review each of the 36 statements against the actual source full text and record publication date, URL/DOI, section/page/figure, exact evidence scope and contradictory passages in `reviewer_notes`. Fill `manual_claim_supported_yes_no_unclear`, `manual_source_citation_verified_yes_no_unclear`, and actual `human_reviewer`. With missing primary-text evidence mark `unclear`; do not interpret abstracts as full confirmation or post-Feb-2026 publications as contemporaneous evidence. Score only after genuine annotation:
+
+```powershell
+.\.venv\Scripts\python.exe -m research_lab.type_b_source_audit review --project . --review-file .\local_only\reviews\claims_rated.csv --out .\local_only\reviews\scores
+```
+
+Read `local_only/reviews/scores/type_b_claim_review_summary.json`. This is source-claim entailment **not generated-answer correctness**. Never edit the tracked blank review forms.
+
+**Stage 3 — actual Type-B answers.** The four original Type-B tasks (Q15–Q18) have **paper rankings only**, not generated answers. An answer-generation + claim/citation grading experiment still needs to be implemented. Freeze one authorized local generator/prompt/decoding budget; pass identical top-5/top-10 paper text excerpts from flat versus hierarchy without gold. Record exact passage IDs, cited final answers/abstentions, unsupported statements, claim recall, citation precision, actual time including routing, token count and costs. Judge blinded to retrieval arm. All 4 questions were previously inspected, hence results stay **exploratory**. Never upload private questions to an external API without permission.
+
+**Stage 4 — independent corpus.** Follow Option B in `docs/ASSIGNMENT_SOURCE.md`: collect ~300–500 dated 2019–2024 arXiv abstracts in one predeclared category, form 2020/2022/2024 snapshots and distinct-mention within-abstract **co-occurrence** hyperedges (not factual relations), with reproducible provenance. Keep old model-selection weights, budgets, baseline choices and seeds fixed. Pre-register disjoint papers/questions and new domain-expert reference judgments before inspecting model outputs. Evaluate held-out independent-signal coherence vs null, temporal and perturbation stability, label faithfulness, Type-A hits and Type-B source-grounded answers, with meaningful uncertainty. New corpus construction and answer-generation code **do not currently exist**; write them only after data and annotation permissions are settled.
+
+**Stage 5 — final release.** Once new actual evidence exists, update `docs/EVALUATION.md`, `report.md` and `scripts/report.tex`, rebuild only `report.pdf`, disclose AI usage and unverified residual claims, run tests and final preflight. Keep 65+5+5 archived runs, model lock and original gold fixed, and keep all secret keys and private reviews under ignored paths. Work only on `main`; do not create extra branches, READMEs or report copies.
