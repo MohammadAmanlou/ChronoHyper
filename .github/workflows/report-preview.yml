@@ -21,7 +21,7 @@ jobs:
         run: |
           sudo apt-get update -qq
           sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq --no-install-recommends \
-            texlive-xetex texlive-pictures texlive-latex-extra fonts-liberation poppler-utils
+            texlive-xetex texlive-pictures texlive-latex-extra texlive-fonts-recommended fonts-liberation poppler-utils
       - name: Build candidate without modifying delivered report.pdf
         run: |
           mkdir -p local_only/report_candidate
