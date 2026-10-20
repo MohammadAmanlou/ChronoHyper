@@ -165,6 +165,27 @@ def audit(root):
     if (root/'research_lab/label_v3.py').exists():
         passed.append('General experimental V3 labeller implementation present (180 development cases)')
         warnings.append('V3 semantic-title accuracy unmeasured on genuinely new independently checked cases')
+    local_v3=read(root/'local_only/label_v3_dev/provenance_audit.json')
+    if isinstance(local_v3,dict):
+        full_counts=local_v3.get('by_status',{})
+        valid_v3=(local_v3.get('schema')=='chronohyper_v3_full_provenance_audit_v1'
+                  and local_v3.get('n_labels_checked')==180
+                  and sum(full_counts.values())==180
+                  and local_v3.get('structural_and_lexical_errors')==0
+                  and local_v3.get('gold_answer_files_opened') is False
+                  and local_v3.get('independent_semantic_label_accuracy') is None
+                  and local_v3.get('scientific_overclaim_rate') is None)
+        if valid_v3:
+            passed.append('Applicant local audit reports all 180 V3 source-name/provenance cases checked; scientific entailment remains unmeasured')
+            details['v3_full_member_lexical_audit']={k:local_v3.get(k) for k in
+                ('n_labels_checked','n_explicit_abstentions',
+                 'full_member_name_phrase_support_occurrences_checked',
+                 'dated_article_provenance_references_checked',
+                 'independent_semantic_label_accuracy')}
+        else:
+            errors.append('Local V3 audit has inconsistent status/evidence counts; rerun or investigate')
+    else:
+        warnings.append('Full 180-case V3 lexical/provenance audit not yet generated locally')
     retr_new=read(root/'research_outputs/retrieval_v2/dev_diagnostic_2025.json')
     if isinstance(retr_new,dict):
         if retr_new.get('n_queries')!=14:
