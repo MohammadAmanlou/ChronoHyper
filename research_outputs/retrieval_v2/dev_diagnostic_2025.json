@@ -1,0 +1,18 @@
+{
+  "schema": "chronohyper_v2_dev_gold_scored_after_ranking_v1",
+  "evidence_status": "HISTORICAL_14_QUESTIONS_PREVIOUSLY_INSPECTED_NOT_CONFIRMATORY",
+  "n_queries": 14,
+  "cutoff": 2025,
+  "flat_hit_at_5": 0.14285714285714285,
+  "hier_hit_at_5": 0.14285714285714285,
+  "flat_macro_recall_at_5": 0.04220779220779221,
+  "hier_macro_recall_at_5": 0.048701298701298704,
+  "mean_flat_candidate_dots": 2647,
+  "mean_hier_candidate_dots": 1102.4285714285713,
+  "mean_centroid_dots": 12,
+  "mean_flat_score_ms": 2.5212512142844496,
+  "mean_hier_score_ms_including_routing": 1.7751647142867049,
+  "centroid_index_build_s": 0.007575420000001998,
+  "n_canonical_entities": 2647,
+  "limitations": "Shared ranker and exact name gold matches; repeated CI runner timings noisy. Previously viewed user questions. Not independently validated or comparable without shared retrieval budget and data availability. Original 1/14 2/14 scores retained."
+}
