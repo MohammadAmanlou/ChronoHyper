@@ -475,36 +475,7 @@ def audit_v2_24_literal_source_claims(project='.', out='research_outputs/label_v
         'machine_lexical_claim_status','lexical_overclaim_status',
         'independent_scientific_overclaim_status','label_semantic_status','audit_scope']
     rows=[];n_literal=0;n_qualitative=0
-    rx=re.compile(r'^At the (\d+) cutoff, (\d+) of (\d+) non-metadata members explicitly mention "([^"]+)" in their exported names; this does not imply that every cluster member shares the topic\.
-    ap=argparse.ArgumentParser()
-    ap.add_argument('--project',default='.')
-    ap.add_argument('--out',default='research_outputs/label_v2')
-    ap.add_argument('--years',default='2020,2022,2024')
-    ap.add_argument('--score-blind',default=None,help='CSV with human A/B judgments; do not set this until actually completed')
-    ap.add_argument('--key',default=None,help='Local A/B key kept away from the reviewer')
-    ap.add_argument('--summarize-ai',action='store_true',help='Score existing AI-only diagnostic review separately, NOT human ratings')
-    ap.add_argument('--recover-key',action='store_true',help='Safely recover frozen A/B mapping into ignored local secret; do not share')
-    ap.add_argument('--audit-v2-gloss',action='store_true',help='Verify 24 frozen V2 gloss literal counts on full source-node membership (NOT independent scientific entailment)')
-    a=ap.parse_args()
-    if a.audit_v2_gloss:
-        audit_v2_24_literal_source_claims(a.project,a.out)
-        return
-    if a.recover_key:
-        recover_frozen_blind_key(a.project, a.key)
-        return
-    if a.summarize_ai:
-        summarize_ai_review(a.project, Path(a.out)/'ai_paired_summary.json')
-        return
-    if a.score_blind:
-        if not a.key:ap.error('--score-blind requires --key')
-        score_blind(a.score_blind,a.key,a.out)
-        return
-    m=write_outputs(a.project,a.out,[int(y) for y in a.years.split(',')])
-    for y,row in m['years'].items():print(f'V2 {y}: {row["labels"]} labels; {row["with_abstention"]} abstentions; {row["lexical_source_assertions_checked"]} cited node-name occurrences source-verified')
-    print('NO LABEL ADVANTAGE CLAIMED until external blinded evaluation is completed.')
-
-if __name__=='__main__':main()
-)
+    rx=re.compile(r'At the ([0-9]+) cutoff, ([0-9]+) of ([0-9]+) non-metadata members explicitly mention "([^"]+)" in their exported names; this does not imply that every cluster member shares the topic[.]')
     for case in case_rows:
         key=(case['year'],case['stable_id'])
         if key not in c_by_id:raise ValueError('Missing V2 candidate: '+str(key))
