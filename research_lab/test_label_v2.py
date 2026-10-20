@@ -109,3 +109,16 @@ class AIPairedDiagnostic(unittest.TestCase):
                             'not_independent_human':'TRUE'})
             with self.assertRaisesRegex(ValueError,'Expected 24 unique'):
                 summarize_ai_review(root)
+
+class FrozenKeyRecovery(unittest.TestCase):
+    def test_recover_existing_24_pairs_matches_exact_candidate_texts(self):
+        from research_lab.label_v2 import recover_frozen_blind_key
+        project=Path(__file__).resolve().parents[1]
+        if not (project/'research_outputs/label_v2/BLIND_LABEL_COMPARISON_TO_FILL.csv').exists():
+            self.skipTest('Frozen user data unavailable')
+        with tempfile.TemporaryDirectory() as d:
+            private=Path(d)/'local_key.json'
+            key=recover_frozen_blind_key(project,private)
+            self.assertEqual(len(key),24)
+            self.assertEqual(set(key.values()),{'A','B'})
+            self.assertEqual(recover_frozen_blind_key(project,private),key)

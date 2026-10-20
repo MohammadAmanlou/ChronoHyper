@@ -233,6 +233,50 @@ def write_outputs(project, out, years=(2020,2022,2024), blind_seed=451):
     return metrics
 
 
+def recover_frozen_blind_key(project='.', destination=None):
+    """Recover A/B mapping solely from frozen candidate labels and glosses.
+
+    This operation DOES NOT rewrite the original blind worksheet, rerun label
+    generation, or score any ratings. The recovered key is machine-local and
+    must never be sent to a reviewer or pushed to GitHub.
+    """
+    root=Path(project)
+    base=root/'research_outputs/label_v2'
+    with (base/'BLIND_LABEL_COMPARISON_TO_FILL.csv').open(
+            encoding='utf-8-sig', newline='') as fp:
+        blind=list(csv.DictReader(fp))
+    records=[]
+    for year in (2022,2024):
+        records+=json.loads((base/f'candidates_v2_{year}.json').read_text(encoding='utf-8'))
+    candidates={f'{x["year"]}:{x["stable_id"]}':x for x in records}
+    keys={}
+    for row in blind:
+        ident=f'{row["year"]}:{row["stable_id"]}'
+        if ident in keys or ident not in candidates:
+            raise ValueError('Duplicate or unmatched blind record: '+ident)
+        c=candidates[ident]
+        a=(row['label_A']==c['v2_label'] and row['gloss_A']==c['v2_gloss']
+           and row['label_B']==c['v1_label'] and row['gloss_B']==c['v1_gloss'])
+        b=(row['label_B']==c['v2_label'] and row['gloss_B']==c['v2_gloss']
+           and row['label_A']==c['v1_label'] and row['gloss_A']==c['v1_gloss'])
+        if a == b:
+            raise ValueError('Ambiguous or changed frozen A/B content: '+ident)
+        keys[ident]='A' if a else 'B'
+    if len(keys)!=24:
+        raise ValueError('Expected 24 uniquely matched frozen label cases')
+    destination=Path(destination) if destination else base/'BLIND_KEY_KEEP_SEPARATE.json'
+    destination.parent.mkdir(parents=True,exist_ok=True)
+    # Never accidentally overwrite a previous secret key.
+    if destination.exists():
+        saved=json.loads(destination.read_text(encoding='utf-8'))
+        if saved!=keys:
+            raise ValueError('Existing private key differs: investigate before scoring')
+    else:
+        destination.write_text(json.dumps(keys,indent=2)+'\n',encoding='utf-8')
+    print('RECOVERED 24/24 A/B keys from frozen texts; PRIVATE key location:',destination)
+    return keys
+
+
 def score_blind(sheet, key_file, out):
     """Paired scoring, preserving unrated/uncertain pairs instead of imputing them."""
     with Path(sheet).open(encoding='utf-8-sig', newline='') as fp:
@@ -376,7 +420,11 @@ def main():
     ap.add_argument('--score-blind',default=None,help='CSV with human A/B judgments; do not set this until actually completed')
     ap.add_argument('--key',default=None,help='Local A/B key kept away from the reviewer')
     ap.add_argument('--summarize-ai',action='store_true',help='Score existing AI-only diagnostic review separately, NOT human ratings')
+    ap.add_argument('--recover-key',action='store_true',help='Safely recover frozen A/B mapping into ignored local secret; do not share')
     a=ap.parse_args()
+    if a.recover_key:
+        recover_frozen_blind_key(a.project, a.key)
+        return
     if a.summarize_ai:
         summarize_ai_review(a.project, Path(a.out)/'ai_paired_summary.json')
         return
