@@ -1,3 +1,27 @@
+## Verified on applicant's Windows run: historical retrieval frontier (20 October 2026)
+
+The applicant's run of commit `8b0dcfb` passed **10 core, 33 earlier research, and 9 retrieval regression tests** (52 tests total). Four selected hierarchies also passed structural verification. The source ranking artifact was created before reference gold was opened; this is still a **previously inspected, exploratory** 14-question Type-A benchmark.
+
+| Route budget | Historical Type-A Hit@5 | Macro Recall@5 (all required references) | Mean online candidate+centroid dot products | Average query-median online time* |
+|---|---:|---:|---:|---:|
+| Flat | 2/14 = 0.1429 | 0.0422 | 2,647 | 7.768 ms |
+| 1 root | 1/14 = 0.0714 | 0.0065 | 250.7 | 1.807 ms |
+| 2 roots | 1/14 = 0.0714 | 0.0065 | 534.3 | 3.306 ms |
+| 4 roots | 2/14 = 0.1429 | 0.0487 | 1,114.4 | 6.133 ms |
+| 8 roots | 2/14 = 0.1429 | 0.0422 | 2,040.8 | see local historical audit |
+| All 12 roots | 2/14 = 0.1429 | 0.0422 | 2,659 | 13.546 ms |
+
+*Online time includes routing, selected candidate scoring and top-five selection, but excludes shared query encoding and offline indexing. Measurements are environment-specific, with small task count and fixed query/arm order.
+
+**Measured descriptive trade-off:** four-root routing does 57.9% fewer candidate+centroid dot products, with the same Hit@5 on these 14 queries, and 21.1% lower measured per-query online time in this Windows run. The four-root macro recall value is slightly higher than flat; it does **not** mean a significant accuracy gain. The paired Hit@5 differences for 4/8/12 roots were exactly zero on these cases, yielding a degenerate bootstrap CI [0,0]; that does **not** establish equivalence on future data. One- and two-root runs each lost one previously successful question; their exact paired two-sided sign test was p=1.0 (one discordance). No budget comparison establishes population-level superiority. Four Type-B synthesis questions remain ungraded for answer correctness.
+
+The source evidence for these *historical* numbers is the user's 20 October Windows validation log and the locally written, untracked `local_only/retrieval_frontier/historical_v2/historical_audit.json`. The raw ranking, original question texts and private gold are deliberately **not copied into this repository**. This result does not supersede the previous five-seed 2024 structural null p=0.69 or the negative source-group heldout gap.
+
+## New complete 180-label provenance checker (pending local execution)
+
+`research_lab/v3_provenance_audit.py` verifies, for **every** developmental V3 label from 2020/22/24, exact membership in the frozen hierarchy, nonmetadata denominators, literal phrase supporters in *all* eligible members, publication-year-eligible provenance, and byte-equivalent deterministic V3 output. Unlike small 14-name samples it does not skip members. The checker still cannot establish scientific semantic entailment, so its output explicitly sets independent accuracy and overclaim rate to `null`. Source-only regression tests and clean Linux CI are added; **this source audit is not claimed to have run successfully on the applicant's full original archive until its next local validation or CI completes**.
+
+
 # Scientific evidence, open limitations, and next actions
 [← Main README](../README.md) · [Reproduce](REPRODUCE.md)
 
