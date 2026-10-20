@@ -34,11 +34,30 @@ materials remain authorized-user-only. Original locked artifacts stay unchanged.
 6. **Temporal confirmation.** Lower held-out cut is better. The 2024 mean moved from 0.6623 (development) to 0.7172 (confirmation): a worse cut of ~0.0549. Do not tune on confirmation or erase that gap.
 7. **Type-B boundary.** Four prior Type-B retrieval queries gave equal flat and hierarchical available-gold source Recall@5 = 0.52083. No generated-answer correctness was graded and the full-text review of 36 claims remains pending.
 
+## New measured development result (20 October 2026)
+
+The applicant ran the historical retrieval frontier. On 14 previously inspected
+Type-A questions, Route-4 and Flat each achieve Hit@5=2/14, while Route-4
+uses mean 1,114.4 rather than 2,647 candidate+centroid dot products (57.9%
+fewer); recorded online time falls from 7.768 to 6.133 ms on that machine.
+This is a **source-controlled efficiency diagnostic**, NOT an independently
+validated new-query accuracy or production speed-up. Paired Hit@5 differences
+are exactly zero on the sample, which must NOT be taken as demonstrated
+equivalence for unseen data.
+
+The new all-180 V3 lexical evidence audit and clean-environment CI workflow
+require successful actual runs before their status can be marked passed.
+Independent blind scientific label correctness and Type-B answer entailment
+remain substantive missing acceptance evidence. See
+[Independent Validation](INDEPENDENT_VALIDATION.md).
+
 ## A concise live defense (anticipated questions)
 
 **Why not clique expansion?** Plain unlabeled clique expansion conflates source event identities, arity, multiplicity and provenance. Show the native event record and the actual five-seed clique baseline. State that attaching all event identifiers to a pair graph could reconstruct this information: this is not a theorem that all pairwise encodings fail.
 
 **Why is the coherence result trustworthy?** The model does **not** prove independent scientific semantic coherence. It uses separated source groups, alternative title evidence, constrained nulls, and discloses correlation and a non-significant null. A truly fresh full-paper or appropriately blinded source review remains the acceptance gate.
+
+**What evidence is now fully audited?** The new source checker validates all 180 V3 lexical supporter sets, correct membership and publication cutoff evidence, but cannot evaluate unseen paper-level meaning. No overclaim-rate denominator is produced by it.
 
 **What prevents label hallucinations?** Name-phrase evidence, dated source counts, limited claim types, deterministic V3 abstention and an explicitly unmeasured full-paper overclaim rate. Absent articles are not interpreted as confirming scientific content.
 
