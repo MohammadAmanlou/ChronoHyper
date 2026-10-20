@@ -71,28 +71,17 @@ The [Type-B source metrics](../research_outputs/type_b_audit/type_b_source_score
 .\.venv\Scripts\python.exe .\scripts\make_report_figures.py
 ```
 
-The GitHub `report.md` was updated on 20 October with Type-B primary-source trace and AI-only V1/V2 diagnostics. The earlier compiled PDF may therefore be stale; regenerate **before final delivery**. Only one `report.pdf` is needed—do not create version-suffixed PDFs. Retain original metrics and evidence stage labels. The legacy `outputs/` directory is the earlier model, **not** the locked selected output.
+The 20 October V1/V2 and Type-B evidence now appears in the updated camera-ready [PDF](../report.pdf), typeset from [scripts/report.tex](../scripts/report.tex). Keep one canonical PDF filename; do not create version-suffixed reports. Retain original metrics and evidence stage labels. The legacy `outputs/` directory is the earlier model, **not** the locked selected output.
 
-## 7 · Build the final report PDF on Windows (do this once)
+## 7 · Camera-ready report (already compiled and pushed)
 
-The final research report must be **3–5 readable pages** including the actual negative results. Use a local installation of Pandoc and XeLaTeX; avoid uploading the proprietary source corpus to third-party PDF services.
+The **three-page illustrated scientific article** is [`report.pdf`](../report.pdf). Its self-contained, auditable typesetting source is [`scripts/report.tex`](../scripts/report.tex); [`report.md`](../report.md) remains the plain-text companion. The PDF was built on GitHub Actions from that TeX source and automatically committed to `main`, after checking the 3–5 page requirement. **You do not need MiKTeX on your laptop to use or deliver the finished PDF.**
 
-```powershell
-pandoc --version
-xelatex --version
-pandoc .\report.md --from=markdown+tex_math_single_backslash `
-  --pdf-engine=xelatex `
-  -V geometry:margin=1.35cm -V linestretch=1.05 `
-  -V mainfont="Times New Roman" -o .\report.pdf
-```
-
-If either program is missing, install **Pandoc** and a local TeX distribution containing XeLaTeX (e.g. **MiKTeX**) first. Count pages in a PDF viewer; if not 3–5, adjust spacing/margins rather than deleting required scientific caveats. Inspect equations, tables, bibliography and the figure before committing.
+Only if you later change the scientific content and deliberately need to render a new PDF, use XeLaTeX in a working TeX environment:
 
 ```powershell
-git status --short
-git add -- report.pdf
-git commit -m "Regenerate 4-page scientific report for final evidence"
-git push origin main
+xelatex -interaction=nonstopmode -halt-on-error -output-directory=. .\scripts\report.tex
+xelatex -interaction=nonstopmode -halt-on-error -output-directory=. .\scripts\report.tex
 ```
 
-Skip the commit/push commands when `git status` shows no report change. Never blindly commit unrelated files. After a new PDF is pushed, the existing `main` GitHub Actions run must pass and `README.md` can have its PDF-staleness notice removed.
+Always check page count, charts, equations and citations before committing the PDF; keep the existing filename `report.pdf`. Temporary root files (`report.aux`, `report.log`, etc.) are excluded by `.gitignore`. New data claims must be reconciled in both the manuscript source and `report.md`.

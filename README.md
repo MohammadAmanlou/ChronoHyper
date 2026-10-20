@@ -2,13 +2,13 @@
 **Temporal multi-resolution abstraction of a scientific knowledge hypergraph**  
 Mohammad Amanlou · Constructor Knowledge Labs doctoral assessment · Python 3.11 · **private dataset**
 
-This is the **single entry point** for the project. Start with the [latest scientific report source](report.md). The [previously compiled PDF](report.pdf) is being synchronized with the 20 October source-audit updates; regenerate it before using the PDF for final delivery. The selected model is `native_temporal_20`, frozen before the source-grouped confirmation evaluation. The repository records positive, negative and incomplete findings; passing software tests does **not** prove scientific label faithfulness or admission.
+This is the **single entry point** for the project. Start with the completed [three-page scientific report](report.pdf) ([camera-ready LaTeX source](scripts/report.tex)); [report.md](report.md) is a plain-text scientific companion. The GitHub build verified the newly compiled PDF before publishing it to `main`. The selected model is `native_temporal_20`, frozen before the source-grouped confirmation evaluation. The repository records positive, negative and incomplete findings; passing software tests does **not** prove scientific label faithfulness or admission.
 
 ## What is inside
 
 | Path | Purpose |
 |---|---|
-| [`report.md`](report.md) · [`report.pdf`](report.pdf) | Current report source; compiled PDF must be regenerated after the 20 October evidence update |
+| [`report.pdf`](report.pdf) · [`scripts/report.tex`](scripts/report.tex) · [`report.md`](report.md) | Finished camera-ready article, reproducible typesetting source, and Markdown companion |
 | [`docs/EVALUATION.md`](docs/EVALUATION.md) | T1–T7 evidence, metrics, limitations and remaining reviews |
 | [`docs/REPRODUCE.md`](docs/REPRODUCE.md) | Exact Windows commands, expected files and safe run order |
 | [`docs/ASSIGNMENT_SOURCE.md`](docs/ASSIGNMENT_SOURCE.md) | Original task description |
@@ -37,7 +37,7 @@ $env:OMP_NUM_THREADS="1"
 .\.venv\Scripts\python.exe .\verify_selected_outputs.py --out outputs_selected
 ```
 
-**Recorded results:** 65/65 development runs (13 configurations × 5 seeds), 5/5 locked-method confirmation runs, 5/5 pairwise projection runs, 99 constrained nulls, five 10%-deletion stress replicates, four structural snapshot checks and **25 passing software tests** (10 core + 15 research). These were run on the original input and their outputs are committed; executing the tests above does **not** rerun all 75 method jobs.
+**Recorded results:** 65/65 development runs (13 configurations × 5 seeds), 5/5 locked-method confirmation runs, 5/5 pairwise projection runs, 99 constrained nulls, five 10%-deletion stress replicates, four structural snapshot checks and **26 passing software tests in updated CI** (10 core + 16 research). These were run on the original input and their outputs are committed; executing the tests above does **not** rerun all 75 method jobs.
 
 **Type-B retrieval is now on `main`:** all four Type-B questions were evaluated in a *gold-blind-ranking / gold-only-scoring* two-stage pilot; [paper-source recall and audit](research_outputs/type_b_audit/type_b_source_scores.json) are recorded. For gold papers actually present in the eligible article set, **Recall@5 = 0.52083 for both flat and hierarchical routing**. This is *not* an answer-accuracy or evidence-entailment score. The [certified exact-search comparison](research_outputs/type_b_audit/certified_retrieval_audit.json) returned the same top five papers for all 18 inspected queries, but was slower end-to-end under measured conditions. No claimed quality/latency advantage.
 
@@ -48,7 +48,7 @@ $env:OMP_NUM_THREADS="1"
 - The 2024 held-out cut **worsened** from 0.6623 (development) to 0.7172 (source-group confirmation); lower is better.
 - The constrained-shuffle null yielded `p=0.69`; no significant structure advantage is established.
 - V1 title ratings: 8 accurate / 28 vague / 12 wrong; only 8 of 48 gloss-overclaim decisions were determinate.
-- 24 V2 paired cases are **unrated**; no expert-validated V2 advantage is claimed. The local A/B identity key must not enter Git.
+- 24 V2 paired cases have **AI-only exploratory ratings** but remain **unrated by independent domain experts**; no expert-validated superiority is claimed. The local A/B key must not enter Git.
 - Type-A and Type-B source retrieval are **exploratory on previously inspected benchmark questions**; matched Type-B source recall does not imply correct generated answers or a demonstrated speed advantage.
 
 **Keep this repository private.** The supplied dataset, questions and ground truth belong to a confidential recruitment exercise. A GitHub URL is not access permission; the assessor needs an accepted invitation or a separately sent archive.
