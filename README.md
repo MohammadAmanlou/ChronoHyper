@@ -2,7 +2,7 @@
 **Temporal multi-resolution abstraction of a scientific knowledge hypergraph**  
 Mohammad Amanlou · Constructor Knowledge Labs doctoral assessment · Python 3.11 · **private dataset**
 
-This is the **single entry point** for the project. Start with the completed [three-page scientific report](report.pdf) ([camera-ready LaTeX source](scripts/report.tex)); [report.md](report.md) is a plain-text scientific companion. The GitHub build verified the newly compiled PDF before publishing it to `main`. The selected model is `native_temporal_20`, frozen before the source-grouped confirmation evaluation. The repository records positive, negative and incomplete findings; passing software tests does **not** prove scientific label faithfulness or admission.
+This is the **single entry point** for the project. Start with the completed [four-page scientific report](report.pdf) ([camera-ready LaTeX source](scripts/report.tex)); [report.md](report.md) is a plain-text scientific companion. The GitHub build verified the newly compiled PDF before publishing it to `main`. The selected model is `native_temporal_20`, frozen before the source-grouped confirmation evaluation. The repository records positive, negative and incomplete findings; passing software tests does **not** prove scientific label faithfulness or admission.
 
 ## What is inside
 
