@@ -12,6 +12,7 @@ This is the **single entry point** for the project. Start with the completed [fo
 | [`docs/EVALUATION.md`](docs/EVALUATION.md) | T1–T7 evidence, metrics, limitations and remaining reviews |
 | [`docs/REPRODUCE.md`](docs/REPRODUCE.md) | Exact Windows commands, expected files and safe run order |
 | [`docs/REVIEWER_CHECKLIST.md`](docs/REVIEWER_CHECKLIST.md) | Original weighted CKL criteria, evidence gates and live defense |
+| [`docs/INDEPENDENT_VALIDATION.md`](docs/INDEPENDENT_VALIDATION.md) | Required isolated label judgments, evidence provenance and fresh-test protocol |
 | [`docs/ASSIGNMENT_SOURCE.md`](docs/ASSIGNMENT_SOURCE.md) | Original task description |
 | [`AI_USAGE.md`](AI_USAGE.md) | AI-assistance disclosure |
 | [`inputs/data.zip`](inputs/data.zip) | Original employer-supplied corpus (do not redistribute) |
@@ -38,23 +39,33 @@ $env:OMP_NUM_THREADS="1"
 .\.venv\Scripts\python.exe .\verify_selected_outputs.py --out outputs_selected
 ```
 
-**Recorded results:** 65/65 development runs (13 configurations × 5 seeds), 5/5 locked-method confirmation runs, 5/5 pairwise projection runs, 99 constrained nulls, five 10%-deletion stress replicates, and four structural snapshot checks. The applicant's **20 October 2026 local log reports 33 research tests passing**; subsequent source-only code additions (historical frontier and checksum checks) **require fresh local execution** and are not reported as already passing. The archived numeric runs were completed previously; the test suite does **not** reproduce all 75 expensive jobs.
+**Recorded results:** 65/65 development runs (13 configurations × 5 seeds), 5/5 locked-method confirmation runs, 5/5 pairwise projection runs, 99 constrained nulls, five 10%-deletion stress replicates, and four structural snapshot checks. The applicant's **20 October 2026 local log reports 10 core + 33 research + 9 frontier tests passing**. Newly added exhaustive V3 provenance-audit tests still require a separate clean local/CI run. The archived numeric runs were completed previously; the test suite does **not** reproduce all 75 expensive jobs.
 
 **Type-B retrieval is now on `main`:** all four Type-B questions were evaluated in a *gold-blind-ranking / gold-only-scoring* two-stage pilot; [paper-source recall and audit](research_outputs/type_b_audit/type_b_source_scores.json) are recorded. For gold papers actually present in the eligible article set, **Recall@5 = 0.52083 for both flat and hierarchical routing**. This is *not* an answer-accuracy or evidence-entailment score. The [certified exact-search comparison](research_outputs/type_b_audit/certified_retrieval_audit.json) returned the same top five papers for all 18 inspected queries, but was slower end-to-end under measured conditions. No claimed quality/latency advantage.
 
 **What remains:** Truly independent scientific evidence checks, which may use an authorized key-isolated LLM/NLI judge (human reviewers are optional), for gloss faithfulness and full-paper claim entailment. Our *AI-only* analysis is already stored (V2 6 wins/V1 2/16 ties on label scores); for 36 claims we tracked 19 publisher/preprint excerpts and 17 rubric-only items, with **no complete independent full-text entailment ratings**. Read [Evaluation and next actions](docs/EVALUATION.md).
 
-## New local-only frontier quality audit (awaiting execution)
+## Historical retrieval quality–cost result (20 October local validation)
 
 The two-stage [historical frontier evaluator](research_lab/frontier_historical.py) freezes
 all 18 benchmark-question rankings **without gold**, then reads the original provided
 references **only in scoring**, evaluating 14 Type-A tasks over route budgets 1–12
-and an identical flat index. It records cost-aligned paired Hit@5 differences,
+and an identical flat index. The applicant ran and locally verified the historical study on 20 October: 4-root Hit@5 was 2/14, matching Flat's 2/14, with 57.9% fewer online dot-products and lower measured per-query time on that Windows run. It records paired Hit@5 differences,
 descriptive uncertainty, eligible-vs-unavailable targets and an SVG quality–cost
 curve under Git-ignored `local_only/`. The four Type-B questions are explicitly
 **not** claim-answer-scored. These previously viewed questions are **development
 diagnostics**, not fresh scientific validation; no new accuracy gain is asserted.
 For the safe run, use [Reproduce §15](docs/REPRODUCE.md).
+
+## Full-membership V3 verification (source-only implementation)
+
+The new [V3 provenance auditor](research_lab/v3_provenance_audit.py) checks all
+180 V3 developmental labels against the original ZIP and frozen cluster
+membership, including every cited node-name phrase and source paper's cutoff
+year. A [minimal GitHub Actions clean-environment workflow](.github/workflows/scientific-integrity.yml)
+also runs the source tests. These checks have **not yet been confirmed on the
+applicant's Windows machine**. Even a complete pass does not establish
+scientific full-paper entailment; authorized independent review remains pending.
 
 ## Research integrity and confidentiality
 
