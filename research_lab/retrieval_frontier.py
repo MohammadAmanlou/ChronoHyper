@@ -31,7 +31,10 @@ def _rank_hash(data):
 
 
 def verify_rankings(data):
-    ranking_digest = verify_rankings(data)
+    if data.get('schema') != 'chronohyper_gold_separated_budget_frontier_v1':
+        raise ValueError('Unexpected rankings schema')
+    if data.get('gold_accessed_by_ranker') is not False:
+        raise ValueError('Gold may not be used while ranking')
     digest = data.get('ranking_sha256')
     if not digest:
         raise ValueError('Unfrozen legacy rankings. Rerun the rank step into a NEW local-only path.')
@@ -188,10 +191,7 @@ def score(project='.', rankings='local_only/retrieval_frontier/rankings.json',
         raise ValueError('Separate reference CSV required; no automatic unblinding')
     root = Path(project)
     data = json.loads(_path(root, rankings).read_text(encoding='utf-8'))
-    if data.get('schema') != 'chronohyper_gold_separated_budget_frontier_v1':
-        raise ValueError('Unexpected rankings schema')
-    if data.get('gold_accessed_by_ranker') is not False:
-        raise ValueError('Gold may not be used while ranking')
+    ranking_digest = verify_rankings(data)
     with _path(root, references).open(encoding='utf-8-sig', newline='') as fp:
         rows = list(csv.DictReader(fp))
     references_by_id = {}
