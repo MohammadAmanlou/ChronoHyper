@@ -38,11 +38,23 @@ $env:OMP_NUM_THREADS="1"
 .\.venv\Scripts\python.exe .\verify_selected_outputs.py --out outputs_selected
 ```
 
-**Recorded results:** 65/65 development runs (13 configurations × 5 seeds), 5/5 locked-method confirmation runs, 5/5 pairwise projection runs, 99 constrained nulls, five 10%-deletion stress replicates, four structural snapshot checks and **26 passing software tests in updated CI** (10 core + 16 research). These were run on the original input and their outputs are committed; executing the tests above does **not** rerun all 75 method jobs.
+**Recorded results:** 65/65 development runs (13 configurations × 5 seeds), 5/5 locked-method confirmation runs, 5/5 pairwise projection runs, 99 constrained nulls, five 10%-deletion stress replicates, and four structural snapshot checks. The applicant's **20 October 2026 local log reports 33 research tests passing**; subsequent source-only code additions (historical frontier and checksum checks) **require fresh local execution** and are not reported as already passing. The archived numeric runs were completed previously; the test suite does **not** reproduce all 75 expensive jobs.
 
 **Type-B retrieval is now on `main`:** all four Type-B questions were evaluated in a *gold-blind-ranking / gold-only-scoring* two-stage pilot; [paper-source recall and audit](research_outputs/type_b_audit/type_b_source_scores.json) are recorded. For gold papers actually present in the eligible article set, **Recall@5 = 0.52083 for both flat and hierarchical routing**. This is *not* an answer-accuracy or evidence-entailment score. The [certified exact-search comparison](research_outputs/type_b_audit/certified_retrieval_audit.json) returned the same top five papers for all 18 inspected queries, but was slower end-to-end under measured conditions. No claimed quality/latency advantage.
 
 **What remains:** Truly independent scientific evidence checks, which may use an authorized key-isolated LLM/NLI judge (human reviewers are optional), for gloss faithfulness and full-paper claim entailment. Our *AI-only* analysis is already stored (V2 6 wins/V1 2/16 ties on label scores); for 36 claims we tracked 19 publisher/preprint excerpts and 17 rubric-only items, with **no complete independent full-text entailment ratings**. Read [Evaluation and next actions](docs/EVALUATION.md).
+
+## New local-only frontier quality audit (awaiting execution)
+
+The two-stage [historical frontier evaluator](research_lab/frontier_historical.py) freezes
+all 18 benchmark-question rankings **without gold**, then reads the original provided
+references **only in scoring**, evaluating 14 Type-A tasks over route budgets 1–12
+and an identical flat index. It records cost-aligned paired Hit@5 differences,
+descriptive uncertainty, eligible-vs-unavailable targets and an SVG quality–cost
+curve under Git-ignored `local_only/`. The four Type-B questions are explicitly
+**not** claim-answer-scored. These previously viewed questions are **development
+diagnostics**, not fresh scientific validation; no new accuracy gain is asserted.
+For the safe run, use [Reproduce §15](docs/REPRODUCE.md).
 
 ## Research integrity and confidentiality
 
