@@ -16,6 +16,25 @@ Reproduce after pulling:
 ```
 Only the local generated key and score are created under `local_only/`. This study evaluates name-sample topicality, **not** training-holdout full-paper entailment or model output title faithfulness. No new cluster labels were deployed.
 
+## Native higher-order information versus pairwise projection (T2/P4)
+
+This repository now includes a **direct measurement on the original Constructor hypergraph**, computed with [`research_lab/projection_loss.py`](../research_lab/projection_loss.py) and persisted in [`research_outputs/projection_loss/projection_loss.json`](../research_outputs/projection_loss/projection_loss.json). The tool reads **only** graph nodes/hyperedges from `inputs/data.zip` (not questions or gold) and verifies every member reference. The audited numbers are:
+
+| Corpus cutoff | Native hyperedges | Clique pair occurrences | Pair occurrences per event |
+|---|---:|---:|---:|
+| 2020 | 374 | 13,327 | 35.63 |
+| 2022 | 526 | 20,760 | 39.47 |
+| 2024 | 983 | 47,983 | 48.81 |
+| All supplied events | **1,429** | **72,701** | **50.88** |
+
+Among all source events **1,150/1,429 (80.48%)** have arity at least three, with maximum arity **65**. A plain undirected untyped, unprovenanced clique projection contains **70,022 unique node pairs**; collapsing repeated pairs discards **2,679 additional pair occurrences**, while also discarding the identities and group boundaries of the original higher-order events and their relation/paper provenance. The native hypergraph representation retains exactly that event multiplicity, provenance and original arity. These counts quantify a **representation trade-off**, not an information-theoretic entropy loss, and **do not show by themselves that our method is more accurate** than a pairwise baseline. A pairwise encoding supplemented with every original event ID could of course recover the higher-order source; this comparison is specifically to a plain pairwise clique graph. The **five-seed actual clique-projection method baseline** remains separately reported in the frozen model results.
+
+Generate the vector graphic `projection_loss.svg` and recheck the JSON using:
+
+```powershell
+.\.venv\Scripts\python.exe -m research_lab.projection_loss --project . --out .\local_only\projection_loss
+```
+
 ## Constructor assessment requirements: evidence-based acceptance gates
 
 This table follows the original [PhD assessment](ASSIGNMENT_SOURCE.md), not proposed extra experiments. Code tests establish technical integrity; they do not substitute for scientific validity. **Current stage: viable and reproducible partial validation, not 100% scientific completeness.**

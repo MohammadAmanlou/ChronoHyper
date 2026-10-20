@@ -324,3 +324,21 @@ class FreshSemanticLimitedEvidenceExport(unittest.TestCase):
             self.assertNotIn('Test fixture, not actual scientific assessment',payload)
             self.assertNotIn('source_article_titles',payload)
             self.assertNotIn('condition_key_PRIVATE',payload)
+
+
+class OriginalHyperedgeProjectionAudit(unittest.TestCase):
+    def test_pairwise_representation_cost_is_reproduced_from_original_data(self):
+        from research_lab.projection_loss import audit
+        import hashlib
+        root=Path(__file__).resolve().parents[1]
+        with tempfile.TemporaryDirectory() as tmp:
+            r=audit(root,tmp)
+            g=r['global']
+            self.assertEqual((g['native_events'],g['higher_order_events_arity_at_least_3']),(1429,1150))
+            self.assertEqual((g['clique_pair_occurrences'],g['simple_unique_pairs']),(72701,70022))
+            self.assertEqual(g['repeated_pair_occurrences_collapsed_by_simple_graph'],2679)
+            self.assertEqual([r['snapshots'][str(y)]['native_events'] for y in (2020,2022,2024)],[374,526,983])
+            self.assertEqual([r['snapshots'][str(y)]['clique_pair_occurrences'] for y in (2020,2022,2024)],[13327,20760,47983])
+            self.assertEqual(r['dataset_sha256'],
+                hashlib.sha256((root/'inputs/data.zip').read_bytes()).hexdigest())
+            self.assertTrue((Path(tmp)/'projection_loss.svg').is_file())
