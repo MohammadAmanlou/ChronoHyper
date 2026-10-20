@@ -44,6 +44,10 @@ Reproduce in ignored scratch:
 .\.venv\Scripts\python.exe -m research_lab.label_v3 --project . --out .\local_only\label_v3_dev
 ```
 
+## Fixed, gold-isolated 2025 Type-A development diagnostic
+
+The [separately scored result](../research_outputs/retrieval_v2/dev_diagnostic_2025.json) follows a pre-written method ranking which did not open gold. With 14 previously inspected Type-A questions, both flat and hierarchical scored **2/14 Hit@5**; macro Recall@5 was **0.0422** vs **0.0487** respectively. Average type/name-deduplicated candidate scores: **2647** flat vs **1102.43** routed, plus 12 root centroids. Measured mean per-query median score times in one GitHub runner: **2.52 ms** flat vs **1.78 ms** routed, *excluding offline index preparation and shared query vector creation*. These environment-sensitive measurements demonstrate genuine candidate pruning in this program, not cross-environment latency guarantees, not superior hit-rate, and not new-question confirmation. Do not replace original historical 1/14 vs 2/14 numbers.
+
 ## New fair retrieval engine (T6; development only)
 
 `research_lab/retrieval_v2.py` implements a new **shared entity-name + source-paper-title char/word TF-IDF index** for flat and routed search, with identical scoring, type+surface deduplication, centroid-first routing and actual dot-product accounting. The routed arm scores only selected node subsets, unlike the original historic evaluation which computed all scores first. It separates centroid preprocessing from query wall time. **No reference/gold answers are opened by its ranking command.** The original 18 test questions were previously seen, so a run on them is a **development diagnostic** only; no improvement or speedup is claimed before executing a genuine fresh test. Baseline methods and locked original results are untouched.
