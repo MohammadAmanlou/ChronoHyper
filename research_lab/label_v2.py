@@ -309,7 +309,7 @@ def score_blind(sheet, key_file, out):
         yes=sum(x[field]=='yes' for x in pairs)
         eligible=sum(x[field] in ('yes','no') for x in pairs)
         return {'overclaim_yes':yes,'evaluable':eligible,'rate':yes/eligible if eligible else None}
-    result={'status':'COMPLETE_AUTHOR_REVIEW' if len(pairs)==len(rows) else 'PARTIAL_REVIEW',
+    result={'status':'COMPLETE_REVIEWER_REPORTED' if len(pairs)==len(rows) else 'PARTIAL_REVIEW',
            'requested_cases':len(rows),'paired_cases_with_both_ratings_and_reviewer_id':len(pairs),
            'v2_wins':wins,'v2_losses':losses,'ties':ties,
            'mean_rating_delta_v2_minus_v1':sum(x['difference_v2_minus_v1'] for x in pairs)/len(pairs) if pairs else None,
