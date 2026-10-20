@@ -296,3 +296,31 @@ class FreshSemanticBlindPacket(unittest.TestCase):
                 writer=csv.DictWriter(f,fieldnames=list(forms[0]));writer.writeheader();writer.writerows(forms)
             with self.assertRaisesRegex(ValueError,'changed frozen evidence'):
                 score(root,ratings,packet,packet/'bad.json')
+
+class FreshSemanticLimitedEvidenceExport(unittest.TestCase):
+    def test_publish_anonymized_aggregate_without_private_evidence(self):
+        import csv
+        from research_lab.blind_paper_eval import prepare, publish_limited_summary
+        root=Path(__file__).resolve().parents[1]
+        with tempfile.TemporaryDirectory() as tmp:
+            packet=Path(tmp)/'packet'
+            forms,key=prepare(root,packet)
+            for row in forms:
+                row['coherence_score_1_to_5']='3'
+                row['evidence_sufficient_yes_no']='yes'
+                row['reviewer_id']='TEST_ONLY_MODEL'
+                row['evidence_notes']='Test fixture, not actual scientific assessment'
+            rated=packet/'simulated_only.csv'
+            with rated.open('w',encoding='utf-8-sig',newline='') as f:
+                writer=csv.DictWriter(f,fieldnames=list(forms[0]))
+                writer.writeheader();writer.writerows(forms)
+            out=Path(tmp)/'aggregate'
+            summary=publish_limited_summary(root,rated,packet,out)
+            self.assertEqual(summary['summary']['evaluable_pairs'],24)
+            self.assertEqual(summary['summary']['ties'],24)
+            self.assertFalse(summary['strict_independence_verified_by_software'])
+            self.assertTrue((out/'paired_coherence_AI_only.pdf').stat().st_size>1500)
+            payload=(out/'summary_AI_only.json').read_text(encoding='utf-8')
+            self.assertNotIn('Test fixture, not actual scientific assessment',payload)
+            self.assertNotIn('source_article_titles',payload)
+            self.assertNotIn('condition_key_PRIVATE',payload)

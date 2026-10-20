@@ -9,6 +9,7 @@ Do not score with a model exposed to the condition key or historical scores.
 from __future__ import annotations
 import argparse
 import csv
+import hashlib
 import io
 import json
 import math
@@ -238,16 +239,112 @@ def score(project='.', ratings='', packet='local_only/reviews/fresh_semantic',
     return result
 
 
+
+def publish_limited_summary(project='.', ratings='', packet='local_only/reviews/fresh_semantic',
+                            export='research_outputs/fresh_semantic'):
+    """Recheck a local rating sheet then publish ONLY aggregated AI-only evidence.
+
+    Never publish employer sample names, reviewer free text, source-paper titles
+    or the condition key. AI independence is self-reported, not software verified.
+    This does not turn a lexical/title-based judgment into full-paper entailment.
+    """
+    root=Path(project);dest=Path(export)
+    if not dest.is_absolute():
+        dest=root/dest
+    # An explicit export is deliberate; do not overwrite model outputs.
+    rated=Path(ratings)
+    if not rated.is_absolute():rated=root/rated
+    if not rated.is_file():raise FileNotFoundError('Actual private rated file is required')
+    original=Path(packet)
+    if not original.is_absolute():original=root/original
+    # Score validates every ID, all frozen evidence cells and human/AI rubric fields.
+    checked=score(root,rated,original,original/'score_summary.json')
+    keys=csv_read(original/'condition_key_PRIVATE.csv')
+    given=csv_read(rated)
+    by_id={r['blind_id']:r for r in given}
+    paired=defaultdict(dict)
+    for k in keys:
+        g=(int(k['snapshot_year']),k['target_cluster'])
+        review=by_id[k['blind_id']]
+        if review['evidence_sufficient_yes_no'].strip().lower()=='yes':
+            paired[g][k['condition']]=int(review['coherence_score_1_to_5'])
+    by_year={str(y):[] for y in YEARS}
+    for (year,_), arms in paired.items():
+        if set(arms)=={'REAL','MIXED_CONTROL'}:
+            by_year[str(year)].append(arms['REAL']-arms['MIXED_CONTROL'])
+    for year in by_year:by_year[year].sort()
+    assert sum(len(x) for x in by_year.values())==checked['evaluable_pairs']
+    rid=sorted({r['reviewer_id'].strip() for r in given})
+    # Do not include names, prompts, original papers, reviewer notes or the private key.
+    restricted={
+        'schema':'ckl_fresh_coherence_summary_scoped_v1',
+        'status':'AI_JUDGE_SELF_REPORTED_NO_FULLTEXT_ENTAILMENT',
+        'reviewer_model_identifiers_as_supplied':rid,
+        'rated_csv_sha256':hashlib.sha256(rated.read_bytes()).hexdigest(),
+        'blind_input_sha256':hashlib.sha256((original/'blind_review_48.csv').read_bytes()).hexdigest(),
+        'judge_instructions_sha256':hashlib.sha256((original/'JUDGE_INSTRUCTIONS.txt').read_bytes()).hexdigest(),
+        'scope':'Same-corpus node names and source article titles; no independent paper-content entailment',
+        'strict_independence_verified_by_software':False,
+        'paper_full_text_verified':False,
+        'historical_structural_null_p':0.69,
+        'historical_structural_null_is_separate':True,
+        'exploratory_two_sided_p_unadjusted':checked['exact_sign_p_descriptive_only'],
+        'not_confirmatory_due_to_reuse_and_multiple_analyses':True,
+        'summary':checked,
+        'anonymized_paired_differences_by_year':by_year}
+    dest.mkdir(parents=True,exist_ok=True)
+    jsonfile=dest/'summary_AI_only.json'
+    jsonfile.write_text(json.dumps(restricted,indent=2,ensure_ascii=False)+'\n',encoding='utf-8',newline='\n')
+
+    import matplotlib
+    matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
+    fig,ax=plt.subplots(figsize=(8.1,4.7),layout='constrained')
+    colors=['#0D7A78','#4669A9','#8A5EC4']
+    for i,yr in enumerate(('2020','2022','2024')):
+        vals=by_year[yr]
+        # Fixed symmetrical jitter; never encode blind ID or source names in the figure.
+        for j,val in enumerate(vals):
+            offset=0 if len(vals)==1 else (j-(len(vals)-1)/2)*0.055
+            ax.scatter(i+offset,val,s=42,color=colors[i],alpha=.75,zorder=3)
+        if vals:
+            ax.scatter(i,statistics.mean(vals),s=140,marker='D',
+                       facecolor=colors[i],edgecolor='white',linewidth=1.5,zorder=5)
+    ax.axhline(0,color='#586779',linewidth=1.2,linestyle='--')
+    ax.set_xticks([0,1,2],['2020','2022','2024'])
+    ax.set_ylim(-4.5,4.5)
+    ax.set_yticks(range(-4,5))
+    ax.grid(axis='y',alpha=.18)
+    ax.set_axisbelow(True)
+    ax.set_xlabel('Corpus snapshot year')
+    ax.set_ylabel('Real minus matched-control coherence (1–5 rubric)')
+    ax.set_title('Exploratory AI-only coherence: matched pairs\n'
+                 'Dots: paired cases  |  Diamonds: yearly means',loc='left',
+                 fontsize=12,fontweight='bold')
+    fig.text(.02,.01,'Names + paper titles only; judge isolation self-reported. '
+             'Structural null p=0.69 remains separate.',fontsize=8,color='#586779')
+    figure=dest/'paired_coherence_AI_only.pdf'
+    fig.savefig(figure,format='pdf',bbox_inches='tight')
+    plt.close(fig)
+    print('Restricted aggregate exported (NO key, raw ratings or source names):',jsonfile)
+    print('Vector figure:',figure)
+    return restricted
+
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--project',default='.')
     p.add_argument('--prepare',action='store_true')
     p.add_argument('--score',action='store_true')
+    p.add_argument('--publish-limited',action='store_true',help='Validated non-identifying AI-only summary and vector figure')
     p.add_argument('--ratings',default='')
+    p.add_argument('--export',default='research_outputs/fresh_semantic')
     p.add_argument('--packet',default='local_only/reviews/fresh_semantic')
     p.add_argument('--out',default='local_only/reviews/fresh_semantic/score_summary.json')
     a=p.parse_args()
     if a.prepare:prepare(a.project,a.packet)
+    elif a.publish_limited:
+        if not a.ratings:p.error('--publish-limited requires --ratings')
+        publish_limited_summary(a.project,a.ratings,a.packet,a.export)
     elif a.score:
         if not a.ratings:p.error('--score requires --ratings for a genuinely completed rating CSV')
         score(a.project,a.ratings,a.packet,a.out)
