@@ -239,3 +239,20 @@ class Stage3CoherenceAIRubric(unittest.TestCase):
             self.assertAlmostEqual(result['mean_real'],3.6666666666666665)
             self.assertAlmostEqual(result['mean_null'],2.3333333333333335)
             self.assertFalse(result['strict_blind_independence'])
+
+
+class V2GlossAuditCLI(unittest.TestCase):
+    def test_cli_v2_gloss_audit_flag(self):
+        import subprocess
+        import sys
+        root=Path(__file__).resolve().parents[1]
+        with tempfile.TemporaryDirectory() as tmp:
+            p=subprocess.run([sys.executable, "-m", "research_lab.label_v2",
+                "--project", str(root), "--out", tmp, "--audit-v2-gloss"],
+                cwd=str(root), text=True, capture_output=True, timeout=90)
+            self.assertEqual(p.returncode, 0, p.stderr)
+            with (Path(tmp)/"v2_gloss_source_summary_24.json").open(encoding="utf-8") as fp:
+                r=json.load(fp)
+            self.assertEqual((r["n_literal_count_claims"], r["n_qualitative_abstentions"]),(23,1))
+            self.assertEqual(r["full_text_scientific_overclaim_unclear_n"], 24)
+            self.assertIsNone(r["full_text_scientific_overclaim_rate"])

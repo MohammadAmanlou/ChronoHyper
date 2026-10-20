@@ -566,7 +566,11 @@ def main():
     ap.add_argument('--key',default=None,help='Local A/B key kept away from the reviewer')
     ap.add_argument('--summarize-ai',action='store_true',help='Score existing AI-only diagnostic review separately, NOT human ratings')
     ap.add_argument('--recover-key',action='store_true',help='Safely recover frozen A/B mapping into ignored local secret; do not share')
+    ap.add_argument('--audit-v2-gloss',action='store_true',help='Recount 24 V2 gloss source claims using frozen original data; not scientific entailment')
     a=ap.parse_args()
+    if a.audit_v2_gloss:
+        audit_v2_24_literal_source_claims(a.project, a.out)
+        return
     if a.recover_key:
         recover_frozen_blind_key(a.project, a.key)
         return
