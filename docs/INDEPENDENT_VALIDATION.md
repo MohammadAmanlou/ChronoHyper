@@ -1,5 +1,14 @@
 # Independent evidence gate for Constructor CKL
 
+> **Current state (20 October 2026):** The 24-pair V2/V3 and 48-row
+> coherence sheets have **already** been returned and scored with AI
+> identifiers/flags. See [ASSESSMENT_STATUS.md](ASSESSMENT_STATUS.md).
+> Their same-corpus title/name-level judgments do not prove source-full-text
+> scientific entailment or remove the requirement for externally grounded
+> independent checks. The instructions below are the reusable protocol, not
+> claims that these particular assessments remain wholly unstarted.
+
+
 The source cohort is confidential. Do not upload employer-provided names, papers,
 review packets or hidden keys to an external model or reviewer without permission.
 Evidence-checking cannot turn previously inspected cases into a new test set.
