@@ -1,0 +1,43 @@
+name: Compile final ChronoHyper PDF
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/compile_report_once.yml'
+      - 'scripts/report.tex'
+permissions:
+  contents: write
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Install TeX and fonts
+        run: |
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends texlive-xetex texlive-latex-extra texlive-fonts-recommended fonts-liberation poppler-utils
+      - name: Render and verify paper
+        run: |
+          mkdir -p /tmp/chronopaper
+          xelatex -halt-on-error -interaction=nonstopmode -output-directory=/tmp/chronopaper scripts/report.tex >/tmp/chronopaper/build1.log
+          xelatex -halt-on-error -interaction=nonstopmode -output-directory=/tmp/chronopaper scripts/report.tex >/tmp/chronopaper/build2.log
+          cp /tmp/chronopaper/report.pdf ./report.pdf
+          pages=$(pdfinfo report.pdf | awk '/^Pages:/ {print $2}')
+          echo "Article length: $pages pages"
+          test "$pages" -ge 3 && test "$pages" -le 5
+          pdftotext report.pdf - | grep -q "Source event"
+          pdftotext report.pdf - | grep -q "Scientific label"
+          git status --short -- report.pdf
+      - name: Commit only the final PDF to main
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- report.pdf
+          if git diff --cached --quiet; then
+            echo 'PDF unchanged; no commit needed.'
+          else
+            git commit -m "Publish vector-illustrated scientific research report PDF"
+            git push origin HEAD:main
+          fi
