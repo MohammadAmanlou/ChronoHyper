@@ -150,3 +150,17 @@ git status --short
 The scorer rejects modified original case content, missing ratings, forged control columns and mismatched IDs. It excludes insufficient-evidence **pairs**; reports paired difference, exact descriptive sign test, year-specific performance and a paired bootstrap interval. Treat the judge's self-reported isolation as a procedural claim, not machine-verified independence. A high real-vs-mixed score cannot erase the preserved constrained structural null `p=0.69` or establish scientific title entailment from full papers.
 
 **Do not treat any AI response in the existing ChronoHyper conversation as a fresh blind rating:** this conversation has seen partial keys and previous scores. If permission for a genuinely isolated model/evidence is unavailable, preserve `P3/P6` as unconfirmed rather than manufacturing ratings.
+
+## 11 · True subset-scored retrieval diagnostic and later fresh evaluation
+
+The new `research_lab.retrieval_v2` scorer uses one shared candidate representation, normalized type/name aliases, names and dated article titles. It routes by centroid **before scoring candidate rows**, and logs centroid comparisons and wall-clock cost. Run once on historical questions (development only; old gold not read):
+```powershell
+.\.venv\Scripts\python.exe -m research_lab.retrieval_v2 --project . --rank
+```
+Output `local_only/retrieval_v2/rankings.json`. Preserve it.
+
+To claim an independent extrinsic improvement later, have an authorized *separate source* supply fresh benchmark questions `question_id,question,type` and scientifically checked answer keys `question_id,expected_methods` with references separated before rankings are seen; never include the answer keys in model input. Then:
+```powershell
+.\.venv\Scripts\python.exe -m research_lab.retrieval_v2 --project . --rank --questions .\local_only\retrieval_v2\new_questions.csv --rankings .\local_only\retrieval_v2\fresh_rankings.json
+.\.venv\Scripts\python.exe -m research_lab.retrieval_v2 --project . --score --rankings .\local_only\retrieval_v2\fresh_rankings.json --references .\local_only\retrieval_v2\new_gold_PRIVATE.csv --out .\local_only\retrieval_v2\fresh_score.json
+```

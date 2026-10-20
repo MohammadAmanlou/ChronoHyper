@@ -44,6 +44,16 @@ Reproduce in ignored scratch:
 .\.venv\Scripts\python.exe -m research_lab.label_v3 --project . --out .\local_only\label_v3_dev
 ```
 
+## New fair retrieval engine (T6; development only)
+
+`research_lab/retrieval_v2.py` implements a new **shared entity-name + source-paper-title char/word TF-IDF index** for flat and routed search, with identical scoring, type+surface deduplication, centroid-first routing and actual dot-product accounting. The routed arm scores only selected node subsets, unlike the original historic evaluation which computed all scores first. It separates centroid preprocessing from query wall time. **No reference/gold answers are opened by its ranking command.** The original 18 test questions were previously seen, so a run on them is a **development diagnostic** only; no improvement or speedup is claimed before executing a genuine fresh test. Baseline methods and locked original results are untouched.
+
+```powershell
+.\.venv\Scripts\python.exe -m research_lab.retrieval_v2 --project . --rank
+```
+
+For any brand-new independent test: preserve new `question_id,question,type` queries and separately verified `question_id,expected_methods` references, score with a frozen ranker without looking at gold while adjusting heuristics. New-query originality is a procedural fact, not software-certified.
+
 ## Constructor assessment requirements: evidence-based acceptance gates
 
 This table follows the original [PhD assessment](ASSIGNMENT_SOURCE.md), not proposed extra experiments. Code tests establish technical integrity; they do not substitute for scientific validity. **Current stage: viable and reproducible partial validation, not 100% scientific completeness.**

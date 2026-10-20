@@ -380,3 +380,17 @@ class ConservativeGeneralV3(unittest.TestCase):
                 self.assertEqual(sum(z['source_phrase_evidence'] is not None or
                                      z['label_rule_status'].startswith('ABSTAIN') for z in r),60)
                 self.assertTrue(all(z['independent_label_quality']=='NOT_EVALUATED' for z in r))
+
+
+class FairRoutingSeparateCandidateScores(unittest.TestCase):
+    def test_new_ranker_scopes_candidate_dot_products(self):
+        from research_lab.retrieval_v2 import rank
+        root=Path(__file__).resolve().parents[1]
+        with tempfile.TemporaryDirectory() as tmp:
+            o=rank(root,Path(tmp)/'rank.json',repeats=2)
+            self.assertEqual(o['n_queries'],18)
+            self.assertFalse(o['gold_used_for_ranking'])
+            self.assertEqual(o['freshness'],'PREVIOUSLY_INSPECTED_EXPLORATORY')
+            self.assertTrue(all(row['hier_dot_products']<row['flat_dot_products']
+                                and row['centroid_dot_products']==12 for row in o['results']))
+            self.assertTrue(all(len(row['flat'])==len(row['hier'])==5 for row in o['results']))
