@@ -53,7 +53,7 @@ try {
     Write-Host "[2/6] Research tests"
     Run-Python @("-m","unittest","research_lab.tests_lab","research_lab.test_label_v2","research_lab.test_type_b_source_audit","-v")
     Write-Host "[2b/6] Test retrieval budget frontier"
-    Run-Python @("-m","unittest","research_lab.test_retrieval_frontier","research_lab.test_frontier_historical","research_lab.test_v3_provenance_audit","-v")
+    Run-Python @("-m","unittest","research_lab.test_retrieval_frontier","research_lab.test_frontier_historical","research_lab.test_v3_provenance_audit","research_lab.test_review_handoff","research_lab.test_assessment_status","-v")
     Write-Host "[3/6] Validate frozen selected outputs"
     Run-Python @("verify_selected_outputs.py","--out","outputs_selected")
 
@@ -101,6 +101,14 @@ try {
     } else {
         Write-Host "Existing historical audit retained: $histReport"
     }
+    Write-Host "[5d/6] Validate real scored AI-only reviewer summaries if both exist"
+    $labelResult = Join-Path $local "reviews\label_v3_fresh\result_LOCAL.json"
+    $cohResult = Join-Path $local "reviews\fresh_semantic\score_independent_48.json"
+    if ((Test-Path $labelResult) -and (Test-Path $cohResult)) {
+        Run-Python @("-m","research_lab.assessment_status","--project",".")
+    } else {
+        Write-Host "Some reviewer summaries not yet scored. Preserve existing private files; no fabricated placeholders."
+    }
     Write-Host "[6/6] Read-only final preflight (scientific WARN entries are expected)"
     Run-Python @("final_preflight.py","--project",".","--write",".\local_only\final_preflight.json")
     $audit = Get-Content -LiteralPath $preflight -Raw | ConvertFrom-Json
@@ -120,7 +128,9 @@ try {
         historical_frontier_is_independent_test = $false
         blind_review_packet = "local_only/reviews/label_v3_fresh/blind_v2_v3_24.csv"
         private_blind_key = "local_only/reviews/label_v3_fresh/mapping_PRIVATE.csv"
-        independent_v3_review_completed = $false
+        same_corpus_ai_review_status = "local_only/review_status/summary.json"
+        reviewer_status_audit_available = (Test-Path (Join-Path $local "review_status\summary.json"))
+        independent_fullpaper_v3_review_verified = $false
         preflight_blocking_count = @($audit.blocking_items).Count
         preflight_scientific_warning_count = @($audit.qualifications).Count
         ready_for_submission_without_caveat = $audit.ready_for_submission_without_caveat
