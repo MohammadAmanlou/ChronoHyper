@@ -69,11 +69,16 @@ class BudgetFrontierTests(unittest.TestCase):
             root = Path(folder)
             out = root / 'local_only/retrieval_frontier'
             out.mkdir(parents=True)
-            (out / 'rankings.json').write_text(json.dumps({
+            ranks = {
                 'schema': 'chronohyper_gold_separated_budget_frontier_v1',
-                'gold_accessed_by_ranker': False, 'budgets': [1],
+                'gold_accessed_by_ranker': False,
+                'full_root_exactness_asserted': True,
+                'budgets': [1],
                 'evaluation_stage': 'HISTORICAL_REUSED_QUESTIONS_DEVELOPMENT_ONLY',
-                'results': []}), encoding='utf-8')
+                'results': [{'question_id': 'q1', 'flat': {}, 'routes': {}}],
+            }
+            ranks['ranking_sha256'] = frontier._rank_hash(ranks)
+            (out / 'rankings.json').write_text(json.dumps(ranks), encoding='utf-8')
             with (root / 'references.csv').open('w', newline='', encoding='utf-8') as f:
                 w = csv.DictWriter(f, fieldnames=['question_id', 'expected_methods'])
                 w.writeheader()
