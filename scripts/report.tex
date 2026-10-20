@@ -8,7 +8,7 @@
 \usetikzlibrary{arrows.meta,positioning,calc,shapes.geometric,fit}
 \pgfplotsset{compat=1.18}
 \usepackage[colorlinks=true,urlcolor=blue!50!black,linkcolor=blue!50!black]{hyperref}
-\usepackage{titlesec,fancyhdr,enumitem,xcolor,multicol,balance}
+\usepackage{titlesec,fancyhdr,enumitem,xcolor,balance}
 \definecolor{navy}{HTML}{14263B}
 \definecolor{teal}{HTML}{0C7B78}
 \definecolor{rust}{HTML}{B65A3C}
@@ -32,7 +32,7 @@
 \fancyfoot[R]{\sffamily\fontsize{8}{9}\selectfont\color{navy}\thepage}
 \renewcommand{\headrulewidth}{0.3pt}
 \renewcommand{\headrule}{\hbox to\headwidth{\color{linecol}\leaders\hrule height \headrulewidth\hfill}}
-\setlength{\headheight}{17pt}
+\setlength{\headheight}{18pt}
 \pagestyle{fancy}
 \newcommand{\eyebrow}[1]{{\sffamily\bfseries\fontsize{7}{8}\selectfont\color{teal}\MakeUppercase{#1}}}
 \newcommand{\fcap}[1]{\par\vspace{2pt}{\sffamily\fontsize{7.3}{8.6}\selectfont\color{slate} #1}\par}
@@ -186,13 +186,13 @@ The previously inspected benchmark contains 14 Type-A entity-list and four Type-
 \end{center}
 An exact-search audit returned identical top-5 rankings for all 18 inspected queries by design, but the bounded hierarchical traversal was slower end-to-end than flat sparse search. A separate uniform-paper random-reference baseline yielded a small \(p\)-value; this is \emph{not} evidence that the hierarchy beats flat retrieval.
 
-A second, \emph{post-development} 2025-cutoff retrieval implementation uses shared type/name-deduplicated char/word TF--IDF and scores candidate rows \emph{only after} top-four root-centroid routing. On the same \textbf{14 previously inspected Type-A questions}, both flat and routed arms obtained \(\mathrm{Hit@5}=2/14\), with macro \(\mathrm{Recall@5}=0.0422/0.0487\). The recorded CI-run means were 2,647 versus 1,102 candidate dot-products and 2.52 versus 1.78\,ms of median per-query scoring (averaged over questions, excluding offline/index and shared query encoding). These small, environment-sensitive diagnostics demonstrate fewer evaluated candidates, \emph{not} independently improved retrieval quality or a confirmed system-level speedup.
+In a separate, \emph{post-development matched-index budget frontier}, the same 14 previously inspected Type-A queries achieve \(\mathrm{Hit@5}=2/14\) using either flat retrieval or routing through four of 12 root groups; both arms share the source-dated entity index, char/word TF--IDF scorer and deterministic tie-breaking. Four-root macro \(\mathrm{Recall@5}=0.0487\), versus flat 0.0422. The applicant's 20 October Windows run measured mean \emph{online} root-centroid plus candidate dot products of 1,114.4 versus 2,647 (\textbf{57.9\% fewer}) and mean query-median time 6.13 versus 7.77\,ms, excluding shared query encoding and offline indexing. At one/two root groups the hit-rate falls to 1/14; at eight/12 it remains 2/14. A paired 14-question CI of [0,0] at four roots reflects identical observed hits, \emph{not} population equivalence. All results are exploratory on inspected questions and do not prove accuracy or speed superiority on unseen data.
 
 \section{Scientific label faithfulness}
 Forty-eight earlier \emph{AI-assisted non-blind} V1 title judgments were 8 accurate, 28 vague and 12 wrong. Only 8 of 48 gloss-overclaim decisions were determinate (40 unclear); no meaningful 0/48 claim can be made. A contrastive, dated provenance-aware V2 labeler generates 60 candidate labels at levels 0--1 in each required snapshot. Its lexical supporter counts were audited (2020/22/24: 1,146 / 1,510 / 2,599), \emph{not} validated as scientific entailment.
 
 Twenty-four new V1/V2 candidate pairs were compared using sampled entities and visible paper titles by \textbf{ChatGPT, not an independent blinded expert}. An exact comparison of both title and gloss identified the V2 arm without relying on a private key. In a 0--2 \emph{AI accuracy judgment}, V2 wins 6, V1 wins 2 and 16 tie; mean delta \(+0.167\) and descriptive paired sign-test \(p=0.289\). In a \emph{subjective} title-plus-gloss preference, V2 wins 18, V1 3, and 3 tie. These endpoints must not be conflated, and neither proves independent semantic accuracy. A full-member source check of the same 24 V2 glosses validated all \textbf{23/23} literal phrase counts (one epistemic abstention), but \textbf{24/24 full-paper semantic judgments remain unknown}; the scientific overclaim rate is unmeasured. Twenty-three conservative revised titles were proposed \emph{post hoc}, not deployed or scored as new held-out labels. Two further AI-only readings of the same 24 paired titles favored V2 by 7--1--16 and 9--3--12 (wins--losses--ties), still with no independent domain verdict.\par
-\textbf{Fresh year/type-matched AI pilot, separately scored:} 24 previously unrated genuine level-one clusters and matched controls received means \(3.583/5\) versus \(2.875/5\); paired mean \(+0.708\), exploratory bootstrap CI \([+0.25,+1.167]\), and 13 real-higher/4 control-higher/7 ties (\emph{unadjusted} exact \(p=0.049\)). This GPT-6 rating protocol reported key isolation, \emph{not independently certified}. Article titles correlate with name-based clustering evidence; no full-text entailment has been checked. Our structural arity/degree-preserving null remains non-significant (\(p=0.69\)), and the new AI judgment cannot erase it. A conservative \textbf{general V3 labeler} now handles all 180 level-0/1 cases over the three required snapshots, requiring source coverage and multiple dated papers or abstaining. Its thresholds were developed after inspecting earlier examples, so \emph{no held-out V3 semantic-quality improvement is claimed}. \par
+\textbf{Fresh year/type-matched AI pilot, separately scored:} 24 previously unrated genuine level-one clusters and matched controls received means \(3.583/5\) versus \(2.875/5\); paired mean \(+0.708\), exploratory bootstrap CI \([+0.25,+1.167]\), and 13 real-higher/4 control-higher/7 ties (\emph{unadjusted} exact \(p=0.049\)). This GPT-6 rating protocol reported key isolation, \emph{not independently certified}. Article titles correlate with name-based clustering evidence; no full-text entailment has been checked. Our structural arity/degree-preserving null remains non-significant (\(p=0.69\)), and the new AI judgment cannot erase it. A conservative \textbf{general V3 labeler} now covers all 180 level-0/1 cases in the three required snapshots. An exhaustive, original-data source audit checked all 180 outputs, 5,255 cited name-phrase occurrences and 2,103 dated paper references, finding zero \emph{lexical/provenance} discrepancies; 65 labels specify full/partial topics and \textbf{115/180 (63.9\%)} abstain. This is a coverage--risk trade-off, \emph{not} a scientific over-claim error rate. Since thresholds followed earlier inspected examples, neither semantic superiority nor independently validated paper-level gloss faithfulness is established. \par
 
 \textbf{Additional AI-only sampled-name coherence diagnostic:} 24 actual level-one samples received a mean 3.67/5 versus 2.33/5 for 24 matched three-cluster mixtures (19 real-higher, two null-higher, three tied; descriptive sign \(p=0.00022\)). Because this assistant previously saw part of the true/control key, that evaluation is \emph{not independently blinded}; it tests only 14 sampled exported names, not scientific article entailment, and does not overturn the structural null \(p=0.69\).
 \begin{center}
@@ -241,13 +241,24 @@ The paired AI diagnostic provides concrete, reproducible \emph{failure examples}
 \node[anchor=south west,slate,font=\sffamily\scriptsize] at (axis cs:.111,.39){semantic};
 \end{axis}
 \end{tikzpicture}
-\fcap{Fig. 8. 2024 development coherence versus temporal stability. The locked method prioritizes persistence; the separate low-ARI incidence method has the higher lexical proxy. These metrics alone do not certify correct topics.}
+\fcap{Fig. 8. 2024 coherence proxy versus ARI: the locked method favors stability; incidence-SVD scores higher lexically. Neither validates topics.}
 \end{center}
+
+\section{Construction guarantees and cost}
+\textbf{Verified versus empirical.} Laminar refinement and fixed super-node ceilings (\textbf{P1/P2}) hold by construction and were checked over all snapshots. Original event identity, coarse endpoints, provenance and multiplicities (\textbf{P4}) are preserved by the implemented hyperedge collapse. Semantic coherence (\textbf{P3}) is only a surrogate and requires an independent signal; overlap matching, temporal inertia and the event log (\textbf{P5}) encourage rather than guarantee scientific identity persistence. The automatic label/gloss policy (\textbf{P6}) guarantees dated \emph{lexical} provenance and can abstain; scientific correctness remains a measured-evidence gap.
+
+\textbf{Complexity.} A single coarse event map requires \(O(|e|)\) time, so coarsening all source events takes \(O(\sum_{e\in E}|e|)\) time and output proportional to the retained distinct incidences, plus event metadata. The full solver is more expensive: bounded-round KMeans and incidence-aware candidate moves recur at hierarchical levels, with data-dependent candidates and incident edges. We claim neither linear end-to-end runtime nor global objective optimality. Native collapse conserves evidence that an untyped clique projection erases, but not necessarily downstream accuracy.
+
+\textbf{Predeclared four-week extension.}
+\emph{Week 1:} obtain permitted full paper passages, recruit isolated reviewers, preregister evidence and new tasks before viewing system answers.
+\emph{Week 2:} independently judge 24 V2/V3 title/gloss pairs and matched coherence controls, reporting insufficiency rates and adjudicated disagreements.
+\emph{Week 3:} collect fresh question/reference sets and freeze routed/flat rankings before opening gold, including latency and paired uncertainty.
+\emph{Week 4:} repeat source-group and temporal analyses, catalogue negative failure cases and issue an independently traceable release.
 
 \section{Limits, reproducibility and conclusion}
 \textbf{Limitations.} The 52-paper corpus is small; paper titles and entity names share semantic information; confidence intervals from repeated seeds measure initialization, not cross-corpus stability. Source-group confirmation is narrower than a fully new-corpus holdout. Externally sourced abstracts cannot substitute for full-text claim adjudication. Neither exact source matching nor lexically constrained labels establish scientific fact correctness.
 
-\textbf{Reproducibility.} Code, original confidential input, the locked model, five-seed source-group protocol, all results (including failures), temporal event JSON and exact collapsed training hyperedges are archived in a private GitHub repository. The original 65+5+5 model jobs, 99 null shuffles and five deletion perturbations are not reconstructed for this report; recorded traces are referenced. Software tests and four exported hierarchies pass structural checks. AI assistance in implementation, source audit and writing is explicitly disclosed in \texttt{AI\_USAGE.md}.
+\textbf{Reproducibility.} Code, confidential input, selected model lock, five-seed source-group protocol, failure-inclusive results, temporal event JSON and collapsed hyperedges are archived privately. The prior 65+5+5 runs, 99 null shuffles and five deletion reruns are \emph{recorded}, not rerun for this paper. On 20 October the applicant passed \textbf{57} local tests; a clean Python 3.11 GitHub Actions run also passed. Lexical source audits do not establish full-text scientific correctness. AI coding, research and writing assistance is disclosed in \texttt{AI\_USAGE.md}.
 
 \textbf{Conclusion.} The work demonstrates a reproducible \emph{native} higher-order abstraction and honest model comparison. It \textbf{does not} establish a statistically superior partition, faster retrieval, independently faithful concept labels or factually correct synthesized multi-hop answers. The appropriate next validation is licensed, full-text, independent domain review and a genuinely new corpus with a predeclared evaluation protocol.
 
