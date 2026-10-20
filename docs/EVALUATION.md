@@ -186,3 +186,22 @@ and scoring modes, candidate + centroid counts, and source-isolated output under
 frontier outputs or independent gold scores are claimed yet. See
 [REPRODUCE §14](REPRODUCE.md) and [reviewer checklist](REVIEWER_CHECKLIST.md).
 
+
+
+## Historical retrieval budget score (new local-only evaluator; results pending)
+
+The code `research_lab/frontier_historical.py` now fills the previously missing
+Type-A **quality-versus-online-computation** axis of the gold-separated budget
+frontier. It performs source ranking separately from opening the original
+`data/ground_truth.json`, freezes a SHA-256 checksum of the complete rank
+artifact, then scores exactly 14 original Type-A questions at all route budgets
+and leaves all four Type-B answer questions unscored. It also reports expected
+targets unavailable in the 2025 candidate index, paired bootstrap differences
+versus flat (resampling query units) and descriptive sign tests. Charts and raw
+gold remain in Git-ignored local folders; see [Reproduce §15](REPRODUCE.md).
+
+**Not a measured improvement yet:** this addition is an implementation, not a
+new observed real-corpus result until the candidate runs it. Every historical
+question was previously inspected; the formal independence and full-paper
+semantic-quality gates remain unfulfilled. The frozen `report.pdf`
+must not be edited to assert improved accuracy from these data.
