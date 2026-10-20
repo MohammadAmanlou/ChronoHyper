@@ -241,7 +241,7 @@ def score(project='.', ratings='', packet='local_only/reviews/fresh_semantic',
 
 
 def publish_limited_summary(project='.', ratings='', packet='local_only/reviews/fresh_semantic',
-                            export='research_outputs/fresh_semantic'):
+                            export='local_only/exports/fresh_semantic'):
     """Recheck a local rating sheet then publish ONLY aggregated AI-only evidence.
 
     Never publish employer sample names, reviewer free text, source-paper titles
@@ -337,7 +337,7 @@ def main():
     p.add_argument('--score',action='store_true')
     p.add_argument('--publish-limited',action='store_true',help='Validated non-identifying AI-only summary and vector figure')
     p.add_argument('--ratings',default='')
-    p.add_argument('--export',default='research_outputs/fresh_semantic')
+    p.add_argument('--export',default='local_only/exports/fresh_semantic')
     p.add_argument('--packet',default='local_only/reviews/fresh_semantic')
     p.add_argument('--out',default='local_only/reviews/fresh_semantic/score_summary.json')
     a=p.parse_args()

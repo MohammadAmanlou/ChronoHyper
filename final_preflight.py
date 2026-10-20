@@ -118,6 +118,65 @@ def audit(root):
                 warnings.append('Type-B question source and answer evaluations have not been completed')
         warnings.append('Original benchmark questions previously inspected: 2025 retrieval is EXPLORATORY, not an unseen test')
     else:warnings.append('No optional 2025 retrieval result; still need an extrinsic-task score')
+    # Modern independently scoped evidence is recorded SEPARATELY from older AI-only audits.
+    # Its presence does not turn subjective assessments into scientific full-text validation.
+    projection=read(root/'research_outputs/projection_loss/projection_loss.json')
+    if isinstance(projection,dict) and '_read_error' not in projection:
+        pg=projection.get('global',{})
+        if (pg.get('native_events')!=1429 or pg.get('higher_order_events_arity_at_least_3')!=1150
+                or pg.get('clique_pair_occurrences')!=72701 or pg.get('simple_unique_pairs')!=70022):
+            errors.append('Pairwise projection audit counts differ from frozen original corpus')
+        elif isinstance(lock,dict) and projection.get('dataset_sha256')!=lock.get('data_sha256'):
+            errors.append('Pairwise projection audit dataset fingerprint differs from lock')
+        else:
+            passed.append('Original 1429 hyperedges and 72701 clique-pair occurrences are source-audited')
+            details['projection_counts']=pg
+    else:
+        warnings.append('New original-data pairwise representation audit missing or unreadable')
+    v2_scoped=read(root/'research_outputs/label_v2/v2_gloss_source_summary_24.json')
+    if isinstance(v2_scoped,dict) and v2_scoped.get('n_literal_count_claims')==23:
+        details['v2_scoped_claim_audit']={k:v2_scoped.get(k) for k in (
+            'n_literal_count_claims','n_qualitative_abstentions',
+            'source_scope_false_literal_claims_found',
+            'full_text_scientific_overclaim_evaluable_n',
+            'full_text_scientific_overclaim_unclear_n')}
+        passed.append('23/23 frozen V2 literal source-name counts verified; 1 abstention')
+        warnings.append('This literal count audit is NOT independent scientific full-paper gloss entailment')
+    else: warnings.append('Scoped 24-case V2 source-count audit missing')
+    ai=read(root/'research_outputs/fresh_semantic/summary_AI_only.json')
+    if isinstance(ai,dict) and isinstance(ai.get('summary'),dict):
+        s=ai['summary']
+        if (s.get('n_matched_pairs')!=24 or s.get('evaluable_pairs')!=24
+                or s.get('real_higher_pairs',0)+s.get('control_higher_pairs',0)+s.get('ties',0)!=24):
+            errors.append('Fresh AI coherence aggregate has inconsistent paired sample counts')
+        else:
+            passed.append('Fresh 24-pair AI-only coherence aggregate internally consistent')
+            details['fresh_ai_coherence_scoped']={
+                'model_ids':ai.get('reviewer_model_identifiers_as_supplied'),
+                'mean_paired_delta':s.get('mean_paired_delta'),
+                'exact_unadjusted_p_descriptive':s.get('exact_sign_p_descriptive_only'),
+                'strict_independence_verified_by_software':ai.get('strict_independence_verified_by_software'),
+                'independent_full_paper_entailment_verified':ai.get('paper_full_text_verified')}
+            if ai.get('strict_independence_verified_by_software') is not False or ai.get('paper_full_text_verified') is not False:
+                errors.append('AI study must not be promoted as independently verified full-paper entailment')
+            else:
+                warnings.append('Fresh AI-only name/paper-title coherence (unadjusted p=0.049) is NOT full-paper independent verification')
+    else:warnings.append('Fresh 24-pair AI-only coherence aggregate absent')
+    if (root/'research_lab/label_v3.py').exists():
+        passed.append('General experimental V3 labeller implementation present (180 development cases)')
+        warnings.append('V3 semantic-title accuracy unmeasured on genuinely new independently checked cases')
+    retr_new=read(root/'research_outputs/retrieval_v2/dev_diagnostic_2025.json')
+    if isinstance(retr_new,dict):
+        if retr_new.get('n_queries')!=14:
+            errors.append('Development retrieval diagnostic query count unexpectedly changed')
+        else:
+            details['new_retrieval_development_only']={k:retr_new.get(k) for k in
+                ('flat_hit_at_5','hier_hit_at_5','mean_flat_candidate_dots',
+                 'mean_hier_candidate_dots','mean_flat_score_ms',
+                 'mean_hier_score_ms_including_routing')}
+            passed.append('Gold-separated shared-scoring retrieval development diagnostic present')
+            warnings.append('New routed retrieval has no confirmed fresh-query Hit@5 advantage (2/14 each on reused questions)')
+    else:warnings.append('New fair retrieval development diagnostic missing')
     stress=read(root/'research_outputs/stress_temporal20_extended/result.json')
     if stress is None:
         # documented prior path

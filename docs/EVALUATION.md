@@ -161,11 +161,11 @@ The limited external check independently corroborates particular narrower observ
 
 - [x] Private repository, real input, pinned dependencies, 65+5+5 research-run registries.
 - [x] Four selected hierarchical snapshots, temporal events, direct coarsening, robustness and null logs.
-- [x] Updated **three-page** vector-illustrated article, scientific Markdown companion, software/structural tests and 26-test CI suite.
+- [x] Updated **four-page** vector-illustrated article, scientific Markdown companion, software/structural tests and 26-test CI suite.
 - [x] Tested Type-B retrieval/source coverage outputs committed directly to `main` (`7db3e6e`); 25 software tests passed on the applicant's Windows machine.
 - [x] AI-only 24-pair diagnostic mapped reproducibly to V1/V2; 36 Type-B rubric claims source-traced with explicit limits.
 - [ ] Independent A/B label review and complete authorized Type-B claim-source entailment review, if available.
-- [x] Typeset and publish updated 3-page journal-style `report.pdf` from `scripts/report.tex`; verify charts, negative results, and source-scope caveats.
+- [x] Typeset and publish updated 4-page journal-style `report.pdf` from `scripts/report.tex`; verify charts, negative results, and source-scope caveats.
 - [ ] Incorporate *real independent* review ratings if obtained, with denominators and uncertainty.
 - [ ] Confirm assessor can access the **private** repository or send a confidential ZIP. A URL alone is insufficient.
 

@@ -39,8 +39,8 @@ def improve_case(row):
     cand.sort(key=lambda x:(-x[0],-x[1],-x[2],x[3]))
     if not cand or cand[0][0]<MIN_PARTIAL:
         title='Unresolved heterogeneous cluster'
-        gloss=(f'At the {y} cutoff, no eligible candidate phrase meets the predeclared '
-               'specificity, two-paper provenance and 30% node-name coverage rules; '
+        gloss=(f'At the {y} cutoff, none of the archived V2 candidate phrases meets the '
+               'specificity, two-paper provenance and 30% name-coverage rules; '
                'a unified scientific theme is not asserted.')
         status='ABSTAIN_INSUFFICIENT_DOMAIN_PHRASE'
         used=None

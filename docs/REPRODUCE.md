@@ -164,3 +164,24 @@ To claim an independent extrinsic improvement later, have an authorized *separat
 .\.venv\Scripts\python.exe -m research_lab.retrieval_v2 --project . --rank --questions .\local_only\retrieval_v2\new_questions.csv --rankings .\local_only\retrieval_v2\fresh_rankings.json
 .\.venv\Scripts\python.exe -m research_lab.retrieval_v2 --project . --score --rankings .\local_only\retrieval_v2\fresh_rankings.json --references .\local_only\retrieval_v2\new_gold_PRIVATE.csv --out .\local_only\retrieval_v2\fresh_score.json
 ```
+
+## 12 · Safe Windows sync when generated untracked files block git pull
+
+This protects the user's privately generated `research_outputs/fresh_semantic/` (usually a JSON and PDF) by **moving, not deleting**, the untracked directory into `local_only/` before merging. Run from the PROJECT ROOT, not from `local_only/reviews`:
+
+```powershell
+cd C:\Users\a\Desktop\constructor-ckl-research
+$stamp = Get-Date -Format 'yyyyMMdd_HHmmss'
+New-Item -ItemType Directory -Force .\local_only\saved_artifacts | Out-Null
+if (Test-Path .\research_outputs\fresh_semantic) {
+  Move-Item -LiteralPath .\research_outputs\fresh_semantic -Destination ".\local_only\saved_artifacts\fresh_semantic_$stamp"
+}
+git status --short
+git pull --ff-only origin main
+git log -1 --oneline
+git status --short
+```
+
+DO NOT delete `ratings_fresh_48.csv`, `condition_key_PRIVATE.csv`, `data.zip`, `model_lock.json` or any tracked research output. `local_only/` is ignored by Git. Running `Get-Content` on a directory raises an error; use `Get-ChildItem` to list folders. The scientific warnings in `final_preflight.py` describe **unresolved validity limits** and must not be suppressed. Avoid publishing a private review sheet to a service without Constructor's explicit authorization.
+
+**Safe aggregate export defaults:** `research_lab.blind_paper_eval --publish-limited` now writes to `local_only/exports/fresh_semantic`; it no longer creates untracked files under a path Git later tracks. Historical aggregate and presentation-only vector SVG are already stored in the canonical `research_outputs/fresh_semantic/`.
