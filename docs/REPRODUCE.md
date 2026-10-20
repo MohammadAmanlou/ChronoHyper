@@ -185,3 +185,24 @@ git status --short
 DO NOT delete `ratings_fresh_48.csv`, `condition_key_PRIVATE.csv`, `data.zip`, `model_lock.json` or any tracked research output. `local_only/` is ignored by Git. Running `Get-Content` on a directory raises an error; use `Get-ChildItem` to list folders. The scientific warnings in `final_preflight.py` describe **unresolved validity limits** and must not be suppressed. Avoid publishing a private review sheet to a service without Constructor's explicit authorization.
 
 **Safe aggregate export defaults:** `research_lab.blind_paper_eval --publish-limited` now writes to `local_only/exports/fresh_semantic`; it no longer creates untracked files under a path Git later tracks. Historical aggregate and presentation-only vector SVG are already stored in the canonical `research_outputs/fresh_semantic/`.
+
+## 13 · Experimental V3/V2 blind label audit (NEW, no ratings yet)
+
+To evaluate the GENERAL deterministic 180-case V3 rule against frozen V2 on **24 distinct title-review cases**, generate a locally blinded 8-per-year A/B packet (original 24 V1/V2 title-review cases excluded). This is a **development review** and uses only sampled names and source-paper titles, not full original article evidence; full-paper semantic entailment remains unknown.
+
+```powershell
+cd C:\Users\a\Desktop\constructor-ckl-research
+.\.venv\Scripts\python.exe -m research_lab.label_v3_blind --project . --prepare
+Get-ChildItem .\local_only\reviews\label_v3_fresh
+```
+
+Keep the ignored `mapping_PRIVATE.csv` **private**. An externally hosted blind AI must only see `blind_v2_v3_24.csv` and `JUDGE_INSTRUCTIONS.txt` **if sharing Constructor data is explicitly permitted**. Otherwise use a separately isolated authorized local evaluator. A model previously exposed to this project's cases or hidden keys is not strictly independent. No ratings are fabricated.
+
+After a real 24-row UTF-8 rated CSV comes back, save it to `local_only/reviews/label_v3_fresh/rated_24.csv` and run:
+
+```powershell
+.\.venv\Scripts\python.exe -m research_lab.label_v3_blind --project . --score --ratings .\local_only\reviews\label_v3_fresh\rated_24.csv
+Get-Content .\local_only\reviews\label_v3_fresh\result_LOCAL.json
+```
+
+Scoring rejects changed source columns, duplicate IDs and fabricated missing-evidence certainty. The result is labelled AI-only and developmental, so strong V3 results on this same packet cannot certify scientific faithfulness elsewhere.

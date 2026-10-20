@@ -394,3 +394,44 @@ class FairRoutingSeparateCandidateScores(unittest.TestCase):
             self.assertTrue(all(row['hier_dot_products']<row['flat_dot_products']
                                 and row['centroid_dot_products']==12 for row in o['results']))
             self.assertTrue(all(len(row['flat'])==len(row['hier'])==5 for row in o['results']))
+
+
+class ConservativeV3BlindEvaluation(unittest.TestCase):
+    def test_24_year_balanced_blind_cases_and_tamper_guard(self):
+        import csv
+        from research_lab.label_v3_blind import prepare,score
+        root=Path(__file__).resolve().parents[1]
+        with tempfile.TemporaryDirectory() as tmp:
+            packet=Path(tmp)/'blind'
+            form,private=prepare(root,packet)
+            self.assertEqual(len(form),24)
+            self.assertEqual({y:sum(int(r['snapshot_year'])==y for r in form)
+                              for y in (2020,2022,2024)},
+                             {2020:8,2022:8,2024:8})
+            self.assertEqual(len({r['blind_id'] for r in form}),24)
+            self.assertTrue(all('v3_side' not in r for r in form))
+            self.assertEqual(len(private),24)
+            for r in form:
+                r['A_accuracy_accurate_vague_wrong']='vague'
+                r['B_accuracy_accurate_vague_wrong']='vague'
+                r['A_gloss_overclaim_yes_no_unclear']='unclear'
+                r['B_gloss_overclaim_yes_no_unclear']='unclear'
+                r['evidence_sufficient_yes_no']='yes'
+                r['reviewer_id']='TEST_FIXTURE_NOT_A_JUDGE'
+                r['review_notes']='Simulated row; no scientific assessment'
+            path=packet/'fake_scores.csv'
+            with path.open('w',encoding='utf-8-sig',newline='') as f:
+                w=csv.DictWriter(f,fieldnames=list(form[0]))
+                w.writeheader();w.writerows(form)
+            result=score(root,path,packet)
+            self.assertEqual((result['v3_wins'],result['v3_losses'],result['ties']),(0,0,24))
+            self.assertIsNone(result['gloss_overclaim_rate']['v2'])
+            self.assertIsNone(result['gloss_overclaim_rate']['v3'])
+            self.assertFalse(result['independent_paper_entailment_verified'])
+            form[0]['label_A']='MUTATED_ANNOTATED_TEXT'
+            wrong=packet/'wrong.csv'
+            with wrong.open('w',encoding='utf-8-sig',newline='') as f:
+                w=csv.DictWriter(f,fieldnames=list(form[0]))
+                w.writeheader();w.writerows(form)
+            with self.assertRaisesRegex(ValueError,'Changed frozen evidence'):
+                score(root,wrong,packet)
