@@ -54,6 +54,10 @@ Reproduce in ignored scratch:
 
 For any brand-new independent test: preserve new `question_id,question,type` queries and separately verified `question_id,expected_methods` references, score with a frozen ranker without looking at gold while adjusting heuristics. New-query originality is a procedural fact, not software-certified.
 
+## Fresh AI coherence study — user-supplied aggregate (2026-10-20)
+
+The [exact uploaded, anonymized summary](../research_outputs/fresh_semantic/summary_AI_only.json) is now preserved with a cryptographic hash of the original rated sheet and anonymized paired deltas, **not** member-name lists, source titles or the private real/control key. The [legible editable vector figure](../research_outputs/fresh_semantic/paired_coherence_AI_only.svg) presents the results by year. This is a user-supplied **AI-only exploratory assessment**: 24/24 evaluable pairs, mean real **3.583/5**, mean mixed control **2.875/5**, paired delta **+0.708/5**, 13 real-higher / 4 control-higher / 7 ties; an unadjusted descriptive paired sign test gives `p=0.0490` with exploratory bootstrap CI **[+0.25,+1.167]**. 2020/22/24 mean pair deltas: **+1.125, +0.625, +0.375**. The rating artifact self-reports model `GPT-6`, but its real independence, data-sharing authorization and sample-by-sample reviewer evidence **cannot be verified from this aggregate alone**; the original rated CSV remains local. Even if the AI judge was truly key-isolated, source article titles correlate with member names and are not full-paper scientific entailment. This study is **not** independent full-text P6 validation, does not show downstream utility and does **not** replace the original non-significant degree/arity-preserving structural null `p=0.69`.
+
 ## Constructor assessment requirements: evidence-based acceptance gates
 
 This table follows the original [PhD assessment](ASSIGNMENT_SOURCE.md), not proposed extra experiments. Code tests establish technical integrity; they do not substitute for scientific validity. **Current stage: viable and reproducible partial validation, not 100% scientific completeness.**
