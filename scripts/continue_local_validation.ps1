@@ -39,6 +39,11 @@ try {
     if ($LASTEXITCODE -ne 0 -or $branch -ne "main") {
         throw "Expected checked-out main branch; current branch: $branch"
     }
+    $deletedTracked = @(& git ls-files --deleted)
+    if ($LASTEXITCODE -ne 0) { throw "Cannot audit tracked files" }
+    if ($deletedTracked.Count -gt 0) {
+        throw "Tracked files are missing; inspect git status and restore only the intended paths before validation: $($deletedTracked -join ', ')"
+    }
     New-Item -ItemType Directory -Force $local | Out-Null
     $env:OPENBLAS_NUM_THREADS = "1"
     $env:OMP_NUM_THREADS = "1"
@@ -47,6 +52,8 @@ try {
     Run-Python @("-m","unittest","discover","-s","tests","-v")
     Write-Host "[2/6] Research tests"
     Run-Python @("-m","unittest","research_lab.tests_lab","research_lab.test_label_v2","research_lab.test_type_b_source_audit","-v")
+    Write-Host "[2b/6] Test retrieval budget frontier"
+    Run-Python @("-m","unittest","research_lab.test_retrieval_frontier","-v")
     Write-Host "[3/6] Validate frozen selected outputs"
     Run-Python @("verify_selected_outputs.py","--out","outputs_selected")
 
@@ -76,6 +83,13 @@ try {
         Run-Python @("-m","research_lab.label_v3_blind","--project",".","--prepare")
     }
 
+    Write-Host "[5b/6] Measure matched 1/2/4/8/12-root retrieval frontier (no gold)"
+    $frontier = Join-Path $local "retrieval_frontier\rankings.json"
+    if (-not (Test-Path $frontier)) {
+        Run-Python @("-m","research_lab.retrieval_frontier","--project",".","--rank")
+    } else {
+        Write-Host "Existing local frontier retained: $frontier"
+    }
     Write-Host "[6/6] Read-only final preflight (scientific WARN entries are expected)"
     Run-Python @("final_preflight.py","--project",".","--write",".\local_only\final_preflight.json")
     $audit = Get-Content -LiteralPath $preflight -Raw | ConvertFrom-Json
@@ -88,6 +102,7 @@ try {
         label_v3_development_cases = 180
         v3_development_summary = "local_only/label_v3_dev/summary.json"
         retrieval_rankings = "local_only/retrieval_v2/rankings.json"
+        retrieval_frontier_rankings = "local_only/retrieval_frontier/rankings.json"
         blind_review_packet = "local_only/reviews/label_v3_fresh/blind_v2_v3_24.csv"
         private_blind_key = "local_only/reviews/label_v3_fresh/mapping_PRIVATE.csv"
         independent_v3_review_completed = $false
