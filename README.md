@@ -1,94 +1,70 @@
 # ChronoHyper
-**Temporal multi-resolution abstraction of a scientific knowledge hypergraph**  
-Mohammad Amanlou · Constructor Knowledge Labs doctoral assessment · Python 3.11 · **private dataset**
+**Native multi-resolution abstraction of an evolving scientific knowledge hypergraph**
 
-This is the **single entry point** for the project. Start with the completed [four-page scientific report](report.pdf) ([camera-ready LaTeX source](scripts/report.tex)); [report.md](report.md) is a plain-text scientific companion. The GitHub build verified the newly compiled PDF before publishing it to `main`. The selected model is `native_temporal_20`, frozen before the source-grouped confirmation evaluation. The repository records positive, negative and incomplete findings; passing software tests does **not** prove scientific label faithfulness or admission.
+Mohammad Amanlou · Constructor Knowledge Labs PhD research assessment · Python 3.11 · **private-source corpus**
 
-## What is inside
+ChronoHyper constructs source-dated, laminar four-level concept hierarchies from native higher-order scientific events. It tracks concept identities over time, preserves original hyperedge provenance/multiplicity, and compares semantic, structural, temporal and pairwise baselines using a locked method. It reports negative outcomes rather than overstating generalization.
 
-| Path | Purpose |
+**Read the [four-page scientific report](report.pdf) first.** Its editable source is [scripts/report.tex](scripts/report.tex); [report.md](report.md) is the full text companion. The report build and source/PDF text equivalence have passed a [clean CI check](.github/workflows/published-report.yml). Passing code tests is **not** proof of scientifically faithful topic labels or of admission.
+
+## Assignment-facing deliverables
+
+| Official request | Primary artifact |
 |---|---|
-| [`report.pdf`](report.pdf) · [`scripts/report.tex`](scripts/report.tex) · [`report.md`](report.md) | Finished camera-ready article, reproducible typesetting source, and Markdown companion |
-| [`docs/EVALUATION.md`](docs/EVALUATION.md) | T1–T7 evidence, metrics, limitations and remaining reviews |
-| [`docs/REPRODUCE.md`](docs/REPRODUCE.md) | Exact Windows commands, expected files and safe run order |
-| [`docs/REVIEWER_CHECKLIST.md`](docs/REVIEWER_CHECKLIST.md) | Original weighted CKL criteria, evidence gates and live defense |
-| [`docs/INDEPENDENT_VALIDATION.md`](docs/INDEPENDENT_VALIDATION.md) | Required isolated label judgments, evidence provenance and fresh-test protocol |
-| [`docs/ASSIGNMENT_SOURCE.md`](docs/ASSIGNMENT_SOURCE.md) | Original task description |
-| [`AI_USAGE.md`](AI_USAGE.md) | AI-assistance disclosure |
-| [`inputs/data.zip`](inputs/data.zip) | Original employer-supplied corpus (do not redistribute) |
-| [`src/`](src/) | Original research pipeline and native hyperedge coarsening |
-| [`research_lab/`](research_lab/) | Method comparisons, locked evaluation, V2 labels and tests |
-| [`outputs_selected/`](outputs_selected/) | **Selected model** hierarchies and temporal event outputs |
-| [`metrics.json`](metrics.json) | Selected-model metrics with source references |
-| [`research_outputs/`](research_outputs/) | Development/confirmation runs, null tests, robustness and label reviews |
-| [`outputs/`](outputs/) | **Historical baseline only**, not the selected model |
-| [`scripts/`](scripts/) · [`upgrade_scripts/`](upgrade_scripts/) | Additional reproducible checks and figures |
-| [`docs/RESEARCH_PROTOCOL.md`](docs/RESEARCH_PROTOCOL.md) | Detailed prior experimental protocol |
+| Formal objective, native hypergraph coarsening and limits | [report.pdf](report.pdf) · [src/core.py](src/core.py) |
+| Hierarchies at 2020, 2022, 2024 (2025 exploratory) | [outputs_selected/](outputs_selected/) — `hierarchy_YEAR.json` |
+| Hyperedge collapse with preserved provenance | [outputs_selected/](outputs_selected/) — `collapsed_edges_YEAR_level0.json` |
+| Birth / growth / merge / split / death | [temporal_events.json](outputs_selected/temporal_events.json) |
+| Source-backed selected-model evaluation | [metrics.json](metrics.json) · [docs/EVALUATION.md](docs/EVALUATION.md) |
+| Scientific-review status against **every T1–T7 requirement** | [docs/ASSESSMENT_STATUS.md](docs/ASSESSMENT_STATUS.md) |
+| Clean reproducibility and code tests | [docs/REPRODUCE.md](docs/REPRODUCE.md) · [requirements.txt](requirements.txt) |
+| AI-assistance disclosure | [AI_USAGE.md](AI_USAGE.md) |
 
-## Quick start (Windows PowerShell)
+## What the results actually show
 
-Run from the repository root:
+- **Model lock:** `native_temporal_20`, selected before source-group confirmation; **65** development, **5** confirmation and **5** pairwise-projection method runs are archived. Hierarchy budget/membership checks and native collapse provenance checks pass.
+- **Negative structural test:** degree/arity-preserving null **p=0.69** (not significant). Lower-is-better source-group held-out event cut **worsened from 0.6623 to 0.7172**. The selected model is a semantic/structure/**temporal stability compromise**, not a proven best partitioner.
+- **Historical downstream task:** on **14 previously inspected Type-A questions**, four-root and flat retrieval both hit **2/14**. Four-root routing used **57.9% fewer online candidate+centroid dot products** on those queries, not proven superior retrieval accuracy. Four Type-B questions were audited for *available paper-source coverage*, **not** generated-answer correctness.
+- **V3 source audit:** all **180/180** development labels' frozen-membership/lexical/date support checked with **zero source-level discrepancies**; **115/180** abstain. *This does not establish scientific-paper entailment.*
+- **Post-lock AI-only review (20 October):** 24 V2/V3 candidate pairs were graded; **21 evaluable**, V3 **10 wins / 4 losses / 7 ties**, descriptive `p=0.180` (no significant V3 advantage). On **24** matched real/control coherence pairs, mean 5-point AI ratings were **3.542 versus 2.750**, descriptive `p=0.041`. These are **key-separated same-corpus name/title judgements**, *not* certified full-text independent scientific evaluation. Details, insufficiency denominators and hashes: [Assessment Status](docs/ASSESSMENT_STATUS.md).
+
+## Reproduce (Windows PowerShell)
 
 ```powershell
+cd C:\Users\a\Desktop\constructor-ckl-research
 py -3.11 -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt
-$env:OPENBLAS_NUM_THREADS="1"
-$env:OMP_NUM_THREADS="1"
+
+# Fast tests and immutable output verification:
 .\.venv\Scripts\python.exe -m unittest discover -s tests -v
 .\.venv\Scripts\python.exe -m unittest research_lab.tests_lab research_lab.test_label_v2 research_lab.test_type_b_source_audit -v
-.\.venv\Scripts\python.exe .\verify_selected_outputs.py --out outputs_selected
+.\.venv\Scripts\python.exe -m unittest research_lab.test_retrieval_frontier research_lab.test_frontier_historical research_lab.test_v3_provenance_audit research_lab.test_review_handoff research_lab.test_assessment_status -v
+.\.venv\Scripts\python.exe verify_selected_outputs.py --out outputs_selected
+
+# After actual private reviewer CSVs have been scored:
+.\.venv\Scripts\python.exe -m research_lab.assessment_status --project .
 ```
 
-**Recorded results:** 65/65 development runs (13 configurations × 5 seeds), 5/5 locked-method confirmation runs, 5/5 pairwise projection runs, 99 constrained nulls, five 10%-deletion stress replicates, and four structural snapshot checks. The applicant's **20 October 2026 local log reports 10 core + 33 research + 9 frontier tests passing**. Newly added exhaustive V3 provenance-audit tests still require a separate clean local/CI run. The archived numeric runs were completed previously; the test suite does **not** reproduce all 75 expensive jobs.
+The full all-in-one safe rerun (which **does not rerun the 75 heavy model jobs**) is `powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\continue_local_validation.ps1`. See [the precise reproduction runbook](docs/REPRODUCE.md). Code tests operate on synthetic fixtures or the supplied corpus; no newly published label full-text truth is being manufactured.
 
-**Type-B retrieval is now on `main`:** all four Type-B questions were evaluated in a *gold-blind-ranking / gold-only-scoring* two-stage pilot; [paper-source recall and audit](research_outputs/type_b_audit/type_b_source_scores.json) are recorded. For gold papers actually present in the eligible article set, **Recall@5 = 0.52083 for both flat and hierarchical routing**. This is *not* an answer-accuracy or evidence-entailment score. The [certified exact-search comparison](research_outputs/type_b_audit/certified_retrieval_audit.json) returned the same top five papers for all 18 inspected queries, but was slower end-to-end under measured conditions. No claimed quality/latency advantage.
+## Repository layout: one path per purpose
 
-**What remains:** Truly independent scientific evidence checks, which may use an authorized key-isolated LLM/NLI judge (human reviewers are optional), for gloss faithfulness and full-paper claim entailment. Our *AI-only* analysis is already stored (V2 6 wins/V1 2/16 ties on label scores); for 36 claims we tracked 19 publisher/preprint excerpts and 17 rubric-only items, with **no complete independent full-text entailment ratings**. Read [Evaluation and next actions](docs/EVALUATION.md).
+```text
+report.pdf / report.md / metrics.json    ← canonical assessment deliverables
+src/                                    ← main pipeline and native hypergraph solver
+outputs_selected/                       ← locked model hierarchies and events
+research_lab/                           ← evaluation code, comparison and tests
+research_outputs/                       ← immutable experiments, nulls, audits
+outputs/                                ← original archival baseline, NOT selected
+docs/                                   ← original brief, validation and method details
+scripts/                                ← PDF source and reproduction automation
+local_only/ (git-ignored)               ← private reviewer files, blind keys, backups
+```
 
-## Historical retrieval quality–cost result (20 October local validation)
+To avoid losing audit traceability, **do not delete/move archived experimental outputs just to shorten the tree**. Git-ignored scratch and reviewer contents stay local; private identity mappings, full reviewer notes and private ratings are never part of the public deliverables.
 
-The two-stage [historical frontier evaluator](research_lab/frontier_historical.py) freezes
-all 18 benchmark-question rankings **without gold**, then reads the original provided
-references **only in scoring**, evaluating 14 Type-A tasks over route budgets 1–12
-and an identical flat index. The applicant ran and locally verified the historical study on 20 October: 4-root Hit@5 was 2/14, matching Flat's 2/14, with 57.9% fewer online dot-products and lower measured per-query time on that Windows run. It records paired Hit@5 differences,
-descriptive uncertainty, eligible-vs-unavailable targets and an SVG quality–cost
-curve under Git-ignored `local_only/`. The four Type-B questions are explicitly
-**not** claim-answer-scored. These previously viewed questions are **development
-diagnostics**, not fresh scientific validation; no new accuracy gain is asserted.
-For the safe run, use [Reproduce §15](docs/REPRODUCE.md).
+## Remaining scientific boundaries
 
-## Full-membership V3 verification (source-only implementation)
+The **36 Type-B paper claims** still need approved full-text evidence review; the user-created `local_only/reviews/claims_rated.csv` is a blank working form. A truly new question set with pre-frozen gold is also missing. The two new AI evaluations don't remove the coherence circularity risk or override the structural null. See [exact outstanding gates](docs/ASSESSMENT_STATUS.md) and [safe independent reviewer protocol](docs/INDEPENDENT_VALIDATION.md).
 
-The new [V3 provenance auditor](research_lab/v3_provenance_audit.py) checks all
-180 V3 developmental labels against the original ZIP and frozen cluster
-membership, including every cited node-name phrase and source paper's cutoff
-year. A [minimal GitHub Actions clean-environment workflow](.github/workflows/scientific-integrity.yml)
-also runs the source tests. These checks have **not yet been confirmed on the
-applicant's Windows machine**. Even a complete pass does not establish
-scientific full-paper entailment; authorized independent review remains pending.
-
-## Assessment report update and confidential review gate
-
-A four-page [LaTeX assessment candidate](scripts/report_candidate_20261020.tex)
-was built and checked by [private PDF preflight CI](.github/workflows/report-preview.yml)
-on 20 October. It records the verified Route-4 cost/quality pilot, 180-case
-V3 evidence provenance, explicit construction guarantees and complexity, and
-the predeclared four-week plan. The root delivered `report.pdf` is not
-automatically overwritten; promote the verified candidate only after final
-author review. The clean CI passed 10+33+18 tests.
-
-No real independent judge ratings have been filled in or fabricated.
-The offline [review handoff tool](research_lab/review_handoff.py)
-requires an explicit user-permission confirmation flag before packaging
-the 24/48-item confidential blind inputs and never uploads them. Instructions:
-[Independent Validation](docs/INDEPENDENT_VALIDATION.md).
-
-## Research integrity and confidentiality
-
-- The 2024 held-out cut **worsened** from 0.6623 (development) to 0.7172 (source-group confirmation); lower is better.
-- The constrained-shuffle null yielded `p=0.69`; no significant structure advantage is established.
-- V1 title ratings: 8 accurate / 28 vague / 12 wrong; only 8 of 48 gloss-overclaim decisions were determinate.
-- 24 V2 paired cases have **AI-only exploratory ratings** but remain **unrated by independent domain experts**; no expert-validated superiority is claimed. The local A/B key must not enter Git.
-- Type-A and Type-B source retrieval are **exploratory on previously inspected benchmark questions**; matched Type-B source recall does not imply correct generated answers or a demonstrated speed advantage.
-
-**Keep this repository private.** The supplied dataset, questions and ground truth belong to a confidential recruitment exercise. A GitHub URL is not access permission; the assessor needs an accepted invitation or a separately sent archive.
+**Scope:** the official task does *not* require an interactive frontend, production infrastructure, or training new language models. This repo prioritizes correct hypergraph methods, honest evaluation, temporal identity and reproducibility.
