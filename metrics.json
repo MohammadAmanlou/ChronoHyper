@@ -588,7 +588,18 @@
     "mean_available_gold_per_question": 3.2142857142857144,
     "mean_absent_gold_per_question": 1.2857142857142858,
     "comparison": "Posthoc methodological correction: the archived implementation scored all 2682 candidate rows for BOTH flat and hierarchy before routing. Legacy mean_hier_nodes_scored=1088.14 is count of route-eligible nodes, NOT actual TF-IDF dot-products. It does NOT establish a computational speedup; hierarchy also incurs centroid overhead. Retrieval hit/recall numbers remain unchanged.",
-    "caveat": "14 type-A lists scored using exact case/spacing/punctuation-normalized surface matches; aliases may undercount recall; 4 type-B reasoning/synthesis questions transparently not scored. 2025 cutoff conservatively avoids month-unknown 2026 data. The benchmark was previously inspected (exploratory); all-candidate scoring prevents any measured online acceleration."
+    "caveat": "14 type-A lists scored using exact case/spacing/punctuation-normalized surface matches; aliases may undercount recall; 4 type-B reasoning/synthesis questions transparently not scored. 2025 cutoff conservatively avoids month-unknown 2026 data. The benchmark was previously inspected (exploratory); all-candidate scoring prevents any measured online acceleration.",
+    "paired_hit_test": {
+      "question_n": 14,
+      "flat_only_hits": 0,
+      "hier_only_hits": 1,
+      "both_hit": 1,
+      "neither_hit": 12,
+      "exact_two_sided_mcnemar_p_descriptive_only": 1,
+      "source": "outputs_selected/selected_retrieval_EXPLORATORY_2025.json",
+      "independent_generalization": false,
+      "notes": "Paired question labels, 14 previously inspected Type-A queries. One extra hierarchical hit; no statistically supported task-utility superiority. The global TF-IDF dot product was computed for all candidates in both arms; visitation count is not saved runtime."
+    }
   },
   "source_map": {
     "experiment_registry": "research_outputs/final_matrix/experiment_registry.csv",

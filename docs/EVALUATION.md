@@ -36,6 +36,10 @@ This table follows the original [PhD assessment](ASSIGNMENT_SOURCE.md), not prop
 | T6 downstream utility | `outputs_selected/selected_retrieval_EXPLORATORY_2025.json`, `research_outputs/type_b_audit/` | Type A 2/14 hierarchical vs 1/14 flat (previously inspected); Type B source Recall@5 0.52083 for BOTH routes; claim answer quality unscored |
 | T7 paper, code, disclosure | `report.md`, `report.pdf`, `AI_USAGE.md`, `requirements.txt` | Authored, tested, with limitations stated |
 
+## Paired extrinsic T6 check (original 14 Type-A questions)
+
+The archived Hit@5 record has **one hierarchical-only hit (Q1)**, **zero flat-only**, **one both-hit (Q8)** and **12 neither-hit**. An exact paired McNemar/sign-test calculation on the one discordant question gives **two-sided p=1.0**. This is a **descriptive analysis of questions already inspected during development**, not confirmation or evidence of statistically better retrieval. The original TF-IDF implementation computes all candidate scores *before* routing; route-membership counts are not measured acceleration. A separately tested exact branch-and-bound control preserved 18/18 flat rankings but was slower. Source-grounded answer generation is an optional extension, not an implicit success of the retrieval evaluator.
+
 ## What cannot be repaired by rerunning the same model
 
 1. **Semantic label correctness and overclaim.** A new, independent qualified reader must assess 24 paired V1/V2 A/B examples using `research_outputs/label_v2/BLIND_LABEL_COMPARISON_TO_FILL.csv`. The data are currently blank. The original 48 ratings were AI-assisted, non-blind development diagnostics.
