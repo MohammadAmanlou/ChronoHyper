@@ -240,3 +240,48 @@ original questions **remain development-only** even when scored after the fact.
 Absent new independently sourced questions and scientifically verified gold,
 quality improvement/generalization is not established. For short examiner-facing
 evidence boundaries, see [reviewer checklist](REVIEWER_CHECKLIST.md).
+
+
+## 15 · Historical Type-A quality–cost curve (20 October 2026)
+
+**Purpose:** Fill the previously missing quality axis of the route-budget frontier
+without silently using answers to choose a ranking. The original 14 Type-A and
+four Type-B questions were already inspected. This is **historical development
+diagnosis**, not an unseen benchmark.
+
+Run from the project root in PowerShell (two strictly ordered stages):
+
+
+```powershell
+# Stage A: rank; DOES NOT open original ground_truth.json.
+.\.venv\Scripts\python.exe -m research_lab.frontier_historical --project . --prepare
+
+# Stage B: verify frozen ranking digest; only THEN open original gold.
+.\.venv\Scripts\python.exe -m research_lab.frontier_historical --project . --evaluate
+
+# Short numerical review, without printing private question/answer text:
+.\.venv\Scripts\python.exe -c "import json; a=json.load(open('local_only/retrieval_frontier/historical_v2/historical_audit.json')); print(json.dumps(a['quality_measures'],indent=2)); print(json.dumps(a['paired_hit_at_5_contrasts'],indent=2))"
+
+Get-ChildItem .\local_only\retrieval_frontier\historical_v2
+```
+
+
+The same stages run in the updated one-command local validation script. The
+five output files (all ignored by Git) are:
+
+- `rankings.json`: unchanged ranked lists for 18 questions, checksum frozen before gold
+- `historical_gold_PRIVATE.csv`: original Type-A reference methods, do not share
+- `raw_score_PRIVATE.json`: shared-scorer reference-only diagnostic
+- `historical_audit.json`: paired Hit@5, all/eligible recall, 14-question bootstrap intervals, exact sign tests, candidate + centroid dot-products and local online timings
+- `historical_quality_cost.svg`: vector chart for historical quality versus computation
+
+A checksum protects against *accidental* ranking edits, not malicious
+replacement. Results cannot be used to retune the locked model and later
+declared fresh. No Type-B generated answers or full-text scientific judgments
+have been produced. The scorer retains prior artifacts instead of overwriting
+them; new runs require a separate folder. The generic older local frontier file
+may lack a checksum; historical_v2 generates its own frozen rank artifact.
+
+The final hand-in report and locked experiment outputs remain unchanged
+until the candidate actually verifies the new results and makes an evidence-based
+report revision. See the [Reviewer Checklist](REVIEWER_CHECKLIST.md).
