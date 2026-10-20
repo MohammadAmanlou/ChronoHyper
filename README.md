@@ -11,6 +11,7 @@ This is the **single entry point** for the project. Start with the completed [fo
 | [`report.pdf`](report.pdf) · [`scripts/report.tex`](scripts/report.tex) · [`report.md`](report.md) | Finished camera-ready article, reproducible typesetting source, and Markdown companion |
 | [`docs/EVALUATION.md`](docs/EVALUATION.md) | T1–T7 evidence, metrics, limitations and remaining reviews |
 | [`docs/REPRODUCE.md`](docs/REPRODUCE.md) | Exact Windows commands, expected files and safe run order |
+| [`docs/REVIEWER_CHECKLIST.md`](docs/REVIEWER_CHECKLIST.md) | Original weighted CKL criteria, evidence gates and live defense |
 | [`docs/ASSIGNMENT_SOURCE.md`](docs/ASSIGNMENT_SOURCE.md) | Original task description |
 | [`AI_USAGE.md`](AI_USAGE.md) | AI-assistance disclosure |
 | [`inputs/data.zip`](inputs/data.zip) | Original employer-supplied corpus (do not redistribute) |
