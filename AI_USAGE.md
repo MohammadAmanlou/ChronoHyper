@@ -89,3 +89,23 @@ GPT-6 wrote/tests-reviewed a **development-only, deterministic general V3** labe
 - **Data confidentiality:** No raw questions, hidden A/B mapping, reference
   method lists or private reviewer notes are included in this addendum; the
   derived sensitive score and blind outputs remain ignored under `local_only/`.
+
+## Addendum — complete source-scope V3 audit and validation protocol (20 October 2026)
+
+GPT-6 authored `research_lab/v3_provenance_audit.py` and negative-fixture
+tests, a repeatable clean Python 3.11 GitHub Actions integrity workflow,
+permission-aware `docs/INDEPENDENT_VALIDATION.md`, and supporting README/
+scientific-evidence updates. Major request: "Use the latest Windows experiment
+results to complete all legitimate scientific checks for the doctoral assignment,
+and tell the applicant exactly what human/permission-bound work remains."
+
+The applicant's supplied local log supports the **historical** Route-4
+Hit@5 2/14 versus Flat 2/14 with 1,114.4 versus 2,647 online dot products,
+and the successful 10+33+9 earlier tests. This is not an independent test or
+proof of general performance. The new V3 auditor has not yet been executed
+on the user's machine at the time of this update. The code checks lexical
+source support, frozen memberships, and cutoff-eligible paper IDs—not
+semantic entailment. True blind review and source full-text adjudication
+remain uncompleted, so no human rating or full-paper truth label is invented.
+No original benchmark questions, reviewer keys, complete private ratings,
+or local source data are committed in these updates.
