@@ -309,7 +309,22 @@ def score_blind(sheet, key_file, out):
         yes=sum(x[field]=='yes' for x in pairs)
         eligible=sum(x[field] in ('yes','no') for x in pairs)
         return {'overclaim_yes':yes,'evaluable':eligible,'rate':yes/eligible if eligible else None}
-    result={'status':'COMPLETE_REVIEWER_REPORTED' if len(pairs)==len(rows) else 'PARTIAL_REVIEW',
+    # Reviewer IDs can self-identify as AI; this is a diagnostic, not human evidence.
+    # Identity is a metadata claim, never proof that an external reviewer is independent.
+    reviewer_ids={x['reviewer_id'] for x in pairs}
+    def explicitly_ai(name):
+        lowered=name.casefold()
+        return lowered.startswith('ai_') or 'gpt-' in lowered or 'chatgpt' in lowered or 'non-human' in lowered
+    ai_count=sum(explicitly_ai(x) for x in reviewer_ids)
+    if len(pairs)!=len(rows):
+        review_status='PARTIAL_REVIEW'
+    elif ai_count==len(reviewer_ids) and reviewer_ids:
+        review_status='COMPLETE_AI_ONLY_DIAGNOSTIC'
+    elif ai_count:
+        review_status='MIXED_AI_AND_OTHER_REVIEWS'
+    else:
+        review_status='COMPLETE_REVIEWER_REPORTED'
+    result={'status':review_status,
            'requested_cases':len(rows),'paired_cases_with_both_ratings_and_reviewer_id':len(pairs),
            'v2_wins':wins,'v2_losses':losses,'ties':ties,
            'mean_rating_delta_v2_minus_v1':sum(x['difference_v2_minus_v1'] for x in pairs)/len(pairs) if pairs else None,
@@ -317,6 +332,8 @@ def score_blind(sheet, key_file, out):
            'v1_gloss':gloss_rate('v1_overclaim'),'v2_gloss':gloss_rate('v2_overclaim'),
            'reviewer_ids_observed':sorted(set(x['reviewer_id'] for x in pairs)),
            'human_independence_verified':False,
+           'all_reported_reviewers_explicitly_ai':bool(reviewer_ids) and ai_count==len(reviewer_ids),
+           'reviewer_origin_is_self_reported':True,
            'note':'A/B method order was hidden in the worksheet but reviewer independence is self-reported, not automatically validated. Ratings are based on sampled names/titles, not exhaustive full-text entailment; small-N p-values do not establish scientific truth.'}
     out=Path(out);out.mkdir(parents=True,exist_ok=True)
     (out/'v2_paired_blind_scores.json').write_text(json.dumps(result,indent=2,ensure_ascii=False),encoding='utf-8')

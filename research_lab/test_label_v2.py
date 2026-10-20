@@ -122,3 +122,27 @@ class FrozenKeyRecovery(unittest.TestCase):
             self.assertEqual(len(key),24)
             self.assertEqual(set(key.values()),{'A','B'})
             self.assertEqual(recover_frozen_blind_key(project,private),key)
+
+class ReviewOriginSafety(unittest.TestCase):
+    def test_ai_identified_rows_cannot_be_reported_as_human(self):
+        import csv
+        from research_lab.label_v2 import score_blind
+        with tempfile.TemporaryDirectory() as tmp:
+            p=Path(tmp)
+            fields=['year','stable_id','A_accuracy_accurate_vague_wrong',
+              'B_accuracy_accurate_vague_wrong','A_gloss_overclaim_yes_no_unclear',
+              'B_gloss_overclaim_yes_no_unclear','reviewer_id']
+            with (p/'sheet.csv').open('w',newline='',encoding='utf-8') as fp:
+                w=csv.DictWriter(fp,fieldnames=fields)
+                w.writeheader()
+                w.writerow({'year':2024,'stable_id':'s1',
+                   'A_accuracy_accurate_vague_wrong':'vague',
+                   'B_accuracy_accurate_vague_wrong':'accurate',
+                   'A_gloss_overclaim_yes_no_unclear':'unclear',
+                   'B_gloss_overclaim_yes_no_unclear':'no',
+                   'reviewer_id':'AI_PRELIM_PERSPECTIVE_01'})
+            (p/'key.json').write_text(json.dumps({'2024:s1':'B'}),encoding='utf-8')
+            result=score_blind(p/'sheet.csv',p/'key.json',p/'out')
+            self.assertEqual(result['status'],'COMPLETE_AI_ONLY_DIAGNOSTIC')
+            self.assertTrue(result['all_reported_reviewers_explicitly_ai'])
+            self.assertFalse(result['human_independence_verified'])
