@@ -109,3 +109,11 @@ semantic entailment. True blind review and source full-text adjudication
 remain uncompleted, so no human rating or full-paper truth label is invented.
 No original benchmark questions, reviewer keys, complete private ratings,
 or local source data are committed in these updates.
+
+## Addendum — authorized blind review dispatch and four-page report candidate (20 October 2026)
+
+- **Assistant:** GPT-6, with user prompt to complete P3/P6 checks as fully as possible while preserving genuine independence and avoiding inflated research claims.
+- **Implementation:** `research_lab/review_handoff.py` exports permission-gated, offline reviewer ZIPs that contain only whitelisted blind worksheets/rubrics (no A/B keys), and rejects tampered or incomplete external review forms; four synthetic regression tests were added.
+- **Research writing:** `scripts/report_candidate_20261020.tex` corrects the latest matched Route-4 Type-A quality/cost figures, reports the full 180-case V3 provenance audit, and adds P1–P6 guarantees versus empirical uncertainty, a scoped complexity statement and four-week protocol.
+- **Verification:** On 20 October the applicant's local tests passed 10+33+14; GitHub clean CI for the new code passed 10+33+18. A separate XeLaTeX workflow rebuilt the confidential candidate PDF, verified four A4 pages and its required numeric text; the assistant inspected all rendered page images. This *preview* has NOT replaced the canonical root `report.pdf` or `report.md`.
+- **Scientific boundary:** No independent 24-case V2/V3, 48-case matched coherence, or 36-claim full-text adjudications were manufactured. The prior inspected 14 Type-A + 4 Type-B questions remain development diagnostics; prior p=0.69 null remains non-significant. Sharing private worksheets needs actual data-owner authorization and an isolated reviewer.
