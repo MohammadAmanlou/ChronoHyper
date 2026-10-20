@@ -35,6 +35,15 @@ Generate the vector graphic `projection_loss.svg` and recheck the JSON using:
 .\.venv\Scripts\python.exe -m research_lab.projection_loss --project . --out .\local_only\projection_loss
 ```
 
+## Experimental generic V3 title/gloss rule (not deployed)
+
+`research_lab/label_v3.py` now applies a **single transparent deterministic rule to all 180 frozen level-0/level-1 cases in 2020/22/24**, not just 24 hand-edited titles: filter broad generic tokens, require at least three supported eligible member names and two dated source articles, name a domain-specific phrase when its literal name coverage is at least 60%, restrict title to `Partial theme:` at 30–60%, and **abstain** below 30%. Its gloss gives exact full-cluster source-name counts with a disclaimer rather than inferring full-paper scientific consensus. All thresholds are **development choices made after seeing earlier examples**; current frozen V1/V2 artifacts, metrics and A/B keys remain unchanged. It has **NO measured held-out semantic superiority yet**, and model confidence here is conditional on lexical evidence rather than external NLI. Do not use the fresh 48 coherence pairs to tune V3 and then claim an unbiased test on those same cases.
+
+Reproduce in ignored scratch:
+```powershell
+.\.venv\Scripts\python.exe -m research_lab.label_v3 --project . --out .\local_only\label_v3_dev
+```
+
 ## Constructor assessment requirements: evidence-based acceptance gates
 
 This table follows the original [PhD assessment](ASSIGNMENT_SOURCE.md), not proposed extra experiments. Code tests establish technical integrity; they do not substitute for scientific validity. **Current stage: viable and reproducible partial validation, not 100% scientific completeness.**

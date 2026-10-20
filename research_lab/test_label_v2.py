@@ -342,3 +342,41 @@ class OriginalHyperedgeProjectionAudit(unittest.TestCase):
             self.assertEqual(r['dataset_sha256'],
                 hashlib.sha256((root/'inputs/data.zip').read_bytes()).hexdigest())
             self.assertTrue((Path(tmp)/'projection_loss.svg').is_file())
+
+
+class ConservativeGeneralV3(unittest.TestCase):
+    def test_rule_abstains_on_generic_high_coverage(self):
+        from research_lab.label_v3 import improve_case
+        row={'year':2024,'level':1,'stable_id':'toy','member_count':10,
+             'eligible_member_count':10,'v2_label':'Prediction',
+             'phrase_evidence':{'prediction':{'support_count':9,
+               'support_node_ids':[str(i) for i in range(9)],
+               'provenance_article_ids':['1','2','3']}}}
+        x=improve_case(row)
+        self.assertEqual(x['label_rule_status'],'ABSTAIN_INSUFFICIENT_DOMAIN_PHRASE')
+    def test_rule_names_supported_majority_without_overclaim(self):
+        from research_lab.label_v3 import improve_case
+        row={'year':2022,'level':0,'stable_id':'toy','member_count':10,
+             'eligible_member_count':10,'v2_label':'Original',
+             'phrase_evidence':{'neural potential':{'support_count':8,
+                'support_node_ids':[str(i) for i in range(8)],
+                'provenance_article_ids':['1','2']}}}
+        x=improve_case(row)
+        self.assertEqual(x['v3_development_label'],'Neural Potential')
+        self.assertEqual(x['source_phrase_evidence']['support_count'],8)
+        self.assertIn('8 of 10',x['v3_development_gloss'])
+        self.assertFalse(x['replaces_frozen_ensemble'])
+    def test_frozen_full_snapshot_v3_is_read_only(self):
+        from research_lab.label_v3 import run
+        root=Path(__file__).resolve().parents[1]
+        import json
+        with tempfile.TemporaryDirectory() as temp:
+            s=run(root,temp)
+            self.assertEqual(sum(s['years'][str(y)]['clusters'] for y in (2020,2022,2024)),180)
+            self.assertFalse(s['locked_clusters_modified'])
+            for year in (2020,2022,2024):
+                r=json.loads((Path(temp)/f'v3_dev_{year}.json').read_text(encoding='utf-8'))
+                self.assertEqual(len(r),60)
+                self.assertEqual(sum(z['source_phrase_evidence'] is not None or
+                                     z['label_rule_status'].startswith('ABSTAIN') for z in r),60)
+                self.assertTrue(all(z['independent_label_quality']=='NOT_EVALUATED' for z in r))
