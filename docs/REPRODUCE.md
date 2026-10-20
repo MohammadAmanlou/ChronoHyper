@@ -75,7 +75,7 @@ The 20 October V1/V2 and Type-B evidence now appears in the updated camera-ready
 
 ## 7 · Camera-ready report (already compiled and pushed)
 
-The **three-page illustrated scientific article** is [`report.pdf`](../report.pdf). Its self-contained, auditable typesetting source is [`scripts/report.tex`](../scripts/report.tex); [`report.md`](../report.md) remains the plain-text companion. The PDF was built on GitHub Actions from that TeX source and automatically committed to `main`, after checking the 3–5 page requirement. **You do not need MiKTeX on your laptop to use or deliver the finished PDF.**
+The **3–5-page illustrated scientific article** is [`report.pdf`](../report.pdf). Its self-contained, auditable typesetting source is [`scripts/report.tex`](../scripts/report.tex); [`report.md`](../report.md) remains the plain-text companion. The PDF was built on GitHub Actions from that TeX source and automatically committed to `main`, after checking the 3–5 page requirement. **You do not need MiKTeX on your laptop to use or deliver the finished PDF.**
 
 Only if you later change the scientific content and deliberately need to render a new PDF, use XeLaTeX in a working TeX environment:
 
@@ -206,3 +206,37 @@ Get-Content .\local_only\reviews\label_v3_fresh\result_LOCAL.json
 ```
 
 Scoring rejects changed source columns, duplicate IDs and fabricated missing-evidence certainty. The result is labelled AI-only and developmental, so strong V3 results on this same packet cannot certify scientific faithfulness elsewhere.
+
+## 14 · Retrieval budget frontier — gold-separated and exactness-checked (20 October)
+
+After a safe `git pull --ff-only origin main`, run from the project root:
+
+```powershell
+.\.venv\Scripts\python.exe -m unittest research_lab.test_retrieval_frontier -v
+.\.venv\Scripts\python.exe -m research_lab.retrieval_frontier --project . --rank
+Get-ChildItem .\local_only\retrieval_frontier
+```
+
+This runs the historical 18 questions (14 Type-A and four Type-B): **no gold is accessed**.
+The common node/type/name index, TF-IDF scorer and deterministic tie breaker are
+identical for flat and routes with top 1, 2, 4, 8 and 12 roots. Twelve-root top-5
+**must exactly match** flat; this is enforced per query. Candidate comparisons
+and centroid comparisons are separately counted. Timings include online routing
+and top-5, but exclude shared query construction and offline indexing. Differences
+in raw milliseconds are environment-dependent. Store the resulting
+`local_only/retrieval_frontier/rankings.json` privately.
+
+If independently prepared gold is available as a *separate* UTF-8 CSV with
+`question_id,expected_methods` columns (pipe-separated method names),
+score **after** ranking:
+
+```powershell
+.\.venv\Scripts\python.exe -m research_lab.retrieval_frontier --project . --score --references .\local_only\retrieval_frontier\gold_PRIVATE.csv
+Get-Content .\local_only\retrieval_frontier\score.json
+```
+
+Do not create or tune reference methods from the produced ranking. Historical
+original questions **remain development-only** even when scored after the fact.
+Absent new independently sourced questions and scientifically verified gold,
+quality improvement/generalization is not established. For short examiner-facing
+evidence boundaries, see [reviewer checklist](REVIEWER_CHECKLIST.md).
