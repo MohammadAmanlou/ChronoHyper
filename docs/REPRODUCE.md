@@ -317,3 +317,29 @@ A clean Python 3.11 test job is defined in
 [GitHub Actions](../.github/workflows/scientific-integrity.yml).
 Verify its actual run status under the repository Actions tab; a workflow
 file existing does not imply GitHub Actions has executed successfully.
+
+## 17 · Auditing returned AI-only review summaries
+
+The applicant's `rated_24.csv` and `ratings_fresh_48_independent.csv`
+were returned and scored locally on 20 October. No original blind mapping keys
+or raw responses should be committed to the repository.
+
+```powershell
+cd C:\Users\a\Desktop\constructor-ckl-research
+.\.venv\Scripts\python.exe -m unittest research_lab.test_assessment_status -v
+.\.venv\Scripts\python.exe -m research_lab.assessment_status --project .
+Get-Content .\local_only\review_status\summary.json
+.\.venv\Scripts\python.exe final_preflight.py --project . --write .\local_only\final_preflight.json
+git status --short
+```
+
+This conservative reviewer audit checks paired-count arithmetic, review
+CSV hash for the 24 labels, insufficiency denominators, and scientific-claim
+flags. It does **not** test human/AI reviewer independence or full-text meaning.
+See [ASSESSMENT_STATUS.md](ASSESSMENT_STATUS.md).
+
+The 36-row Type-B form `local_only/reviews/claims_rated.csv` is still a **blank
+working copy** until a licensed full-text assessor records actual notes,
+supports/contradictions and source passages. Do not run the Type-B review
+scorer as if it were completed. For another genuine external task evaluation,
+all new questions/references must be frozen before any ranking is inspected.
