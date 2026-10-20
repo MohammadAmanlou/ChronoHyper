@@ -364,7 +364,7 @@ def summarize_ai_review(project='.', output=None):
     }
     target=Path(output) if output else base/'ai_paired_summary.json'
     target.parent.mkdir(parents=True,exist_ok=True)
-    target.write_text(json.dumps(result,indent=2,ensure_ascii=False)+'\n',encoding='utf-8')
+    target.write_text(json.dumps(result,indent=2,ensure_ascii=False)+'\n',encoding='utf-8',newline='\n')
     print('AI-ONLY DIAGNOSTIC: V2',wins,'V1',losses,'ties',ties,'sign p (descriptive only)',sign_p)
     return result
 
