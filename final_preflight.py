@@ -198,6 +198,31 @@ def audit(root):
             passed.append('Gold-separated shared-scoring retrieval development diagnostic present')
             warnings.append('New routed retrieval has no confirmed fresh-query Hit@5 advantage (2/14 each on reused questions)')
     else:warnings.append('New fair retrieval development diagnostic missing')
+    postlock_ai=read(root/'local_only/review_status/summary.json')
+    if isinstance(postlock_ai,dict):
+        p=postlock_ai.get('v2_v3',{})
+        c=postlock_ai.get('coherence_matched',{})
+        if (postlock_ai.get('schema')!='chronohyper_postlock_ai_review_status_v1' or
+                postlock_ai.get('independent_full_paper_entailment_verified') is not False or
+                postlock_ai.get('independent_human_expert_review_verified') is not False or
+                p.get('total_pairs')!=24 or p.get('evaluable_pairs')!=21 or
+                c.get('total_pairs')!=24 or c.get('evaluable_pairs')!=24):
+            errors.append('Local post-lock AI review status invalid; check source JSON and rating-sheet hashes')
+        else:
+            passed.append('Post-lock 24-pair label and 24-pair AI-only coherence summaries are arithmetically audited')
+            details['postlock_ai_review_scoped']={
+                'label_v3_wins':p.get('v3_wins'),
+                'label_v3_losses':p.get('v3_losses'),
+                'label_ties':p.get('ties'),
+                'label_sign_p_unadjusted':p.get('descriptive_unadjusted_sign_p'),
+                'coherence_delta':c.get('mean_paired_delta'),
+                'coherence_sign_p_unadjusted':c.get('descriptive_unadjusted_sign_p'),
+                'human_expert_verified':False,
+                'fullpaper_entailment_verified':False,
+            }
+            warnings.append('Post-lock key-separated AI review is SAME-CORPUS, name/title-only; scientific overclaim and full-paper entailment are not independently verified')
+    else:
+        warnings.append('No local post-lock AI-only score audit; not a canonical deliverable')
     stress=read(root/'research_outputs/stress_temporal20_extended/result.json')
     if stress is None:
         # documented prior path
