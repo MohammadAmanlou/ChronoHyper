@@ -53,7 +53,7 @@ try {
     Write-Host "[2/6] Research tests"
     Run-Python @("-m","unittest","research_lab.tests_lab","research_lab.test_label_v2","research_lab.test_type_b_source_audit","-v")
     Write-Host "[2b/6] Test retrieval budget frontier"
-    Run-Python @("-m","unittest","research_lab.test_retrieval_frontier","-v")
+    Run-Python @("-m","unittest","research_lab.test_retrieval_frontier","research_lab.test_frontier_historical","-v")
     Write-Host "[3/6] Validate frozen selected outputs"
     Run-Python @("verify_selected_outputs.py","--out","outputs_selected")
 
@@ -90,6 +90,15 @@ try {
     } else {
         Write-Host "Existing local frontier retained: $frontier"
     }
+    Write-Host "[5c/6] Freeze then score historical Type-A queries with original ZIP gold (development only)"
+    $histRoot = Join-Path $local "retrieval_frontier\historical_v2"
+    $histReport = Join-Path $histRoot "historical_audit.json"
+    if (-not (Test-Path $histReport)) {
+        Run-Python @("-m","research_lab.frontier_historical","--project",".","--prepare")
+        Run-Python @("-m","research_lab.frontier_historical","--project",".","--evaluate")
+    } else {
+        Write-Host "Existing historical audit retained: $histReport"
+    }
     Write-Host "[6/6] Read-only final preflight (scientific WARN entries are expected)"
     Run-Python @("final_preflight.py","--project",".","--write",".\local_only\final_preflight.json")
     $audit = Get-Content -LiteralPath $preflight -Raw | ConvertFrom-Json
@@ -103,6 +112,9 @@ try {
         v3_development_summary = "local_only/label_v3_dev/summary.json"
         retrieval_rankings = "local_only/retrieval_v2/rankings.json"
         retrieval_frontier_rankings = "local_only/retrieval_frontier/rankings.json"
+        historical_frontier_audit = "local_only/retrieval_frontier/historical_v2/historical_audit.json"
+        historical_frontier_plot = "local_only/retrieval_frontier/historical_v2/historical_quality_cost.svg"
+        historical_frontier_is_independent_test = $false
         blind_review_packet = "local_only/reviews/label_v3_fresh/blind_v2_v3_24.csv"
         private_blind_key = "local_only/reviews/label_v3_fresh/mapping_PRIVATE.csv"
         independent_v3_review_completed = $false
@@ -113,7 +125,7 @@ try {
     $statusFile = Join-Path $local "next_stage_status.json"
     $status | ConvertTo-Json -Depth 6 | Set-Content -LiteralPath $statusFile -Encoding UTF8
     Write-Host "Saved local status: $statusFile"
-    Write-Host "Next action: arrange an authorized, truly key-isolated AI evaluation for the 24 blind V2/V3 examples. Never upload mapping_PRIVATE.csv."
+    Write-Host "Next action: review historical frontier output and arrange an authorized independent, key-isolated scientific label evaluation. Never upload mapping_PRIVATE.csv."
     Write-Host "Git status (local_only is ignored):"
     & git status --short
 }
