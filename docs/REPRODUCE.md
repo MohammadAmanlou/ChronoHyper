@@ -43,7 +43,7 @@ This works from the **preselected** configuration and stored confirmation run. I
 
 The Type-B source-retrieval experiment has also **already been executed and committed** in `research_outputs/type_b_audit/`: four frozen paper rankings, gold-source scores, a blank 36-claim review sheet and a 2025 exact-search audit. The rankings were constructed without reading the reference answers and scored only after freezing. Paper-source coverage cannot establish generated answer correctness. The original complete expensive sweep has **already been executed and committed**. Do not spend time rerunning it merely to claim that a new local folder ran every seed. For optional full regeneration, read [the experiment protocol](RESEARCH_PROTOCOL.md) and choose *new* output paths.
 
-## 4 · V2 label reproducibility and human review
+## 4 · V2 label reproducibility and independent review options
 
 ```powershell
 .\.venv\Scripts\python.exe -m research_lab.label_v2 --project . --out research_outputs/label_v2
@@ -90,7 +90,7 @@ Always check page count, charts, equations and citations before committing the P
 
 These tasks remain distinct from the completed AI-only diagnostic. They require real reviewers or new data; the existing code must not synthesize human judgments.
 
-**Stage 1 — 24 blind label pairs.** Get permission before sharing Constructor-provided data outside its authorized team. Use an independent qualified reviewer, unaware of V1/V2 mapping and previous ChatGPT ratings. Do not re-run default `python -m research_lab.label_v2` into canonical outputs: it regenerates the blank sheet. In PowerShell from a clean, updated `main`:
+**Stage 1 — 24 blind label pairs (qualified human optional; genuinely key-isolated LLM permitted).** Get permission before sharing Constructor-provided data outside its authorized team. Constructor permits an independent blind LLM/NLI judge as well as a human reviewer. If using AI, isolate its context and prompts from the private A/B mapping, prior ratings, label generation and evaluation results; use only authorized independent paper evidence and record the judge model/prompt. A second pass in the existing contaminated conversation is not independent. Do not re-run default `python -m research_lab.label_v2` into canonical outputs: it regenerates the blank sheet. In PowerShell from a clean, updated `main`:
 
 ```powershell
 New-Item -ItemType Directory -Force .\local_only\reviews | Out-Null
