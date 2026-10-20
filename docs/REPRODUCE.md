@@ -285,3 +285,35 @@ may lack a checksum; historical_v2 generates its own frozen rank artifact.
 The final hand-in report and locked experiment outputs remain unchanged
 until the candidate actually verifies the new results and makes an evidence-based
 report revision. See the [Reviewer Checklist](REVIEWER_CHECKLIST.md).
+
+## 16 · Exhaustive developmental V3 source-provenance audit
+
+After `git pull --ff-only origin main`, run from Windows PowerShell root:
+
+```powershell
+.\.venv\Scripts\python.exe -m unittest research_lab.test_v3_provenance_audit -v
+.\.venv\Scripts\python.exe -m research_lab.v3_provenance_audit --project .
+Get-Content .\local_only\label_v3_dev\provenance_audit.json
+git status --short
+```
+
+The updated `scripts/continue_local_validation.ps1` also runs these steps.
+This audit reads the original frozen source ZIP and verifies **all 180**
+2020/2022/2024 level 0/1 V3 outputs, not selected examples. It checks that
+cluster IDs/members match the locked hierarchies; cited name phrases are found
+in *every listed original supporter*; no eligible supporter is omitted;
+source article IDs exist and satisfy the cutoff; and the V3 text matches the
+general deterministic rule. It does not use reference answers, modify
+locked outputs, or claim full-paper semantic entailment.
+
+Successful completion produces a local JSON file with source checks and
+`independent_semantic_label_accuracy: null` / `scientific_overclaim_rate: null`.
+Treat those `null` fields as **scientifically unmeasured**, not software
+failures and not 0% error. Never replace independently blind ratings with
+this audit. For the approved independent-review process, see
+[INDEPENDENT_VALIDATION.md](INDEPENDENT_VALIDATION.md).
+
+A clean Python 3.11 test job is defined in
+[GitHub Actions](../.github/workflows/scientific-integrity.yml).
+Verify its actual run status under the repository Actions tab; a workflow
+file existing does not imply GitHub Actions has executed successfully.
