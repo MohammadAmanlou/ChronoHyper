@@ -1,0 +1,46 @@
+name: ChronoHyper scientific integrity
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-and-evidence-checks:
+    name: Clean Python 3.11 validation
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    env:
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+      PYTHONDONTWRITEBYTECODE: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install frozen dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Core source tests
+        run: python -m unittest discover -s tests -v
+      - name: Research and gold-separation tests
+        run: |
+          python -m unittest research_lab.tests_lab research_lab.test_label_v2 research_lab.test_type_b_source_audit -v
+          python -m unittest research_lab.test_retrieval_frontier research_lab.test_frontier_historical research_lab.test_v3_provenance_audit -v
+      - name: Verify frozen hierarchy and hyperedge output
+        run: python verify_selected_outputs.py --out outputs_selected
+      - name: Generate developmental V3 labels in ignored output
+        run: python -m research_lab.label_v3 --project . --out local_only/label_v3_dev
+      - name: Exhaustive original-data V3 lexical provenance audit
+        run: python -m research_lab.v3_provenance_audit --project . --out local_only/label_v3_dev/provenance_audit.json
+      - name: Read-only source and scientific-warning preflight
+        run: python final_preflight.py --project . --write local_only/final_preflight_CI.json
+      - name: Verify no tracked research results changed
+        run: |
+          test -z "$(git status --porcelain)"
+          echo "Clean reproduction checks passed; independent semantic faithfulness remains unverified."
