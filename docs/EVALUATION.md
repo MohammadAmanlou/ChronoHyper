@@ -3,6 +3,10 @@
 
 **Interpretation is deliberately conservative.** All quantitative claims below refer to the Constructor-supplied corpus, not a claim of novelty on unseen corpora.
 
+## Type-B source-claim AI audit: 36 submitted ratings (22 October 2026)
+
+An approved separately initialized AI reviewer returned 36 scientific source-claim judgments under `local_only/`: **25 yes, 1 no, 10 unclear**, and **36/36 citations marked yes by that AI**. The scorer's **25/26 (96.15%)** is conditional *reviewer-reported source-claim agreement among determinate cases*, not full-text-confirmed correctness and explicitly **NOT generated Type-B answer accuracy**. The assistant did not independently verify all 36 full texts. A subsequent limited external date and question-alignment audit flagged nine cases, especially the February 2026 publication cutoff and the mismatch between atomistic MLIP/NEB evidence and a coarse-grained MD task. The original review remains unchanged. Full citation dates, flagged IDs, review hash and next actions: [Assessment Status](ASSESSMENT_STATUS.md).
+
 ## Latest post-lock same-corpus AI evaluations (20 October 2026)
 
 The applicant has now submitted independently packaged *key-separated*, anonymized worksheets to AI reviewers. File-level integrity checks passed and scorer outputs were obtained locally (full private forms are intentionally git-ignored). A **24-pair** V2–V3 title/gloss comparison has **21 evaluable pairs** with V3 **10 wins/4 losses/7 ties**, mean rating delta **+0.2857/2**, unadjusted paired sign **p=0.1796** (not significant). Conditional gloss overclaim flags were **0/21 evaluable V2** and **0/14 evaluable V3**, with **3 and 10 unclear**, respectively. These are not full-text semantic overclaim rates.
