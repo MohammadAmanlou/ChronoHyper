@@ -43,9 +43,24 @@ recorded SHA-256:
 - The original arity/degree-preserving hypergraph shuffle gave **p=0.69**; this remains a separate, nonsignificant structural null finding.
 - Before any paper-level scientific claim, a reviewer must inspect authorized source passages and note missing/unclear scientific support.
 
+## New 36-claim Type-B AI-only source assessment (22 October audit)
+
+The applicant obtained a **separate GPT-6 AI scientific review** of 36 question-to-source claims from a neutral seven-column worksheet. The locally scored review reports **25 supported, 1 contradicted, 10 unclear** (no pending entries). Thus **25/26 = 96.15%** of the reviewer’s *determinate* judgments say supported, but this is **not** the accuracy of generated Type-B answers, not proof that 36/36 source citations entail their claims, and not a reviewer-identity/full-text guarantee. The actual self-reported model identifier is `GPT-6 (AI scientific reviewer)`. The returned neutral CSV has SHA-256 `6c3d7729044932aeeb11e5c437b50e230778d75807d8c1046257ab1ecc215222`; the merged original-column working copy stays in ignored `local_only/`.
+
+A second-pass citation/date/task-fit audit flagged **nine of the 36** for targeted human-or-independent-AI re-adjudication, without modifying the original ratings: `Q15.C6b` (two source papers postdate the *February 2026* task cutoff, although Kim's 2025 preprint supplies an earlier grain-boundary study); `Q15.C8` (a January 2027 journal issue, earliest pre-cutoff existence not established; original `unclear` stands); `Q16.C3` (a categorical `no` inferred from NequIP versus MACE may conflate two compatible mechanism observations); `Q17.C1/C2/C3` (the cited **atomistic MLIP/NEB** evidence does not alone answer the original **coarse-grained molecular dynamics / phase-transition** question); and `Q18.C11/C12/C16` (verify that specific findings cited from an April 2026 journal version already appeared in the December 2025 arXiv preprint). The December 2025 arXiv version of Bheemaguli similarly precedes its March 2026 journal publication. **These flags are NOT revised yes/no truth labels.**
+
+Official publication metadata / preprints for independent verification:
+- Bilbrey (published **2026-05-05**): https://www.nature.com/articles/s41524-026-02051-8
+- Kim (journal **2026-03-03**, preprint **2025-10-13** with grain-boundary benchmark): https://www.nature.com/articles/s41467-026-70195-8 ; https://arxiv.org/abs/2510.11241
+- Bheemaguli (journal **2026-03-30**, preprint **2025-12-03**): https://pubs.rsc.org/en/content/articlehtml/2026/dd/d5dd00534e ; https://arxiv.org/abs/2512.03642
+- Sanocki (journal **2026-04-13**, preprint **2025-12-08**): https://pubs.rsc.org/en/content/articlehtml/2026/dd/d5dd00570a ; https://arxiv.org/abs/2512.10989
+- Kurban (journal issue **Jan 2027**): https://www.sciencedirect.com/science/article/pii/S0927025626006725
+
+The original task asks Q15/Q17/Q18 **by February 2026**. Evidence observed later is not automatically retroactively admissible; original dated preprints may be, if the specific claim appears in the early version. Keep separate: (i) existence of a paper, (ii) full scientific entailment of a claim, (iii) cutoff admissibility, and (iv) generated-answer correctness. This post-hoc, same-task source check must not be presented as a fresh independent test corpus.
+
 ## What is not finished — do not confuse software PASS with scientific PASS
 
-1. **36 Type-B claims:** `local_only/reviews/claims_rated.csv` was created by copying a blank sheet; no verified actual claim-by-claim full-paper judgements have been reported. Mark unknown support `unclear`; citations alone are insufficient. Source claim checks are distinct from generated-answer correctness.
+1. **36 Type-B claims:** an AI-only, original-column-preserving review has been returned and locally scored (25 yes / 1 no / 10 unclear; 26 determinate), but its full-text and historical-cutoff interpretations still need adjudication of the nine flagged cases. The older `local_only/reviews/claims_rated.csv` remains an uncompleted blank human-review copy and is NOT the AI ratings file. Source-claim support and generated-answer correctness are different quantities.
 2. **Fresh external or independently constructed Type-A/B tasks:** original 14+4 benchmark questions were inspected. New questions and gold must be authored/frozen **before** ranking; gold must not guide routing choice.
 3. **Independent scientific label faithfulness:** a key-separated AI-only title/name vote is not verified full-paper semantic entailment. For an externally credible overclaim rate obtain determinate full-paper cases and retain `unclear` denominators.
 4. **T6 end-to-end downstream gain:** 2/14 accuracy and high uncertainty do not establish superiority. The selected method is justified as a transparent stability/native-provenance trade-off.
