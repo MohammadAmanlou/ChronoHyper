@@ -119,3 +119,47 @@ of the reported reviewer identity, source accessibility, or scientific
 entailment. If no authorized independent judgments exist, leave these gates
 clearly **PENDING**; do not fill rows with guesses or AI-generated confidence
 to make a scoring command pass.
+
+
+## 36 Type-B source claims — sanitized independent AI workflow (October 2026)
+
+A dedicated `research_lab/type_b_independent_handoff.py` command constructs
+a **seven-column neutral reviewer CSV** from the already tracked immutable
+`CLAIM_LEVEL_REVIEW_BLANK.csv`. It excludes prior gold coverage flags,
+retrieval outcomes, and previous source-audit opinions. There is no key
+to send and no model training or scientific inference in this helper.
+
+```powershell
+# Run from repository root after git pull:
+.\.venv\Scripts\python.exe -m research_lab.type_b_independent_handoff --project . --prepare
+explorer .\local_only\reviews\type_b_ai_packet
+```
+
+Give the resulting `CLAIMS_FOR_AI.csv` to a separate, approved AI chat
+that can research official original scientific papers, and explicitly request
+an unchanged UTF-8 CSV with all seven columns. Judge entire claims against
+primary full text, including DOI/URL, section/page and what scope was actually
+read. Missing text or merely similar abstracts imply `unclear`, not `yes`.
+Write the **actual AI identifier** in the historical `human_reviewer`
+column (its column name cannot be changed without breaking the original scorer).
+A model is **never** reported as a human. No old label/control mapping,
+source score files, or answer rubric should be provided.
+
+Place that separately completed file at
+`local_only/reviews/type_b_ai_packet/RATED_BY_INDEPENDENT_AI.csv`.
+Then:
+
+```powershell
+.\.venv\Scripts\python.exe -m research_lab.type_b_independent_handoff --project . --merge --ratings .\local_only\reviews\type_b_ai_packet\RATED_BY_INDEPENDENT_AI.csv
+
+.\.venv\Scripts\python.exe -m research_lab.type_b_source_audit review --project . --out .\local_only\reviews\type_b_AI_review_summary --review-file .\local_only\reviews\type_b_ai_packet\claims_rated_AI.csv
+
+Get-Content .\local_only\reviews\type_b_AI_review_summary\type_b_claim_review_summary.json
+```
+
+The import validates claim IDs and freezes all non-rating original source
+columns. These checks **cannot confirm external paper access, factual
+entailment or the AI assessor's isolation**. An AI-only review is a
+developmental source-claim check, NOT generated-answer correctness.
+Keep all original rated sheets, reviewer notes and private files ignored
+under `local_only/`; report unknown cases and the actual assessed denominator.
