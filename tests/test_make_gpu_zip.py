@@ -49,7 +49,8 @@ class PortableKaggleZipTests(unittest.TestCase):
                                  list(make_gpu_zip.DATA_INPUTS["rank"]))
                 self.assertNotIn("data/ground_truth.json", nested.namelist())
             self.assertNotIn("HIDDEN GOLD", "\n".join(
-                archive.read(name).decode("utf-8") for name in names))
+                archive.read(name).decode("utf-8")
+                for name in names if name != "inputs/data.zip"))
         self.assertEqual(result["sha256"], hashlib.sha256(dest.read_bytes()).hexdigest())
         self.assertTrue(result["kaggle_path_separator_validated"])
 
