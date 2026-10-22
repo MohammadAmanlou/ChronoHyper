@@ -343,3 +343,117 @@ working copy** until a licensed full-text assessor records actual notes,
 supports/contradictions and source passages. Do not run the Type-B review
 scorer as if it were completed. For another genuine external task evaluation,
 all new questions/references must be frozen before any ranking is inspected.
+
+
+## 18 · Prospective, stratified new-question retrieval test (22 October)
+
+**Scientific role:** A new set of *question texts* on the **existing Constructor
+corpus**, with Gold frozen **before ranking**. This is stronger than rerunning the
+old inspected 14 Type-A queries, but it is **NOT a separate source corpus** or
+external-domain generalization experiment. The question author sees a target
+entity and one original source title; authorship independence and full-text
+entailment cannot be proved automatically. There is **no Type-B answer
+generation** in this study.
+
+### Stage A: deterministic author packet (no model predictions)
+
+From Windows PowerShell at repository root:
+
+
+```powershell
+git pull --ff-only origin main
+.\.venv\Scripts\python.exe -m unittest research_lab.test_fresh_retrieval -v
+.\.venv\Scripts\python.exe -m research_lab.fresh_retrieval --project . --author-kit
+explorer .\local_only\fresh_retrieval
+
+```
+
+
+This samples **3 source-dated target entities per 2025 root group** using a
+deterministic SHA-256 ordering (typically 12 groups / **36 targets**), with
+source paper titles and recorded years **at or before 2025**. The author
+packet \`AUTHOR_KIT.csv\` has five fields:
+\`question_id,target_name,target_type,paper_title,paper_year\`.
+Do not change targets, root allocation, or filter out difficult items based on
+model results. Sampling intentionally covers the locked hierarchy but does not
+create a representative estimate of all real-life query frequencies.
+
+### Stage B: isolated question writing BEFORE retrieval
+
+Give only \`AUTHOR_KIT.csv\` to a new **authorized, key/model-result-isolated**
+chat that can inspect dated primary papers. Require **all** target rows in one
+UTF-8 CSV with the exact twelve columns, in order:
+
+\`question_id,target_name,target_type,paper_title,paper_year,question,source_url,evidence_locator,evidence_access,author_id,question_rationale\`.
+
+An acceptable question:
+- A natural, specific 55–450-character English question ending in \`?\`
+  and **not including the exact target name**, with an independently checked
+  primary paper URL and specific section/page/passage locator.
+- A realistic paraphrase of a concept discussed by the given paper, rather
+  than a copy of the old benchmark question or an artificial identifier.
+- The supplied first five columns unchanged. \`evidence_access\` must be
+  \`FULL_TEXT\` or \`ABSTRACT_ONLY\`; the latter is **weaker** and must not
+  be presented as independent full-paper entailment. The \`author_id\` is the
+  true AI model identifier.
+- When a primary source is unavailable, the reviewer must report that
+  limitation rather than inventing a URL/section. **Do not generate substitutes
+  or quietly remove targets to force 36 passable rows.** Such rows remain an
+  unresolved benchmark-preparation gate.
+
+Save the actual reviewer-created CSV as
+\`local_only/fresh_retrieval/FRESH_QUESTIONS_FROM_AI.csv\`.
+
+### Stage C: freeze question and reference files *before* evaluation
+
+
+```powershell
+.\.venv\Scripts\python.exe -m research_lab.fresh_retrieval --project . --freeze --response .\local_only\fresh_retrieval\FRESH_QUESTIONS_FROM_AI.csv
+
+Get-Content .\local_only\fresh_retrieval\freeze_manifest.json
+
+```
+
+
+The module rejects duplicate/modified target IDs, evidence entries without
+sources, query text that directly names its target, near-duplicates of old
+questions and unqualified references. It then writes **exactly once**:
+\`REVIEWED_QUESTIONS.csv\`, \`queries_only.csv\`, \`gold_PRIVATE.csv\`, and
+\`freeze_manifest.json\` with separate content hashes. These files stay
+**git-ignored**. Critically, all gold must already be frozen before running
+\`--rank\` (never edit the output manifest or manually replace data afterward).
+Code cannot attest that a link supports the whole query; manually audit
+source passages and date/version restrictions.
+
+### Stage D: rank with no Gold and then score
+
+
+```powershell
+.\.venv\Scripts\python.exe -m research_lab.fresh_retrieval --project . --rank
+
+# Only after the ranking file and digest exist:
+.\.venv\Scripts\python.exe -m research_lab.fresh_retrieval --project . --score
+
+.\.venv\Scripts\python.exe -c "import json; x=json.load(open('local_only/fresh_retrieval/scored.json')); print('n=',x['n_queries']); print('flat=',x['per_arm']['flat']); print('route4=',x['per_arm']['route_4']); print('paired=',x['descriptive_paired_contrasts']['route_4'])"
+git status --short
+
+```
+
+
+The scorer enforces an *exact set match* between frozen query IDs and Gold
+IDs: **no dropping unanswered questions**. The target type and exact
+normalized entity name must both match a returned top-5 entry, preventing a
+different type with the same spelling from counting as a hit. The primary
+comparison is **predeclared four-root vs Flat**, with Hit@5, MRR@5 and online
+candidate+centroid dot products; other budgets are exploratory. It reports a
+paired question-level bootstrap CI and the per-query hits, but no causal
+speed-up or significance guarantee. The all-12-root control must reproduce
+flat. Rankings, Gold, author response and results remain under ignored
+\`local_only/fresh_retrieval/\`. A successful CI *author-kit smoke test* shows
+that the code can select targets; it is **not** proof 36 scientific questions
+have been independently written, sourced or evaluated.
+
+The procedure refuses to overwrite previously frozen artifacts. For a genuinely
+new version, preserve the old directory and specify a **different** \`--directory\`
+from the first step onward. Do not retune the locked model, cutoff, or
+predeclared primary route budget after reading score results.
