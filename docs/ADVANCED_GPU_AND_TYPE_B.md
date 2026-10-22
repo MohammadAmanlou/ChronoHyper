@@ -114,6 +114,61 @@ not confirmatory. A genuinely fresh and pre-frozen benchmark is required
 after a final approach is selected, especially to establish any Hit@5 claim
 above the frozen Flat 3/34 and Route-4 2/34.
 
+### Kaggle automatically extracted the nested source ZIP
+
+Kaggle's dataset import can recursively unpack `inputs/data.zip` into
+`inputs/data/data/tkh_collection10.json` and
+`inputs/data/data/collection10_articles.csv`. In that case the old
+Kaggle cell requiring `inputs/data.zip` will fail even though the source
+files exist. Do **not** upload the raw original `ground_truth.json` into
+the ranker: that file is hidden benchmark gold. On an already uploaded
+PRIVATE Kaggle dataset, stage only the exact ranking allowlist into
+`/kaggle/working/chronohyper/`, then reconstruct `inputs/data.zip`
+from only graph and article metadata:
+
+~~~python
+from pathlib import Path
+from zipfile import ZipFile, ZIP_DEFLATED
+import shutil
+
+base=Path('/kaggle/input/datasets/mohammadamanlou/gpu-rank-only')
+root=Path('/kaggle/working/chronohyper')
+files=[
+ 'research_lab/__init__.py',
+ 'research_lab/advanced_retrieval.py',
+ 'research_lab/retrieval_v2.py',
+ 'research_lab/retrieval_frontier.py',
+ 'outputs_selected/hierarchy_2025.json',
+ 'local_only/fresh_retrieval_screened34/queries_only.csv',
+ 'requirements_advanced.txt'
+]
+for rel in files:
+ src=base/rel
+ assert src.is_file(),src
+ dst=root/rel
+ dst.parent.mkdir(parents=True,exist_ok=True)
+ shutil.copy2(src,dst)
+source=base/'inputs/data/data'
+inner=('tkh_collection10.json','collection10_articles.csv')
+(root/'inputs').mkdir(parents=True,exist_ok=True)
+with ZipFile(root/'inputs/data.zip','w',ZIP_DEFLATED) as z:
+ for name in inner:
+  assert (source/name).is_file(),name
+  z.write(source/name,arcname='data/'+name)
+with ZipFile(root/'inputs/data.zip') as z:
+ assert set(z.namelist())=={'data/'+x for x in inner}
+ assert 'data/ground_truth.json' not in z.namelist()
+print('READY:',root)
+~~~
+
+For **future** bundles, `scripts/make_gpu_zip.py` now strips
+`ground_truth.json` from the **nested** source ZIP (not only the outer
+allowlist). The current imported Kaggle Dataset still has a separate
+copy if uploaded before this correction; keep it PRIVATE and replace
+it with a newly sanitized version before sharing or publishing. This
+staging step is a practical no-gold data-access boundary for the rank
+process, not a claim the old Kaggle Dataset never held gold.
+
 ## 3. Actually generate Type-B answers from scientific papers
 
 Type-B is **not** measured by the earlier 36 claim-source judgments. Actual
