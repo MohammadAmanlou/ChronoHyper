@@ -24,7 +24,7 @@ ChronoHyper constructs source-dated, laminar four-level concept hierarchies from
 
 - **Model lock:** `native_temporal_20`, selected before source-group confirmation; **65** development, **5** confirmation and **5** pairwise-projection method runs are archived. Hierarchy budget/membership checks and native collapse provenance checks pass.
 - **Negative structural test:** degree/arity-preserving null **p=0.69** (not significant). Lower-is-better source-group held-out event cut **worsened from 0.6623 to 0.7172**. The selected model is a semantic/structure/**temporal stability compromise**, not a proven best partitioner.
-- **Historical downstream task:** on **14 previously inspected Type-A questions**, four-root and flat retrieval both hit **2/14**. Four-root routing used **57.9% fewer online candidate+centroid dot products** on those queries, not proven superior retrieval accuracy. Four Type-B questions were audited for *available paper-source coverage*, **not** generated-answer correctness. A 36-claim AI-only source assessment returned **25 yes / 1 no / 10 unclear**; a second AI review of nine concerns changed one opinion to yes and found **three Q17 source claims do not answer the coarse-grained-MD research question**. See [Assessment Status](docs/ASSESSMENT_STATUS.md). See [Assessment Status](docs/ASSESSMENT_STATUS.md).
+- **Historical downstream task:** on **14 previously inspected Type-A questions**, four-root and flat retrieval both hit **2/14**. Four-root routing used **57.9% fewer online candidate+centroid dot products** on those queries, not proven superior retrieval accuracy. Four Type-B questions were audited for *available paper-source coverage*, **not** generated-answer correctness. A 36-claim AI-only source assessment returned **25 yes / 1 no / 10 unclear**; a second AI review of nine concerns changed one opinion to yes and found **three Q17 source claims do not answer the coarse-grained-MD research question**. See [Assessment Status](docs/ASSESSMENT_STATUS.md).
 - **V3 source audit:** all **180/180** development labels' frozen-membership/lexical/date support checked with **zero source-level discrepancies**; **115/180** abstain. *This does not establish scientific-paper entailment.*
 - **Post-lock AI-only review (20 October):** 24 V2/V3 candidate pairs were graded; **21 evaluable**, V3 **10 wins / 4 losses / 7 ties**, descriptive `p=0.180` (no significant V3 advantage). On **24** matched real/control coherence pairs, mean 5-point AI ratings were **3.542 versus 2.750**, descriptive `p=0.041`. These are **key-separated same-corpus name/title judgements**, *not* certified full-text independent scientific evaluation. Details, insufficiency denominators and hashes: [Assessment Status](docs/ASSESSMENT_STATUS.md).
 
@@ -62,6 +62,17 @@ local_only/ (git-ignored)               ← private reviewer files, blind keys, 
 ```
 
 To avoid losing audit traceability, **do not delete/move archived experimental outputs just to shorten the tree**. Git-ignored scratch and reviewer contents stay local; private identity mappings, full reviewer notes and private ratings are never part of the public deliverables.
+
+## Prospective retrieval study — pending independent question writing
+
+A [root-stratified 36-target author kit](research_lab/fresh_retrieval.py) now
+selects dated entities from the existing 2025 source index deterministically
+(three per root), before any new query sees model rankings. An isolated
+question author must supply 36 properly sourced **paraphrased new questions**;
+the benchmark then freezes question texts and private Gold separately
+before running the matched four-root-vs-flat retrieval test. A code/CI pass
+verifies the tool, **not** new-query accuracy. Exact
+[commands and integrity requirements](docs/REPRODUCE.md#18--prospective-stratified-new-question-retrieval-test-22-october).
 
 ## Remaining scientific boundaries
 
