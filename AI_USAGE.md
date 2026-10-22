@@ -224,3 +224,18 @@ To run (on Windows, from repo root):
     .\.venv\Scripts\python.exe -m research_lab.posthoc_retrieval_diagnostics --project .
 
 Read local_only/advanced_retrieval/posthoc_error_audit_LOCAL.json and preserve it under ignored local_only. It is an error analysis, NOT a held-out test. Freeze the selected dense-only approach before evaluating on separately authored new questions.
+
+## Addendum — multiview entity retrieval candidate-coverage extension
+
+After the applicant's 34-case SHA-verified post-hoc diagnostic,
+GPT-6 authored research_lab/multiview_dense.py and synthetic tests
+to compare three source-bounded views of each entity using pretrained
+BGE-M3, equal-weight three-view RRF and maximum-view cosine. All five
+arms export top-100 candidates to permit observed recall-at-K analysis.
+The rank stage is Gold-blind, and score verifies exact 34 question
+IDs, unchanged query SHA, ranking digest and expected arm schemas
+before accessing local Gold. New private Kaggle packaging now includes
+the module but still strips ground_truth.json from the nested source
+ZIP. **No new accuracy or model improvement has yet been observed**;
+this code is another post-hoc developmental diagnostic, not a new
+independent holdout, and no locked report changes are justified.
