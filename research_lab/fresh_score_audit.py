@@ -209,7 +209,7 @@ def export_public_summary(project=".",directory=DEFAULT_DIR,
         prior=json.loads(output.read_text(encoding="utf-8"))
         _require(prior==clean,"Published aggregate differs: do not silently overwrite")
     else:
-        output.write_text(json.dumps(clean,indent=2,ensure_ascii=False,sort_keys=True)+"\\n",encoding="utf-8")
+        output.write_text(json.dumps(clean,indent=2,ensure_ascii=False,sort_keys=True)+"\n",encoding="utf-8")
     print("Safe aggregate export (no raw questions or gold):",output)
     return clean
 
