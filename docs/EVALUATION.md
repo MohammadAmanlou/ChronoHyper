@@ -3,6 +3,22 @@
 
 **Interpretation is deliberately conservative.** All quantitative claims below refer to the Constructor-supplied corpus, not a claim of novelty on unseen corpora.
 
+## Newly scored, prospective same-corpus Type-A retrieval (22 October 2026)
+
+The applicant's Windows log now records the **predeclared** Route-4 versus Flat study on **34 new, externally AI-authored questions** from the same 2025-cutoff Constructor corpus. A deterministic 36-target/12-root original sample was produced **before querying**; precisely **F023 and F031** had unverifiable associated source titles and were excluded by the independent author **before ranking**. Both failed source associations remain in the 36-case source-screen audit. All 34 qualified questions and private target Gold were SHA-frozen before scoring (frozen ranking digest `66e38cd38b0f4a82a122639ecd60b4c05feb5445d110095630395c57bfd65109`).
+
+| Locked primary comparison | Flat | Route-4 |
+|---|---:|---:|
+| Hit@5 on all 34 qualified questions | **3/34 = 0.0882** | **2/34 = 0.0588** |
+| Mean online candidate/centroid dot products | 2,647 | 1,076.44 |
+| Dot products relative to Flat | baseline | **59.3% fewer** |
+
+Matched Hit@5 difference (Route-4 minus Flat) is **−1/34 = −0.0294**, with **0 route-only wins, 1 flat-only win, 33 ties**. The 34-query paired bootstrap CI reported locally was **[−0.0882, 0]**; the exact two-sided sign-test on one discordant pair is **p=1.0**. These data neither establish a significant quality loss nor support an equivalence or gain claim. They specifically **do not reproduce** the older inspected 14-query same-hit pattern, which showed 2/14 for both methods. Cost is number of online dot products; shared query encoding, offline index building and system-level latency are not included.
+
+**External validity is limited:** question texts were new and frozen prior to retrieval, but their targets were deterministically drawn from the *existing* corpus and the AI question author saw target names and source titles; full-paper entailment has not been independently rechecked for all 34. This is NOT a new independent domain corpus, independently verified true-answer accuracy, or a Type-B generated-answer benchmark. The original model, route budget and old experiment registry must not be retuned to make these results favorable. A new read-only checksum/score auditor (`research_lab/fresh_score_audit.py`) was added after receiving the user's log; its real **local 34-question run remains to be verified**, and clean CI synthetic-unit success is not evidence that it has examined the private local files. A verified, non-private aggregate can be exported to `research_outputs/fresh_retrieval_34_aggregate.json` **after local audit succeeds**, without copying questions or Gold to Git.
+
+
+
 ## Nine-item independent-chat AI recheck: scope and task alignment
 
 After the first 36-row AI source-claim vote, a second AI chat reviewed nine selected concerns with version-specific 2025 preprint references. It recorded **seven source-supported / two unclear**, but **three of nine failed original-question relevance** (all three Q17 MLIP/NEB vs coarse-grained MD). `Q16.C3` changed from one AI's unsupported to a second AI's supported, yielding an optional post-hoc *AI opinion* tally **26 yes / 0 no / 10 unclear** with 27 cases NOT re-reviewed. **Do not call this 100% accuracy, independent complete verification, or a Type-B answer test.** The original 36 source votes are preserved unchanged. See [ASSESSMENT_STATUS.md](ASSESSMENT_STATUS.md) for source and date limitations.
