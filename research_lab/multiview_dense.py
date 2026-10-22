@@ -177,6 +177,11 @@ def score(project=".", directory=OUT, gold=FRESH_GOLD):
     out = folder / "score_DEVELOPMENT_ONLY.json"
     if out.exists():
         raise FileExistsError("Preserve earlier scored multiview experiment")
+    original_queries = root / FRESH_QUERIES
+    if (not original_queries.is_file() or
+            hashlib.sha256(original_queries.read_bytes()).hexdigest() !=
+            ranked.get("query_file_sha256")):
+        raise ValueError("Local frozen 34-query text differs from GPU ranking input")
     private = Path(gold)
     if not private.is_absolute():
         private = root / private
