@@ -225,6 +225,26 @@ def audit(root):
             warnings.append('Post-lock key-separated AI review is SAME-CORPUS, name/title-only; scientific overclaim and full-paper entailment are not independently verified')
     else:
         warnings.append('No local post-lock AI-only score audit; not a canonical deliverable')
+    fresh_audit=read(root/'local_only/fresh_retrieval_screened34/audit_local.json')
+    if isinstance(fresh_audit,dict):
+        if (fresh_audit.get('schema')!='chronohyper_34q_frozen_score_integrity_v1' or
+                fresh_audit.get('attempted_source_targets')!=36 or
+                fresh_audit.get('source_qualified_queries')!=34 or
+                fresh_audit.get('flat_hit_n')!=3 or
+                fresh_audit.get('route4_hit_n')!=2 or
+                fresh_audit.get('externally_independent_source_corpus') is not False):
+            errors.append('Prospective retrieval audit inconsistent with the frozen 36-to-34 experiment')
+        else:
+            passed.append('34-question pre-frozen same-corpus retrieval score validated: Flat=3/34; 4-root=2/34')
+            details['prospective_postlock_task_retrieval']={
+                'attempted_target_count':36,'documented_pre_rank_source_exclusions':2,
+                'evaluable_queries':34,'flat_hits':3,'four_root_hits':2,
+                'dot_product_reduction':fresh_audit.get('online_dot_product_reduction_fraction'),
+                'rank_sha256_verified':fresh_audit.get('rank_sha256_verified'),
+                'external_corpus':False}
+            warnings.append('Fresh prospective SAME-CORPUS task: 4-root lost 1/34 Hit@5 vs flat; neither arm shows strong retrieval accuracy; no independent question entailment certification')
+    else:
+        warnings.append('Local prospective 34-query score-integrity audit not yet present')
     stress=read(root/'research_outputs/stress_temporal20_extended/result.json')
     if stress is None:
         # documented prior path
