@@ -22,6 +22,7 @@ ALLOW = {
     "rank": (
         "research_lab/__init__.py",
         "research_lab/advanced_retrieval.py",
+        "research_lab/multiview_dense.py",
         "research_lab/retrieval_v2.py",
         "research_lab/retrieval_frontier.py",
         "inputs/data.zip",
