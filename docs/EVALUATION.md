@@ -3,6 +3,10 @@
 
 **Interpretation is deliberately conservative.** All quantitative claims below refer to the Constructor-supplied corpus, not a claim of novelty on unseen corpora.
 
+## Nine-item independent-chat AI recheck: scope and task alignment
+
+After the first 36-row AI source-claim vote, a second AI chat reviewed nine selected concerns with version-specific 2025 preprint references. It recorded **seven source-supported / two unclear**, but **three of nine failed original-question relevance** (all three Q17 MLIP/NEB vs coarse-grained MD). `Q16.C3` changed from one AI's unsupported to a second AI's supported, yielding an optional post-hoc *AI opinion* tally **26 yes / 0 no / 10 unclear** with 27 cases NOT re-reviewed. **Do not call this 100% accuracy, independent complete verification, or a Type-B answer test.** The original 36 source votes are preserved unchanged. See [ASSESSMENT_STATUS.md](ASSESSMENT_STATUS.md) for source and date limitations.
+
 ## Type-B source-claim AI audit: 36 submitted ratings (22 October 2026)
 
 An approved separately initialized AI reviewer returned 36 scientific source-claim judgments under `local_only/`: **25 yes, 1 no, 10 unclear**, and **36/36 citations marked yes by that AI**. The scorer's **25/26 (96.15%)** is conditional *reviewer-reported source-claim agreement among determinate cases*, not full-text-confirmed correctness and explicitly **NOT generated Type-B answer accuracy**. The assistant did not independently verify all 36 full texts. A subsequent limited external date and question-alignment audit flagged nine cases, especially the February 2026 publication cutoff and the mismatch between atomistic MLIP/NEB evidence and a coarse-grained MD task. The original review remains unchanged. Full citation dates, flagged IDs, review hash and next actions: [Assessment Status](ASSESSMENT_STATUS.md).
