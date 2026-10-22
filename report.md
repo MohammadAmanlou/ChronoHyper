@@ -54,6 +54,23 @@ Semantic coherence is approximated with **source-paper title n-grams**, rather t
 
 ## 5. Extrinsic utility, limitations and four-week plan
 
+**New prospective same-corpus task evaluation (22 October):** A deterministic
+36-target/12-root sample was prepared before ranking. Two original associated
+paper titles (F023, F031) could not be authenticated, so the source-checking
+question author excluded them **before model ranking** and preserved the
+36-target attempt denominator. On the remaining **34** newly authored,
+SHA-frozen questions, the predeclared 4-root route achieved **Hit@5=2/34**
+versus **3/34** for Flat; 4-root used **1,076.44** instead of **2,647**
+online dot products (**59.3% fewer**). The matched Hit@5 difference was
+**−1/34**, with **0 wins, 1 loss, 33 ties**, exploratory paired bootstrap
+CI **[−0.0882, 0]**, and descriptive two-sided sign **p=1.0**. No measured
+accuracy gain or equivalence is established. The old inspected 14-question
+equal-hit pattern **did not reproduce**. Source corpus, targets and evidence
+paper titles are still derived from the original dataset; independent
+full-paper entailment and Type-B synthesized answer accuracy remain open.
+
+
+
 The **already-inspected** 18-question benchmark is used *exploratorily*, not as an untouched test after design iteration. For 14 type-A list questions at the conservative 2025 cutoff, flat surface-match **Hit@5 = 1/14 (0.0714)**, hierarchical **Hit@5 = 2/14 (0.1429)**. Mean candidate node-count proxies were 2,682 vs 1,088; the hierarchical figure excludes centroid comparisons and neither result demonstrates lower end-to-end latency. Four Type-B explanation questions were additionally evaluated for **paper-source retrieval only**, using a frozen ranking generated before reading gold references. Among the gold papers that could be matched to 46 cutoff-eligible articles, macro source Recall@5 was **0.5208 for BOTH flat and hierarchical routing**; counting unavailable gold papers, both were **0.3125**. An exact-search control recovered identical top-5 rankings on 18/18 inspected queries but was slower in measured end-to-end time. This supplies **no retrieval improvement**, factual-answer accuracy or source-claim entailment claim. For 36 required Type-B claim rubrics, an exploratory AI audit traced 19 to directly inspected publisher/preprint abstracts or selected publisher-text sections, while 17 remain rubric-only; **0/36 were independently adjudicated against complete full-text evidence**. All 18 benchmark questions were previously inspected, so results are exploratory, not unseen evaluation.
 
 **Threats to validity.** The entire assessment spans only 52 source articles; the input node names are partly transductive across paper splits; metric objectives and held-out measures do not perfectly coincide; source-title n-grams are a correlated second view, not expert-blind semantic grounding; proposed clusters' scientific labels remain mostly vague/wrong; the 99 constrained shuffles give no significant structural advantage; the few deletion perturbations yield descriptive rather than general confidence intervals. The confidence bounds of five seeds describe initialization variability on this corpus, not independent cross-corpus validity.
