@@ -176,12 +176,54 @@ def audit(project=".",directory=DEFAULT_DIR,out="audit_local.json"):
     print("Preserved audited evidence:",path)
     return res
 
+def export_public_summary(project=".",directory=DEFAULT_DIR,
+                          destination="research_outputs/fresh_retrieval_34_aggregate.json"):
+    root=Path(project).resolve()
+    result=audit(project,directory)
+    # No question text, gold targets, per-query IDs, or original reviewer notes.
+    keep=("schema","status","attempted_source_targets",
+          "source_qualified_queries","pre_ranking_source_exclusions",
+          "same_corpus_as_model","new_question_texts",
+          "externally_independent_source_corpus",
+          "original_question_author_fulltext_evidence_certified",
+          "rank_sha256_verified","predeclared_primary_arm",
+          "flat_hit_n","route4_hit_n","flat_hit_at5","route4_hit_at5",
+          "paired_hit_difference_route_minus_flat",
+          "paired_wins_route","paired_losses_route","paired_ties",
+          "paired_exact_sign_p_descriptive","paired_bootstrap95_exploratory",
+          "flat_mrr_at5","route4_mrr_at5",
+          "flat_online_dot_products_mean","route4_online_dot_products_mean",
+          "online_dot_product_reduction_fraction",
+          "flat_mean_query_median_online_ms",
+          "route4_mean_query_median_online_ms",
+          "timing_excludes_query_vectorization_and_offline_index",
+          "allroot_rankings_equal_flat","no_claim_of_statistical_equivalence",
+          "original_type_B_generated_answer_accuracy_measured","interpretation")
+    clean={k:result[k] for k in keep}
+    clean["source"]="candidate's LOCAL-only, checksum-verified 34-question score; raw corpus/private Gold not published"
+    clean["audit_method"]="python -m research_lab.fresh_score_audit --project ."
+    output=Path(destination)
+    if not output.is_absolute():output=root/output
+    output.parent.mkdir(parents=True,exist_ok=True)
+    if output.exists():
+        prior=json.loads(output.read_text(encoding="utf-8"))
+        _require(prior==clean,"Published aggregate differs: do not silently overwrite")
+    else:
+        output.write_text(json.dumps(clean,indent=2,ensure_ascii=False,sort_keys=True)+"\\n",encoding="utf-8")
+    print("Safe aggregate export (no raw questions or gold):",output)
+    return clean
+
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument("--project",default=".")
     p.add_argument("--directory",default=DEFAULT_DIR)
+    p.add_argument("--export-safe",action="store_true",
+                   help="After verified local audit, export ONLY aggregate to tracked JSON for review")
     a=p.parse_args()
-    audit(a.project,a.directory)
+    if a.export_safe:
+        export_public_summary(a.project,a.directory)
+    else:
+        audit(a.project,a.directory)
 
 if __name__=="__main__":
     main()
