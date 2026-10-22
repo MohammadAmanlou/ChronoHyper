@@ -83,6 +83,24 @@ retrieval or an independent new corpus. A separate local JSON integrity
 audit must be run before publishing its safe aggregate. Exact
 [commands and integrity requirements](docs/REPRODUCE.md#18--prospective-stratified-new-question-retrieval-test-22-october).
 
+## Optional GPU semantic retrieval and actual Type-B answer evaluation
+
+The frozen 34-query result (Flat **3/34**, Route-4 **2/34**) has NOT
+been modified. A new, **unscored** research module builds a dated
+native-hyperedge co-mention index, BGE-M3 dense embeddings, lexical
+TF-IDF, rank-based fusion, BGE neural reranking and a soft root-aware
+non-pruning comparison. A previously seen 34-query run on this new model
+will be **post-hoc development**, not independent confirmation.
+**No improved Hit@5 has yet been measured.**
+
+A separate module generates actual Type-B Q15–Q18 scientific answers
+using a local Qwen2.5-3B-Instruct model and authenticated dated full-text
+primary passages and creates a separate AI scoring rubric. **No new
+Type-B generated answers/scores are claimed yet.** See the one
+[GPU and Type-B runbook](docs/ADVANCED_GPU_AND_TYPE_B.md).
+The locked model, root report PDF and original negative results remain
+unchanged.
+
 ## Remaining scientific boundaries
 
 The **36 Type-B paper claims** now have an AI-only review (25/1/10) but **not a verified independent full-text or task-grounded adjudication**; the older user-created `local_only/reviews/claims_rated.csv` is a separate blank working copy. Nine second-pass concerns need resolution. A truly new question set with pre-frozen gold is also missing. The two new AI evaluations don't remove the coherence circularity risk or override the structural null. See [exact outstanding gates](docs/ASSESSMENT_STATUS.md) and [safe independent reviewer protocol](docs/INDEPENDENT_VALIDATION.md).
