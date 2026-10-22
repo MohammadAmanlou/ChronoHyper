@@ -141,6 +141,24 @@ via `research_lab.fresh_score_audit` and **must still be run locally**
 before publication of a safe aggregate. See [Evaluation](EVALUATION.md) and
 [REPRODUCE](REPRODUCE.md).
 
+## Optional high-capacity models are implemented but not evaluated
+
+After seeing Flat Hit@5=3/34 and Route-4=2/34 on the original
+same-corpus fresh-question score, a **different** advanced GPU
+research method has been authored (BGE-M3 embedding, lexical RRF,
+BGE reranking, native dated hyperedge co-mentions, soft root-aware
+routing). It does not replace `native_temporal_20`; no neural
+model scores are claimed until run. Any evaluation on the same
+34 questions is exploratory *development*, not held-out evidence.
+A new independently authored frozen query set will be required.
+
+An actual Type-B response generator and AI answer-level grader
+have also been implemented separately, but genuine historical
+full-text passages, local GPU generation of four responses and
+separately returned judgments are **still pending**. The existing
+36 claim-source reviewer votes do not supply those metrics. Follow
+[ADVANCED_GPU_AND_TYPE_B.md](ADVANCED_GPU_AND_TYPE_B.md).
+
 ## What is not finished — do not confuse software PASS with scientific PASS
 
 1. **36 Type-B claims:** the original AI review (25 yes/1 no/10 unclear) is followed by a nine-case second AI recheck (seven yes/two unclear; one no→yes opinion change). This is a **post-hoc AI-only overlay**, not original-gold adjudication. Three Q17 source claims were explicitly judged nonresponsive to the coarse-grained MD/phase-transition question. All 36 claims' full task relevance and actual generated-answer correctness remain unmeasured.
