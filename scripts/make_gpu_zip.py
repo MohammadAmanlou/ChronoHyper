@@ -30,6 +30,18 @@ ALLOW = {
         "local_only/fresh_retrieval_screened34/queries_only.csv",
         "requirements_advanced.txt",
     ),
+    "rerank": (
+        "research_lab/__init__.py",
+        "research_lab/qwen_entity_rerank.py",
+        "research_lab/advanced_retrieval.py",
+        "research_lab/retrieval_v2.py",
+        "research_lab/retrieval_frontier.py",
+        "inputs/data.zip",
+        "outputs_selected/hierarchy_2025.json",
+        "local_only/fresh_retrieval_screened34/queries_only.csv",
+        "local_only/multiview_dense_development/rankings.json",
+        "requirements_advanced.txt",
+    ),
     "type-b": (
         "research_lab/__init__.py",
         "research_lab/type_b_answer_generation.py",
@@ -42,6 +54,7 @@ ALLOW = {
 DEFAULT = {
     "rank": "local_only/gpu_rank_only.zip",
     "type-b": "local_only/gpu_type_b_private.zip",
+    "rerank": "local_only/gpu_qwen_entity_rerank_private.zip",
 }
 DENIED_PARTS = {"gold_private.csv", "mapping_private.csv"}
 DENIED_FRAGMENT = ("reviews/", "rankings.json", "scored.json", "score_development_only")
@@ -49,6 +62,10 @@ DENIED_FRAGMENT = ("reviews/", "rankings.json", "scored.json", "score_developmen
 # Explicitly remove it from EVERY Kaggle package, including nested archives.
 DATA_INPUTS = {
     "rank": (
+        "data/tkh_collection10.json",
+        "data/collection10_articles.csv",
+    ),
+    "rerank": (
         "data/tkh_collection10.json",
         "data/collection10_articles.csv",
     ),
@@ -92,6 +109,11 @@ def create(project=".", kind="rank", output=None, entries=None):
     if kind not in ALLOW:
         raise ValueError("Unknown GPU archive kind")
     root = Path(project).resolve(strict=True)
+    if kind == "rerank":
+        # Verify all source rankings before creating any new gold-blind GPU
+        # archive. Ignore local development scores even if present.
+        from research_lab.qwen_entity_rerank import read_rankings
+        read_rankings(root)
     dest = Path(output or DEFAULT[kind])
     if not dest.is_absolute():
         dest = root / dest
