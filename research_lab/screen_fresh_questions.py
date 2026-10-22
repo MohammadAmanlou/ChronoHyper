@@ -114,7 +114,7 @@ def main():
     root=Path(args.project).resolve()
     folder=Path(args.directory)
     if not folder.is_absolute():folder=root/folder
-    if any(folder.exists() and list(folder.iterdir()) for _ in (0,)):
+    if folder.exists() and any(folder.iterdir()):
         raise FileExistsError("Screened benchmark directory already used: "+str(folder))
     folder.mkdir(parents=True,exist_ok=True)
     ordered=sorted(valid,key=lambda x:x["question_id"])
