@@ -98,6 +98,28 @@ Type-B answer correctness. **No novel question scores are claimed until the
 separate author CSV is actually received and the three-phase evaluation runs.**
 See [REPRODUCE §18](REPRODUCE.md).
 
+## Prospective source quality blocker (22 October 2026)
+
+The isolated question author returned all **36** preselected targets with
+the specified first five fields preserved. **F023** (Ziegler–Biersack–Littmark
+potential) and **F031** (crystal lattice matrix) have no supported scientific
+question or source URL, because the associated listed 2025 review entitled
+`Machine Learning Interatomic Potentials: A Review and Framework for
+Understanding MLIPs` could not be independently verified as an authentic
+primary paper or dated preprint. Independent discovery of related reviews is
+**not** permission to silently replace that association.
+
+The model's strict 36-query `--freeze` correctly rejected the first empty
+question at F023; no original Gold/ranking manifest was produced. A newly
+tested pre-ranking source screen now permits a separately versioned
+**34/36 source-qualified subset** with two explicit exclusions, retaining the
+original 36-case attempted denominator in
+`pre_rank_source_screen.json`. This is a protocol-defined data-quality
+exclusion **before any rankings**, not a result-selected improvement.
+The other 34 URL/locator entries pass a form check, but full primary-paper
+entailment remains unaudited by code. **No fresh Hit@5 result yet exists.**
+See [REPRODUCE §18](REPRODUCE.md) for the safe original-file-preserving steps.
+
 ## What is not finished — do not confuse software PASS with scientific PASS
 
 1. **36 Type-B claims:** the original AI review (25 yes/1 no/10 unclear) is followed by a nine-case second AI recheck (seven yes/two unclear; one no→yes opinion change). This is a **post-hoc AI-only overlay**, not original-gold adjudication. Three Q17 source claims were explicitly judged nonresponsive to the coarse-grained MD/phase-transition question. All 36 claims' full task relevance and actual generated-answer correctness remain unmeasured.
