@@ -160,3 +160,9 @@ ChatGPT GPT-6 was given the separately returned `RATED_BY_INDEPENDENT_AI.csv` an
   model selection, source archive, reviewer keys, `report.pdf` and
   historical experiments were not changed. New private question and Gold
   files default to ignored `local_only/`.
+
+## Addendum — pre-ranking paper-verification failures and gold isolation fix (22 October 2026)
+
+- ChatGPT GPT-6 inspected the uploaded 36-row 11-column `FRESH_QUESTIONS_FROM_AI.csv`. Exactly **F023 and F031** had empty scientific questions and source URLs, with explicit notes that the original associated 2025 review could not be substantiated. The assistant did **not** invent answers, replace the original sampled paper, or claim 36 valid queries.
+- Added `research_lab/screen_fresh_questions.py` and synthetic regression tests: all 36 sampled targets remain tracked; the 34 qualified question rows are moved into a **separate** ignored benchmark folder, with two paper-source failures recorded before retrieval. The original author kit/response and model outputs are preserved.
+- Fixed the ranking mode in `research_lab/fresh_retrieval.py` to verify precommitted question/author evidence hashes **without even opening the private Gold file**. Score mode opens and verifies Gold only after rank digest exists. No fresh Hit@5 values or independent full-text review are claimed by this work.
