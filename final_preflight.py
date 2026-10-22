@@ -225,6 +225,26 @@ def audit(root):
             warnings.append('Post-lock key-separated AI review is SAME-CORPUS, name/title-only; scientific overclaim and full-paper entailment are not independently verified')
     else:
         warnings.append('No local post-lock AI-only score audit; not a canonical deliverable')
+    public_fresh=read(root/'research_outputs/fresh_retrieval_34_aggregate.json')
+    if isinstance(public_fresh,dict):
+        good=(public_fresh.get('schema')=='chronohyper_34q_frozen_score_integrity_v1'
+              and public_fresh.get('attempted_source_targets')==36
+              and public_fresh.get('source_qualified_queries')==34
+              and public_fresh.get('flat_hit_n')==3
+              and public_fresh.get('route4_hit_n')==2
+              and public_fresh.get('externally_independent_source_corpus') is False
+              and public_fresh.get('original_question_author_fulltext_evidence_certified') is False
+              and 0.59 < public_fresh.get('online_dot_product_reduction_fraction',0) < 0.60)
+        if good:
+            passed.append('Public, non-sensitive 34-query result archived: 36 attempted / 34 scored, Flat 3 hits, Route-4 2 hits')
+            details['prospective_retrieval_aggregate_public_scoped']={
+                'rank_sha256':public_fresh.get('rank_sha256_verified'),
+                'dot_product_reduction':public_fresh.get('online_dot_product_reduction_fraction'),
+                'same_corpus':True}
+        else:
+            errors.append('Public post-lock prospective aggregate violates its recorded denominator or independence bounds')
+    else:
+        warnings.append('Public, audit-verified aggregate for 34-query study not yet exported; follow REPRODUCE section 19')
     fresh_audit=read(root/'local_only/fresh_retrieval_screened34/audit_local.json')
     if isinstance(fresh_audit,dict):
         if (fresh_audit.get('schema')!='chronohyper_34q_frozen_score_integrity_v1' or
