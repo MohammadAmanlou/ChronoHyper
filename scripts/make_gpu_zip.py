@@ -10,6 +10,7 @@ may be included. This is a packaging utility, not a model evaluator.
 from __future__ import annotations
 
 import argparse
+import io
 import hashlib
 import json
 import os
@@ -43,6 +44,35 @@ DEFAULT = {
 }
 DENIED_PARTS = {"gold_private.csv", "mapping_private.csv"}
 DENIED_FRAGMENT = ("reviews/", "rankings.json", "scored.json", "score_development_only")
+# The supplied original archive ALSO contains a hidden ground_truth.json.
+# Explicitly remove it from EVERY Kaggle package, including nested archives.
+DATA_INPUTS = {
+    "rank": (
+        "data/tkh_collection10.json",
+        "data/collection10_articles.csv",
+    ),
+    "type-b": (
+        "data/tkh_collection10.json",
+        "data/collection10_articles.csv",
+        "data/questions.csv",
+    ),
+}
+
+
+def _sanitized_data_zip(source: Path, kind: str) -> bytes:
+    """Build a minimal inner zip, never forwarding the private reference truth."""
+    required = DATA_INPUTS[kind]
+    buffer = io.BytesIO()
+    with ZipFile(source, "r") as original, ZipFile(
+            buffer, "w", compression=ZIP_DEFLATED, compresslevel=6) as clean:
+        for name in required:
+            if name not in original.namelist():
+                raise ValueError("Original source data.zip lacks " + name)
+            clean.writestr(name, original.read(name))
+    with ZipFile(io.BytesIO(buffer.getvalue()), "r") as checked:
+        assert checked.namelist() == list(required)
+        assert not any("ground_truth" in k.lower() for k in checked.namelist())
+    return buffer.getvalue()
 
 
 def _checked_name(path: str) -> str:
@@ -90,7 +120,10 @@ def create(project=".", kind="rank", output=None, entries=None):
         with ZipFile(staging, mode="w", compression=ZIP_DEFLATED,
                      compresslevel=6, allowZip64=True) as z:
             for src, arcname in members:
-                z.write(src, arcname=arcname)
+                if arcname == "inputs/data.zip":
+                    z.writestr(arcname, _sanitized_data_zip(src, kind))
+                else:
+                    z.write(src, arcname=arcname)
         with ZipFile(staging, "r") as z:
             actual = z.namelist()
             expected = [arc for _, arc in members]
@@ -101,6 +134,13 @@ def create(project=".", kind="rank", output=None, entries=None):
                 raise AssertionError("Invalid path separator or unsafe ZIP entry")
             if z.testzip() is not None:
                 raise AssertionError("Archive failed CRC integrity check")
+            # Defense in depth: check inside embedded ZIP as well as outer ZIP.
+            with ZipFile(io.BytesIO(z.read("inputs/data.zip")), "r") as source_archive:
+                nested = source_archive.namelist()
+                if nested != list(DATA_INPUTS[kind]):
+                    raise AssertionError("Unexpected nested source archive contents")
+                if any("ground_truth" in n.lower() for n in nested):
+                    raise AssertionError("Hidden Gold found inside source data ZIP")
             if any("gold_private" in name.lower() or "mapping_private" in name.lower()
                    or "reviews/" in name.lower() for name in actual):
                 raise AssertionError("Sensitive grading data detected")
