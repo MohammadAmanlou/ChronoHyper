@@ -112,3 +112,19 @@ rank-only GPU digest is frozen. See
 The **36 Type-B paper claims** now have an AI-only review (25/1/10) but **not a verified independent full-text or task-grounded adjudication**; the older user-created `local_only/reviews/claims_rated.csv` is a separate blank working copy. Nine second-pass concerns need resolution. A truly new question set with pre-frozen gold is also missing. The two new AI evaluations don't remove the coherence circularity risk or override the structural null. See [exact outstanding gates](docs/ASSESSMENT_STATUS.md) and [safe independent reviewer protocol](docs/INDEPENDENT_VALIDATION.md).
 
 **Scope:** the official task does *not* require an interactive frontend, production infrastructure, or training new language models. This repo prioritizes correct hypergraph methods, honest evaluation, temporal identity and reproducibility.
+
+
+## Latest Multi-View GPU score and Qwen3 research extension (22 October 2026)
+
+The user completed the BGE multi-view 34-question development run
+(rank digest 88f536d78e9e408f526d08bc079111cdd32db76ce13744b0f318c400341c13cd).
+Context, Paper, RRF and Max-Cosine each scored Hit@5=10/34,
+Name=6/34. Best arm top-20 recall was RRF=16/34; at top-100
+RRF and Max-Cosine reached 26/34. These are **not a new held-out
+test** and did not exceed the earlier Context Hit@5=10/34.
+
+A new **unrun** Qwen3-Reranker-0.6B gold-blind exact-entity
+candidate-reranking extension starts from the frozen BGE top-100
+lists, rather than rerunning BGE or accessing any test gold.
+See [private Kaggle Qwen3 runbook](docs/QWEN3_RERANK_RUNBOOK.md).
+It does not modify the original published Flat/Route experiment.
