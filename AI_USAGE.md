@@ -239,3 +239,20 @@ the module but still strips ground_truth.json from the nested source
 ZIP. **No new accuracy or model improvement has yet been observed**;
 this code is another post-hoc developmental diagnostic, not a new
 independent holdout, and no locked report changes are justified.
+
+
+## AI extension: Qwen3 exact-answer reranker after multiview results
+
+GPT-6 received the user-computed frozen multiview rankings and local
+34-question development scores. Paper/Context/RRF/Max Cosine
+10/34 Hit@5, Name 6/34; RRF best 16/34 Top20, RRF/Max 26/34
+Top100. Then GPT-6 authored separate, checkpointable,
+source-dated, Gold-blind Qwen3-Reranker-0.6B experiment with
+a declared exact-scientific-entity custom ranking instruction
+and original Context/RRF control arms. The new private Kaggle
+bundle accepts only the existing unsupervised multiview
+rankings and sanitized graph/article input ZIP; Gold,
+old scores, reviewers and original claims remain excluded.
+No claim that reranker is scientifically right or faster,
+and no model-run result exists at this time. The experiment
+is a post-hoc research extension, not a new untouched holdout.
