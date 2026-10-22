@@ -200,3 +200,19 @@ To run (on Windows, from repo root):
     .\.venv\Scripts\python.exe -m research_lab.posthoc_retrieval_diagnostics --project .
 
 Read local_only/advanced_retrieval/posthoc_error_audit_LOCAL.json and preserve it under ignored local_only. It is an error analysis, NOT a held-out test. Freeze the selected dense-only approach before evaluating on separately authored new questions.
+
+## Candidate-coverage-oriented multiview development implementation
+
+The GPU error diagnostic showed Dense Top-20 visibility 14/34, with
+seven dense Top-5 successes demoted but still in reranker Top-20,
+three absent from the exported reranker Top-20 (unknown Top-64 status),
+and a post-hoc fixed Dense-4+RRF-1 allocation giving 11/34.
+A newly implemented, **not yet GPU-executed** independent multi-view
+BGE module separates canonical entity name/type, dated source paper
+titles, and previous native hyperedge co-mention context. It writes
+gold-blind top-100 rankings for all arms, then scores exact-type
+Hit@5/10/20/50/100 against the same already-seen 34 locally.
+No paper abstracts are invented or added. This is next-step
+development research only, not a replacement for the frozen model,
+published metrics, or an independent generalization result.
+See [GPU runbook](ADVANCED_GPU_AND_TYPE_B.md).
