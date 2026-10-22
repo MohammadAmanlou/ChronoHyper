@@ -138,3 +138,25 @@ ChatGPT GPT-6 was given the separately returned `RATED_BY_INDEPENDENT_AI.csv` an
 - `Q16.C3` was earlier marked no but the second AI called it yes from a 2025 scaling-laws preprint, an **AI disagreement** rather than definitive full-paper gold. The first 36-row verdict remains unmodified; optional posthoc vote overlay is 26/0/10, with 27 claims not retested.
 - A private row-level reconciliation CSV and JSON diagnostic were generated for the applicant's download, **not** uploaded to GitHub. All public repository edits contain only aggregates, public links, limitations, case IDs and evidence provenance; no secret reviewer keys or raw private claim data were committed.
 - Neither AI opinion set proves true reviewer independence, complete scientific entailment, generated answer correctness, an unseen test corpus or a generalization gain. The locked model, `metrics.json`, existing `report.pdf`, and original source/holdout experiments remain unchanged.
+
+## Addendum — prospective source-stratified benchmark scaffolding (22 October 2026)
+
+- **Assistant:** OpenAI GPT-6, following the user's request to proceed to the next
+  task-grounded scientific validation step after the nine-claim Type-B second pass.
+- **AI-assisted code:** `research_lab/fresh_retrieval.py` and synthetic
+  regression tests for 36 deterministic across-root targets, dated source
+  paper metadata, target-name leakage controls, 2025 source cutoff,
+  source-annotated independent question authoring, gold and queries frozen
+  *before* ranking, exact target-name+entity-type top-five assessment,
+  predeclared four-root-vs-flat paired descriptive analysis, and archived
+  local-only outputs.
+- **Execution boundary:** the fresh-author kit generation and its synthetic
+  tests have been exercised in clean GitHub CI, but no new independent
+  reviewer-authored question CSV has yet been received or evaluated here.
+  The author sees target entity names and one historical source title; this
+  is a *new-question / same-corpus* test, **not external unseen-domain
+  generalization** or independent generated-answer correctness.
+- **Integrity:** original `metrics.json`, source-group confirmation,
+  model selection, source archive, reviewer keys, `report.pdf` and
+  historical experiments were not changed. New private question and Gold
+  files default to ignored `local_only/`.
