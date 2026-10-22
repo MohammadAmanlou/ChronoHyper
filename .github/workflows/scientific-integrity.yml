@@ -31,7 +31,7 @@ jobs:
       - name: Research and gold-separation tests
         run: |
           python -m unittest research_lab.tests_lab research_lab.test_label_v2 research_lab.test_type_b_source_audit -v
-          python -m unittest research_lab.test_retrieval_frontier research_lab.test_frontier_historical research_lab.test_v3_provenance_audit research_lab.test_review_handoff research_lab.test_assessment_status research_lab.test_type_b_independent_handoff research_lab.test_fresh_retrieval research_lab.test_screen_fresh_questions -v
+          python -m unittest research_lab.test_retrieval_frontier research_lab.test_frontier_historical research_lab.test_v3_provenance_audit research_lab.test_review_handoff research_lab.test_assessment_status research_lab.test_type_b_independent_handoff research_lab.test_fresh_retrieval research_lab.test_screen_fresh_questions research_lab.test_fresh_score_audit -v
       - name: Verify frozen hierarchy and hyperedge output
         run: python verify_selected_outputs.py --out outputs_selected
       - name: Generate developmental V3 labels in ignored output
