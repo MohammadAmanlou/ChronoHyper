@@ -94,7 +94,8 @@ def _cross_encoder(name,device):
     return CrossEncoder(name,device=device,max_length=512)
 
 def retrieval_query(query,lex_score,dense_score,documents,entries,reranker=None,
-                    candidate_k=CANDIDATE_K,rerank_k=RERANK_K):
+                    candidate_k=CANDIDATE_K,rerank_k=RERANK_K,
+                    selected_roots=None,soft_bonus=0.12):
     if len(lex_score)!=len(entries) or len(dense_score)!=len(entries):
         raise ValueError("Candidate score shapes differ")
     lex_order=_argsort(lex_score);dense_order=_argsort(dense_score)
@@ -112,7 +113,19 @@ def retrieval_query(query,lex_score,dense_score,documents,entries,reranker=None,
     else:
         ranked=base
         rerank_scores={j:float(len(base)-k) for k,j in enumerate(base)}
+    # Soft, bounded root prior; unlike hard routing it never discards candidates.
+    # Report separately: a root-based gain on previously seen 34 questions is
+    # research development, not an independent test result.
+    floor=min(rerank_scores.values()); ceiling=max(rerank_scores.values())
+    selected=set(selected_roots or [])
+    score_h={}
+    for j in ranked:
+        normalized=(rerank_scores[j]-floor)/(ceiling-floor+1e-9)
+        bonus=soft_bonus if selected.intersection(entries[j].get("roots",[])) else 0.
+        score_h[j]=normalized+bonus
+    hierarchy=sorted(ranked,key=lambda j:(-score_h[j],j))
     return {
+        "soft_hierarchy":_as_top(hierarchy,score_h,entries),
         "lexical":_as_top(lex_order,{j:float(lex_score[j]) for j in lex_order[:20]},entries),
         "dense":_as_top(dense_order,{j:float(dense_score[j]) for j in dense_order[:20]},entries),
         "hybrid_rrf":_as_top(hyb,{j:float(len(hyb)-k) for k,j in enumerate(hyb[:20])},entries),
@@ -158,6 +171,14 @@ def rank(project=".",questions=FRESH_QUERIES,out=DEFAULT,
     embedding_s=time.perf_counter()-begin
     _check=bool(np.isfinite(vectors).all())
     if not _check:raise ValueError("Nonfinite embeddings")
+    # Cost is offline: 12 (or fewer) dense root means; no new model fitting.
+    centroid_vecs=[]
+    for rid in roots:
+        idx=[i for i,item in enumerate(entries) if rid in item["roots"]]
+        center=np.mean(vectors[idx],axis=0)
+        center=center/max(float(np.linalg.norm(center)),1e-12)
+        centroid_vecs.append(center)
+    centroid_vecs=np.asarray(centroid_vecs,dtype=np.float32)
     reranker=None if no_reranker else _cross_encoder(reranker_model,device)
     output=[]
     for q in qrows:
@@ -169,8 +190,10 @@ def rank(project=".",questions=FRESH_QUERIES,out=DEFAULT,
         qv=np.asarray(embed.encode([query],normalize_embeddings=True),
                       dtype=np.float32).ravel()
         d=vectors@qv
+        root_s=centroid_vecs@qv
+        selected_roots=[roots[int(i)] for i in np.argsort(-root_s)[:min(4,len(roots))]]
         prediction=retrieval_query(query,lx,d,texts,entries,reranker,
-                                   candidate_k,rerank_k)
+                                   candidate_k,rerank_k,selected_roots=selected_roots)
         elapsed=time.perf_counter()-start
         output.append({"question_id":q["question_id"],"type":q.get("type",""),
                        "retrieval":prediction,
@@ -182,6 +205,8 @@ def rank(project=".",questions=FRESH_QUERIES,out=DEFAULT,
         "old_34_is_not_confirmatory":True,
         "cutoff":CUTOFF,"queries_sha256":hashlib.sha256(qfile.read_bytes()).hexdigest(),
         "n_queries":len(output),"n_entities":len(entries),
+        "root_routing":"bounded soft prior on reranked list, NO hard filtering",
+        "soft_root_bonus":0.12,
         "n_root_groups":len(roots),"dense_model":dense_model,
         "reranker_model":None if no_reranker else reranker_model,
         "device":device,"candidate_k":candidate_k,"rerank_k":rerank_k,
@@ -211,7 +236,7 @@ def score(project=".",directory=DEFAULT,gold=FRESH_GOLD):
     golds={r["question_id"]:(r["target_type"],norm(r["target_name"])) for r in rows}
     if len(golds)!=len(rows) or len(rows)!=len(data["rankings"]) or set(golds)!={x["question_id"] for x in data["rankings"]}:
         raise ValueError("Gold/query ID mismatch: partial evaluation disallowed")
-    arms=("lexical","dense","hybrid_rrf","hybrid_rerank")
+    arms=("lexical","dense","hybrid_rrf","hybrid_rerank","soft_hierarchy")
     hits={a:[] for a in arms}
     mrr={a:[] for a in arms}
     per_question=[]
