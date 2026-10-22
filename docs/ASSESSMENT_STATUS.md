@@ -216,3 +216,22 @@ No paper abstracts are invented or added. This is next-step
 development research only, not a replacement for the frozen model,
 published metrics, or an independent generalization result.
 See [GPU runbook](ADVANCED_GPU_AND_TYPE_B.md).
+
+
+## Multi-View score and unscored Qwen exact-entity next experiment
+
+BGE multi-view actually executed; 34 already inspected development
+questions and frozen SHA
+88f536d78e9e408f526d08bc079111cdd32db76ce13744b0f318c400341c13cd.
+Hit@5: Context 10/34, Name 6/34, Paper 10/34, RRF 10/34
+and Max Cosine 10/34. Candidate Top-20 reached 16/34 for RRF;
+Top-100 reached 26/34 for RRF and Max Cosine. Embedding
+multiple views did not improve the previously observed top-five.
+
+The Qwen3 exact-entity reranking pipeline
+research_lab/qwen_entity_rerank.py is implemented, gold-blind,
+checkpointed and CI synthetic tests are added. It is **not run**,
+and no new Hit@5 can be claimed. The 34 questions remain
+POST-HOC DEVELOPMENT. A new independent full-text verified
+question set is still required to support generalization.
+See [Qwen GPU procedure](QWEN3_RERANK_RUNBOOK.md).
