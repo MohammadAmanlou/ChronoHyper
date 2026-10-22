@@ -510,3 +510,46 @@ source-verification problem remains explicitly disclosed in reporting.
 author-response and kit hashes, **not the private gold file**. The score
 stage reads and verifies Gold only after \`rankings.json\` exists with its
 rank SHA-256.
+
+
+## 19 · Read-only audit and safe archive of scored 34-query result (22 October)
+
+The applicant's actual Windows run finished the previously frozen
+`local_only/fresh_retrieval_screened34` run successfully. Two source
+associations failed *before scoring*; all 34 included query/Gold pairs were
+frozen. The observed negative result is Flat Hit@5 **3/34**, four-root
+**2/34**, four-root **59.3% fewer online dot products**. Do not rerun
+`--author-kit`, `--stage`, `--freeze`, `--rank` or `--score`:
+those commands correctly refuse to overwrite the existing frozen evidence.
+
+From PowerShell in repo root:
+
+```powershell
+git pull --ff-only origin main
+.\.venv\Scripts\python.exe -m unittest research_lab.test_fresh_score_audit -v
+.\.venv\Scripts\python.exe -m research_lab.fresh_score_audit --project .
+Get-Content .\local_only\fresh_retrieval_screened34\audit_local.json
+git status --short
+```
+
+This **read-only** command checks 36 attempted/34 source-qualified/two excluded
+(F023/F031), digest of frozen ranking, hash match of scored query and Gold,
+all-root versus Flat top-5 equality, each query's hit/MRR/cost,
+paired 0 wins/1 loss/33 ties, and reported online dot-product means.
+It does **not** rerank or retune, and it cannot certify article entailment.
+
+**Only after this succeeds**, explicitly create a non-sensitive tracked
+aggregate for final submission:
+
+```powershell
+.\.venv\Scripts\python.exe -m research_lab.fresh_score_audit --project . --export-safe
+git add research_outputs/fresh_retrieval_34_aggregate.json
+git commit -m "Archive audited prospective 34-question aggregate without private Gold"
+git push origin main
+```
+
+Do NOT commit `local_only/`, the 34/36 source worksheets, private Gold,
+reviewer notes or raw rankings. The exported JSON contains no question text,
+target names, paper titles or full reviewer notes. The score on this original
+corpus is **not** a new domain benchmark and does **not** establish that
+routing preserves top-5 quality beyond the observed 34 questions.
