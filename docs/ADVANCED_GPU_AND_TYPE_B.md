@@ -149,6 +149,48 @@ Get-Content .\local_only\type_b_generation\type_b_answer_score_LOCAL.json
 Until actual source passages, generated answers and independent AI ratings
 exist, Type-B **GENERATED ANSWER ACCURACY IS NOT MEASURED**.
 
+
+### Kaggle option for the actual Type-B generator
+
+After the factual source passage worksheet has been completed, checked and
+approved, create a separate PRIVATE upload zip on Windows:
+
+~~~powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\package_gpu_type_b_private.ps1
+~~~
+
+This source-only bundle is intentionally different from the retrieval bundle
+and includes real full-text excerpts. Keep it private and permitted by the
+article owners' terms. Attach gpu_type_b_private.zip to a separate Kaggle
+GPU notebook. Run:
+
+~~~python
+from pathlib import Path
+import zipfile,subprocess,sys
+zips=list(Path('/kaggle/input').rglob('gpu_type_b_private.zip'))
+assert len(zips)==1,zips
+root=Path('/kaggle/working/type_b')
+root.mkdir(parents=True,exist_ok=True)
+with zipfile.ZipFile(zips[0]) as z:z.extractall(root)
+subprocess.run([sys.executable,'-m','pip','install','-q','-r',
+                str(root/'requirements_advanced.txt')],check=True)
+subprocess.run([sys.executable,'-m','research_lab.type_b_answer_generation',
+                '--project',str(root),'--generate'],cwd=str(root),check=True)
+~~~
+
+Download these **three** outputs and put them in your Windows repo at
+local_only/type_b_generation:
+
+~~~python
+from IPython.display import FileLink,display
+for name in ('GENERATED_ANSWERS_PRIVATE.csv','BLIND_ANSWER_REVIEW.csv',
+             'generation_manifest.json'):
+    display(FileLink('/kaggle/working/type_b/local_only/type_b_generation/'+name))
+~~~
+
+No correctness claim exists until a separate AI has actually rated the
+answers against original source passages and the original questions.
+
 ## 4. What is necessary for the Constructor evaluation
 
 A much larger model does not repair missing source evidence or circularity.
