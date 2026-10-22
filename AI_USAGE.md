@@ -166,3 +166,25 @@ ChatGPT GPT-6 was given the separately returned `RATED_BY_INDEPENDENT_AI.csv` an
 - ChatGPT GPT-6 inspected the uploaded 36-row 11-column `FRESH_QUESTIONS_FROM_AI.csv`. Exactly **F023 and F031** had empty scientific questions and source URLs, with explicit notes that the original associated 2025 review could not be substantiated. The assistant did **not** invent answers, replace the original sampled paper, or claim 36 valid queries.
 - Added `research_lab/screen_fresh_questions.py` and synthetic regression tests: all 36 sampled targets remain tracked; the 34 qualified question rows are moved into a **separate** ignored benchmark folder, with two paper-source failures recorded before retrieval. The original author kit/response and model outputs are preserved.
 - Fixed the ranking mode in `research_lab/fresh_retrieval.py` to verify precommitted question/author evidence hashes **without even opening the private Gold file**. Score mode opens and verifies Gold only after rank digest exists. No fresh Hit@5 values or independent full-text review are claimed by this work.
+
+## Addendum — 34 fresh-question scores and independent read-only audit (22 October 2026)
+
+- The candidate executed a prospective same-corpus evaluation on **34 new
+  AI-authored questions**, after two documented unverified source associations
+  (F023/F031) were excluded from the original 36-target sample before ranking.
+  The user provided a full Windows log with the SHA-frozen rank digest and
+  scored summary: Flat **3/34** and predeclared Route-4 **2/34** Hit@5,
+  Route-4 minus Flat **−1/34**, one loss, zero wins and 33 ties; Route-4
+  scored **1,076.44** vs Flat **2,647** online dot products (59.3% less).
+- GPT-6 implemented `research_lab/fresh_score_audit.py` and negative-fixture
+  regression tests to independently verify the local score JSON, rank digest,
+  all-root equality, denominator, pre-ranking exclusions and cost accounting,
+  without re-ranking or reading Gold in the query-ranking step. A source-safe,
+  aggregate-only export was provided, and test integration/verification added
+  to the local and CI workflows.
+- **Verification boundary:** these numeric claims originate in the applicant's
+  supplied Windows log; the new read-only auditor still needs to inspect the
+  applicant's actual local frozen files. No scientific full-text semantic
+  entailment for 34 questions, external corpus transfer or Type-B generated
+  answer correctness has been verified. No retuning is permitted based on
+  these returned 34 answers.
