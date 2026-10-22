@@ -72,8 +72,13 @@ class MultiViewTests(unittest.TestCase):
             with g.open("w",newline="",encoding="utf-8") as f:
                 w=csv.DictWriter(f,fieldnames=("question_id","target_type","target_name"))
                 w.writeheader();w.writerows(ref)
-            with patch.object(mv,"FRESH_QUERIES","missing.csv"):
-                out=mv.score(root,gold=str(g))
+            q=root/"local_only/fresh_retrieval_screened34/queries_only.csv"
+            q.parent.mkdir(parents=True)
+            q.write_text("question_id,question\\nF001,Synthetic test?\\n")
+            ranking["query_file_sha256"]=hashlib.sha256(q.read_bytes()).hexdigest()
+            ranking["ranking_sha256"]=_rank_hash(ranking)
+            (folder/"rankings.json").write_text(json.dumps(ranking))
+            out=mv.score(root,gold=str(g))
             self.assertEqual(out["correct_at_k_counts"]["context"]["hit_at_5"],34)
             self.assertTrue(out["not_a_new_unseen_test"])
             with self.assertRaises(FileExistsError):mv.score(root,gold=str(g))
