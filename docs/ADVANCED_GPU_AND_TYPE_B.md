@@ -29,6 +29,29 @@ git pull --ff-only origin main
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\package_gpu_rank_only.ps1
 ~~~
 
+**Kaggle ZIP format fix (22 October 2026):** The previous Windows
+`Compress-Archive` produced member names with backslash separators,
+which Kaggle rejects. The rank-only and Type-B PowerShell wrappers now
+use Python `zipfile` with explicit POSIX `/` member paths and check
+the archive against the exact allowed-file list. If an old ZIP exists,
+preserve it under a legacy filename before rerunning:
+
+~~~powershell
+$old = ".\local_only\gpu_rank_only.zip"
+if (Test-Path $old) {
+    $backup = ".\local_only\gpu_rank_only_windows_legacy.zip"
+    if (Test-Path $backup) { throw "Legacy backup already exists; choose another backup name" }
+    Move-Item -LiteralPath $old -Destination $backup
+}
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\package_gpu_rank_only.ps1
+
+.\.venv\Scripts\python.exe -c "from zipfile import ZipFile; p='local_only/gpu_rank_only.zip'; z=ZipFile(p); print(z.namelist()); assert all(chr(92) not in n for n in z.namelist()); assert not any('gold_private' in n.lower() for n in z.namelist()); print('KAGGLE ZIP: PASS')"
+~~~
+
+Upload **only the new `gpu_rank_only.zip`** to the private Kaggle Dataset.
+Do not upload the Windows legacy ZIP. The inner original `inputs/data.zip`
+is retained as a legitimate source archive; its bytes were not modified.
+
 This creates local_only/gpu_rank_only.zip. It includes ONLY the source data
 ZIP, 2025 hierarchy, ranking queries, permitted code, and optional dependency
 pins. It does NOT contain Gold, ratings, previous scored outcomes, or blind
