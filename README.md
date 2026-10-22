@@ -74,8 +74,13 @@ before running the matched four-root-vs-flat retrieval test. The isolated author
 documented unverifiable original paper associations**. A pre-rank,
 source-screened 34-question option is available with all 36 attempts
 and exclusion reasons retained; see
-[reproduction instructions](docs/REPRODUCE.md). A code/CI pass
-verifies the tool, **not** new-query accuracy. Exact
+[reproduction instructions](docs/REPRODUCE.md). The applicant has now scored **34 of 36** original targets after
+two independently documented **pre-ranking** source failures.
+The predeclared four-root route obtained **2/34** Type-A Hit@5
+versus **3/34** for Flat, with **59.3% fewer online dot products**.
+This is an honest *negative/ambiguous accuracy* result, not superior
+retrieval or an independent new corpus. A separate local JSON integrity
+audit must be run before publishing its safe aggregate. Exact
 [commands and integrity requirements](docs/REPRODUCE.md#18--prospective-stratified-new-question-retrieval-test-22-october).
 
 ## Remaining scientific boundaries
