@@ -293,3 +293,115 @@ To run (on Windows, from repo root):
     .\.venv\Scripts\python.exe -m research_lab.posthoc_retrieval_diagnostics --project .
 
 Read local_only/advanced_retrieval/posthoc_error_audit_LOCAL.json and preserve it under ignored local_only. It is an error analysis, NOT a held-out test. Freeze the selected dense-only approach before evaluating on separately authored new questions.
+
+
+## Follow-up: multi-view BGE-M3 candidate coverage on the same 34 queries
+
+The post-hoc failure audit found Dense 10/34 Hit@5, Dense 14/34
+Top-20 visibility, rerank demotion of seven correct answers and three
+other dense successes missing from the exported reranker Top-20.
+It cannot determine rerank candidate@64 recall.
+
+A NEW isolated multiview_dense development module indexes three
+evidence-bound views of each canonical entity: original long native
+co-mention context, canonical name plus type, and recorded dated
+paper titles. It reports 5 arms: context, name, paper, equal-weight
+3-view RRF and 3-view maximum cosine. Each exports top-100, permitting
+real Recall/Hit@5,10,20,50,100 diagnosis. This is DEVELOPMENT,
+not a fresh untouched validation. No neural reranker is used, and no
+new definitions or source abstracts are fabricated.
+
+### Windows: create a private and Gold-free rank-only ZIP
+
+~~~powershell
+cd C:\Users\a\Desktop\constructor-ckl-research
+git pull --ff-only origin main
+
+.\.venv\Scripts\python.exe -m unittest research_lab.test_multiview_dense -v
+
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\package_gpu_rank_only.ps1 -Output "local_only\gpu_rank_multiview.zip"
+
+.\.venv\Scripts\python.exe -c "from zipfile import ZipFile; import io; z=ZipFile('local_only/gpu_rank_multiview.zip'); assert 'research_lab/multiview_dense.py' in z.namelist(); sub=ZipFile(io.BytesIO(z.read('inputs/data.zip'))); assert 'data/ground_truth.json' not in sub.namelist(); print('PRIVATE MULTIVIEW ZIP OK')"
+~~~
+
+Upload the new gpu_rank_multiview.zip as a NEW PRIVATE Kaggle
+Dataset. Keep the older Kaggle Dataset PRIVATE: its original import
+may have contained recursively extracted ground_truth.json.
+
+### Kaggle GPU notebook: stage source files and rank without Gold
+
+Attach the NEW private Dataset; Kaggle can unpack nested ZIPs.
+Run this single cell with GPU and Internet access enabled:
+
+~~~python
+from pathlib import Path
+from zipfile import ZipFile, ZIP_DEFLATED
+import shutil, subprocess, sys
+
+found=list(Path('/kaggle/input').rglob('multiview_dense.py'))
+assert len(found)==1, f'Attach exactly one new private multiview Dataset: {found}'
+base=found[0].parent.parent
+root=Path('/kaggle/working/chronohyper_multiview')
+required=[
+ 'research_lab/__init__.py','research_lab/advanced_retrieval.py',
+ 'research_lab/multiview_dense.py','research_lab/retrieval_v2.py',
+ 'research_lab/retrieval_frontier.py','outputs_selected/hierarchy_2025.json',
+ 'local_only/fresh_retrieval_screened34/queries_only.csv',
+ 'requirements_advanced.txt'
+]
+for rel in required:
+    src=base/rel
+    assert src.is_file(),str(src)
+    dst=root/rel
+    dst.parent.mkdir(parents=True,exist_ok=True)
+    shutil.copy2(src,dst)
+(root/'inputs').mkdir(parents=True,exist_ok=True)
+inner=base/'inputs/data.zip'
+if inner.is_file():
+    with ZipFile(inner) as z:
+        assert set(z.namelist())=={
+          'data/tkh_collection10.json','data/collection10_articles.csv'}
+    shutil.copy2(inner,root/'inputs/data.zip')
+else:
+    nested=base/'inputs/data/data'
+    with ZipFile(root/'inputs/data.zip','w',ZIP_DEFLATED) as z:
+        for name in ('tkh_collection10.json','collection10_articles.csv'):
+            assert (nested/name).is_file(),str(nested/name)
+            z.write(nested/name,arcname='data/'+name)
+subprocess.run([sys.executable,'-m','pip','install','-q','-r',
+                str(root/'requirements_advanced.txt')],check=True)
+subprocess.run([sys.executable,'-m','research_lab.multiview_dense',
+ '--project',str(root),'--rank','--device','cuda',
+ '--out','local_only/multiview_dense_development'],
+ cwd=root,check=True)
+~~~
+
+Download only the new gold-blind ranking file:
+
+~~~python
+from IPython.display import FileLink,display
+display(FileLink('/kaggle/working/chronohyper_multiview/'
+                 'local_only/multiview_dense_development/rankings.json'))
+~~~
+
+### Windows: score after returning from Kaggle
+
+Save new Kaggle rankings.json in a separate ignored folder, NOT in the
+original advanced_retrieval directory.
+
+~~~powershell
+New-Item -ItemType Directory -Force .\local_only\multiview_dense_development
+
+Copy-Item "$env:USERPROFILE\Downloads\rankings.json" ".\local_only\multiview_dense_development\rankings.json"
+
+.\.venv\Scripts\python.exe -m research_lab.multiview_dense --project . --score
+
+Get-Content ".\local_only\multiview_dense_development\score_DEVELOPMENT_ONLY.json"
+~~~
+
+The scorer checks the frozen ranking digest, exact all-34 ID coverage,
+and SHA of the original local question texts BEFORE opening private
+Gold. All detailed judgments remain under ignored local_only.
+Do not reclassify these development numbers as unseen test accuracy:
+a new source-verified, independently authored and frozen question set
+is required after choosing a final retrieval architecture.
