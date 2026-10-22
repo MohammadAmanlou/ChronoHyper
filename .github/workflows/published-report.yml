@@ -65,11 +65,15 @@ jobs:
           print("PASS identical normalized PDF text across published and rebuilt copies")
           PY
           test -z "$(git status --porcelain)"
-      - name: Upload private text-diff evidence
+      - name: Upload rebuilt private candidate and text comparison (even when publication pending)
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: Published-report-verification
           path: |
+            local_only/published_pdf_audit/report.pdf
             local_only/published_pdf_audit/published.txt
             local_only/published_pdf_audit/rebuilt.txt
+            local_only/published_pdf_audit/xelatex1.txt
+            local_only/published_pdf_audit/xelatex2.txt
           retention-days: 7
