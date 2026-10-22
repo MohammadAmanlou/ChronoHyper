@@ -1,6 +1,11 @@
 """Synthetic-only checks that frozen 34-query negative results aren't misrepresented."""
 import copy
+import json
+import tempfile
 import unittest
+from pathlib import Path
+from unittest.mock import patch
+from research_lab import fresh_score_audit as audit_module
 from research_lab.fresh_score_audit import analyze,exact_sign_test
 from research_lab.retrieval_frontier import _rank_hash
 
@@ -83,6 +88,19 @@ class NewQuestionAuditTests(unittest.TestCase):
         inputs[3]["descriptive_paired_contrasts"]["route_4"]["losses"]=0
         with self.assertRaisesRegex(ValueError,"Paired pattern"):
             analyze(*inputs)
+
+    def test_safe_public_export_is_valid_json_without_question_gold(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            outputs=Path(tmp)/"research_outputs/fresh_retrieval_34_aggregate.json"
+            with patch.object(audit_module,"audit",return_value=analyze(*self.dataset())):
+                exported=audit_module.export_public_summary(
+                    tmp,destination=str(outputs))
+            self.assertEqual(json.loads(outputs.read_text(encoding="utf-8"))["flat_hit_n"],3)
+            self.assertNotIn("per_question_local_only",exported)
+            self.assertNotIn("target_name",exported)
+            self.assertFalse(exported["externally_independent_source_corpus"])
+            with patch.object(audit_module,"audit",return_value=analyze(*self.dataset())):
+                audit_module.export_public_summary(tmp,destination=str(outputs))
 
     def test_sign_test_preserves_tiny_discordant_denominator(self):
         self.assertEqual(exact_sign_test(0,1),1.0)
