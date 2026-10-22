@@ -70,7 +70,11 @@ selects dated entities from the existing 2025 source index deterministically
 (three per root), before any new query sees model rankings. An isolated
 question author must supply 36 properly sourced **paraphrased new questions**;
 the benchmark then freezes question texts and private Gold separately
-before running the matched four-root-vs-flat retrieval test. A code/CI pass
+before running the matched four-root-vs-flat retrieval test. The isolated author delivered 36 rows, but **F023 and F031 have
+documented unverifiable original paper associations**. A pre-rank,
+source-screened 34-question option is available with all 36 attempts
+and exclusion reasons retained; see
+[reproduction instructions](docs/REPRODUCE.md). A code/CI pass
 verifies the tool, **not** new-query accuracy. Exact
 [commands and integrity requirements](docs/REPRODUCE.md#18--prospective-stratified-new-question-retrieval-test-22-october).
 
