@@ -120,6 +120,27 @@ The other 34 URL/locator entries pass a form check, but full primary-paper
 entailment remains unaudited by code. **No fresh Hit@5 result yet exists.**
 See [REPRODUCE §18](REPRODUCE.md) for the safe original-file-preserving steps.
 
+## Prospectively scored Type-A task: 36 attempted, 34 scored
+
+The applicant has completed the new source-qualified **34-query** 2025-cutoff
+retrieval experiment on the original Constructor corpus. Exactly two originally
+sampled targets, **F023/F031**, were excluded for unverifiable associated
+paper sources **before ranking**, not after observing results. The predeclared
+four-root route achieved **Hit@5=2/34**, versus **3/34** for Flat, while
+reducing online candidate+centroid dot products from **2,647 to 1,076.44
+(59.3%)**. On 34 paired cases there were **0 route wins, 1 loss and 33
+ties**. The bootstrap 95% exploratory CI for Route-4 minus Flat Hit@5 is
+**[−0.0882,0]**, with descriptive exact sign **p=1.0**. The older 14-question
+equal-Hit@5 finding **did not replicate** on these new question texts.
+
+The same-corpus source index, author-visible targets, potential entity aliases
+and incomplete independently checked primary evidence remain limitations.
+New query text does not equal an external independent corpus. A checksum
+and denominator audit of the user's locally frozen JSON files is now available
+via `research_lab.fresh_score_audit` and **must still be run locally**
+before publication of a safe aggregate. See [Evaluation](EVALUATION.md) and
+[REPRODUCE](REPRODUCE.md).
+
 ## What is not finished — do not confuse software PASS with scientific PASS
 
 1. **36 Type-B claims:** the original AI review (25 yes/1 no/10 unclear) is followed by a nine-case second AI recheck (seven yes/two unclear; one no→yes opinion change). This is a **post-hoc AI-only overlay**, not original-gold adjudication. Three Q17 source claims were explicitly judged nonresponsive to the coarse-grained MD/phase-transition question. All 36 claims' full task relevance and actual generated-answer correctness remain unmeasured.
