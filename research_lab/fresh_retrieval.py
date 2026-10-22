@@ -59,14 +59,16 @@ def _save_json(path,value):
         json.dump(value,f,ensure_ascii=False,indent=2,sort_keys=True)
         f.write("\n")
 
-def _read_manifest(root,folder):
+def _read_manifest(root,folder,verify_gold=True):
     path=folder/"freeze_manifest.json"
     if not path.is_file():raise FileNotFoundError("First freeze the reviewer-authored questions")
     obj=json.loads(path.read_text(encoding="utf-8"))
-    for key,file in (("author_kit_sha256","AUTHOR_KIT.csv"),
-                     ("query_sha256","queries_only.csv"),
-                     ("gold_sha256","gold_PRIVATE.csv"),
-                     ("review_sha256","REVIEWED_QUESTIONS.csv")):
+    frozen=[("author_kit_sha256","AUTHOR_KIT.csv"),
+            ("query_sha256","queries_only.csv"),
+            ("review_sha256","REVIEWED_QUESTIONS.csv")]
+    if verify_gold:
+        frozen.append(("gold_sha256","gold_PRIVATE.csv"))
+    for key,file in frozen:
         if not (folder/file).is_file() or _sha(folder/file)!=obj.get(key):
             raise ValueError("Frozen author-kit/questions/gold/review changed: "+file)
     if obj.get("stage")!="SAME_CORPUS_PROSPECTIVE_QUESTION_SET_NOT_EXTERNAL":
@@ -204,7 +206,7 @@ def freeze(project=".",directory=DIR,response=""):
 def rank(project=".",directory=DIR,repeats=5):
     root=Path(project).resolve()
     folder=_p(root,directory)
-    freeze_record=_read_manifest(root,folder)
+    freeze_record=_read_manifest(root,folder,verify_gold=False)
     dest=folder/"rankings.json"
     if dest.exists():raise FileExistsError("Rankings already frozen; do not overwrite")
     ranks=frontier.rank(root,out=str(dest),
@@ -227,7 +229,7 @@ def _paired_bootstrap(values,seed=20261022,n=5000):
 def score(project=".",directory=DIR):
     root=Path(project).resolve()
     folder=_p(root,directory)
-    manifest=_read_manifest(root,folder)
+    manifest=_read_manifest(root,folder,verify_gold=True)
     if (folder/"scored.json").exists():raise FileExistsError("Preserve prior score")
     data=json.loads((folder/"rankings.json").read_text(encoding="utf-8"))
     hash_value=frontier.verify_rankings(data)
