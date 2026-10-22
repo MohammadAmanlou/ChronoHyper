@@ -457,3 +457,56 @@ The procedure refuses to overwrite previously frozen artifacts. For a genuinely
 new version, preserve the old directory and specify a **different** \`--directory\`
 from the first step onward. Do not retune the locked model, cutoff, or
 predeclared primary route budget after reading score results.
+
+
+### Correction for an isolated source-unsupported author response (22 October, F023/F031)
+
+The first external author returned **all 36 original targets/fields**, but
+\`F023\` and \`F031\` have **no question or source URL** because the exact
+associated 2025 review title could not be authenticated. Do **not** invent a
+source, silently substitute an unrelated review, delete the original rows,
+rerandomize the 36 targets, or force the main strict \`--freeze\` to pass.
+
+If the candidate cannot establish the **original listed paper's** existence,
+use the source-failure protocol **before any retrieval ranking**:
+
+\`\`\`powershell
+cd C:\Users\a\Desktop\constructor-ckl-research
+git pull --ff-only origin main
+.\.venv\Scripts\python.exe -m unittest research_lab.test_screen_fresh_questions -v
+
+# Prints errors for ALL 36 and identifies explicitly unsupported sources.
+.\.venv\Scripts\python.exe -m research_lab.screen_fresh_questions --project . --inspect
+
+# Do this ONLY if n_eligible_format=34, n_documented_excluded=2,
+# validation_errors=[] and the two exclusions are F023 and F031.
+.\.venv\Scripts\python.exe -m research_lab.screen_fresh_questions --project . --stage
+
+# This is a NEW source-screened experiment folder. The original 36-row
+# author kit, reviewer file and all evidence remain untouched.
+.\.venv\Scripts\python.exe -m research_lab.fresh_retrieval --project . --directory .\local_only\fresh_retrieval_screened34 --freeze --response .\local_only\fresh_retrieval_screened34\FRESH_QUESTIONS_FROM_AI.csv
+
+# Rank only after freeze; gold is not read or used by the rank step.
+.\.venv\Scripts\python.exe -m research_lab.fresh_retrieval --project . --directory .\local_only\fresh_retrieval_screened34 --rank
+.\.venv\Scripts\python.exe -m research_lab.fresh_retrieval --project . --directory .\local_only\fresh_retrieval_screened34 --score
+.\.venv\Scripts\python.exe -c "import json; p='local_only/fresh_retrieval_screened34/scored.json'; x=json.load(open(p)); print('Scored questions:',x['n_queries']); print('Flat:',x['per_arm']['flat']); print('Four-root:',x['per_arm']['route_4']); print('Paired:',x['descriptive_paired_contrasts']['route_4'])"
+\`\`\`
+
+The \`pre_rank_source_screen.json\` in the screened experiment permanently
+records all **36 originally sampled targets** plus why **two were excluded
+before model output was visible**. The scored denominator is **34**, *never*
+36, and even a source-coverage failure is an important dataset-quality
+finding. The two excluded items' original associated scientific review was
+**not** authenticated, so this fallback does not establish ground truth for
+those two. A source review could later justify a *new separately versioned*
+36-item study, without retroactively replacing the original screened result.
+
+The CLI structurally checks links, paper cutoff, original fields, answer-name
+leakage and old-question similarity; the code cannot itself guarantee that a
+paper passage scientifically entails each of the other 34 questions. The
+source-verification problem remains explicitly disclosed in reporting.
+
+**Improved gold isolation:** ranking verifies the precommitted question,
+author-response and kit hashes, **not the private gold file**. The score
+stage reads and verifies Gold only after \`rankings.json\` exists with its
+rank SHA-256.
