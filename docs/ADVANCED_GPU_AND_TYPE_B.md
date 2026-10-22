@@ -278,3 +278,18 @@ retrieval approach is frozen. Keep original negative evidence, including
 degree/arity structural null p≈0.69, worse source-held-out cut, low Hit@5,
 and two prospective pre-rank source failures. Do not retune the locked
 hypergraph or silently relabel the inspected 34 questions as test.
+
+
+## First actual BGE GPU score and follow-up (22 October 2026)
+
+Observed 22 October GPU result (34 already-inspected questions; post-hoc development only): BGE-M3 dense Hit@5=10/34 (29.41%, MRR@5=0.1887); new lexical=4/34, hybrid RRF=6/34, neural reranker=1/34, and reranker+soft root=1/34. Previous separately frozen Flat=3/34 and route4=2/34 remain unchanged. No improved independent-test accuracy, no Type-B generated-answer accuracy and no significant generalization claim.
+
+The neural reranker severely degraded exact-entity retrieval. A read-only, SHA-verifying post-hoc diagnostic is implemented in research_lab/posthoc_retrieval_diagnostics.py. It examines all 34 source-qualified queries, Gold only after ranking verification, dense wins lost by fusion/reranking, known top-20 visibility, and fixed post-hoc score-free allocations. Candidate@64 recall cannot be reconstructed from top-20 exports; no new GPU run or model retuning occurred in this update.
+
+To run (on Windows, from repo root):
+
+    git pull --ff-only origin main
+    .\.venv\Scripts\python.exe -m unittest research_lab.test_posthoc_retrieval_diagnostics -v
+    .\.venv\Scripts\python.exe -m research_lab.posthoc_retrieval_diagnostics --project .
+
+Read local_only/advanced_retrieval/posthoc_error_audit_LOCAL.json and preserve it under ignored local_only. It is an error analysis, NOT a held-out test. Freeze the selected dense-only approach before evaluating on separately authored new questions.
