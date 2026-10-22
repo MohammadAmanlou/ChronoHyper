@@ -1,6 +1,7 @@
 """Regression: Windows Kaggle ZIP member names must use '/' not '\\'."""
 from __future__ import annotations
 import hashlib
+import io
 import tempfile
 import unittest
 from pathlib import Path
@@ -17,6 +18,15 @@ class PortableKaggleZipTests(unittest.TestCase):
             path = self.root / item
             path.parent.mkdir(parents=True, exist_ok=True)
             path.write_bytes(("synthetic only " + item).encode("utf-8"))
+        # Source upload from Constructor contains sensitive reference truth.
+        # The nested ZIP *must* be stripped during GPU packaging.
+        data = self.root / "inputs/data.zip"
+        data.unlink()
+        with ZipFile(data, "w") as z:
+            z.writestr("data/tkh_collection10.json", '{"nodes":[],"hyperedges":[]}')
+            z.writestr("data/collection10_articles.csv", "id,title,year\\n")
+            z.writestr("data/questions.csv", "question_id;question;type\\n")
+            z.writestr("data/ground_truth.json", "TOP SECRET CONTROL GOLD")
         private = self.root / "local_only/fresh_retrieval_screened34/gold_PRIVATE.csv"
         private.write_text("HIDDEN GOLD MUST NOT BE PACKAGED", encoding="utf-8")
         self.gold_path = private
@@ -32,8 +42,12 @@ class PortableKaggleZipTests(unittest.TestCase):
             self.assertEqual(names, list(make_gpu_zip.ALLOW["rank"]))
             self.assertTrue(all("\\" not in n and "/" in n
                                 for n in names if "/" in n))
-            self.assertEqual(archive.read("inputs/data.zip"),
-                             (self.root / "inputs/data.zip").read_bytes())
+            self.assertNotEqual(archive.read("inputs/data.zip"),
+                                (self.root / "inputs/data.zip").read_bytes())
+            with ZipFile(io.BytesIO(archive.read("inputs/data.zip"))) as nested:
+                self.assertEqual(nested.namelist(),
+                                 list(make_gpu_zip.DATA_INPUTS["rank"]))
+                self.assertNotIn("data/ground_truth.json", nested.namelist())
             self.assertNotIn("HIDDEN GOLD", "\n".join(
                 archive.read(name).decode("utf-8") for name in names))
         self.assertEqual(result["sha256"], hashlib.sha256(dest.read_bytes()).hexdigest())
@@ -65,6 +79,10 @@ class PortableKaggleZipTests(unittest.TestCase):
         with ZipFile(result["zip"]) as archive:
             self.assertEqual(archive.namelist(),list(make_gpu_zip.ALLOW["type-b"]))
             self.assertTrue(all("\\" not in n for n in archive.namelist()))
+            with ZipFile(io.BytesIO(archive.read("inputs/data.zip"))) as nested:
+                self.assertEqual(nested.namelist(),
+                                 list(make_gpu_zip.DATA_INPUTS["type-b"]))
+                self.assertNotIn("data/ground_truth.json", nested.namelist())
 
 
 if __name__ == "__main__":
