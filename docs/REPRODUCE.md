@@ -553,3 +553,12 @@ reviewer notes or raw rankings. The exported JSON contains no question text,
 target names, paper titles or full reviewer notes. The score on this original
 corpus is **not** a new domain benchmark and does **not** establish that
 routing preserves top-5 quality beyond the observed 34 questions.
+
+## 20 · Experimental BGE retriever and generated Type-B responses
+
+For optional GPU runs, use [the focused runbook](ADVANCED_GPU_AND_TYPE_B.md).
+It covers a private rank-only Kaggle source bundle excluding gold,
+BGE-M3+lexical+reranker comparative ranking, research-only scoring,
+and separately sourced Type-B generated answers with four-item blind
+AI grading. No pretrained GPU result or independent answer-correctness
+rate is implied until the applicant performs the real execution.
