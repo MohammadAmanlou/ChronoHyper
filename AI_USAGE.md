@@ -188,3 +188,24 @@ ChatGPT GPT-6 was given the separately returned `RATED_BY_INDEPENDENT_AI.csv` an
   entailment for 34 questions, external corpus transfer or Type-B generated
   answer correctness has been verified. No retuning is permitted based on
   these returned 34 answers.
+
+## Addendum — experimental stronger semantic retrieval and answer generator (22 October 2026)
+
+User requested a much higher Hit@5, GPU/Kaggle support and *actual*
+generated Type-B answer evaluation. GPT-6 authored research-only
+BGE-M3/TF-IDF reciprocal-rank-fusion retrieval with BGE-M3
+cross-encoder reranking, preserved dated native hyperedge co-mentions,
+a separate soft-hierarchy ablation, a gold-free Kaggle rank-only
+package, synthetic unit tests and pinned optional packages.
+GPT-6 also developed local Qwen2.5-3B-Instruct source-grounded
+Type-B answer generation, evidence-gated historical source
+passages and a separate generated-answer grading worksheet.
+Official model cards: https://huggingface.co/BAAI/bge-m3
+and https://huggingface.co/BAAI/bge-reranker-v2-m3.
+
+**Not yet verified:** no Kaggle/server GPU inference, actual improved
+top-5 hit rate, four generated Type-B answers, or their independent
+scientific correctness judgments has occurred. A 34-query
+comparison after seeing the old scores is post-hoc development,
+not untouched confirmation. Locked model selection, original negative
+results, metrics.json and published 4-page report stay unchanged.
