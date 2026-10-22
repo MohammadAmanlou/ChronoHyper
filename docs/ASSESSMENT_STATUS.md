@@ -77,6 +77,27 @@ The reviewer also consulted the 2025 Liu et al. uncertainty paper, <https://arxi
 
 **New highest-priority scientific blocker:** claim-by-claim scientific *source* support is **not** the extrinsic task's **answer correctness**. For Q17 especially, a high source-support vote can mask substantive irrelevance to the original research question. The assessment still needs a genuinely answer-level, task-grounded and preferably new-question check. The paper should emphasize this important failure analysis, not advertise the optimistic conditional 26/26 reviewer vote.
 
+## Prospective new-question task-gain protocol (implementation ready; data pending)
+
+`research_lab/fresh_retrieval.py` independently samples, by deterministic
+SHA-256 ordering, three existing source-grounded entities per 2025 root and
+emits a neutral author kit (typically **36 targets** across 12 root groups).
+The *new* isolated question author sees target names and a pre-cutoff source
+title, but **not** model outputs, past retrieval questions or old gold.
+Returning questions must cite real primary evidence, paraphrase the target
+without copying its name, and remain distinct from previously inspected
+questions. Its question text/Gold files are **frozen together with SHA-256
+before any ranking** and scored only afterward.
+
+Predeclared primary comparison: **four-root route vs flat** with exact
+type+normalized-target match on ALL frozen questions, paired Hit@5,
+MRR@5 and cost. Unlike the old 14 questions this produces *prospectively
+new question texts*, but targets and index still come from the **same
+Constructor corpus**. It is not a new external-domain corpus or generated
+Type-B answer correctness. **No novel question scores are claimed until the
+separate author CSV is actually received and the three-phase evaluation runs.**
+See [REPRODUCE §18](REPRODUCE.md).
+
 ## What is not finished — do not confuse software PASS with scientific PASS
 
 1. **36 Type-B claims:** the original AI review (25 yes/1 no/10 unclear) is followed by a nine-case second AI recheck (seven yes/two unclear; one no→yes opinion change). This is a **post-hoc AI-only overlay**, not original-gold adjudication. Three Q17 source claims were explicitly judged nonresponsive to the coarse-grained MD/phase-transition question. All 36 claims' full task relevance and actual generated-answer correctness remain unmeasured.
