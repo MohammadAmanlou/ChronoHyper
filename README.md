@@ -99,6 +99,14 @@ Type-B generated answers/scores are claimed yet.** See the one
 The locked model, root report PDF and original negative results remain
 unchanged.
 
+**Next developmental gate (not yet scored):** a separate three-view BGE-M3
+method has been implemented to measure candidate coverage at top
+5/10/20/50/100 using canonical names, original dated paper titles
+and native co-occurrence context, without cross-encoder or synthetic
+paper claims. It uses gold-separated scoring only after the new
+rank-only GPU digest is frozen. See
+[GPU multiview steps](docs/ADVANCED_GPU_AND_TYPE_B.md#follow-up-multi-view-bge-m3-candidate-coverage-on-the-same-34-queries).
+
 ## Remaining scientific boundaries
 
 The **36 Type-B paper claims** now have an AI-only review (25/1/10) but **not a verified independent full-text or task-grounded adjudication**; the older user-created `local_only/reviews/claims_rated.csv` is a separate blank working copy. Nine second-pass concerns need resolution. A truly new question set with pre-frozen gold is also missing. The two new AI evaluations don't remove the coherence circularity risk or override the structural null. See [exact outstanding gates](docs/ASSESSMENT_STATUS.md) and [safe independent reviewer protocol](docs/INDEPENDENT_VALIDATION.md).
