@@ -1,0 +1,43 @@
+{
+  "allroot_rankings_equal_flat": true,
+  "attempted_source_targets": 36,
+  "audit_method": "python -m research_lab.fresh_score_audit --project .",
+  "externally_independent_source_corpus": false,
+  "flat_hit_at5": 0.08823529411764706,
+  "flat_hit_n": 3,
+  "flat_mean_query_median_online_ms": 8.156702941224626,
+  "flat_mrr_at5": 0.051470588235294115,
+  "flat_online_dot_products_mean": 2647,
+  "interpretation": "The predeclared four-root variant saved ~59.3% of online dot products, but lost one of three flat top-5 hits on the 34 source-qualified new same-corpus questions. A negative observed Hit@5 difference is not evidence of significant harm or proof of equivalence. Do not retune and then reuse this same set as confirmation.",
+  "new_question_texts": true,
+  "no_claim_of_statistical_equivalence": true,
+  "online_dot_product_reduction_fraction": 0.5933354074534989,
+  "original_question_author_fulltext_evidence_certified": false,
+  "original_type_B_generated_answer_accuracy_measured": false,
+  "paired_bootstrap95_exploratory": [
+    -0.08823529411764706,
+    0.0
+  ],
+  "paired_exact_sign_p_descriptive": 1.0,
+  "paired_hit_difference_route_minus_flat": -0.029411764705882353,
+  "paired_losses_route": 1,
+  "paired_ties": 33,
+  "paired_wins_route": 0,
+  "pre_ranking_source_exclusions": [
+    "F023",
+    "F031"
+  ],
+  "predeclared_primary_arm": "route_4",
+  "rank_sha256_verified": "66e38cd38b0f4a82a122639ecd60b4c05feb5445d110095630395c57bfd65109",
+  "route4_hit_at5": 0.058823529411764705,
+  "route4_hit_n": 2,
+  "route4_mean_query_median_online_ms": 6.321397058854927,
+  "route4_mrr_at5": 0.0392156862745098,
+  "route4_online_dot_products_mean": 1076.4411764705883,
+  "same_corpus_as_model": true,
+  "schema": "chronohyper_34q_frozen_score_integrity_v1",
+  "source": "candidate's LOCAL-only, checksum-verified 34-question score; raw corpus/private Gold not published",
+  "source_qualified_queries": 34,
+  "status": "APPLICANT_LOCAL_RESULT_AUDITED_NO_RERANK",
+  "timing_excludes_query_vectorization_and_offline_index": true
+}
