@@ -57,7 +57,10 @@ DEFAULT = {
     "rerank": "local_only/gpu_qwen_entity_rerank_private.zip",
 }
 DENIED_PARTS = {"gold_private.csv", "mapping_private.csv"}
-DENIED_FRAGMENT = ("reviews/", "rankings.json", "scored.json", "score_development_only")
+# Only the exact, verified gold-blind multiview ranking is allowed by
+# ALLOW['rerank']; any other ranking/score path is rejected by the exact
+# allowlist comparison. Don't block its filename by substring.
+DENIED_FRAGMENT = ("reviews/", "scored.json", "score_development_only")
 # The supplied original archive ALSO contains a hidden ground_truth.json.
 # Explicitly remove it from EVERY Kaggle package, including nested archives.
 DATA_INPUTS = {
@@ -112,6 +115,9 @@ def create(project=".", kind="rank", output=None, entries=None):
     if kind == "rerank":
         # Verify all source rankings before creating any new gold-blind GPU
         # archive. Ignore local development scores even if present.
+        import sys
+        if str(root) not in sys.path:
+            sys.path.insert(0, str(root))
         from research_lab.qwen_entity_rerank import read_rankings
         read_rankings(root)
     dest = Path(output or DEFAULT[kind])
