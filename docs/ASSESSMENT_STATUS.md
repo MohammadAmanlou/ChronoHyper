@@ -58,9 +58,28 @@ Official publication metadata / preprints for independent verification:
 
 The original task asks Q15/Q17/Q18 **by February 2026**. Evidence observed later is not automatically retroactively admissible; original dated preprints may be, if the specific claim appears in the early version. Keep separate: (i) existence of a paper, (ii) full scientific entailment of a claim, (iii) cutoff admissibility, and (iv) generated-answer correctness. This post-hoc, same-task source check must not be presented as a fresh independent test corpus.
 
+
+## Targeted second AI review of nine Type-B claims (22 October 2026)
+
+The candidate obtained a **second AI-only, source-version-aware review** of the nine earlier flagged claims. Original 36-row ratings are **NOT rewritten**. Both input sources were locally checked for matching original claim ID/text and all nine reviewer fields were nonempty. The returned review file's SHA-256 was `a7bdbf16c59251a2b4f81c39f0a918aafd5b76cf01c25a63ad98ee426d8f2389`; the original 36-rating CSV was `6c3d7729044932aeeb11e5c437b50e230778d75807d8c1046257ab1ecc215222`. The private row-level overlay stays under `local_only/`.
+
+Of **nine targeted claims**, the new AI reviewer marked **seven source-supported** and **two unclear** (`Q15.C8`, `Q17.C3`). Seven had evidence designated available by the February 2026 cutoff; two were unclear. Only **six of nine** were judged relevant to the **original question**; all three claims `Q17.C1/C2/C3` failed task alignment: atomistic MLIP/NEB migration-barrier proxy studies are **not** evidence of effective **coarse-grained molecular dynamics** or solid-state phase-transition simulation. The reviewer identified one change in source-claim judgment: `Q16.C3` from earlier AI **no** to second AI **yes**, using the 2025 preprint on equivariance-dependent data-scaling exponents. This is an empirical architecture-dependent observation, not a theorem or a controlled causal isolation of E(3) equivariance.
+
+If the nine newer AI judgments are displayed over the original 36 as a *diagnostic overlay only*, the nominal 36-claim **AI vote distribution** becomes **26 yes, 0 no, 10 unclear** (27 rows not retested). This must **never** be described as 26 independently confirmed correct answers or 100% source faithfulness. The 36-claim original scorer's `25/26` output remains frozen as the historical AI reviewer vote. The optional overlay compares **AI opinions**, not original benchmark gold, original paper access, or answer-generation success; the 27 unreviewed task-fit statuses remain unknown. No novel external benchmark, actual answer generation, or human review occurred.
+
+Citations dated **before** the Feb 2026 cutoff that were independently locatable in public sources include:
+- Focassio et al. 2024 (surfaces), <https://arxiv.org/html/2403.04217v1>;
+- Shuang et al. 2025 (metal grain-boundary limits, model-dependent), <https://arxiv.org/abs/2502.03578v1>;
+- Ngo and Ravanbakhsh 2025 (empirical force-field scaling exponents), <https://arxiv.org/html/2510.09768v1>;
+- Bheemaguli et al. 2025 (MLIP+NEB, **not** coarse-grained MD), <https://arxiv.org/html/2512.03642v1>;
+- Sanocki and Zavadlav 2025 **v1** (OOD, long-range corrections, mixed model/split outcomes), <https://arxiv.org/html/2512.10989v1> (do not substitute its 2026 journal/updated versions for historical evidence).
+The reviewer also consulted the 2025 Liu et al. uncertainty paper, <https://arxiv.org/html/2507.21297v1>, but the exact correlated-error causal claim `Q15.C8` remained unclear.
+
+**New highest-priority scientific blocker:** claim-by-claim scientific *source* support is **not** the extrinsic task's **answer correctness**. For Q17 especially, a high source-support vote can mask substantive irrelevance to the original research question. The assessment still needs a genuinely answer-level, task-grounded and preferably new-question check. The paper should emphasize this important failure analysis, not advertise the optimistic conditional 26/26 reviewer vote.
+
 ## What is not finished — do not confuse software PASS with scientific PASS
 
-1. **36 Type-B claims:** an AI-only, original-column-preserving review has been returned and locally scored (25 yes / 1 no / 10 unclear; 26 determinate), but its full-text and historical-cutoff interpretations still need adjudication of the nine flagged cases. The older `local_only/reviews/claims_rated.csv` remains an uncompleted blank human-review copy and is NOT the AI ratings file. Source-claim support and generated-answer correctness are different quantities.
+1. **36 Type-B claims:** the original AI review (25 yes/1 no/10 unclear) is followed by a nine-case second AI recheck (seven yes/two unclear; one no→yes opinion change). This is a **post-hoc AI-only overlay**, not original-gold adjudication. Three Q17 source claims were explicitly judged nonresponsive to the coarse-grained MD/phase-transition question. All 36 claims' full task relevance and actual generated-answer correctness remain unmeasured.
 2. **Fresh external or independently constructed Type-A/B tasks:** original 14+4 benchmark questions were inspected. New questions and gold must be authored/frozen **before** ranking; gold must not guide routing choice.
 3. **Independent scientific label faithfulness:** a key-separated AI-only title/name vote is not verified full-paper semantic entailment. For an externally credible overclaim rate obtain determinate full-paper cases and retain `unclear` denominators.
 4. **T6 end-to-end downstream gain:** 2/14 accuracy and high uncertainty do not establish superiority. The selected method is justified as a transparent stability/native-provenance trade-off.
