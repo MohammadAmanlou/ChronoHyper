@@ -86,12 +86,10 @@ audit must be run before publishing its safe aggregate. Exact
 ## Optional GPU semantic retrieval and actual Type-B answer evaluation
 
 The frozen 34-query result (Flat **3/34**, Route-4 **2/34**) has NOT
-been modified. A new, **unscored** research module builds a dated
+been modified. A GPU-evaluated, exploratory research module builds a dated
 native-hyperedge co-mention index, BGE-M3 dense embeddings, lexical
 TF-IDF, rank-based fusion, BGE neural reranking and a soft root-aware
-non-pruning comparison. A previously seen 34-query run on this new model
-will be **post-hoc development**, not independent confirmation.
-**No improved Hit@5 has yet been measured.**
+non-pruning comparison. Observed 22 October GPU result (34 already-inspected questions; post-hoc development only): BGE-M3 dense Hit@5=10/34 (29.41%, MRR@5=0.1887); new lexical=4/34, hybrid RRF=6/34, neural reranker=1/34, and reranker+soft root=1/34. Previous separately frozen Flat=3/34 and route4=2/34 remain unchanged. No improved independent-test accuracy, no Type-B generated-answer accuracy and no significant generalization claim.
 
 A separate module generates actual Type-B Q15–Q18 scientific answers
 using a local Qwen2.5-3B-Instruct model and authenticated dated full-text
