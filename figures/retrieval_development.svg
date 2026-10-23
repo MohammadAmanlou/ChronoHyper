@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="425" viewBox="0 0 1100 425" role="img" aria-labelledby="t d">
+<title id="t">Exploratory retrieval accuracy and candidate coverage for 34 previously inspected questions</title>
+<desc id="d">Context BGE-M3: 10 of 34 Hit at five. Qwen3 raw and Qwen3 anchor one: 12 of 34 each. Reference entities in gold-blind candidate pool: 29 of 34, which is candidate recall not Hit at five.</desc>
+<rect width="1100" height="425" rx="22" fill="#f8fafc"/>
+<text x="40" y="55" font-family="Arial,Helvetica,sans-serif" font-size="28" font-weight="700" fill="#10243a">Retrieval development results</text>
+<text x="40" y="85" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#53687f">34 source-screened questions · repeated post-hoc development · not a fresh holdout</text>
+<line x1="40" x2="1060" y1="110" y2="110" stroke="#d6e3ec"/>
+<text x="44" y="156" font-family="Arial" font-size="17" font-weight="700" fill="#10243a">Hit@5 (correct answers in the top five)</text>
+<text x="44" y="201" font-family="Arial" font-size="18" fill="#28435e">BGE-M3 context</text>
+<rect x="269" y="177" width="340" height="28" rx="6" fill="#e1eaf2"/>
+<rect x="269" y="177" width="100" height="28" rx="6" fill="#47779a"/>
+<text x="626" y="198" font-family="Arial" font-size="18" font-weight="700" fill="#10243a">10 / 34</text>
+<text x="44" y="256" font-family="Arial" font-size="18" fill="#28435e">Qwen3 raw</text>
+<rect x="269" y="232" width="340" height="28" rx="6" fill="#e1eaf2"/>
+<rect x="269" y="232" width="120" height="28" rx="6" fill="#15968a"/>
+<text x="626" y="253" font-family="Arial" font-size="18" font-weight="700" fill="#10243a">12 / 34</text>
+<text x="44" y="311" font-family="Arial" font-size="18" fill="#28435e">Qwen3 anchor-1</text>
+<rect x="269" y="287" width="340" height="28" rx="6" fill="#e1eaf2"/>
+<rect x="269" y="287" width="120" height="28" rx="6" fill="#087569"/>
+<text x="626" y="308" font-family="Arial" font-size="18" font-weight="700" fill="#10243a">12 / 34</text>
+<line x1="755" x2="755" y1="142" y2="341" stroke="#d6e3ec"/>
+<text x="784" y="155" font-family="Arial" font-size="17" font-weight="700" fill="#10243a">Candidate coverage (not accuracy)</text>
+<text x="782" y="222" font-family="Arial" font-size="50" font-weight="700" fill="#087569">29/34</text>
+<text x="784" y="253" font-family="Arial" font-size="16" fill="#466278">85.3% target present in source union</text>
+<text x="784" y="285" font-family="Arial" font-size="16" fill="#466278">Mean pool size: 208.94</text>
+<text x="784" y="315" font-family="Arial" font-size="16" fill="#466278">Five candidates never retrieved</text>
+<rect x="40" y="358" width="1020" height="43" rx="8" fill="#eaf3fa"/>
+<text x="60" y="384" font-family="Arial" font-size="15" fill="#25435c">Result is descriptive. No independent-test accuracy gain, factual-answer entailment, or model significance is established.</text>
+</svg>

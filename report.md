@@ -92,3 +92,28 @@ An exploratory 48-row AI name-sample coherence check compared 24 genuine 14-memb
 **Research position:** This is a reproducible native hyperedge-aware hierarchy with valuable negative controls, not a proven scientific ontology or downstream retrieval improvement. The V2 pilot and Type-B source audit are **exploratory, non-independent**; neither establishes independently faithful labelling or factual-answer correctness. Those findings must remain visible rather than hidden behind run counts.
 
 **Selected literature** — Zhou, Huang & Schölkopf, *Learning with Hypergraphs: Clustering, Classification, and Embedding* (NeurIPS, 2006); Chakrabarti, Kumar & Tomkins, *Evolutionary Clustering* (KDD, 2006); Traag, Waltman & van Eck, *From Louvain to Leiden* (Scientific Reports, 2019); Schlag et al., *High-Quality Hypergraph Partitioning* (ACM JEA, 2022). These inform conceptual baselines; no verbatim algorithm reproduction is claimed.
+
+
+---
+
+## 8. GPU semantic retrieval and Qwen3 reranking — post-hoc development, 24 October 2026
+
+This section **supplements rather than changes** the locked model, 2020/2022/2024 hierarchy, source-group confirmation, structural null, and predeclared 34-query Flat/Route-4 study. The original question set was source-screened and the rank-only artifacts were Gold-separated, but its **performance had already been inspected** when the GPU architecture and Qwen candidate policy were developed. Thus the comparisons below are exploratory within the same corpus and **cannot be presented as independently replicated** improvements.
+
+We indexed canonical entities with **BGE-M3**, separately using (i) source-dated native co-mention context, (ii) entity name and type, and (iii) recorded original source-paper titles. The three-view candidate union was deduplicated by typed entity identity before being passed to an instruction-conditioned **Qwen3-Reranker-0.6B**. Reference Gold was opened locally only *after* the output rankings were frozen. No fabricated definitions or unverified paper summaries entered the index. No full-text entailment of retrieved answers has yet been established.
+
+![Exploratory top-five retrieval and source-union coverage](figures/retrieval_development.svg)
+
+| Arm | Hit@1 | Hit@5 | Hit@10 | Hit@20 | Hit@100 | MRR@5 |
+|:--|--:|--:|--:|--:|--:|--:|
+| BGE-M3 context | 5 | 10 | 13 | 14 | 25 | 0.1887 |
+| BGE-M3 three-view RRF | 3 | 10 | 13 | 16 | 26 | 0.1627 |
+| Qwen3 raw | 2 | **12** | **19** | **21** | 28 | 0.1814 |
+| Qwen3, first dense result anchored | 5 | **12** | 18 | **21** | 28 | **0.2181** |
+| Qwen3, first two dense results anchored | 5 | **12** | 16 | **21** | 28 | 0.2029 |
+
+Counts above are **out of 34**. Compared with BGE context, Qwen3 variants show a *descriptive* Hit@5 difference of **+2/34 (+5.88 percentage points)**. The anchored first-result variant has the highest MRR@5, but that configuration was explored **after** observing baseline development outcomes. The earlier BGE neural reranker, by contrast, achieved **1/34 Hit@5**; neural reranking is not inherently beneficial in this task.
+
+Among the three original source views, the complete, **Gold-blind** candidate union retained the correct entity for **29/34 (85.29%)** questions (175–248 distinct entities per query; mean 208.94). This is **candidate recall, not predictive accuracy**; Qwen raw placed **28/34** within its exported top 100, **21/34** in the top 20 and **12/34** in the top five. Five queries (F005, F024, F028, F034, F036) had no correct target in any exported source top-100; reranking cannot rescue a missing target. These query IDs are development diagnostics, not a generalization estimate.
+
+The original Flat/Route-4 study remains **3/34 versus 2/34** Hit@5 (59.3% fewer online dot products for routing). GPU model indexing, device, inference cost and source representations differ from the CPU protocol; do not infer a direct speed comparison or conclude that the hypergraph abstraction caused Qwen's higher Hit@5. Meaningful next scientific gates are (1) source-validated full-paper evidence for unclear labels and scientific claims; (2) a new, independently written and pre-frozen benchmark in which architecture, candidate policy and evaluation are fixed before Gold inspection; (3) external-paper or domain-reviewer corroboration. Source review and generated Type-B answer correctness remain unresolved.
