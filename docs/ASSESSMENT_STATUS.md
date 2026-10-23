@@ -235,3 +235,30 @@ and no new Hit@5 can be claimed. The 34 questions remain
 POST-HOC DEVELOPMENT. A new independent full-text verified
 question set is still required to support generalization.
 See [Qwen GPU procedure](QWEN3_RERANK_RUNBOOK.md).
+
+
+## Real 34-query multiview BGE score and candidate-pool diagnostic (23 October 2026)
+
+The frozen gold-blind multiview artifact SHA is
+\`88f536d78e9e408f526d08bc079111cdd32db76ce13744b0f318c400341c13cd\`.
+Measured DEVELOPMENT Hit@5 counts: context 10, canonical name 6,
+paper title 10, three-view RRF 10, max cosine 10 (out of 34).
+RRF Top20=16, Top50=21, Top100=26; max cosine Top100=26.
+The source-grounded multi-view method therefore improves candidate
+visibility over the previous single-view BGE Top100 (unknown from
+previous export), but does **not** improve top-five results on this sample.
+
+A new read-only \`research_lab.multiview_source_union_audit\` uses
+the existing scored ranks and immutable source ranking digest, and
+does not open the original Gold. It measures true union-of-view
+candidate presence versus oracle best-of-view ranks, and fixed
+predeclared round-robin pool recall at 100/200/300. It has not yet
+been run against the applicant's local scored files. **No
+candidate-pool upper-bound is reported as model Hit@5**.
+
+An optional Qwen3 entity-specific reranker already exists but has
+not been run or benchmarked; a separate optional Qwen-compatible
+sentence-transformers version is now pinned. New source-verified,
+independently authored and SHA-frozen question cases remain
+necessary for honest out-of-sample claims. Original selected
+hierarchies, metrics, negative results and scientific report unchanged.
