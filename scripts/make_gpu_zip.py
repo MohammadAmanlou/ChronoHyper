@@ -40,7 +40,7 @@ ALLOW = {
         "outputs_selected/hierarchy_2025.json",
         "local_only/fresh_retrieval_screened34/queries_only.csv",
         "local_only/multiview_dense_development/rankings.json",
-        "requirements_advanced.txt",
+        "requirements_qwen_rerank.txt",
     ),
     "type-b": (
         "research_lab/__init__.py",
