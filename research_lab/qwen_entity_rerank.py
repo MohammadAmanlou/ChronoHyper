@@ -298,11 +298,128 @@ def score(project=".",out=OUTPUT,gold=FRESH_GOLD):
     print(json.dumps({k:v for k,v in summary.items() if k!="per_question_LOCAL_ONLY"},indent=2))
     return summary
 
+
+def _paired_delta(a_ranks, b_ranks, k=5):
+    """Pure post-hoc matched-query comparison: not an independent significance test."""
+    from math import comb
+    if len(a_ranks) != len(b_ranks) or not a_ranks:
+        raise ValueError("Paired ranks must have identical nonempty length")
+    win=loss=tie=0
+    for aa,bb in zip(a_ranks,b_ranks):
+        hit_a=aa is not None and aa <=k
+        hit_b=bb is not None and bb <=k
+        if hit_a and not hit_b:win+=1
+        elif not hit_a and hit_b:loss+=1
+        else:tie+=1
+    n=win+loss
+    # Exact unadjusted two-sided discordant-pair symmetry test.
+    # This is merely descriptive after multiple inspected development variants.
+    p=min(1.0, 2.0*sum(comb(n,i) for i in range(min(win,loss)+1))/(2**n)) if n else 1.0
+    return {"qwen_better":win,"qwen_worse":loss,"tie":tie,
+            "hit_delta":(win-loss)/len(a_ranks),
+            "two_sided_exact_discordant_p_EXPLORATORY":p}
+
+
+def compare_scored(project=".", out=OUTPUT):
+    """CPU only. Existing local Qwen scores vs prior BGE, without reopening Gold.
+
+    Does NOT modify existing scored artifacts. The output is private and
+    post-hoc development, never a new held-out evaluation.
+    """
+    root=Path(project).resolve()
+    folder=Path(out)
+    if not folder.is_absolute():folder=root/folder
+    target=folder/"paired_comparison_DEVELOPMENT_ONLY.json"
+    if target.exists():
+        raise FileExistsError("Keep previous paired audit unchanged")
+    source_root, source_rank, _ = read_rankings(root)
+    qwen_rank=json.loads((folder/"rankings.json").read_text(encoding="utf-8"))
+    qwen_scores=json.loads((folder/"score_DEVELOPMENT_ONLY.json").read_text(encoding="utf-8"))
+    source_scores=json.loads((root/"local_only/multiview_dense_development/score_DEVELOPMENT_ONLY.json").read_text(encoding="utf-8"))
+    if qwen_rank.get("ranking_sha256") != _rank_hash(qwen_rank):
+        raise ValueError("Frozen Qwen ranking SHA mismatch")
+    if qwen_rank.get("schema") != "chronohyper_qwen_entity_rerank_development_v1":
+        raise ValueError("Qwen ranking schema unknown")
+    if qwen_rank.get("source_multiview_sha") != source_rank["ranking_sha256"]:
+        raise ValueError("Qwen rankings not from original source snapshot")
+    if qwen_scores.get("schema") != "chronohyper_qwen_reranker_scored_development_v1" or (
+            qwen_scores.get("ranking_sha256_verified") != qwen_rank["ranking_sha256"]):
+        raise ValueError("Local Qwen score does not match frozen Qwen rankings")
+    if source_scores.get("schema") != "chronohyper_multiview_bge_scored_development_v1" or (
+            source_scores.get("rankings_sha256_verified") != source_rank["ranking_sha256"]):
+        raise ValueError("Source score and source ranking hashes disagree")
+    if qwen_scores.get("research_stage") != "POSTHOC_NOT_A_FRESH_HOLDOUT" or (
+            source_scores.get("not_a_new_unseen_test") is not True):
+        raise ValueError("Development status must remain explicit")
+    qrows=qwen_scores["per_question_LOCAL_ONLY"]
+    source_by_id=source_scores["per_question_rank_LOCAL_PRIVATE"]
+    qids=[x["question_id"] for x in qrows]
+    if len(qids)!=34 or len(set(qids))!=34 or set(qids)!=set(source_by_id):
+        raise ValueError("Exactly the 34 previously scored matching IDs required")
+    if set(qids)!={x["question_id"] for x in qwen_rank["results"]}:
+        raise ValueError("Ranked question IDs differ from scored question IDs")
+    comparisons={a:[] for a in ("qwen_raw","qwen_anchor1","qwen_anchor2")}
+    base=[]
+    private=[]
+    oracle5=0
+    for entry in qrows:
+        qid=entry["question_id"]
+        ranks=entry["rank"]
+        if set(ranks)!=set(ARMS):
+            raise ValueError("Qwen score arms incomplete: "+qid)
+        source=source_by_id[qid]
+        if ranks["source_context"] != source["context"] or (
+                ranks["source_rrf"] != source["rrf_3view"]):
+            raise ValueError("Frozen BGE baselines changed in Qwen evaluation: "+qid)
+        br=source["context"]
+        base.append(br)
+        for a in comparisons:
+            comparisons[a].append(ranks[a])
+        valid=[r for r in ranks.values() if r is not None and r<=5]
+        oracle5+=int(bool(valid))
+        private.append({"question_id":qid,
+                        "original_context_rank":br,
+                        "qwen_rank_by_policy":{a:ranks[a] for a in comparisons}})
+    paired={a:_paired_delta(comparisons[a],base,5) for a in comparisons}
+    # Verify the declared aggregate counts from the existing scored JSON
+    # before any derivative result is presented.
+    for a,rs in [("source_context",base),*comparisons.items()]:
+        for k in (1,5,10,20,100):
+            count=sum(v is not None and v<=k for v in rs)
+            if count!=qwen_scores["topk_hit_counts"][a][str(k)]:
+                raise ValueError("Scored aggregate mismatch for "+a+"@"+str(k))
+    summary={
+      "schema":"chronohyper_qwen_bge_paired_posthoc_v1",
+      "stage":"POSTHOC_NOT_NEW_CONFIRMATORY_DATA",
+      "ranked_34_sha_verified":qwen_rank["ranking_sha256"],
+      "source_sha_verified":source_rank["ranking_sha256"],
+      "questions":34,
+      "gold_file_read_during_comparison":False,
+      "bge_context_hit5":sum(v is not None and v<=5 for v in base),
+      "qwen_hit5":{a:sum(v is not None and v<=5 for v in rs)
+                   for a,rs in comparisons.items()},
+      "paired_against_bge_context_HIT5":paired,
+      "oracle_ever_correct_within_top5_NOT_DEPLOYABLE":oracle5,
+      "limitations":[
+        "Same 34 cases were inspected across repeated model selection",
+        "Two-sided discordant p-values are descriptive and unadjusted for multiple comparisons",
+        "Oracle uses answer knowledge and is never a deployable selector",
+        "Candidate pool recall is not top5 accuracy; new independent test is required",
+      ],
+      "per_question_LOCAL_PRIVATE":private,
+    }
+    target.write_text(json.dumps(summary,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+    print(json.dumps({k:v for k,v in summary.items()
+                      if k!="per_question_LOCAL_PRIVATE"},indent=2))
+    print("Private paired audit:",target)
+    return summary
+
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     act=p.add_mutually_exclusive_group(required=True)
     act.add_argument("--rank",action="store_true")
     act.add_argument("--score",action="store_true")
+    act.add_argument("--compare",action="store_true")
     p.add_argument("--project",default=".")
     p.add_argument("--source",default=MULTIVIEW)
     p.add_argument("--out",default=OUTPUT)
@@ -315,7 +432,10 @@ def main():
     if args.rank:
         rank(args.project,args.source,args.out,args.model,args.device,
              args.batch_size,args.max_length,args.max_candidates)
-    else:score(args.project,args.out)
+    elif args.score:
+        score(args.project,args.out)
+    else:
+        compare_scored(args.project,args.out)
 
 if __name__=="__main__":
     main()
