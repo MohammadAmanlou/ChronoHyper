@@ -405,3 +405,170 @@ Gold. All detailed judgments remain under ignored local_only.
 Do not reclassify these development numbers as unseen test accuracy:
 a new source-verified, independently authored and frozen question set
 is required after choosing a final retrieval architecture.
+
+
+## Follow-up to real 34-case multi-view scores (23 October 2026)
+
+The applicant's new SHA-verified multiview rank is
+\`88f536d78e9e408f526d08bc079111cdd32db76ce13744b0f318c400341c13cd\`.
+The identical previously inspected 34 questions gave:
+
+| View | Hit@5 | Hit@20 | Hit@50 | Hit@100 |
+|---|---:|---:|---:|---:|
+| BGE original context | 10 | 14 | 20 | 25 |
+| Canonical entity name+type | 6 | 14 | 17 | 21 |
+| Original dated source paper titles | 10 | 15 | 20 | 24 |
+| Equal-weight three-view RRF | 10 | 16 | 21 | 26 |
+| Max cosine of three views | 10 | 15 | 21 | 26 |
+
+The considerable RRF@100 coverage, but no improvement in RRF@5,
+shows a significant difference between *candidate existence* and
+top-five ranking. It DOES NOT establish 26/34 attainable Hit@5.
+The previous model-agnostic 2025 dated source has not been
+revalidated for full-text entailment. These are **post-hoc
+development** metrics, not a second independent benchmark.
+
+### CPU read-only source-union and fixed-pool audit
+
+A new module computes (a) how often the correct candidate appears
+in **any** previously exported view, at the original ranks, and
+(b) recoverability in a **gold-blind predetermined round-robin pool**
+of 100/200/300 candidates, deduplicating typed identities.
+It uses only the already frozen rankings and prior score, and
+NEVER opens the hidden reference Gold directly. "Best across
+views" is an oracle upper bound requiring access to the correct
+answer; it is **not a deployable retrieval policy**. The fixed pool
+recall is NOT Hit@5.
+
+Run on Windows where your existing two JSON files already are:
+
+~~~powershell
+cd C:\Users\a\Desktop\constructor-ckl-research
+git pull --ff-only origin main
+
+.\.venv\Scripts\python.exe -m unittest research_lab.test_multiview_source_union_audit -v
+
+.\.venv\Scripts\python.exe -m research_lab.multiview_source_union_audit --project .
+
+(Get-Content ".\local_only\multiview_dense_development\multiview_source_union_audit_LOCAL.json" -Raw | ConvertFrom-Json) |
+    Select-Object -ExpandProperty fixed_gold_blind_3view_round_robin_pool_RECALL_upper_k
+~~~
+
+The complete local output also identifies all absent candidates,
+union-at-5/20/100 oracle coverage and per-query rank movement.
+A new confirmatory benchmark **must** be authored/frozen before
+any model selected from the same 34 queries is described as a
+generalization improvement.
+
+### Next OPTIONAL GPU model: Qwen3 entity-specific reranker
+
+A different research-only experiment already exists in
+\`research_lab/qwen_entity_rerank.py\`. It is a checkpointed
+\`Qwen/Qwen3-Reranker-0.6B\` scorer with an instruction to choose the
+SPECIFIC scientific entity answering the question, not generic
+topic similarity, over a gold-blind union of source-view candidates.
+It compares direct Qwen, dense-anchored safety variants and
+two unchanged BGE baselines. It is still **post-hoc
+development only**, and could also hurt quality.
+The model does not have externally verified full-text descriptions,
+so it cannot substitute for factual answer evaluation.
+
+Qwen3-Reranker in Sentence Transformers requires a new enough
+\`CrossEncoder\` implementation. The Qwen packaging now includes
+\`requirements_qwen_rerank.txt\` pinning \`sentence-transformers==5.4.0\`;
+the older BGE dependency file remains untouched.
+The official model card documents this CrossEncoder usage:
+https://huggingface.co/Qwen/Qwen3-Reranker-0.6B.
+
+To create a fresh PRIVATE inference-only bundle on Windows:
+
+~~~powershell
+cd C:\Users\a\Desktop\constructor-ckl-research
+git pull --ff-only origin main
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\package_gpu_qwen_rerank.ps1
+~~~
+
+It packages source graph and titles, question text, Qwen Python code,
+and the already frozen previous multiview RANKINGS ONLY,
+not hidden Gold, score files or reviewer answers.
+Unlike a dense embedding model, a cross-encoder scores each
+question-candidate pair; a 300-candidate budget over 34
+questions entails up to 10,200 pair evaluations. GPU availability,
+model memory, runtime and actual accuracy have not been verified.
+
+In Kaggle attach the NEW private reranker Dataset, enable GPU and
+Internet, then use the following notebook cell. Kaggle may
+recursively unpack the nested input ZIP:
+
+~~~python
+from pathlib import Path
+from zipfile import ZipFile, ZIP_DEFLATED
+import shutil, subprocess, sys
+
+mods=list(Path('/kaggle/input').rglob('qwen_entity_rerank.py'))
+assert len(mods)==1, f'Attach exactly one Qwen3 PRIVATE source Dataset: {mods}'
+base=mods[0].parent.parent
+root=Path('/kaggle/working/chronohyper_qwen')
+keep=[
+ 'research_lab/__init__.py',
+ 'research_lab/qwen_entity_rerank.py',
+ 'research_lab/advanced_retrieval.py',
+ 'research_lab/retrieval_v2.py',
+ 'research_lab/retrieval_frontier.py',
+ 'outputs_selected/hierarchy_2025.json',
+ 'local_only/fresh_retrieval_screened34/queries_only.csv',
+ 'local_only/multiview_dense_development/rankings.json',
+ 'requirements_qwen_rerank.txt',
+]
+for rel in keep:
+    src=base/rel
+    assert src.is_file(), src
+    dst=root/rel
+    dst.parent.mkdir(parents=True,exist_ok=True)
+    shutil.copy2(src,dst)
+(root/'inputs').mkdir(parents=True,exist_ok=True)
+sourcezip=base/'inputs/data.zip'
+if sourcezip.is_file():
+    with ZipFile(sourcezip) as z:
+        assert set(z.namelist())=={
+          'data/tkh_collection10.json','data/collection10_articles.csv'}
+    shutil.copy2(sourcezip,root/'inputs/data.zip')
+else:
+    unpacked=base/'inputs/data/data'
+    with ZipFile(root/'inputs/data.zip','w',ZIP_DEFLATED) as z:
+        for filename in ('tkh_collection10.json','collection10_articles.csv'):
+            src=unpacked/filename
+            assert src.is_file(), src
+            z.write(src,arcname='data/'+filename)
+
+import torch
+assert torch.cuda.is_available(), 'Enable GPU in Kaggle settings'
+subprocess.run([sys.executable,'-m','pip','install','-q','-r',
+                str(root/'requirements_qwen_rerank.txt')],check=True)
+
+subprocess.run([
+ sys.executable,'-m','research_lab.qwen_entity_rerank',
+ '--project',str(root),'--rank','--device','cuda',
+ '--model','Qwen/Qwen3-Reranker-0.6B',
+ '--batch-size','4','--max-candidates','300',
+],cwd=root,check=True)
+~~~
+
+If interrupted, rerun the same command against the same writable
+Kaggle Working directory: checkpoint_GOLD_BLIND.json is used
+without overwriting completed query results. A new Kaggle session
+does not automatically inherit prior Working files; restore its
+checkpoint privately before resuming if needed.
+
+Download **only** the new
+\`local_only/qwen_entity_rerank_development/rankings.json\` from Kaggle,
+place it locally into a NEW
+\`local_only/qwen_entity_rerank_development\` folder, and score:
+
+~~~powershell
+.\.venv\Scripts\python.exe -m research_lab.qwen_entity_rerank --project . --score
+Get-Content ".\local_only\qwen_entity_rerank_development\score_DEVELOPMENT_ONLY.json"
+~~~
+
+Do not choose the winning policy solely from these 34 known queries
+then claim it was confirmed on them.
