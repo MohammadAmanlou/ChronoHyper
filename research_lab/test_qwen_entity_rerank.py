@@ -77,4 +77,52 @@ class QwenEntityRerankTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError,"digest mismatch"):
                 q.score(td,gold="DO_NOT_READ_GOLD.csv")
 
+
+    def test_cpu_paired_audit_matched_wins_and_losses(self):
+        with tempfile.TemporaryDirectory() as td:
+            root=Path(td)
+            folder=root/"local_only/qwen_entity_rerank_development"
+            sf=root/"local_only/multiview_dense_development"
+            folder.mkdir(parents=True)
+            sf.mkdir(parents=True)
+            source_rank={"ranking_sha256":"SOURCEFROZEN"}
+            qrows=[]
+            source_per={}
+            for i in range(34):
+                qid=f"F{i+1:03d}"
+                baseline=2 if i<10 else None
+                raw=1 if i<8 or 10<=i<14 else None
+                vals={"qwen_raw":raw,"qwen_anchor1":raw,"qwen_anchor2":raw,
+                      "source_context":baseline,"source_rrf":baseline}
+                qrows.append({"question_id":qid,"rank":vals})
+                source_per[qid]={"context":baseline,"rrf_3view":baseline}
+            artifact={"schema":"chronohyper_qwen_entity_rerank_development_v1",
+                      "source_multiview_sha":"SOURCEFROZEN",
+                      "results":[{"question_id":x["question_id"]} for x in qrows]}
+            artifact["ranking_sha256"]=q._rank_hash(artifact)
+            def counts(name):
+                return {str(k):sum(x["rank"][name] is not None and x["rank"][name]<=k
+                    for x in qrows) for k in (1,5,10,20,100)}
+            scored={"schema":"chronohyper_qwen_reranker_scored_development_v1",
+                    "ranking_sha256_verified":artifact["ranking_sha256"],
+                    "research_stage":"POSTHOC_NOT_A_FRESH_HOLDOUT",
+                    "per_question_LOCAL_ONLY":qrows,
+                    "topk_hit_counts":{a:counts(a) for a in q.ARMS}}
+            source_scores={"schema":"chronohyper_multiview_bge_scored_development_v1",
+                     "rankings_sha256_verified":"SOURCEFROZEN",
+                     "not_a_new_unseen_test":True,
+                     "per_question_rank_LOCAL_PRIVATE":source_per}
+            (folder/"rankings.json").write_text(json.dumps(artifact))
+            (folder/"score_DEVELOPMENT_ONLY.json").write_text(json.dumps(scored))
+            (sf/"score_DEVELOPMENT_ONLY.json").write_text(json.dumps(source_scores))
+            with patch.object(q,"read_rankings",return_value=(root,source_rank,{})):
+                result=q.compare_scored(root)
+            paired=result["paired_against_bge_context_HIT5"]["qwen_raw"]
+            self.assertEqual((paired["qwen_better"],paired["qwen_worse"],paired["tie"]),(4,2,28))
+            self.assertAlmostEqual(paired["hit_delta"],2/34)
+            self.assertFalse(result["gold_file_read_during_comparison"])
+            with patch.object(q,"read_rankings",return_value=(root,source_rank,{})):
+                with self.assertRaises(FileExistsError):
+                    q.compare_scored(root)
+
 if __name__=="__main__":unittest.main()
