@@ -256,3 +256,23 @@ old scores, reviewers and original claims remain excluded.
 No claim that reranker is scientifically right or faster,
 and no model-run result exists at this time. The experiment
 is a post-hoc research extension, not a new untouched holdout.
+
+
+## Addendum — 23 October 2026 multiview scores and source-union audit
+
+The applicant actually ran the three-view BGE-M3 model on a
+Kaggle GPU, yielding gold-blind ranking SHA
+\`88f536d78e9e408f526d08bc079111cdd32db76ce13744b0f318c400341c13cd\`.
+It was separately scored locally: context/name/paper/RRF/max cosine
+Hit@5=10/6/10/10/10 of 34; RRF Top100=26/34.
+GPT-6 created an optional READ-ONLY, NO-GPU source-union auditor
+to compare best-of-view oracle coverage with predetermined
+round-robin candidate-pool recall. All detailed scores and answers
+stay private, and outputs have not yet been produced by the user.
+An existing Qwen3 scientific entity reranker is available as a
+separate optional study; dependencies were updated with a
+distinct Qwen3-specific requirements file because old
+sentence-transformers 5.1.2 was unsuitable for guaranteed
+Qwen3 CrossEncoder model support. No Qwen3 inference success,
+improved Hit@5 or independent validity is claimed. Existing
+locked hierarchy model and PDF remain unchanged.
