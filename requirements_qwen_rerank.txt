@@ -1,0 +1,6 @@
+# Qwen3 Reranker-specific, optional Kaggle inference dependencies.
+# Hugging Face Qwen3-Reranker CrossEncoder support arrived in sentence-transformers 5.4.
+# Kaggle already provides CUDA torch: do not pip-install/replace torch indiscriminately.
+sentence-transformers==5.4.0
+transformers==4.57.1
+accelerate==1.11.0
