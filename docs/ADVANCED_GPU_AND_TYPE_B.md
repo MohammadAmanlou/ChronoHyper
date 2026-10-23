@@ -572,3 +572,36 @@ Get-Content ".\local_only\qwen_entity_rerank_development\score_DEVELOPMENT_ONLY.
 
 Do not choose the winning policy solely from these 34 known queries
 then claim it was confirmed on them.
+
+
+### Qwen candidate-policy correction (23 October 2026)
+
+Important update: use the CURRENT Qwen code from GitHub, not the original five-source
+candidate policy described above. The current ranker now uses the **entire**
+top-100 lists from context, name, and paper, in fixed round-robin order,
+without dropping Name depth 51–100. RRF and max-cosine are composites,
+not new independent source representations. The source-view union
+contains 175–248 distinct candidates per question (mean 208.94).
+This fixes loss of some legitimate candidates before a reranker sees them.
+
+The local CPU-only preflight checks source/query integrity and computes
+actual Qwen pool recall using the already-scored DEVELOPMENT ranks,
+without reading the reference Gold file itself:
+
+~~~powershell
+cd C:\Users\a\Desktop\constructor-ckl-research
+git pull --ff-only origin main
+.\.venv\Scripts\python.exe -m unittest research_lab.test_qwen_candidate_preflight -v
+.\.venv\Scripts\python.exe -m research_lab.qwen_candidate_preflight --project .
+~~~
+
+Expected prior-sample source-union candidate recall: **29/34**.
+This is ONLY candidate coverage, never Qwen Hit@5 or fresh test accuracy.
+Read the new private output at
+`local_only/qwen_entity_rerank_development/candidate_preflight_LOCAL_PRIVATE.json`.
+If the preflight disagrees or source hashes differ, do not run Qwen.
+The source-ranked algorithm was changed **before Qwen inference**,
+but after the original 34-question scores were visible; it is post-hoc.
+
+The optional GPU commands further up remain usable after passing this gate.
+The private Kaggle package excludes every Gold, score and reviewer file.
