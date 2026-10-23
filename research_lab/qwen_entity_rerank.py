@@ -23,7 +23,13 @@ MULTIVIEW = "local_only/multiview_dense_development/rankings.json"
 OUTPUT = "local_only/qwen_entity_rerank_development"
 MODEL = "Qwen/Qwen3-Reranker-0.6B"
 ARMS = ("qwen_raw", "qwen_anchor1", "qwen_anchor2", "source_context", "source_rrf")
-SOURCES = ("context", "paper", "rrf_3view", "name", "max_cosine_3view")
+# Use the complete three genuinely distinct BGE source views. RRF and
+# max-cosine are permutations of the same underlying source candidates.
+# The old five-arm round-robin skipped Name depth 51..100 and might
+# remove correct, already retrieved entities from the Reranker pool.
+# This choice is development-only, made after inspecting prior scores.
+SOURCES = ("context", "name", "paper")
+POOL_POLICY = "GOLD_BLIND_FULL_CONTEXT_NAME_PAPER_TOP100_UNION_V2"
 INSTRUCTION = (
     "Given a scientific research question that asks for a particular named "
     "scientific entity, judge whether the scientific entity named in the "
@@ -77,20 +83,21 @@ def candidates(viewlists, max_candidates=300):
         raise ValueError("Candidate budget must be between 100 and 500")
     if not all(v in viewlists for v in SOURCES):
         raise ValueError("Missing required BGE source arm")
-    # Priority of views is fixed BEFORE looking at any new reranker scores.
-    seen=set()
-    ordered=[]
+    # Include ALL source-view top100 entities before reranking; the
+    # gold-blind pool is the complete de-duplicated 3-view union and
+    # has at most 300 candidates. Do NOT filter Name at depth 50.
+    seen = set()
+    ordered = []
     for r in range(100):
         for v in SOURCES:
-            if v == "name" and r >= 50:
-                continue
-            item=viewlists[v][r]
-            identity=key(item)
+            item = viewlists[v][r]
+            identity = key(item)
             if identity not in seen:
                 seen.add(identity)
                 ordered.append(item)
-            if len(ordered) >= max_candidates:
-                return ordered
+                if len(ordered) >= max_candidates:
+                    return ordered
+    return ordered
     return ordered
 
 def make_docs(entries, contexts):
@@ -165,12 +172,16 @@ def rank(project=".", source=MULTIVIEW, out=OUTPUT,model_name=MODEL,
         if (state.get("source_multiview_sha") != source_sha
                 or state.get("model")!=model_name
                 or state.get("max_candidates") != max_candidates
+                or state.get("max_length") != max_length
+                or state.get("candidate_policy") != POOL_POLICY
                 or state.get("prompt_sha256") != hashlib.sha256(INSTRUCTION.encode()).hexdigest()):
             raise ValueError("Incompatible checkpoint; do not mix experiments")
     else:
         state={"source_multiview_sha":source_sha,
                "model":model_name,
                "max_candidates":max_candidates,
+               "max_length":max_length,
+               "candidate_policy":POOL_POLICY,
                "prompt_sha256":hashlib.sha256(INSTRUCTION.encode()).hexdigest(),
                "completed":{}}
     model=_build_model(model_name,device,max_length)
@@ -212,7 +223,7 @@ def rank(project=".", source=MULTIVIEW, out=OUTPUT,model_name=MODEL,
        "model":model_name,"model_instruction_sha256":state["prompt_sha256"],
        "max_candidates":max_candidates,"max_length":max_length,
        "batch_size":batch_size,
-       "candidate_policy":"Round-robin from context/paper/RRF/name(50)/max cosine top100, no Gold",
+       "candidate_policy":POOL_POLICY,
        "arms":list(ARMS),
        "limits":[
          "No full-text paper passages were available; names, titles and co-mentions only",
