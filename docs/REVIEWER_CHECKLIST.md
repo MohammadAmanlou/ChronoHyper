@@ -53,7 +53,21 @@ revisions to an earlier snapshot. Historical arXiv metadata must support a
 date at/before the earliest associated snapshot; other PDF versions stay
 explicitly **date-unverified**. Every candidate is tagged **unreviewed**.
 
-Windows from the repository root:
+**Simplest Windows invocation (existing 28-paper links already imported):**
+
+~~~powershell
+cd C:\Users\a\Desktop\constructor-ckl-research
+git pull --ff-only origin main
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\auto_primary_evidence.ps1
+~~~
+
+To also perform an entirely local, AI-only exploratory blind-label review
+*if Ollama and the local model are already installed and running*,
+append `-WithLocalJudge -Model qwen3:8b`. No external LLM key or
+manual paper-text copying is needed. This cannot turn AI scores into
+independent expert review.
+
+Windows from the repository root (equivalent manual CLI steps):
 
 ~~~powershell
 git pull --ff-only origin main
