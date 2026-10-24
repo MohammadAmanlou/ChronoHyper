@@ -39,6 +39,90 @@ The assessment assigns **30% to trustworthy evaluation** and **25% to formal met
 
 **Candidate research extension, NOT yet an implemented or proven novel algorithm:** evidence-gated, temporally aligned native hyperedge coarsening with abstaining labels. Its plausible contribution is the tested **integration of source dating, native higher-order structure, hierarchy budgets, temporal identity and evidence-constrained labels**, not an unsupported claim to have invented structure/attribute mixing.
 
+
+## Primary-paper evidence review: executable next gate (24 blind label pairs)
+
+**Code prepared and verified on the real corpus, not yet rated:** the new
+\`research_lab.fulltext_label_audit\` generated 24 blind V2/V3 cases linked to
+**92 case–paper incidences from 28 distinct, source-dated papers** in
+GitHub's clean test. That verifies provenance linkage only; it does **not**
+establish a single scientific overclaim judgment.
+
+### On the applicant's Windows checkout
+
+~~~powershell
+cd C:\Users\a\Desktop\constructor-ckl-research
+git pull --ff-only origin main
+.\.venv\Scripts\python.exe -m unittest research_lab.test_fulltext_label_audit -v
+
+# WARNING: do not regenerate a blind packet if you already have one:
+if (-not (Test-Path ".\local_only\reviews\label_v3_fresh\blind_v2_v3_24.csv")) {
+    .\.venv\Scripts\python.exe -m research_lab.label_v3_blind --project . --prepare
+}
+
+# Creates new EMPTY local-only source/intake files; preserves old outputs.
+.\.venv\Scripts\python.exe -m research_lab.fulltext_label_audit --project . --prepare
+
+# Source access/completeness without pretending paper semantics are checked:
+.\.venv\Scripts\python.exe -m research_lab.fulltext_label_audit --project . --status
+~~~
+
+Recommended SINGLE worksheet to edit:
+\`local_only/reviews/fulltext_label24/PRIMARY_PAPERS_TO_FILL.csv\`.
+It contains **28 unique articles**, not 92 repeated case–paper rows.
+Original \`paper_id\`, \`paper_title\` and \`paper_year\` are immutable.
+For EACH article:
+
+- Locate its genuine official journal/preprint page and **an original
+  full-text version published no later than the case snapshot year**.
+  Never substitute today's updated text if dated provenance is unknown.
+- Enter \`source_url\`, \`source_version_date\` in \`YYYY-MM-DD\`,
+  \`passage_locator\` (section/page) and a substantial **verbatim,
+  legally accessible primary-text passage** in \`passage_text\`.
+  Enter \`evidence_access=FULL_TEXT_USER_INSPECTED\` only after
+  independently checking the source. The software validates format,
+  paper IDs and cutoff; it **cannot verify passage authenticity online**.
+- If a full paper cannot be accessed or dated, leave passage and link
+  fields blank and use \`evidence_access=UNAVAILABLE\`. Do **not**
+  fill a scientific answer from title or guessed abstract.
+- Keep the alternative 92-row
+  \`SOURCE_PASSAGES_TO_FILL.csv\` untouched when using the unique-paper
+  library. Source passages automatically propagate to all eligible
+  blinded cases for that paper. Do not edit both files.
+
+When no \`UNFILLED\` rows remain, run:
+
+~~~powershell
+.\.venv\Scripts\python.exe -m research_lab.fulltext_label_audit --project . --status
+.\.venv\Scripts\python.exe -m research_lab.fulltext_label_audit --project . --assemble
+~~~
+
+Output \`local_only/reviews/fulltext_label24/BLIND_FULLTEXT_LABEL24.csv\`
+is the **key-free reviewer worksheet**, together with
+\`JUDGE_INSTRUCTIONS.txt\`. Every case lacking inspected full text is
+marked \`INSUFFICIENT_NO_FULLTEXT\`; reviewer must mark
+\`evidence_sufficient_yes_no=no\`, no title grade and both overclaims
+\`unclear\`. A case with passages can ALSO be deemed insufficient.
+The reviewer must not see the private mapping, previous scores,
+experiment name or outputs; authorized corpus-sharing permission and
+actual evaluator independence are requirements, **not software facts**.
+
+Only after a genuine independently completed 24-row reviewer CSV,
+with original columns and case evidence unchanged, run:
+
+~~~powershell
+.\.venv\Scripts\python.exe -m research_lab.fulltext_label_audit --project . --score --ratings ".\local_only\reviews\fulltext_label24\COMPLETED_REVIEW.csv"
+~~~
+
+Private score: \`local_only/reviews/fulltext_label24/score_LOCAL_PRIVATE.json\`.
+It computes **evaluable and unclear denominators**, per-version
+overclaim rates with Wilson 95% intervals and descriptive paired title
+wins/losses. No human/AI review is performed automatically, and no
+confirmed scientific overclaim rate exists until the actual reviewer
+response is validated. Never commit the filled passage library, answer
+keys, blind packet or rated worksheets. The original flat/routed
+retrieval, core model and publication remain untouched.
+
 ## Positioning relative to existing methods (no unverified novelty claim)
 
 - **Zhou, Huang & Schölkopf (NeurIPS 2006)** established spectral learning directly on hypergraphs ([paper](https://papers.nips.cc/paper/2006/hash/dff8e9c2ac33381546d96deea9922999-Abstract.html)); merely using hyperedges is not a new idea.

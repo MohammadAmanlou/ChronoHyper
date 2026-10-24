@@ -44,6 +44,13 @@ The early BGE neural cross-encoder degraded Hit@5 to **1/34**. Three source view
 
 Qwen3 variant Hit@5 of **12/34** versus BGE context **10/34** is a **+2/34 descriptive improvement**, after multiple development-stage choices and inspections. Local matched audit: **5 wins, 3 losses, 26 ties**; exploratory unadjusted two-sided exact discordant-pair **p=0.7265625**, not significant. **No statistical, held-out or cross-corpus improvement claim is justified.** All GPU results were locally scored only after rank-only SHA verification; frozen source rankings and original selected-model outputs were not altered. See [short experiment summary](ADVANCED_GPU_AND_TYPE_B.md) and [Markdown report §8](../report.md#8-gpu-semantic-retrieval-and-qwen3-reranking--post-hoc-development-24-october-2026).
 
+**New evidence-intake engineering gate:** actual-corpus CI generates 24 blinded
+V2/V3 label comparisons and source-link candidates from 28 unique pre-cutoff
+primary paper records (92 case–paper incidences). Authentic primary full texts
+have NOT been retrieved, copied, judged or certified by this step; the
+private local intake and reviewer decision are pending. See the
+[full-text intake commands](REVIEWER_CHECKLIST.md#primary-paper-evidence-review-executable-next-gate-24-blind-label-pairs).
+
 ## What remains before scientific delivery can claim completion
 
 1. **Original-paper scientific evidence.** Obtain authorized complete primary-text passages, versions available by the original cutoff and independent qualified adjudication of scientific labels and 36 Type-B source/task claims, especially Q17.
