@@ -33,6 +33,19 @@ class AutoPrimaryEvidenceTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,"Not a PDF"):
             a._pdf_text(b"<html><body>not a primary PDF</body></html>")
 
+    def test_reject_pdf_unrelated_to_original_paper(self):
+        pages=[(1,"An entirely unrelated transport engineering experiment " * 12)]
+        coverage=a._source_title_coverage(
+            pages,"Neural Message Passing for Quantum Chemistry")
+        self.assertLess(coverage,0.40)
+
+    def test_allow_source_title_tokens_in_first_pages(self):
+        pages=[(1,"Neural Message Passing for Quantum Chemistry. "
+                  "Graph neural networks are developed for molecular systems." * 8)]
+        coverage=a._source_title_coverage(
+            pages,"Neural Message Passing for Quantum Chemistry")
+        self.assertGreaterEqual(coverage,0.40)
+
     def test_no_network_from_offline_openalex(self):
         self.assertEqual(a._openalex_candidate("Scientific source",2020,offline=True),[])
 
