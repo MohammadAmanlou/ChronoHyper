@@ -52,6 +52,12 @@ py -3.11 -m venv .venv
 
 The complete verified run paths, optional private GPU scripts and known caveats are in [reproduction instructions](docs/REPRODUCE.md) and [evaluation record](docs/EVALUATION.md). The original computational sweep is archived; there is no need to rerun it to view the scientific deliverables. Optional GPU dependencies are separate from the locked CPU environment.
 
+**Automated first step:** public source PDFs can now be retrieved and
+ranked without manual article text entry using
+`python -m research_lab.auto_primary_evidence --project .`.
+The optional local-only Qwen/Ollama judge remains AI-only exploratory;
+see [automated primary-paper evidence workflow](docs/REVIEWER_CHECKLIST.md#automatic-open-access-primary-paper-evidence-preferred-no-manual-pasting).
+
 **Next independent-science gate:** the source-dated full-text label review
 intake is now implemented and tested on actual corpus metadata (24 blind
 cases, 28 unique papers). It does **not** create or rate scientific evidence.

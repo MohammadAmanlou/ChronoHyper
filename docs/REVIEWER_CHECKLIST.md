@@ -40,6 +40,70 @@ The assessment assigns **30% to trustworthy evaluation** and **25% to formal met
 **Candidate research extension, NOT yet an implemented or proven novel algorithm:** evidence-gated, temporally aligned native hyperedge coarsening with abstaining labels. Its plausible contribution is the tested **integration of source dating, native higher-order structure, hierarchy budgets, temporal identity and evidence-constrained labels**, not an unsupported claim to have invented structure/attribute mixing.
 
 
+## Automatic open-access primary-paper evidence (preferred; no manual pasting)
+
+**Prefer this to the historical manual worksheet procedure below.** The 28-paper
+private library already contains original source links. The new automatic
+retriever uses arXiv **version 1** where the source URL points to arXiv,
+and OpenAlex-linked open-access PDFs for other papers, downloads only PDFs
+locally, extracts text with explicit PDF pages, and retrieves passage windows
+by the two blinded labels and sampled cluster member names. It does **not**
+read Gold, unblind V2/V3, infer missing passages, or silently attribute recent
+revisions to an earlier snapshot. Historical arXiv metadata must support a
+date at/before the earliest associated snapshot; other PDF versions stay
+explicitly **date-unverified**. Every candidate is tagged **unreviewed**.
+
+Windows from the repository root:
+
+~~~powershell
+git pull --ff-only origin main
+.\.venv\Scripts\python.exe -m pip install -r requirements_paper_auto.txt
+.\.venv\Scripts\python.exe -m unittest research_lab.test_auto_primary_evidence research_lab.test_auto_label_judge -v
+
+# No manual editing, default attempts all 28 linked source papers:
+.\.venv\Scripts\python.exe -m research_lab.auto_primary_evidence --project .
+~~~
+
+Private files created (all ignored by Git):
+
+- \`local_only/reviews/fulltext_label24/AUTO_PRIMARY_EVIDENCE_CANDIDATES.csv\` —
+  machine-extracted paper passages with exact PDF page, DOI/arXiv URL,
+  SHA-256, lexical match scores and strict evidence-status warnings.
+- \`local_only/reviews/fulltext_label24/AUTO_EVIDENCE_STATUS.json\` —
+  numbers obtained, missing source PDFs, unverified dates and
+  machine-access errors; does **not** claim full-text scientific entailment.
+- \`local_only/reviews/fulltext_label24/open_access_pdf_cache/\` —
+  private original PDFs; do not commit or distribute copyrighted sources.
+
+For testing, pass \`--limit 3\` **in a clean local-only directory** only
+before your definitive full 28-paper run. The script refuses to overwrite
+previous evidence output; archive any previous work explicitly first.
+
+### Optional source-grounded AI-only reviewer, entirely local
+
+If you already have [Ollama](https://ollama.com/) available on Windows and
+have run \`ollama pull qwen3:8b\` to get a model, run:
+
+~~~powershell
+.\.venv\Scripts\python.exe -m research_lab.auto_label_judge --project . --model qwen3:8b
+~~~
+
+The script gives the model only *automatically retrieved, historically
+dated arXiv v1 candidate passages*. It prompts the model to rate two
+blinded label/gloss versions A and B, rejects invalid JSON grades,
+abstains when the source/version is unverified, and never reads the
+secret mapping or submits any data to an external service. It stores
+\`AUTO_AI_DEVELOPMENT_REVIEW.csv\` and
+\`AUTO_AI_REVIEW_SUMMARY.json\` under local_only. These are **AI-only
+exploratory opinions**, not independent primary-paper expert
+corroboration. For externally defensible scientific entailment, an
+authorized separate reviewer still needs to inspect original primary
+sources and the dated passages.
+
+The legacy \`--assemble\` and \`--score\` commands below are the
+**stricter human/independent evidence gate**; do not feed uninspected
+automatic snippets into it as if they were user-verified full text.
+
 ## Primary-paper evidence review: executable next gate (24 blind label pairs)
 
 **Code prepared and verified on the real corpus, not yet rated:** the new
