@@ -32,6 +32,7 @@ from research_lab.label_v3_blind import FIELDS, RATING
 BASE = Path("local_only/reviews/label_v3_fresh")
 OUT = Path("local_only/reviews/fulltext_label24")
 SOURCE = "SOURCE_PASSAGES_TO_FILL.csv"
+LIBRARY = "PRIMARY_PAPERS_TO_FILL.csv"
 REVIEW = "BLIND_FULLTEXT_LABEL24.csv"
 KEYS = "mapping_PRIVATE.csv"
 PAPER_FIELDS = (
@@ -104,8 +105,9 @@ def prepare(project="."):
     out = root/OUT
     out.mkdir(parents=True,exist_ok=True)
     worksheet = out/SOURCE
+    library = out/LIBRARY
     manifest = out/"manifest_LOCAL.json"
-    if worksheet.exists() or manifest.exists():
+    if worksheet.exists() or library.exists() or manifest.exists():
         raise FileExistsError("Existing evidence intake is frozen; do not overwrite: "+str(worksheet))
     raw_nodes,papers = _source(root)
     nodes = {x["id"]:x for x in raw_nodes}
@@ -131,10 +133,21 @@ def prepare(project="."):
                          "paper_year":str(p["year"])})
             rows.append(item)
     csv_write(worksheet,rows,PAPER_FIELDS)
+    # De-duplicate repeated source papers, so a passage need be inspected
+    # and copied only ONCE, not for all 92 case-paper associations.
+    bypaper={r["paper_id"]:(r["paper_id"],r["paper_title"],r["paper_year"])
+             for r in rows if r["paper_id"]}
+    library_rows=[]
+    for paper_id,title,year in sorted(bypaper.values(),key=lambda x:(int(x[2]),x[0])):
+        record={k:"" for k in PAPER_FIELDS[2:]}
+        record.update({"paper_id":paper_id,"paper_title":title,"paper_year":year})
+        library_rows.append(record)
+    csv_write(library,library_rows,PAPER_FIELDS[2:])
     manifest_doc={
         "schema":"chronohyper_fulltext_label24_source_intake_v1",
         "stage":"SOURCE_LINKING_ONLY_NOT_SCIENTIFIC_VERIFICATION",
         "cases":24,"source_rows":len(rows),
+        "unique_primary_papers":len(library_rows),
         "cases_with_at_least_one_original_linked_paper":sum(x>0 for x in counts.values()),
         "cases_without_linked_papers":sorted(k for k,v in counts.items() if v==0),
         "per_case_linked_paper_counts":counts,
@@ -150,7 +163,8 @@ def prepare(project="."):
     }
     manifest.write_text(json.dumps(manifest_doc,indent=2)+"\n",encoding="utf-8")
     print(json.dumps({k:v for k,v in manifest_doc.items() if k!="per_case_linked_paper_counts"},indent=2))
-    print("Fill actual primary paper passages here (LOCAL ONLY):",worksheet)
+    print("Recommended: fill primary papers ONCE (LOCAL ONLY):",library)
+    print("Alternative case-by-case worksheet (do not fill both):",worksheet)
     return manifest_doc
 
 
@@ -206,6 +220,42 @@ def _trusted_passages(rows, base):
     return result,pending
 
 
+def _use_unique_paper_library(root, case_rows):
+    """Reuse one user-attested passage for each identical source paper.
+
+    The alternative per-case worksheet must remain unfilled to prevent
+    contradictory evidence versions. Neither file is uploaded.
+    """
+    library=root/OUT/LIBRARY
+    if not library.is_file():
+        return case_rows
+    incoming=csv_read(library)
+    originals={r["paper_id"]:(r["paper_title"],r["paper_year"])
+               for r in case_rows if r["paper_id"]}
+    byid={}
+    for row in incoming:
+        pid=row["paper_id"]
+        if pid in byid or pid not in originals:
+            raise ValueError("Duplicate or unrelated paper in private evidence library")
+        if (row["paper_title"],row["paper_year"])!=originals[pid]:
+            raise ValueError("Original source title/year cannot change in library")
+        byid[pid]=row
+    if set(byid)!=set(originals):
+        raise ValueError("Library must preserve all unique source paper IDs")
+    if not any(r["evidence_access"].strip() for r in incoming):
+        return case_rows
+    if any(r["paper_id"] and r["evidence_access"].strip() for r in case_rows):
+        raise ValueError("Fill either the unique-paper library OR the per-case sheet, not both")
+    combined=[]
+    for r in case_rows:
+        item=dict(r)
+        if r["paper_id"]:
+            for col in PAPER_FIELDS[5:]:
+                item[col]=byid[r["paper_id"]][col]
+        combined.append(item)
+    return combined
+
+
 def _source_baseline(root):
     origpath,keypath,cases,keys=_snapshot(root)
     out=root/OUT
@@ -225,6 +275,7 @@ def status(project="."):
     """Print local completeness only; NEVER represent uninspected sources as true."""
     root=Path(project).resolve()
     _,_,rows,manifest=_source_baseline(root)
+    rows=_use_unique_paper_library(root,rows)
     counted=Counter(row["evidence_access"].strip() or "UNFILLED" for row in rows)
     unknown={k:v for k,v in counted.items() if k not in (
         "UNFILLED","UNAVAILABLE","FULL_TEXT_USER_INSPECTED")}
@@ -246,6 +297,7 @@ def status(project="."):
 def assemble(project="."):
     root=Path(project).resolve()
     cases,_,current,manifest=_source_baseline(root)
+    current=_use_unique_paper_library(root,current)
     out=root/OUT
     # Freeze reference headers and metadata from corpus, not from an edited worksheet.
     raw_nodes,papers=_source(root)
