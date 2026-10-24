@@ -1,0 +1,3 @@
+# OPTIONAL: local open-access primary-paper PDF retrieval and page-accurate text extraction.
+# Install only for automated evidence harvesting, not for core hierarchy reconstruction.
+pymupdf>=1.26,<2
