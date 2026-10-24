@@ -15,6 +15,30 @@ materials remain authorized-user-only. Original locked artifacts stay unchanged.
 | 10% | Reproducibility | lock, 65 development + 5 confirmation + 5 clique jobs, pinned requirements, source hashes, verifier, tests | Validate on applicant's actual machine; do not call synthetically tested code a reproduced original-corpus result |
 | 10% | Clear 3–5-page paper with genuine AI disclosure | `report.pdf`, `scripts/report.tex`, `AI_USAGE.md` | Check PDF pagination, formula/figure legibility, consistency with `report.md` and recipient access |
 
+
+## Rubric-driven next research campaign (planned, not completed)
+
+The assessment assigns **30% to trustworthy evaluation** and **25% to formal method design**. These must take priority over tuning another retrieval LLM on the same 34 already inspected queries.
+
+| Priority | Experiment and control | Evidence needed to claim completion |
+|---|---|---|
+| P0 — 30% evaluation | Blind, source-grounded paper-passage review of sampled level-0/1 labels across 2020/2022/2024. Stratify by cluster size, type and abstention status; conceal algorithm, past ratings and keys. Compare against matched random/control groups. | Authentic pre-cutoff primary passages, evaluator identity, independent sufficiency flags, supported/vague/wrong/unclear counts, overclaim-rate numerator AND denominator, null comparison and intervals. Names/titles alone are insufficient. |
+| P1 — 25% design | Freeze and compare semantic only, direct hypergraph only, joint native semantic+structure, temporal on/off, clique-projection and a faithful published method baseline at matched budgets. | Predeclared source split, method/seed hashes, event provenance, semantic/structure trade-off, held-out metrics and negative results; NEVER reselect the previously frozen model. |
+| P2 — 15% time | Beyond global ARI, compare stable and changing source neighborhoods: retention, localized assignment churn, birth/split/merge/death identities, plus frozen-inertia control. | Three real time snapshots, transparent matching, denominator and CIs across seeds/edge deletion; discuss artificial stability and failure cases. |
+| P3 — extrinsic | Write new primary-paper-grounded questions, lock answer references separately, predeclare Flat versus coarse-to-fine candidate budgets and optionally already frozen BGE/Qwen branches. | Exact paired Hit@5/MRR@5, candidate + centroid operations, latency, cost-quality Pareto and paired uncertainty on an untouched set. No gold-informed model selection. |
+| P4 — delivery | Re-run verified P1/P2/P4 checks, evidence receipts, CI and a readable 3–5-page canonical report. | No broken reproduction links, no overwritten historical negative result, matching PDF/source, honest AI disclosure. |
+
+**Stop rule:** a reranker is not an independent downstream success merely because its Hit@5 rises on reused development questions. The newly reported Qwen-vs-BGE matched outcome is **5 wins / 3 losses / 26 ties**, net +2/34, unadjusted descriptive p=0.7265625: **no significant improvement**. Original locked Flat 3/34 and Route-4 2/34 stay unchanged.
+
+### Recent primary literature and what it does (not) justify
+
+- Badalyan, Ruggeri & De Bacco, [Structure and inference in hypergraphs with node attributes (Nature Communications, 2024)](https://www.nature.com/articles/s41467-024-51388-5): higher-order structure + informative node attributes; combining these is prior art, not our novelty.
+- Kaminski, Misiorek, Pralat & Theberge, [Modularity based community detection in hypergraphs (Journal of Complex Networks, 2024)](https://academic.oup.com/comnet/article/12/5/cnae041/7829128): h-Louvain and structural/graph interpolation, a potential controlled baseline, **not implemented here**.
+- Gottesbüren et al., [Scalable High-Quality Hypergraph Partitioning (ACM ToA, 2024)](https://doi.org/10.1145/3626527): optimized multilevel native partitioning reference. Our local heuristic is NOT an Mt-KaHyPar implementation.
+- Singh et al., [SciRepEval / SPECTER2 (EMNLP, 2023)](https://aclanthology.org/2023.emnlp-main.338/): a different scientific representation model can provide a secondary **evaluation proxy** on held-out abstracts, but paper-passage entailment still requires independent evidence.
+
+**Candidate research extension, NOT yet an implemented or proven novel algorithm:** evidence-gated, temporally aligned native hyperedge coarsening with abstaining labels. Its plausible contribution is the tested **integration of source dating, native higher-order structure, hierarchy budgets, temporal identity and evidence-constrained labels**, not an unsupported claim to have invented structure/attribute mixing.
+
 ## Positioning relative to existing methods (no unverified novelty claim)
 
 - **Zhou, Huang & Schölkopf (NeurIPS 2006)** established spectral learning directly on hypergraphs ([paper](https://papers.nips.cc/paper/2006/hash/dff8e9c2ac33381546d96deea9922999-Abstract.html)); merely using hyperedges is not a new idea.

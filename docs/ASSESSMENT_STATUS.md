@@ -42,7 +42,7 @@ Historical inspected Type-A comparison: Flat and Route-4 both **2/14 Hit@5** (57
 
 The early BGE neural cross-encoder degraded Hit@5 to **1/34**. Three source views put the answer in the **Gold-blind candidate pool for 29/34** questions (mean 208.94 candidate entities); **that is candidate recall, not Hit@5**. The five source-absent questions were `F005`, `F024`, `F028`, `F034`, `F036`.
 
-Qwen3 variant Hit@5 of **12/34** versus BGE context **10/34** is a **+2/34 descriptive improvement**, after multiple development-stage choices and inspections. **No statistical, held-out or cross-corpus improvement claim is justified.** All GPU results were locally scored only after rank-only SHA verification; frozen source rankings and original selected-model outputs were not altered. See [short experiment summary](ADVANCED_GPU_AND_TYPE_B.md) and [Markdown report §8](../report.md#8-gpu-semantic-retrieval-and-qwen3-reranking--post-hoc-development-24-october-2026).
+Qwen3 variant Hit@5 of **12/34** versus BGE context **10/34** is a **+2/34 descriptive improvement**, after multiple development-stage choices and inspections. Local matched audit: **5 wins, 3 losses, 26 ties**; exploratory unadjusted two-sided exact discordant-pair **p=0.7265625**, not significant. **No statistical, held-out or cross-corpus improvement claim is justified.** All GPU results were locally scored only after rank-only SHA verification; frozen source rankings and original selected-model outputs were not altered. See [short experiment summary](ADVANCED_GPU_AND_TYPE_B.md) and [Markdown report §8](../report.md#8-gpu-semantic-retrieval-and-qwen3-reranking--post-hoc-development-24-october-2026).
 
 ## What remains before scientific delivery can claim completion
 

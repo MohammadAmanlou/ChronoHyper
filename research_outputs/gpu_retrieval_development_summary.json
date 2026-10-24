@@ -126,5 +126,16 @@
     "Candidate recall is an upper-coverage diagnostic, not a top-five or answer correctness estimate",
     "No source-version verified factual Type-B answer generation or independent full-text semantic label validation"
   ],
-  "source_of_aggregate": "User-provided local PowerShell logs from BGE-multiview and Qwen3 score_DEVELOPMENT_ONLY.json, cross-checked against frozen source ranking SHA values"
+  "source_of_aggregate": "User-provided local PowerShell logs from BGE-multiview and Qwen3 score_DEVELOPMENT_ONLY.json, cross-checked against frozen source ranking SHA values",
+  "paired_posthoc_vs_bge_context_hit5": {
+    "qwen_wins": 5,
+    "qwen_losses": 3,
+    "ties": 26,
+    "net_gain": 2,
+    "n": 34,
+    "exact_two_sided_discordant_p_unadjusted": 0.7265625,
+    "all_three_qwen_variants_same_paired_binary_counts": true,
+    "description": "descriptive post-hoc on the same inspected 34 queries; NOT independently confirmed improvement",
+    "gold_opened_during_paired_comparison": false
+  }
 }

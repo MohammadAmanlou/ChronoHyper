@@ -23,6 +23,8 @@ ChronoHyper groups dated scientific entities into **nested four-level hierarchie
 
 [Machine-readable aggregate scores](research_outputs/gpu_retrieval_development_summary.json) (development only; private per-question Gold is excluded).
 
+Matched 34-case post-hoc analysis: **5 wins / 3 losses / 26 ties** for each Qwen arm against BGE, unadjusted exploratory **p=0.7266** (not significant).
+
 The Qwen3 **anchor-1** variant has the highest observed MRR@5 (**0.2181**); BGE context is **0.1887** and Qwen3 raw is **0.1814**. Anchoring is a development-only comparator, not a preregistered winner. The previous BGE cross-encoder worsened Hit@5 to **1/34**. Full-text scientific label faithfulness, truly new-corpus retrieval performance and generated Type-B answer correctness remain **unverified**.
 
 ![Developmental top-five retrieval comparison and candidate recall](figures/retrieval_development.svg)
