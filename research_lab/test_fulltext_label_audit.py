@@ -61,5 +61,20 @@ class FullTextLabelAuditTests(unittest.TestCase):
         self.assertEqual(f._wilson(0,12)[0],0)
         self.assertEqual(f._wilson(12,12)[1],1)
 
+    def test_unique_library_requires_original_paper_metadata(self):
+        from tempfile import TemporaryDirectory
+        from pathlib import Path
+        with TemporaryDirectory() as temp:
+            root=Path(temp)
+            folder=root/f.OUT
+            folder.mkdir(parents=True)
+            record={"paper_id":"10","paper_title":"Different title",
+                    "paper_year":"2023","source_url":"",
+                    "source_version_date":"","passage_locator":"",
+                    "passage_text":"","evidence_access":"UNAVAILABLE"}
+            f.csv_write(folder/f.LIBRARY,[record],f.PAPER_FIELDS[2:])
+            with self.assertRaises(ValueError):
+                f._use_unique_paper_library(root,[citation()])
+
 if __name__=="__main__":
     unittest.main()
