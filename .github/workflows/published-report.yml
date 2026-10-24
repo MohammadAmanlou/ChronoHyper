@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   verify-release:
@@ -31,34 +31,6 @@ jobs:
             -output-directory=local_only/published_pdf_audit scripts/report.tex > local_only/published_pdf_audit/xelatex1.txt
           xelatex -interaction=nonstopmode -halt-on-error \
             -output-directory=local_only/published_pdf_audit scripts/report.tex > local_only/published_pdf_audit/xelatex2.txt
-      - name: Synchronize published PDF only when authored text differs
-        run: |
-          set -eu
-          rebuilt="local_only/published_pdf_audit/report.pdf"
-          published="report.pdf"
-          # Compare normalized searchable text; PDF metadata may differ.
-          pdftotext -layout "$rebuilt" local_only/published_pdf_audit/expected.txt
-          if test -f "$published"; then
-            pdftotext -layout "$published" local_only/published_pdf_audit/actual.txt
-          else
-            : > local_only/published_pdf_audit/actual.txt
-          fi
-          python - <<'PY'
-          from pathlib import Path
-          p=Path("local_only/published_pdf_audit")
-          old=" ".join((p/"actual.txt").read_text().split())
-          new=" ".join((p/"expected.txt").read_text().split())
-          (p/"needs_publish").write_text("yes" if old!=new else "no")
-          print("Report PDF text differs:",old!=new)
-          PY
-          if test "$(cat local_only/published_pdf_audit/needs_publish)" = yes; then
-            cp "$rebuilt" "$published"
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add report.pdf
-            git commit -m "Update compiled report PDF to match the reviewed scientific source [skip ci]"
-            git push origin HEAD:main
-          fi
       - name: Verify published PDF matches authored source text and page count
         run: |
           set -eu

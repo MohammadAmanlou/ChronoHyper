@@ -262,3 +262,22 @@ new observed real-corpus result until the candidate runs it. Every historical
 question was previously inspected; the formal independence and full-paper
 semantic-quality gates remain unfulfilled. The frozen `report.pdf`
 must not be edited to assert improved accuracy from these data.
+
+
+## 24 October 2026 — optional GPU retrieval, development only
+
+This addendum does **not** replace the predeclared Flat/Route-4 comparison, selected model, source-group confirmation, or constrained structural null. BGE-M3 and Qwen3 were developed after initial scoring on the **same 34** already inspected, source-screened scientific questions. These are **post-hoc development** figures, not a fresh held-out experiment.
+
+| Canonical entity retrieval | Hit@1 | Hit@5 | Hit@10 | Hit@20 | Hit@100 | MRR@5 |
+|---|---:|---:|---:|---:|---:|---:|
+| BGE-M3 context | 5 | 10 | 13 | 14 | 25 | 0.188725 |
+| BGE three-view RRF | 3 | 10 | 13 | 16 | 26 | 0.162745 |
+| Qwen3-Reranker-0.6B raw | 2 | **12** | **19** | **21** | 28 | 0.181373 |
+| Qwen3 + fixed first-context anchor | 5 | **12** | 18 | **21** | 28 | **0.218137** |
+| Qwen3 + fixed first-two-context anchors | 5 | **12** | 16 | **21** | 28 | 0.202941 |
+
+The frozen Gold-blind three-view candidate union contains the correct scientific entity in **29/34** candidate pools (mean 208.94 unique candidates), which is **candidate recall, not Hit@5**. Qwen raw ranks 28/34 among its top 100 and 12/34 among its top five. Five source-absent queries: F005, F024, F028, F034, F036. The prior BGE neural reranker fell to 1/34 Hit@5. A +2/34 difference versus BGE context is **descriptive, unadjusted and non-confirmatory**.
+
+Frozen ranking SHA-256: BGE multiview \`88f536d78e9e408f526d08bc079111cdd32db76ce13744b0f318c400341c13cd\`, Qwen3 \`be9db8e7a090b9457ec9e90e5e98e23d2c997009349a8e2906271e93b2a9cd89\`. Local-only paired error analysis is available via \`python -m research_lab.qwen_entity_rerank --project . --compare\` after both locally scored private artifacts are present. This audit does not re-open Gold; it must not be treated as an independent-significance test.
+
+The original locked Flat **3/34** vs Route-4 **2/34** (59.3% fewer online dot products) remains unchanged. GPU and CPU model sources and runtime costs are not directly comparable. No new-corpus generalization, full-paper semantic correctness or generated Type-B factual accuracy is established.

@@ -13,6 +13,8 @@
 | Qwen3 + anchor first Context result | **12** | MRR@5 **0.2181** |
 | Qwen3 + anchor first two Context results | 12 | MRR@5 0.2029 |
 
+[Sanitized aggregate metrics](../research_outputs/gpu_retrieval_development_summary.json) retain the exact developmental counts and hashes for reviewer inspection.
+
 Actual Qwen result ranking digest: `be9db8e7a090b9457ec9e90e5e98e23d2c997009349a8e2906271e93b2a9cd89`. Its preceding BGE multiview ranking digest: `88f536d78e9e408f526d08bc079111cdd32db76ce13744b0f318c400341c13cd`. These SHA values establish artifact continuity, **not** scientific truth or independence.
 
 The source union included **29/34** correct entities among a mean **208.94** distinct candidate entities per question; this is candidate recall, not prediction accuracy. See [report.md](../report.md#8-gpu-semantic-retrieval-and-qwen3-reranking--post-hoc-development-24-october-2026).

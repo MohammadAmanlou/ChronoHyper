@@ -21,6 +21,8 @@ ChronoHyper groups dated scientific entities into **nested four-level hierarchie
 | Optional Qwen3-Reranker-0.6B development | Raw / dense-anchor-1 / dense-anchor-2: **12/34** Hit@5 | Modest descriptive change (+2/34); **not independent confirmation** |
 | Gold-blind candidate union | **29/34** reference entities are present among ≤300 candidates (mean 208.94) | **Candidate recall, not Hit@5** |
 
+[Machine-readable aggregate scores](research_outputs/gpu_retrieval_development_summary.json) (development only; private per-question Gold is excluded).
+
 The Qwen3 **anchor-1** variant has the highest observed MRR@5 (**0.2181**); BGE context is **0.1887** and Qwen3 raw is **0.1814**. Anchoring is a development-only comparator, not a preregistered winner. The previous BGE cross-encoder worsened Hit@5 to **1/34**. Full-text scientific label faithfulness, truly new-corpus retrieval performance and generated Type-B answer correctness remain **unverified**.
 
 ![Developmental top-five retrieval comparison and candidate recall](figures/retrieval_development.svg)
@@ -61,4 +63,4 @@ The complete verified run paths, optional private GPU scripts and known caveats 
 | [docs/](docs/) | Evidence, reproduction and assessment limits |
 | [AI_USAGE.md](AI_USAGE.md) | Material AI-assistance disclosure |
 
-**Privacy and scientific integrity.** The input dataset and archived scientific results contain provider-supplied material and should remain within authorized review. Hidden reference answers, individual reviewer judgments and blind mappings must remain local. Do not treat successful tests, generated explanations or repeated seeds on one corpus as independent scientific validation.
+**Privacy and scientific integrity.** This is a **private** repository containing provider-supplied material. The original `inputs/data.zip` may include provider reference answers; do **not** publish the repo or distribute that archive without permission. Additional private reviewer ratings, blind mappings and newly held-out Gold remain in ignored local folders. GPU packages exclude the embedded provider Gold. Passing tests and repeated seeds on one corpus are not independent scientific validation.

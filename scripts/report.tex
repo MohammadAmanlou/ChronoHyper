@@ -42,7 +42,7 @@
 \begin{document}
 \twocolumn[{%
 \begin{minipage}{\textwidth}
-\eyebrow{Constructor Knowledge Labs  /  Research methods report  /  Snapshot: 24 October 2026}\par\vspace{5pt}
+\eyebrow{Constructor Knowledge Labs  /  Research methods report  /  Snapshot: 20 October 2026}\par\vspace{5pt}
 {\sffamily\bfseries\color{navy}\fontsize{22}{24}\selectfont Native Multi-Resolution Abstraction\\[1pt] of a Temporal Knowledge Hypergraph}\par\vspace{5pt}
 {\sffamily\fontsize{9.2}{11}\selectfont Mohammad Amanlou \hfill \color{slate} Reproducible candidate study \enspace\textbullet\enspace 2020--2025 snapshots}\par\vspace{5pt}
 {\color{teal}\rule{\textwidth}{1.2pt}}\par\vspace{5pt}
@@ -189,9 +189,6 @@ An exact-search audit returned identical top-5 rankings for all 18 inspected que
 In a \emph{post-development matched-index budget frontier}, the same 14 previously inspected Type-A questions yielded \(\mathrm{Hit@5}=2/14\) for both Flat and four-root routing, using the same char/word TF--IDF and 2025 source-dated index. Four roots required 1,114.4 vs 2,647 \emph{online} centroid/candidate dot products (57.9\% fewer); the mean per-query scoring time, excluding query encoding and indexing, was 6.13 vs 7.77\,ms. This exploratory, previously seen benchmark cannot establish equivalence.
 
 \textbf{Prospectively frozen same-corpus queries (post-lock):} An isolated AI question author received 36 deterministically sampled targets across 12 root groups. Two original associated paper sources (F023/F031) could not be authenticated and were excluded \emph{before ranking}, leaving 34 novel, evidence-annotated questions with query/Gold hashes frozen in advance. Flat obtained \(\mathrm{Hit@5}=3/34\) (8.82\%); the \emph{predeclared} four-root route obtained \(2/34\) (5.88\%) with 1,076.44 vs 2,647 online dot products (\textbf{59.3\% fewer}). Route-minus-Flat paired Hit@5 was \(-1/34\) (0 wins, 1 loss, 33 ties), bootstrap CI \([-3/34,0]\), descriptive sign \(p=1.0\). Thus the historical equal-hit pattern \emph{did not replicate}; computational savings came with one missed answer. Despite fresh question \emph{text}, targets, source metadata and retrieval candidates are from the same original corpus. Scientific answer entailment remains incompletely checked and no Type-B synthesized-answer accuracy is claimed.
-
-\noindent\textbf{Optional neural retrieval, post-hoc development only.}
-On the \emph{same 34 already-inspected} Type-A questions, BGE-M3 context/three-view RRF reached \(\mathrm{Hit@5}=10/34\). The source-dated, Gold-blind context/name/paper candidate union contained the correct entity for \(29/34\) questions (mean 208.94 unique candidates); this is \emph{candidate recall}, not \(\mathrm{Hit@5}\). Qwen3-Reranker-0.6B, instructed to prefer the exact answer entity, attained \(12/34\) Hit@5 across raw and two fixed-context-anchor arms; anchor-one MRR@5 was \(0.2181\) versus context BGE \(0.1887\). This \(+2/34\) is \emph{descriptive, nonconfirmatory}: models were iterated after scores became visible and no independent new corpus, full-text entailment or Type-B answer accuracy was tested.
 
 \section{Scientific label faithfulness}
 Forty-eight earlier \emph{AI-assisted non-blind} V1 title judgments were 8 accurate, 28 vague and 12 wrong. Only 8 of 48 gloss-overclaim decisions were determinate (40 unclear); no meaningful 0/48 claim can be made. A contrastive, dated provenance-aware V2 labeler generates 60 candidate labels at levels 0--1 in each required snapshot. Its lexical supporter counts were audited (2020/22/24: 1,146 / 1,510 / 2,599), \emph{not} validated as scientific entailment.

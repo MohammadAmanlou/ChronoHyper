@@ -112,6 +112,8 @@ We indexed canonical entities with **BGE-M3**, separately using (i) source-dated
 | Qwen3, first dense result anchored | 5 | **12** | 18 | **21** | 28 | **0.2181** |
 | Qwen3, first two dense results anchored | 5 | **12** | 16 | **21** | 28 | 0.2029 |
 
+[Source-scoped aggregate GPU results](research_outputs/gpu_retrieval_development_summary.json) preserve these exact counts and rank hashes without publishing per-question reference answers.
+
 Counts above are **out of 34**. Compared with BGE context, Qwen3 variants show a *descriptive* Hit@5 difference of **+2/34 (+5.88 percentage points)**. The anchored first-result variant has the highest MRR@5, but that configuration was explored **after** observing baseline development outcomes. The earlier BGE neural reranker, by contrast, achieved **1/34 Hit@5**; neural reranking is not inherently beneficial in this task.
 
 Among the three original source views, the complete, **Gold-blind** candidate union retained the correct entity for **29/34 (85.29%)** questions (175–248 distinct entities per query; mean 208.94). This is **candidate recall, not predictive accuracy**; Qwen raw placed **28/34** within its exported top 100, **21/34** in the top 20 and **12/34** in the top five. Five queries (F005, F024, F028, F034, F036) had no correct target in any exported source top-100; reranking cannot rescue a missing target. These query IDs are development diagnostics, not a generalization estimate.
