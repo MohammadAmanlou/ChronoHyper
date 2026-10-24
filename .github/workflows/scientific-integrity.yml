@@ -31,13 +31,17 @@ jobs:
       - name: Research and gold-separation tests
         run: |
           python -m unittest research_lab.tests_lab research_lab.test_label_v2 research_lab.test_type_b_source_audit -v
-          python -m unittest research_lab.test_retrieval_frontier research_lab.test_frontier_historical research_lab.test_v3_provenance_audit research_lab.test_review_handoff research_lab.test_assessment_status research_lab.test_type_b_independent_handoff research_lab.test_fresh_retrieval research_lab.test_screen_fresh_questions research_lab.test_fresh_score_audit research_lab.test_advanced_retrieval research_lab.test_posthoc_retrieval_diagnostics research_lab.test_multiview_dense research_lab.test_multiview_source_union_audit research_lab.test_qwen_entity_rerank research_lab.test_qwen_candidate_preflight research_lab.test_type_b_answer_generation -v
+          python -m unittest research_lab.test_retrieval_frontier research_lab.test_frontier_historical research_lab.test_v3_provenance_audit research_lab.test_review_handoff research_lab.test_assessment_status research_lab.test_type_b_independent_handoff research_lab.test_fresh_retrieval research_lab.test_screen_fresh_questions research_lab.test_fresh_score_audit research_lab.test_advanced_retrieval research_lab.test_posthoc_retrieval_diagnostics research_lab.test_multiview_dense research_lab.test_multiview_source_union_audit research_lab.test_qwen_entity_rerank research_lab.test_qwen_candidate_preflight research_lab.test_type_b_answer_generation research_lab.test_fulltext_label_audit -v
       - name: Verify frozen hierarchy and hyperedge output
         run: python verify_selected_outputs.py --out outputs_selected
       - name: Generate developmental V3 labels in ignored output
         run: python -m research_lab.label_v3 --project . --out local_only/label_v3_dev
       - name: Exhaustive original-data V3 lexical provenance audit
         run: python -m research_lab.v3_provenance_audit --project . --out local_only/label_v3_dev/provenance_audit.json
+      - name: Validate original-cor​​pus 24-case blinded full-text intake schema (no paper content fabricated)
+        run: |
+          python -m research_lab.label_v3_blind --project . --prepare
+          python -m research_lab.fulltext_label_audit --project . --prepare
       - name: Verify prospective source-stratified question authoring kit
         run: python -m research_lab.fresh_retrieval --project . --author-kit
       - name: Read-only source and scientific-warning preflight
