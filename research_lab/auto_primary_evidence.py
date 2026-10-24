@@ -138,6 +138,15 @@ def _pdf_text(pdf_bytes):
         raise ValueError("No substantial readable PDF text; OCR not assumed")
     return pages
 
+def _source_title_coverage(pages, title):
+    # Corroborate a candidate PDF against the original corpus paper title,
+    # not the landing-page filename. All available first-page token text is used.
+    expected=_tokens(title)
+    actual=_tokens(" ".join(text for page,text in pages if page<=2))
+    if not expected:return 0.0
+    return len(expected&actual)/len(expected)
+
+
 def _windows(page_text, *, width=850, stride=550):
     if len(page_text)<160:
         return []
@@ -248,6 +257,9 @@ def run(project=".",limit=None,offline=False):
                         raise ValueError("HTTP response was not PDF")
                     cachefile.write_bytes(body)
                 pages=_pdf_text(body)
+                title_fraction=_source_title_coverage(pages,p["paper_title"])
+                if title_fraction<0.40:
+                    raise ValueError(f"Downloaded PDF title cannot be matched to original: token overlap {title_fraction:.2f}")
                 date=None
                 if arxiv:
                     try:
@@ -267,6 +279,7 @@ def run(project=".",limit=None,offline=False):
                                "date_within_earliest_snapshot":date_ok,
                                "pdf_sha256":hashlib.sha256(body).hexdigest(),
                                "pdf_page_count":len(pages),
+                               "original_title_token_coverage_on_pages_1_2":round(title_fraction,3),
                                "pdf_cached_locally":True,
                                "independent_scientific_semantics_verified":False})
                 chosen[pid]=(record,pages)
