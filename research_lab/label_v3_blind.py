@@ -25,6 +25,8 @@ def resolve(root,p):
 
 def prepare(project='.',packet='local_only/reviews/label_v3_fresh'):
     root=Path(project);out=resolve(root,packet);out.mkdir(parents=True,exist_ok=True)
+    if (out/'blind_v2_v3_24.csv').exists() or (out/'mapping_PRIVATE.csv').exists():
+        raise FileExistsError('Preserve existing private blind packet and mapping; do not regenerate')
     prior={(int(r['year']),r['stable_id']) for r in csv_read(
         root/'research_outputs/label_v2/BLIND_LABEL_COMPARISON_TO_FILL.csv')}
     nodes,papers=_source(root);byid={n['id']:n for n in nodes}
