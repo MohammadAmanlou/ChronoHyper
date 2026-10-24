@@ -220,6 +220,29 @@ def _source_baseline(root):
     return cases,keys,raw,manifest
 
 
+
+def status(project="."):
+    """Print local completeness only; NEVER represent uninspected sources as true."""
+    root=Path(project).resolve()
+    _,_,rows,manifest=_source_baseline(root)
+    counted=Counter(row["evidence_access"].strip() or "UNFILLED" for row in rows)
+    unknown={k:v for k,v in counted.items() if k not in (
+        "UNFILLED","UNAVAILABLE","FULL_TEXT_USER_INSPECTED")}
+    if unknown:raise ValueError("Unknown source access statuses: "+repr(unknown))
+    result={
+        "schema":"chronohyper_fulltext_intake_progress_v1",
+        "blind_cases":manifest["cases"],
+        "linked_original_paper_rows":manifest["source_rows"],
+        "source_rows_by_status":dict(counted),
+        "ready_to_assemble_status_only":counted.get("UNFILLED",0)==0,
+        "independent_fulltext_verified":False,
+        "label_review_completed":False,
+        "fulltext_science_not_fabricated":True,
+    }
+    print(json.dumps(result,indent=2))
+    return result
+
+
 def assemble(project="."):
     root=Path(project).resolve()
     cases,_,current,manifest=_source_baseline(root)
@@ -388,11 +411,12 @@ def score(project=".",ratings=""):
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     a=p.add_mutually_exclusive_group(required=True)
-    for flag in ("prepare","assemble","score"):a.add_argument("--"+flag,action="store_true")
+    for flag in ("prepare","status","assemble","score"):a.add_argument("--"+flag,action="store_true")
     p.add_argument("--project",default=".")
     p.add_argument("--ratings",default="")
     x=p.parse_args()
     if x.prepare:prepare(x.project)
+    elif x.status:status(x.project)
     elif x.assemble:assemble(x.project)
     else:score(x.project,x.ratings)
 
