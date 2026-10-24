@@ -164,9 +164,13 @@ def _trusted_passages(rows, base):
         raise ValueError("Do not drop, add, or duplicate any source rows")
     result=defaultdict(list)
     pending=Counter()
+    seen=set()
     for row in rows:
         k=(row["blind_id"],row["paper_id"])
         frozen=bykey.get(k)
+        if k in seen:
+            raise ValueError('Duplicate case-paper source row')
+        seen.add(k)
         if frozen is None:
             raise ValueError("Unknown or duplicated case-paper source row")
         for name in PAPER_FIELDS[:5]:
@@ -301,7 +305,11 @@ def _wilson(positive,total):
     d=1+z*z/total
     centre=(p+z*z/(2*total))/d
     rad=z*math.sqrt(p*(1-p)/total+z*z/(4*total*total))/d
-    return [max(0,centre-rad),min(1,centre+rad)]
+    lower = centre-rad
+    upper = centre+rad
+    # Avoid spurious 2.7e-17 floor at zero successes due to floats.
+    return [0.0 if positive==0 else max(0.0,lower),
+            1.0 if positive==total else min(1.0,upper)]
 
 
 def score(project=".",ratings=""):
