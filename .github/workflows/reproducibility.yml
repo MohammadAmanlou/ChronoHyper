@@ -21,6 +21,9 @@ jobs:
       - name: Submission handoff consistency (tracked files, hashes and Git cleanliness)
         run: python scripts/final_handoff.py --project .
 
+      - name: Build and inspect authorized ZIP fallback from immutable Git HEAD
+        run: python scripts/final_handoff.py --project . --package
+
       - name: Regenerate selected measured metrics without changing selection
         run: python scripts/generate_selected_metrics.py
 
