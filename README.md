@@ -63,6 +63,35 @@ intake is now implemented and tested on actual corpus metadata (24 blind
 cases, 28 unique papers). It does **not** create or rate scientific evidence.
 See [the 24-case reviewer workflow](docs/REVIEWER_CHECKLIST.md#primary-paper-evidence-review-executable-next-gate-24-blind-label-pairs).
 
+## Authorized Constructor handoff
+
+The canonical **3–5-page scientific deliverable** is [report.pdf](report.pdf), with
+exact [rebuild source](scripts/report.tex). [report.md](report.md) documents the
+**separate, post-hoc development** research. This repository is **private** because
+the provider's original [input archive](inputs/data.zip) may contain reference
+answers; sharing is restricted to an authorized Constructor evaluator.
+
+For a final, read-only delivery check on Windows from a clean commit:
+
+~~~powershell
+git pull --ff-only origin main
+.\.venv\Scripts\python.exe scripts\final_handoff.py --project .
+~~~
+
+To prepare a private ZIP fallback of **only tracked files from Git HEAD**, without
+ignored local Gold, reviewer keys, caches or working folders:
+
+~~~powershell
+.\.venv\Scripts\python.exe scripts\final_handoff.py --project . --package
+~~~
+
+This writes an SHA-identified archive and an inspectable audit beneath ignored
+\`local_only/constructor_handoff/\`. **Only share the ZIP with an authorized
+Constructor reviewer.** The audit checks completeness, hashes, Git cleanliness,
+input provenance and (when PyMuPDF is installed) the report page limit. It is
+**not** an independent scientific-review certificate; see the evaluation limits
+above and the [rubric audit](docs/ASSESSMENT_STATUS.md).
+
 ## Repository map
 
 | Path | Role |

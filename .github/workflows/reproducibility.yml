@@ -18,6 +18,9 @@ jobs:
         run: python -m unittest research_lab.tests_lab research_lab.test_label_v2 research_lab.test_type_b_source_audit -v
       - name: Locked hierarchy structural verification
         run: python verify_selected_outputs.py --out outputs_selected
+      - name: Submission handoff consistency (tracked files, hashes and Git cleanliness)
+        run: python scripts/final_handoff.py --project .
+
       - name: Regenerate selected measured metrics without changing selection
         run: python scripts/generate_selected_metrics.py
 
