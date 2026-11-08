@@ -13,6 +13,7 @@ The post-hoc audit is separate from pre-registered scientific confirmation.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import math
 import random
@@ -39,12 +40,14 @@ def assignments(document):
     return observed
 
 
-def dated_edges(graph, cutoff):
+def dated_edges(graph, cutoff, excluded_source_papers=()):
     """Mirror src.run.snapshot_raw source and endpoint cutoff conditions."""
     visible = {n["id"] for n in graph["nodes"] if int(n["first_seen_year"]) <= cutoff}
+    excluded = set(map(str, excluded_source_papers))
     rows = {}
     for edge in graph["hyperedges"]:
-        if (int(edge["year"]) > cutoff or
+        if (str(edge.get("provenance", {}).get("article_id", "")) in excluded or
+                int(edge["year"]) > cutoff or
                 int(edge.get("provenance", {}).get("article_year", edge["year"])) > cutoff or
                 not all(v in visible for v in edge["members"])):
             continue
@@ -70,13 +73,13 @@ def _rate(num, den):
 
 
 def paired_locality(graph, old_document, new_document, old_year, new_year,
-                    *, repetitions=999, seed=17):
+                    *, repetitions=999, seed=17, excluded_source_papers=()):
     if new_year <= old_year or repetitions < 1:
         raise ValueError("Snapshots must advance and repetitions >= 1")
     before = assignments(old_document)
     after = assignments(new_document)
-    original = dated_edges(graph, old_year)
-    evolved = dated_edges(graph, new_year)
+    original = dated_edges(graph, old_year, excluded_source_papers)
+    evolved = dated_edges(graph, new_year, excluded_source_papers)
     if not set(original) <= set(evolved):
         raise ValueError("Temporal original event IDs are not nested")
     if not set(before) <= set(after):
@@ -142,7 +145,7 @@ def paired_locality(graph, old_document, new_document, old_year, new_year,
         "untouched_change_rate": _rate(c, c + d),
         "touched_minus_untouched_change_rate": exposure_delta,
         "fraction_of_churn_on_new_edge_endpoints": _rate(a, len(changed)),
-        "stratification": "original node type x original original-hyperedge incidence degree {0,1,2-3,4+}",
+        "stratification": "original node type x original training-hyperedge incidence degree {0,1,2-3,4+}",
         "strata_count": len(strata),
         "stratified_null_expected_touched_churn": expected,
         "stratified_permutation_null_mean": null_mean,
@@ -169,13 +172,31 @@ def main():
     args = ap.parse_args()
     root = Path(args.project).resolve()
     archive = root / "inputs/data.zip"
+    manifest = json.loads((root / "outputs_selected/selected_export_manifest.json").read_text(encoding="utf-8"))
+    checksum = hashlib.sha256(archive.read_bytes()).hexdigest()
+    if checksum != manifest["dataset_sha256"]:
+        raise ValueError("The source ZIP digest does not match the frozen selected hierarchy")
+    excluded = set(map(str, manifest["paper_ids_excluded_from_training"]))
     with ZipFile(archive) as z:
         graph = json.loads(z.read("data/tkh_collection10.json"))
+    # Model fit used only non-held-out source papers. Confirm identical
+    # original event identities against frozen T4 collapsed output.
+    for year in YEARS:
+        training_events = dated_edges(graph, year, excluded)
+        collapsed = json.loads((root / f"outputs_selected/collapsed_edges_{year}_level0.json").read_text(encoding="utf-8"))
+        measured = {entry["id"] for entry in collapsed}
+        if set(training_events) != measured:
+            raise ValueError(
+                f"Fitting-event mismatch for {year}: expected {len(training_events)} "
+                f"science-only training edges, frozen collapsed output has {len(measured)}. "
+                "Never mix held-out source events into a training-locality claim."
+            )
     docs = {year: json.loads((root / f"outputs_selected/hierarchy_{year}.json").read_text(encoding="utf-8"))
             for year in YEARS}
     transitions = [
         paired_locality(graph, docs[a], docs[b], a, b,
-                        repetitions=args.permutations, seed=args.seed + i)
+                        repetitions=args.permutations, seed=args.seed + i,
+                        excluded_source_papers=excluded)
         for i, (a, b) in enumerate(zip(YEARS, YEARS[1:]))
     ]
     record = {
@@ -188,7 +209,10 @@ def main():
             "root cluster identity changed, not scientific semantic truth."
         ),
         "test": "one-sided permutation of churn within original node-type x prior-incidence-degree strata",
-        "source": "original provider science-only hypergraph, frozen selected hierarchy roots",
+        "source": "original provider science-only hypergraph, frozen selected TRAINING hyperedges and hierarchy roots",
+        "original_provider_zip_sha256_verified": checksum,
+        "excluded_heldout_source_paper_count": len(excluded),
+        "training_event_ids_matched_frozen_collapsed_outputs": True,
         "gold_questions_read": False,
         "new_model_fitted": False,
         "multiple_comparisons_adjusted": False,
