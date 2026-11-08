@@ -1,0 +1,92 @@
+{
+  "schema": "chronohyper_source_delta_temporal_locality_posthoc_v1",
+  "stage": "POSTHOC_SAME_CORPUS_EXPLORATORY_NO_GOLD",
+  "years": [
+    2020,
+    2022,
+    2024
+  ],
+  "definition": "Touched: a shared preexisting source node incident to >=1 original hyperedge first present at the later snapshot. Churn: overlap-matched root cluster identity changed, not scientific semantic truth.",
+  "test": "one-sided permutation of churn within original node-type x prior-incidence-degree strata",
+  "source": "original provider science-only hypergraph, frozen selected TRAINING hyperedges and hierarchy roots",
+  "original_provider_zip_sha256_verified": "414867a07e5fdc4b38f9ad4e96bd5253d31e239012173ca439a1c5441553b4e1",
+  "excluded_heldout_source_paper_count": 20,
+  "training_event_ids_matched_frozen_collapsed_outputs": true,
+  "gold_questions_read": false,
+  "new_model_fitted": false,
+  "multiple_comparisons_adjusted": false,
+  "transitions": [
+    {
+      "transition": "2020-2022",
+      "old_snapshot": 2020,
+      "new_snapshot": 2022,
+      "shared_preexisting_nodes": 1505,
+      "new_source_nodes": 659,
+      "old_hyperedges": 209,
+      "new_hyperedges_added": 130,
+      "shared_nodes_touched_by_new_native_hyperedge": 76,
+      "shared_nodes_not_touched_by_new_native_hyperedge": 1429,
+      "root_identity_changes_total": 11,
+      "root_identity_changes_touched": 1,
+      "root_identity_changes_untouched": 10,
+      "touched_change_rate": 0.013157894736842105,
+      "untouched_change_rate": 0.006997900629811057,
+      "touched_minus_untouched_change_rate": 0.0061599941070310475,
+      "fraction_of_churn_on_new_edge_endpoints": 0.09090909090909091,
+      "stratification": "original node type x original training-hyperedge incidence degree {0,1,2-3,4+}",
+      "strata_count": 33,
+      "stratified_null_expected_touched_churn": 0.6170170709793351,
+      "stratified_permutation_null_mean": 0.6412825651302605,
+      "stratified_permutation_null_sd": 0.6530176279101159,
+      "one_sided_permutation_p_churn_enrichment_exploratory": 0.546,
+      "permutations": 499,
+      "seed": 17,
+      "table": {
+        "touched_changed": 1,
+        "touched_unchanged": 75,
+        "untouched_changed": 10,
+        "untouched_unchanged": 1419
+      },
+      "limitation": "Post-hoc association, not causality; source-edge incidence is not the whole scientific semantic change; persistent cluster IDs are overlap-matched heuristic. Counts across two transitions overlap."
+    },
+    {
+      "transition": "2022-2024",
+      "old_snapshot": 2022,
+      "new_snapshot": 2024,
+      "shared_preexisting_nodes": 2164,
+      "new_source_nodes": 2000,
+      "old_hyperedges": 339,
+      "new_hyperedges_added": 306,
+      "shared_nodes_touched_by_new_native_hyperedge": 146,
+      "shared_nodes_not_touched_by_new_native_hyperedge": 2018,
+      "root_identity_changes_total": 27,
+      "root_identity_changes_touched": 7,
+      "root_identity_changes_untouched": 20,
+      "touched_change_rate": 0.04794520547945205,
+      "untouched_change_rate": 0.009910802775024777,
+      "touched_minus_untouched_change_rate": 0.038034402704427275,
+      "fraction_of_churn_on_new_edge_endpoints": 0.25925925925925924,
+      "stratification": "original node type x original training-hyperedge incidence degree {0,1,2-3,4+}",
+      "strata_count": 37,
+      "stratified_null_expected_touched_churn": 2.0550504488318952,
+      "stratified_permutation_null_mean": 2.026052104208417,
+      "stratified_permutation_null_sd": 1.2539806938113003,
+      "one_sided_permutation_p_churn_enrichment_exploratory": 0.002,
+      "permutations": 499,
+      "seed": 18,
+      "table": {
+        "touched_changed": 7,
+        "touched_unchanged": 139,
+        "untouched_changed": 20,
+        "untouched_unchanged": 1998
+      },
+      "limitation": "Post-hoc association, not causality; source-edge incidence is not the whole scientific semantic change; persistent cluster IDs are overlap-matched heuristic. Counts across two transitions overlap."
+    }
+  ],
+  "ci_evidence": {
+    "workflow_run": "https://github.com/MohammadAmanlou/ChronoHyper/actions/runs/42500389669",
+    "commit": "aee3989595f214585bc358ecddd3f5a114e1870e",
+    "source": "GitHub CI stdout from exact frozen training-event audit"
+  },
+  "qualified_interpretation": "The 2020–22 contrast does not show enrichment (p=0.546); the 2022–24 contrast shows exploratory enrichment under a source-type/prior-degree conditional null (p=0.002, 499 permutations) but the analysis is post-hoc, the two transitions are dependent and multiple comparison/model selection adjustments cannot support an independent superiority claim."
+}
