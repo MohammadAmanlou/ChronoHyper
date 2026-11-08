@@ -1,6 +1,6 @@
 # Assessment status and remaining evidence gates
 
-**24 October 2026 · Mohammad Amanlou · [Main README](../README.md) · [Full scientific report](../report.pdf) · [Detailed evaluation archive](EVALUATION.md)**
+**Reviewed 8 November 2026 · Mohammad Amanlou · [Main README](../README.md) · [Full scientific report](../report.pdf) · [Detailed evaluation archive](EVALUATION.md)**
 
 **Status:** core implementation and source-dated native-hypergraph invariants have executable checks. Scientific concept-label fidelity, independent new-corpus performance and Type-B factual answer generation have **not** been established. Keep all negative and qualified results visible.
 
@@ -50,6 +50,24 @@ primary paper records (92 case–paper incidences). Authentic primary full texts
 have NOT been retrieved, copied, judged or certified by this step; the
 private local intake and reviewer decision are pending. See the
 [full-text intake commands](REVIEWER_CHECKLIST.md#primary-paper-evidence-review-executable-next-gate-24-blind-label-pairs).
+
+## Additional temporal diagnostic (8 November 2026; post-hoc)
+
+The [source-delta locality audit](../research_outputs/temporal_locality_posthoc.json)
+matches exactly the original fitting hyperedge IDs in the selected collapsed
+exports, excludes 20 held-out source papers, and reports exposed versus unexposed
+preexisting-node identity changes. **2020–22:** 1/76 vs 10/1,429,
+conditional p=0.546; **2022–24:** 7/146 vs 20/2,018, conditional
+p=0.002. The comparisons are **exploratory, same-corpus and not adjusted
+for repeated post-hoc inspection**; neither is evidence of a causal or
+independently verified improvement. Both results, including the null first
+transition, are retained.
+
+The local applicant's automatic paper extraction previously reported 26/28
+accessible PDFs, 22 with historical arXiv v1 metadata, and 82 candidate
+case-paper passages; **the CI repository has no authority to certify their
+version authenticity, relevance, copyright or independent human judgments**.
+Automated extraction is not a completed semantic overclaim-rate evaluation.
 
 ## What remains before scientific delivery can claim completion
 

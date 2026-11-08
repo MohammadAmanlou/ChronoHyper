@@ -64,6 +64,23 @@ class SubmissionSurfaceTests(unittest.TestCase):
             self.assertIn(v,f)
         self.assertIn("post-hoc",f)
 
+    def test_reviewer_rubric_table_and_scientific_boundaries(self):
+        page=(ROOT/"README.md").read_text(encoding="utf-8")
+        for item in ("**T1**","**T2 / P1–P2**","**T2 / P3–P4**",
+                     "**T3 / P5**","**T4**","**T5 / P6**",
+                     "**T6** · Independent-view coherence",
+                     "**T6** · Real temporal stability",
+                     "**T6** · Label overclaim rate",
+                     "**T6** · Extrinsic retrieval",
+                     "**T7**"):
+            with self.subTest(rubric=item):
+                self.assertIn(item,page)
+        self.assertIn("NOT_EVALUATED",page)
+        self.assertIn("not independent confirmation",page.lower())
+        self.assertIn("Flat **3/34** vs Route-4 **2/34**",page)
+        self.assertIn("4-page PDF",page)
+        self.assertLess(len(page),10000)
+
     def test_single_concise_current_figure_and_no_stale_qwen_doc(self):
         chart=ROOT/"figures/retrieval_development.svg"
         self.assertTrue(chart.is_file())
