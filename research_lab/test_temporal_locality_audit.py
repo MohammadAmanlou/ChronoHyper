@@ -19,11 +19,11 @@ def graph():
         ],
         "hyperedges":[
             {"id":"old","year":2019,"members":["a","c"],
-             "provenance":{"article_year":2019}},
+             "provenance":{"article_year":2019,"article_id":10}},
             {"id":"new","year":2022,"members":["b","d"],
-             "provenance":{"article_year":2022}},
+             "provenance":{"article_year":2022,"article_id":20}},
             {"id":"future_source","year":2022,"members":["a","b"],
-             "provenance":{"article_year":2024}},
+             "provenance":{"article_year":2024,"article_id":30}},
         ],
     }
 
@@ -56,6 +56,16 @@ class TemporalLocalityAuditTests(unittest.TestCase):
         self.assertEqual(set(dated_edges(graph(),2022)),{"old","new"})
         self.assertEqual(set(dated_edges(graph(),2020)),{"old"})
 
+    def test_heldout_original_papers_excluded_from_model_exposure(self):
+        self.assertEqual(set(dated_edges(graph(),2022,excluded_source_papers={"20"})),{"old"})
+        p=doc(2020,{"a":"X","b":"X","c":"Y","d":"Y"})
+        q=doc(2022,{"a":"X","b":"Y","c":"Y","d":"Y"})
+        z=paired_locality(graph(),p,q,2020,2022,
+                          repetitions=19,seed=7,excluded_source_papers={"20"})
+        self.assertEqual(z["new_hyperedges_added"],0)
+        self.assertEqual(z["shared_nodes_touched_by_new_native_hyperedge"],0)
+        self.assertEqual(z["root_identity_changes_untouched"],1)
+
     def test_reject_non_laminar_root_overlap(self):
         with self.assertRaisesRegex(ValueError,"multiple root clusters"):
             assignments({"supernodes":[
@@ -66,10 +76,7 @@ class TemporalLocalityAuditTests(unittest.TestCase):
     def test_reject_deleted_original_events(self):
         p=doc(2020,{"a":"X","b":"X","c":"Y","d":"Y"})
         q=doc(2022,{"a":"X","b":"X","c":"Y","d":"Y"})
-        g=graph()
-        g["hyperedges"][0]["year"]=2022
-        # Pre-existing edge in 2020 disappears if an old edge is now visible
-        # under a stricter snapshot? The input remains monotone; test nested source nodes instead.
+        # Source-node loss is forbidden; the original graph must be monotonic.
         q["supernodes"][0]["member_ids"].remove("a")
         with self.assertRaisesRegex(ValueError,"not nested"):
             paired_locality(graph(),p,q,2020,2022,repetitions=9)
