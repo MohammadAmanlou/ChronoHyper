@@ -31,6 +31,10 @@ The Qwen3 **anchor-1** variant has the highest observed MRR@5 (**0.2181**); BGE 
 
 *Figure: the 34 queries were source-screened before the first rank-only score, but reused for later model selection. The 29/34 bar denotes candidate **presence**, not correct top-five ranking.*
 
+**Additional post-hoc temporal-locality diagnostic.** Rechecking the frozen, source-paper-filtered native hyperedges, root-cluster changes on nodes touched by new original training edges were **1/76 vs 10/1,429** on untouched nodes (2020–22), and **7/146 vs 20/2,018** (2022–24). Type/prior-degree stratified permutation p-values were **0.546** and **0.002**, respectively (499 permutations, *unadjusted exploratory*; not proof of causal improvement). [Full frozen numeric audit](research_outputs/temporal_locality_posthoc.json).
+
+![Training-source temporal locality of cluster changes](figures/temporal_locality.svg)
+
 ## Method at a glance
 
 1. **Dated sources.** Parse the original 52-paper temporal hypergraph; admit events only when their papers and endpoints meet the cutoff.

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="950" height="430" viewBox="0 0 950 430" role="img" aria-labelledby="ttl dsc">
+<title id="ttl">Source-delta temporal locality of root cluster identity switches</title>
+<desc id="dsc">Source-reviewed original training hyperedges only. 2020 to 2022 touched 1 of 76, untouched 10 of 1429, conditional permutation p 0.546. 2022 to 2024 touched 7 of 146, untouched 20 of 2018, exploratory p 0.002. Neither establishes independent model superiority.</desc>
+<rect width="950" height="430" fill="#ffffff" rx="12"/>
+<style>.title{font:700 21px system-ui,-apple-system,sans-serif;fill:#14263b}.sub{font:13px system-ui,sans-serif;fill:#506579}.heading{font:700 16px system-ui,sans-serif;fill:#14263b}.rowname{font:13px system-ui,sans-serif;fill:#36495a}.value{font:600 13px system-ui,sans-serif;fill:#203449}.tick{font:12px system-ui,sans-serif;fill:#566b7c}.note{font:12px system-ui,sans-serif;fill:#506579}.pvalue{font:600 13px system-ui,sans-serif;fill:#34495b}</style>
+<text x="34" y="32" class="title">Does root-cluster change follow new scientific evidence?</text>
+<text x="34" y="54" class="sub">Identity-switch rate among pre-existing nodes · source-paper-held-out events excluded · 499 stratified permutations</text>
+<line x1="294" x2="294" y1="58" y2="344" stroke="#e6edf2" stroke-width="1" /><text class="tick" text-anchor="middle" x="294" y="371">0%</text>
+<line x1="371.5" x2="371.5" y1="58" y2="344" stroke="#e6edf2" stroke-width="1" /><text class="tick" text-anchor="middle" x="371.5" y="371">1%</text>
+<line x1="449" x2="449" y1="58" y2="344" stroke="#e6edf2" stroke-width="1" /><text class="tick" text-anchor="middle" x="449" y="371">2%</text>
+<line x1="526.5" x2="526.5" y1="58" y2="344" stroke="#e6edf2" stroke-width="1" /><text class="tick" text-anchor="middle" x="526.5" y="371">3%</text>
+<line x1="604" x2="604" y1="58" y2="344" stroke="#e6edf2" stroke-width="1" /><text class="tick" text-anchor="middle" x="604" y="371">4%</text>
+<line x1="681.5" x2="681.5" y1="58" y2="344" stroke="#e6edf2" stroke-width="1" /><text class="tick" text-anchor="middle" x="681.5" y="371">5%</text>
+<line x1="759" x2="759" y1="58" y2="344" stroke="#e6edf2" stroke-width="1" /><text class="tick" text-anchor="middle" x="759" y="371">6%</text>
+<text x="34" y="94" class="heading">2020 → 2022</text>
+<text x="34" y="121" class="rowname">New training edge</text>
+<text x="34" y="159" class="rowname">No new training edge</text>
+<rect x="294" y="101" width="101.97" height="24" rx="5" fill="#146e89"/>
+<rect x="294" y="139" width="54.23" height="24" rx="5" fill="#b8843d"/>
+<text x="407.9736842105263" y="119" class="value">1.32% (1/76)</text>
+<text x="360.2337298810357" y="157" class="value">0.70% (10/1429)</text>
+<text x="788" y="137" class="pvalue">p=0.546*</text><text x="34" y="212" class="heading">2022 → 2024</text>
+<text x="34" y="239" class="rowname">New training edge</text>
+<text x="34" y="277" class="rowname">No new training edge</text>
+<rect x="294" y="219" width="371.58" height="24" rx="5" fill="#146e89"/>
+<rect x="294" y="257" width="76.81" height="24" rx="5" fill="#b8843d"/>
+<text x="677.5753424657535" y="237" class="value">4.79% (7/146)</text>
+<text x="382.808721506442" y="275" class="value">0.99% (20/2018)</text>
+<text x="788" y="255" class="pvalue">p=0.002*</text>
+<line x1="34" x2="919" y1="206" y2="206" stroke="#dae4eb"/>
+<text x="294" y="402" class="note">* One-sided, unadjusted, post-hoc type × prior-degree permutation p-value. Not an independent confirmation.</text>
+<text x="294" y="418" class="note">Exposure is incidence to newly admitted native hyperedges, not a causal intervention.</text>
+</svg>

@@ -19,6 +19,15 @@ verbatim complete transcripts or evidence of unaided authorship.
 | Primary-paper evidence / `auto_primary_evidence.py`, `fulltext_label_audit.py` | "Retrieve only accessible version-dated primary papers; isolate reviewer A/B keys; never fabricate missing passages or human ratings." | Source-bound document-link checks, PDF text and snapshot cutoff tests; automatic excerpts remain **unreviewed** until independently verified. |
 | Scientific narrative / `report.md`, `report.pdf` | "Prepare a short, reproducible scientific assessment with figures, major limitations and verified-vs-assumed separation." | Cross-checked source/locked model, selected metrics and PDF rebuild; disclosed unsupported/negative findings rather than editing them away. |
 
+**8 November exploratory extension.** GPT-6 assisted with a source-delta
+locality analysis, synthetic regression tests, native-event split integrity
+checks, numeric figure and accompanying report. The first full-corpus analysis
+was rejected when we noticed it included evidence from **held-out** papers;
+we revised it to reproduce exactly the locked fitting-event IDs before
+reporting the two mixed, post-hoc results. CI confirmed matching source
+hashes, deterministic tests and non-overwriting frozen outputs. No new
+cluster model was fitted, and there is no claim of independent superiority.
+
 **Human responsibility.** The applicant must be prepared to explain each code
 path, model assumption, source, hypothesis, negative outcome and statistical
 denominator. Tool-generated prose, code, historical-source links, images and

@@ -50,6 +50,21 @@ class SubmissionSurfaceTests(unittest.TestCase):
         self.assertIn("NOT_INDEPENDENT",rows["status"])
         self.assertIn("candidate recall",rows["source_candidate_union"]["meaning"].lower())
 
+    def test_source_delta_report_frozen_training_evidence(self):
+        import json
+        s=json.loads((ROOT/"research_outputs/temporal_locality_posthoc.json").read_text(encoding="utf-8"))
+        self.assertTrue(s["training_event_ids_matched_frozen_collapsed_outputs"])
+        self.assertTrue(s["original_provider_zip_sha256_verified"])
+        self.assertEqual(s["excluded_heldout_source_paper_count"],20)
+        self.assertEqual([(q["old_hyperedges"],q["new_hyperedges_added"],
+                           q["root_identity_changes_touched"],q["root_identity_changes_untouched"])
+                          for q in s["transitions"]],[(209,130,1,10),(339,306,7,20)])
+        f=(ROOT/"figures/temporal_locality.svg").read_text(encoding="utf-8")
+        for v in ("1/76","10/1429","7/146","20/2018","0.546","0.002"):
+            # SVG uses formatted thousand separators for visual readability.
+            self.assertIn(v if v not in ("10/1429","20/2018") else v.replace("1429","1,429").replace("2018","2,018"),f)
+        self.assertIn("post-hoc",f)
+
     def test_single_concise_current_figure_and_no_stale_qwen_doc(self):
         chart=ROOT/"figures/retrieval_development.svg"
         self.assertTrue(chart.is_file())

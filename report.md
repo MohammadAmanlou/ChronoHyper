@@ -121,3 +121,26 @@ Among the three original source views, the complete, **Gold-blind** candidate un
 **Paired development audit:** All Qwen3 variants show 5 question-level wins, 3 losses and 26 ties against BGE context (net +2/34). The exploratory unadjusted paired p-value is **0.7265625**. This does not establish a statistically significant or held-out gain; old rankings and private Gold remain unchanged.
 
 The original Flat/Route-4 study remains **3/34 versus 2/34** Hit@5 (59.3% fewer online dot products for routing). GPU model indexing, device, inference cost and source representations differ from the CPU protocol; do not infer a direct speed comparison or conclude that the hypergraph abstraction caused Qwen's higher Hit@5. Meaningful next scientific gates are (1) source-validated full-paper evidence for unclear labels and scientific claims; (2) a new, independently written and pre-frozen benchmark in which architecture, candidate policy and evaluation are fixed before Gold inspection; (3) external-paper or domain-reviewer corroboration. Source review and generated Type-B answer correctness remain unresolved.
+
+## 9. New training-source temporal locality audit — post-hoc exploratory (8 November 2026)
+
+The task requires more than a high global ARI: persistent root IDs should avoid gratuitous reassignment, but ideally react *locally* to new source evidence. We implemented [source-delta locality auditing](research_lab/temporal_locality_audit.py) without refitting. It reads **only the original science graph** from the authorized ZIP and the frozen `outputs_selected/` root partitions. Crucially, it excludes the **20 source papers held out of model fitting**, checks the original dataset SHA-256 and verifies that retained original hyperedge IDs exactly match the frozen collapsed native events in 2020, 2022 and 2024.
+
+A shared existing node is *touched* if it belongs to an original native hyperedge admitted since the previous snapshot; `churn` is an overlap-matched root-ID switch. The conditional null permutes **observed churn labels** within original node-type × previous training-incidence-degree bins, preserving both the number of changes and the source-exposure groups. This is a more focused question than global ARI, but **does not** measure causal effects or semantic truth of a concept change.
+
+| Source-admissible transition | Touched changes | Untouched changes | Change rates (touched vs untouched) | Conditional one-sided p (499 permutations) |
+|---|---:|---:|---:|---:|
+| 2020→2022 | **1/76** | 10/1,429 | 1.32% vs 0.70% | **0.546** |
+| 2022→2024 | **7/146** | 20/2,018 | 4.79% vs 0.99% | **0.002** |
+
+![Post-hoc change localization on training-only original hyperedges](figures/temporal_locality.svg)
+
+For 2020→2022, there is **no evidence of preferential localization** under the conditional null. For 2022→2024, there is an exploratory association between observed source changes and root identity switches after conditioning on the chosen type/degree bins, but this second-period signal cannot be promoted to independent method superiority: outcomes and data were already inspected, periods share nodes, different degree/type/semantic confounders remain, the null has only 499 Monte-Carlo repetitions and p-values are not multiple-testing-adjusted. A fully frozen alternative that never updates can achieve zero churn but fails to represent true drift.
+
+**Reproduce independently of GitHub's original CI run:**
+`python -m unittest research_lab.test_temporal_locality_audit -v` and
+`python -m research_lab.temporal_locality_audit --project . --permutations 499`.
+The [machine-readable frozen observation](research_outputs/temporal_locality_posthoc.json) includes the exact split, denominators, seed and CI evidence. Neither hidden answer Gold nor local reviewer keys were accessed.
+
+**Recent-method positioning (not implemented comparisons).** h-Louvain (Kamiński et al., *J. Complex Networks*, 2024, https://doi.org/10.1093/comnet/cnae041) combines graph/two-section and hypergraph modularity for community detection; Badalyan, Ruggeri and De Bacco (*Nature Communications*, 2024, https://doi.org/10.1038/s41467-024-51388-5) combine native higher-order interactions and node attributes. The temporal hyper-core work (Mancastroppa et al., *EPJ Data Science*, 2024, https://doi.org/10.1140/epjds/s13688-024-00490-1) describes a distinct way to characterize hypergraph evolution. These motivate a **future** baseline of a faithful higher-order method plus localized drift metrics, not a claim that we implemented their algorithms or proved algorithmic novelty.
+
