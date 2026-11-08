@@ -61,8 +61,7 @@ class SubmissionSurfaceTests(unittest.TestCase):
                           for q in s["transitions"]],[(209,130,1,10),(339,306,7,20)])
         f=(ROOT/"figures/temporal_locality.svg").read_text(encoding="utf-8")
         for v in ("1/76","10/1429","7/146","20/2018","0.546","0.002"):
-            # SVG uses formatted thousand separators for visual readability.
-            self.assertIn(v if v not in ("10/1429","20/2018") else v.replace("1429","1,429").replace("2018","2,018"),f)
+            self.assertIn(v,f)
         self.assertIn("post-hoc",f)
 
     def test_single_concise_current_figure_and_no_stale_qwen_doc(self):
