@@ -71,7 +71,7 @@ Automated extraction is not a completed semantic overclaim-rate evaluation.
 
 ## Qwen3 local evidence gate outcome (9 November 2026)
 
-The user's private, source-filtered 24-case run gave **0 cases with sufficient evidence**. In **21/24**, no eligible dated source passage was presented to the local AI judge; **3/24** (`L005`, `L022`, `L024`) reached the model, which reported the provided excerpts insufficient. Thus **zero does NOT mean that all 24 labels are false or have overclaims**. A paper-level count (22 historically dated arXiv v1 PDFs among 28 linked original papers) must not be conflated with case-specific evidence coverage. The correct scientific full-text overclaim rate remains **NOT_EVALUATED**.
+The user's private 24-case run returned **0 cases with sufficient AI-reviewed evidence**. The original program stored **21/24** cases as `INSUFFICIENT_NO_VERIFIED_HISTORICAL_PASSAGE`, and **3/24** (`L005`, `L022`, `L024`) received parsed AI judgments of insufficient supplied excerpts. **Crucial implementation caveat:** the original judge also stores **Ollama failures and invalid JSON** under that same `INSUFFICIENT_NO_VERIFIED_HISTORICAL_PASSAGE` status. Thus the initial interpretation that all 21 lack eligible historical excerpts **was not established**. The corrected audit examines the existing per-case `review_notes` and source-gate flags, distinguishing genuine absent/undated evidence, model/JSON errors and unexplained mismatches without repeating inference. These outcomes **do not demonstrate incorrect labels**. A source-paper count of 22 dated PDFs is not case-level evidence coverage; the scientific overclaim rate remains **NOT_EVALUATED**.
 
 The applicant can audit the **existing private files offline**, without re-running Qwen3, downloading sources, inspecting answers or reading the hidden A/B mapping:
 
@@ -79,7 +79,7 @@ The applicant can audit the **existing private files offline**, without re-runni
 .\.venv\Scripts\python.exe -m research_lab.evidence_gap_audit --project .
 ```
 
-The diagnostic prints counts and blind IDs only, separates absent/undated passages from AI insufficiency, and is covered by synthetic CI tests. Independent scientific adjudication is still outstanding.
+The diagnostic prints counts and blind IDs only, separates absent/undated passages, model/JSON errors and AI insufficiency, and is covered by synthetic CI tests. Independent scientific adjudication is still outstanding.
 
 ## What remains before scientific delivery can claim completion
 
