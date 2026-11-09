@@ -1,6 +1,8 @@
-"""Private, read-only audit of 24 labels: source coverage versus AI insufficiency.
+"""Private, read-only audit of source coverage, model errors and AI insufficiency.
 
 Offline: no PDFs, model calls, external APIs, Gold, or A/B condition key.
+The source judge records network/invalid-JSON failures as insufficient-source
+status; review_notes must therefore be checked before interpreting 24-case totals.
 Run: python -m research_lab.evidence_gap_audit --project .
 """
 import argparse
@@ -58,14 +60,26 @@ def summarize(cases, passages, reviews, status=None, summary=None):
         sufficient=judge["evidence_sufficient_yes_no"].strip().lower()
         if judge["evidence_status"] not in (SCORED,NOT_SCORED):
             raise ValueError("Unexpected judge result for "+cid)
-        if sufficient not in ("yes","no") or called!=bool(eligible):
-            raise ValueError("AI result/source gate mismatch for "+cid)
-        if sufficient=="yes" and not called:
-            raise ValueError("Unscored case cannot claim sufficient evidence: "+cid)
-        if sufficient=="yes":
+        if sufficient not in ("yes","no"):
+            raise ValueError("Unknown AI sufficiency value for "+cid)
+        if sufficient=="yes" and (not called or not eligible):
+            raise ValueError("Unverified case cannot claim sufficient evidence: "+cid)
+        # IMPORTANT: auto_label_judge.run() catches Ollama/JSON exceptions and
+        # deliberately stores _no_evidence() with the *same* evidence status
+        # as a genuine no-passage source gate. Do not conflate those outcomes.
+        notes=(judge.get("review_notes") or "").strip()
+        model_failed=notes.startswith("Local model unavailable or output invalid;")
+        if called and not eligible:
+            category="INCONSISTENT_AI_SCORED_WITHOUT_ELIGIBLE_PASSAGE"
+        elif eligible and not called:
+            category=("ELIGIBLE_PASSAGES_MODEL_OR_JSON_ERROR" if model_failed
+                      else "ELIGIBLE_PASSAGES_UNSCORED_UNEXPLAINED")
+        elif sufficient=="yes":
             category="AI_SAYS_SUFFICIENT_NOT_INDEPENDENT"
         elif eligible:
             category="DATED_EVIDENCE_AI_SAYS_INSUFFICIENT"
+        elif model_failed:
+            category="INCONSISTENT_MODEL_ERROR_WITHOUT_ELIGIBLE_PASSAGE"
         elif evidence:
             category="CANDIDATES_PRESENT_BUT_NOT_DATE_ELIGIBLE"
         else:
@@ -75,7 +89,7 @@ def summarize(cases, passages, reviews, status=None, summary=None):
         rows.append({"blind_id":cid,"year":years[cid],
                      "candidate_passages":len(evidence),
                      "historically_eligible_passages":len(eligible),
-                     "local_model_called":called,
+                     "AI_output_parsed_successfully":called,
                      "AI_evidence_sufficient":sufficient,"diagnostic":category})
     if summary:
         if summary.get("blind_case_count")!=24 or summary.get("sufficient_cases")!=counts["AI_SAYS_SUFFICIENT_NOT_INDEPENDENT"]:
@@ -88,13 +102,16 @@ def summarize(cases, passages, reviews, status=None, summary=None):
       "candidate_date_statuses":dict(sorted(Counter(r["date_status"] for r in passages).items())),
       "cases_with_any_candidate":sum(bool(grouped[cid]) for cid in ids),
       "cases_with_dated_eligible_evidence":sum(r["historically_eligible_passages"]>0 for r in rows),
-      "cases_actually_scored_by_local_AI":sum(r["local_model_called"] for r in rows),
+      "cases_with_eligible_evidence_for_model":sum(r["historically_eligible_passages"]>0 for r in rows),
+      "cases_with_successfully_parsed_AI_responses":sum(r["AI_output_parsed_successfully"] for r in rows),
+      "cases_with_model_or_JSON_failures":counts["ELIGIBLE_PASSAGES_MODEL_OR_JSON_ERROR"],
+      "cases_with_unexplained_source_review_disagreement":counts["ELIGIBLE_PASSAGES_UNSCORED_UNEXPLAINED"]+counts["INCONSISTENT_AI_SCORED_WITHOUT_ELIGIBLE_PASSAGE"]+counts["INCONSISTENT_MODEL_ERROR_WITHOUT_ELIGIBLE_PASSAGE"],
       "AI_sufficient_cases":counts["AI_SAYS_SUFFICIENT_NOT_INDEPENDENT"],
       "diagnoses":dict(sorted(counts.items())),
       "by_snapshot":{k:dict(sorted(v.items())) for k,v in sorted(per_year.items())},
       "case_ids_only_no_private_passages":rows,
       "scientific_overclaim_rate":"NOT_EVALUATED",
-      "interpretation":"Insufficient or unverified evidence is not evidence of an incorrect label. AI-only ratings are not independent validation."
+      "interpretation":"Source absence, Qwen/JSON execution errors, and AI judgment of insufficient excerpts are separate. None by itself demonstrates an incorrect label; semantic overclaim remains unmeasured."
     }
     if status:
         result["source_paper_counts_NOT_case_coverage"]={
