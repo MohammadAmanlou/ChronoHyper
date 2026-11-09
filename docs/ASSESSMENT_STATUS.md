@@ -69,6 +69,18 @@ case-paper passages; **the CI repository has no authority to certify their
 version authenticity, relevance, copyright or independent human judgments**.
 Automated extraction is not a completed semantic overclaim-rate evaluation.
 
+## Qwen3 local evidence gate outcome (9 November 2026)
+
+The user's private, source-filtered 24-case run gave **0 cases with sufficient evidence**. In **21/24**, no eligible dated source passage was presented to the local AI judge; **3/24** (`L005`, `L022`, `L024`) reached the model, which reported the provided excerpts insufficient. Thus **zero does NOT mean that all 24 labels are false or have overclaims**. A paper-level count (22 historically dated arXiv v1 PDFs among 28 linked original papers) must not be conflated with case-specific evidence coverage. The correct scientific full-text overclaim rate remains **NOT_EVALUATED**.
+
+The applicant can audit the **existing private files offline**, without re-running Qwen3, downloading sources, inspecting answers or reading the hidden A/B mapping:
+
+```powershell
+.\.venv\Scripts\python.exe -m research_lab.evidence_gap_audit --project .
+```
+
+The diagnostic prints counts and blind IDs only, separates absent/undated passages from AI insufficiency, and is covered by synthetic CI tests. Independent scientific adjudication is still outstanding.
+
 ## What remains before scientific delivery can claim completion
 
 1. **Original-paper scientific evidence.** Obtain authorized complete primary-text passages, versions available by the original cutoff and independent qualified adjudication of scientific labels and 36 Type-B source/task claims, especially Q17.
