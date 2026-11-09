@@ -91,6 +91,19 @@ The applicant executed the **real** `--run` after a successful `--probe` on the 
 
 **Interpretation:** the prior 21 errors were *execution/JSON failures*, not missing historical passages. Their successful retry removes the technical failure from this particular run. The local AI then judged all 24 supplied short source excerpts **insufficient to substantiate both candidate labels/glosses**, using a conservative prompt. This is **not** a 100% label-error rate, not a scientific overclaim-rate estimate and not qualified independent human review. Do not convert “AI evidence sufficiency=0/24” to scientific label correctness. The next evidence gate is to inspect case-specific notes and primary passages with version/date provenance, then obtain genuinely independent ratings or transparently record the missing evaluation. Any expanded passage selection or prompt development must be labeled post-hoc; frozen benchmark metrics stay unchanged.
 
+## Scientific-versus-structural source of label insufficiency (9 November 2026)
+
+Inspection of the local Qwen3 review notes showed that some failures concerned
+insufficient paper evidence for a shared scientific theme (DFT, training, force),
+whereas L022 and L024 concerned **internal graph-output count claims** (9/16
+and 19/56) that a primary paper is not expected to contain. The latter must
+be verified against the frozen hierarchy and original dated node names, not
+through the external source alone. The code already has a deterministic
+180-label membership/phrase/cutoff provenance audit, which does **not**
+constitute independent semantic correctness. This makes the 0/24 result
+unsuitable for claiming a 100% semantic label failure rate. Details and the
+separated review protocol are in [Label evidence separation](LABEL_EVIDENCE_SEPARATION.md).
+
 ## What remains before scientific delivery can claim completion
 
 1. **Original-paper scientific evidence.** Obtain authorized complete primary-text passages, versions available by the original cutoff and independent qualified adjudication of scientific labels and 36 Type-B source/task claims, especially Q17.
