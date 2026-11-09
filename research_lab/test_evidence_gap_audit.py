@@ -24,23 +24,42 @@ class EvidenceGapAuditTests(unittest.TestCase):
         result=a.summarize(cases,passages,reviews)
         self.assertEqual(result["candidate_passages"],2)
         self.assertEqual(result["cases_with_dated_eligible_evidence"],1)
-        self.assertEqual(result["cases_actually_scored_by_local_AI"],1)
+        self.assertEqual(result["cases_with_successfully_parsed_AI_responses"],1)
         self.assertEqual(result["diagnoses"],{
           "DATED_EVIDENCE_AI_SAYS_INSUFFICIENT":1,
           "CANDIDATES_PRESENT_BUT_NOT_DATE_ELIGIBLE":1,
           "NO_SOURCE_CANDIDATES_FOR_CASE":22})
         self.assertEqual(result["scientific_overclaim_rate"],"NOT_EVALUATED")
 
-    def test_reject_unfounded_model_evaluation(self):
+    def test_inconsistent_scored_without_source_is_reported_not_hidden(self):
         cases,passages,reviews=sample()
         reviews[1]["evidence_status"]=a.SCORED
-        with self.assertRaisesRegex(ValueError,"mismatch"):
-            a.summarize(cases,passages,reviews)
+        result=a.summarize(cases,passages,reviews)
+        self.assertEqual(
+            result["diagnoses"]["INCONSISTENT_AI_SCORED_WITHOUT_ELIGIBLE_PASSAGE"],1)
+        self.assertEqual(result["cases_with_unexplained_source_review_disagreement"],1)
+
+    def test_eligible_source_model_failure_is_not_missing_paper(self):
+        cases,passages,reviews=sample()
+        reviews[0]["evidence_status"]=a.NOT_SCORED
+        reviews[0]["review_notes"]="Local model unavailable or output invalid; invalid JSON"
+        result=a.summarize(cases,passages,reviews)
+        self.assertEqual(result["cases_with_model_or_JSON_failures"],1)
+        self.assertEqual(result["cases_with_dated_eligible_evidence"],1)
+        self.assertEqual(result["cases_with_successfully_parsed_AI_responses"],0)
+        self.assertEqual(result["diagnoses"]["NO_SOURCE_CANDIDATES_FOR_CASE"],22)
+
+    def test_eligible_source_unexplained_mismatch_is_visible(self):
+        cases,passages,reviews=sample()
+        reviews[0]["evidence_status"]=a.NOT_SCORED
+        result=a.summarize(cases,passages,reviews)
+        self.assertEqual(
+            result["diagnoses"]["ELIGIBLE_PASSAGES_UNSCORED_UNEXPLAINED"],1)
 
     def test_reject_unfounded_sufficiency(self):
         cases,passages,reviews=sample()
         reviews[2]["evidence_sufficient_yes_no"]="yes"
-        with self.assertRaisesRegex(ValueError,"Unscored"):
+        with self.assertRaisesRegex(ValueError,"Unverified"):
             a.summarize(cases,passages,reviews)
 
     def test_reject_duplicates(self):
