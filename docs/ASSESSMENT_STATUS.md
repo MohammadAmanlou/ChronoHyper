@@ -85,6 +85,12 @@ The applicant can audit the **existing private files offline**, without re-runni
 
 The diagnostic prints counts and blind IDs only, separates absent/undated passages, model/JSON errors and AI insufficiency, and is covered by synthetic CI tests. Independent scientific adjudication is still outstanding.
 
+## Local AI retry completed (9 November 2026; post-hoc only)
+
+The applicant executed the **real** `--run` after a successful `--probe` on the private Windows research workspace, rather than merely running the synthetic unit tests. The resulting local-only `AUTO_AI_RETRY_SUMMARY.json` reports: **21/21 previously failed model/JSON cases recovered**, **0 retry execution errors**, **3 previously parsed judgments preserved**, **24/24 valid local AI responses combined**, **0/24 marked evidence-sufficient**, and **0 unresolved cases**. Input hashes were saved; original blind sheet, historical passage candidates, review, locked metrics and PDF were not overwritten. These are user-reported local outcomes; the remote CI does not contain the private candidate passages and cannot independently certify the result.
+
+**Interpretation:** the prior 21 errors were *execution/JSON failures*, not missing historical passages. Their successful retry removes the technical failure from this particular run. The local AI then judged all 24 supplied short source excerpts **insufficient to substantiate both candidate labels/glosses**, using a conservative prompt. This is **not** a 100% label-error rate, not a scientific overclaim-rate estimate and not qualified independent human review. Do not convert “AI evidence sufficiency=0/24” to scientific label correctness. The next evidence gate is to inspect case-specific notes and primary passages with version/date provenance, then obtain genuinely independent ratings or transparently record the missing evaluation. Any expanded passage selection or prompt development must be labeled post-hoc; frozen benchmark metrics stay unchanged.
+
 ## What remains before scientific delivery can claim completion
 
 1. **Original-paper scientific evidence.** Obtain authorized complete primary-text passages, versions available by the original cutoff and independent qualified adjudication of scientific labels and 36 Type-B source/task claims, especially Q17.
