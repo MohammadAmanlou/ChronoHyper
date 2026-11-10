@@ -93,8 +93,10 @@ def record(project=".", paper_id="", passage_file="", locator="",
         raise ValueError("Invalid YYYY-MM-DD source version date") from None
     if version > date(min(years), 12, 31):
         raise ValueError("Source version is newer than the earliest original snapshot")
-    if version.year < int(target["paper_year"]):
-        raise ValueError("Version date precedes original paper year; investigate metadata")
+    # Original paper_year can be the journal/conference year; legitimate
+    # arXiv v1 preprints commonly predate that bibliographic publication.
+    # Preserve paper_year from the frozen corpus and enforce only the
+    # temporal snapshot cutoff, never a spurious minimum publication year.
     summary = {
         "paper_id": str(paper_id),
         "paper_title_original": target["paper_title"],
