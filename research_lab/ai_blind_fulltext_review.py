@@ -61,6 +61,49 @@ Return ONLY one JSON object with keys:
 This is AI-only developmental evidence review, NOT expert confirmation."""
 
 
+
+# Ollama supports a JSON Schema in /api/generate's format field.
+# JSON mode alone only guarantees JSON syntax; it does not require
+# the six grading keys, which caused real L002 to return invalid scores.
+# Validation below remains the final authority: schema != scientific truth.
+OUTPUT_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "evidence_sufficient_yes_no": {"type": "string", "enum": ["yes", "no"]},
+        "A_accuracy_accurate_vague_wrong": {
+            "type": "string", "enum": ["accurate", "vague", "wrong", ""]},
+        "B_accuracy_accurate_vague_wrong": {
+            "type": "string", "enum": ["accurate", "vague", "wrong", ""]},
+        "A_gloss_overclaim_yes_no_unclear": {
+            "type": "string", "enum": ["yes", "no", "unclear"]},
+        "B_gloss_overclaim_yes_no_unclear": {
+            "type": "string", "enum": ["yes", "no", "unclear"]},
+        "review_notes": {"type": "string"},
+    },
+    "required": [
+        "evidence_sufficient_yes_no",
+        "A_accuracy_accurate_vague_wrong",
+        "B_accuracy_accurate_vague_wrong",
+        "A_gloss_overclaim_yes_no_unclear",
+        "B_gloss_overclaim_yes_no_unclear",
+        "review_notes",
+    ],
+    "additionalProperties": False,
+}
+
+RETRY_GUIDANCE = (
+    "\n\nYOUR PREVIOUS OUTPUT WAS INVALID: {reason}. "
+    "Return a completely new JSON object containing EVERY one of the six "
+    "required schema fields. If sufficiency is yes, BOTH A and B titles "
+    "MUST have accurate/vague/wrong grades and BOTH glosses MUST have "
+    "yes/no/unclear values. If you cannot responsibly grade both titles "
+    "based on the excerpts, use sufficiency=no, both title grades empty "
+    "strings and both glosses unclear. Cite only actual PAPER ids shown "
+    "in this case in review_notes. Do not invent, guess or force a "
+    "positive grade just to satisfy the schema."
+)
+
+
 def _hash(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
@@ -197,15 +240,20 @@ def run(project=".", model="qwen3:8b",
                 i, len(selected), cid, rated["evidence_sufficient_yes_no"]), flush=True)
             continue
         last_error = ""
-        for _ in range(attempts):
+        for attempt in range(attempts):
             try:
+                prompt = _prompt(case)
+                if attempt:
+                    prompt += RETRY_GUIDANCE.format(reason=last_error[:200])
                 response = _local_post(endpoint, {
                     "model": model, "system": SYSTEM,
-                    "prompt": _prompt(case), "stream": False,
-                    "format": "json", "think": False,
-                    "options": {"temperature": 0.1, "num_predict": 900, "num_ctx": 8192},
+                    "prompt": prompt, "stream": False,
+                    "format": OUTPUT_SCHEMA, "think": False,
+                    "options": {"temperature": 0.1, "num_predict": 1300, "num_ctx": 8192},
                 }, timeout)
-                obj = json.loads(response.get("response", ""))
+                if not response.get("response"):
+                    raise ValueError("Ollama returned empty response; check completion/truncation")
+                obj = json.loads(response["response"])
                 assessment = _parse_response(case, obj, model)
                 rated = dict(case)
                 rated.update(assessment)
@@ -227,6 +275,8 @@ def run(project=".", model="qwen3:8b",
                 break
             except (ValueError, OSError, KeyError, TypeError) as exc:
                 last_error = "{}: {}".format(type(exc).__name__, str(exc)[:240])
+                print("  {} attempt {}/{} invalid: {}".format(
+                    cid, attempt + 1, attempts, last_error), flush=True)
         else:
             errors.append({"case": cid, "error": last_error})
             print("[{}/{}] {} FAILED_NOT_RATED {}".format(
