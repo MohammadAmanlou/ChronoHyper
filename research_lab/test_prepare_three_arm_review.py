@@ -106,7 +106,7 @@ class ThreeArmPrepTests(unittest.TestCase):
             (r["snapshot_year"], r["stable_id"]) for r in keys})
         self.assertNotIn(("2020", "C01"), {
             (r["snapshot_year"], r["stable_id"]) for r in keys})
-        self.assertNotIn(("2024", "C02"), {
+        self.assertNotIn(("2020", "C02"), {
             (r["snapshot_year"], r["stable_id"]) for r in keys})
         self.assertTrue(all(set((r["A_method"], r["B_method"],
                                 r["C_method"])) == {"v2", "v3", "v4"} for r in keys))
