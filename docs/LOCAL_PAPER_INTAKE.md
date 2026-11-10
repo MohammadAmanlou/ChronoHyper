@@ -288,3 +288,44 @@ with an invented result.
 
 Source: official Ollama API documentation states \`format\` can be \`json\`
 or a JSON Schema; JSON mode alone does not enforce the scientific grade keys.
+
+
+### Post-hoc read-only QA after a real fair Qwen review (11 Nov 2026)
+
+The user reported a real 24-case local Qwen3:8b development run with
+5 V3 wins, 14 V3 losses, 5 ties, descriptive unadjusted paired p≈0.0636.
+This result is FROZEN as an observed AI-only developmental diagnostic:
+do not rerun or edit until it gives a more favorable result.
+
+Manual inspection of reviewer notes discovered three quality concerns:
+- L007: \`Unresolved heterogeneous cluster\` received the categorical
+  grade \`wrong\`; a justified abstention is not necessarily a false
+  scientific statement. The relationship must be examined in the context
+  of the sampled members, source excerpts and evidence sufficiency.
+- L013: the note asserts "the gloss for A overclaims", but the structured
+  gloss-overclaim field reads \`unclear\`; these are internally discrepant.
+- L014: the pasted terminal output did not display \`label_B\` although
+  side B was graded \`accurate\`. Determine whether the actual frozen
+  label field is empty BEFORE interpreting the grade.
+
+Use the new **read-only** consistency audit on the user's local-only files:
+
+    git pull --ff-only origin main
+    .\.venv\Scripts\python.exe -m unittest research_lab.test_ai_blind_review_qa -v
+    .\.venv\Scripts\python.exe -m research_lab.ai_blind_review_qa --project .
+
+The command verifies the original assembled receipt and rated CSV hashes,
+then examines all 24 rows for empty scientific label titles that were
+nevertheless graded, changed frozen evidence, invalid response values,
+explicit notes/flag contradictions, and potential over-penalization of
+abstentions. Formal integrity problems are separated from *heuristic*
+warnings; textual warnings are not proof that Qwen was incorrect. It makes
+NO Ollama calls, reads NO private V2/V3 side mapping or benchmark gold,
+writes NO files and cannot change the prior measured negative result.
+The copied reviewer worksheet and original AI score remain unchanged.
+
+If a title is actually blank, its AI accuracy grade is scientifically
+uninterpretable even if a structured output validator accepted it. Record
+that limitation transparently rather than silently filling the title,
+faking a reviewer correction, or retrospectively altering the previously
+frozen p-value.
