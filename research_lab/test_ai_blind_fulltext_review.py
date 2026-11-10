@@ -138,6 +138,48 @@ class AIBlindReviewTests(unittest.TestCase):
             summarize(self.root)
 
     @patch("research_lab.ai_blind_fulltext_review._local_post")
+    def test_invalid_yes_grade_retries_with_schema_and_keeps_original(self, post):
+        from research_lab.ai_blind_fulltext_review import OUTPUT_SCHEMA
+        original_hash = _sha(self.path)
+        bad = json.loads(mock_response({})["response"])
+        bad["B_accuracy_accurate_vague_wrong"] = ""
+        post.side_effect = [
+            {"response": json.dumps(bad)},
+            mock_response({}),
+        ]
+        result = run(self.root, limit=1, attempts=2)
+        self.assertIsNone(result)  # A two-case smoke-test never creates a final file
+        self.assertEqual(post.call_count, 2)
+        first = post.call_args_list[0].args[1]
+        second = post.call_args_list[1].args[1]
+        self.assertEqual(first["format"], OUTPUT_SCHEMA)
+        self.assertEqual(first["format"]["type"], "object")
+        self.assertEqual(len(first["format"]["required"]), 6)
+        self.assertTrue(second["think"] is False)
+        self.assertIn("YOUR PREVIOUS OUTPUT WAS INVALID", second["prompt"])
+        self.assertIn("BOTH A and B titles", second["prompt"])
+        self.assertIn("L001", second["prompt"])
+        self.assertEqual(_sha(self.path), original_hash)
+        self.assertFalse((self.base / FINAL).exists())
+        self.assertEqual(json.loads(
+            (self.base / "AI_ONLY_BLIND24_QWEN_LOCAL" / "L001.json"
+            ).read_text(encoding="utf-8"))["ratings"][
+                "B_accuracy_accurate_vague_wrong"], "vague")
+
+    @patch("research_lab.ai_blind_fulltext_review._local_post")
+    def test_repeated_invalid_grade_stays_unrated(self, post):
+        bad = json.loads(mock_response({})["response"])
+        bad["A_accuracy_accurate_vague_wrong"] = ""
+        post.return_value = {"response": json.dumps(bad)}
+        result = run(self.root, limit=1, attempts=2)
+        self.assertIsNone(result)
+        self.assertEqual(post.call_count, 2)
+        self.assertFalse((self.base / FINAL).exists())
+        self.assertFalse((self.base / SUMMARY).exists())
+        self.assertFalse(
+            (self.base / "AI_ONLY_BLIND24_QWEN_LOCAL" / "L001.json").exists())
+
+    @patch("research_lab.ai_blind_fulltext_review._local_post")
     def test_errors_never_create_fake_completed_form(self, post):
         post.side_effect = OSError("offline")
         run(self.root, limit=2, attempts=1)
