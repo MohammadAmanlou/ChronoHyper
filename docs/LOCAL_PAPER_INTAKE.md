@@ -132,3 +132,21 @@ After review, inspect data intake progress:
 For the five sources lacking date-gated arXiv v1, use independent source
 discovery rather than relying on inferred versions. These remain unfilled
 until a real source is verified or explicitly declared unavailable.
+
+
+## Corrected preprint-year guard (2026-11-10)
+
+The immutable corpus paper_year may describe a later journal/conference
+publication (e.g. 2018), whereas arXiv v1 was correctly submitted earlier
+(e.g. 2017). The generic recorder now **allows** this difference, while still
+enforcing the frozen per-case snapshot date cutoff. It never alters the
+original paper_year or paper_title. The regression test
+test_arxiv_v1_may_predate_bibliographic_publication_year protects this
+rule. Existing local evidence is not rewritten by this code update.
+
+An earlier interactive session saved 12 papers, but 4 were incorrectly
+rejected by this guard (5396, 5393, 5387, 5444). Two others were skipped
+because an exact confirmation string was not entered (4166, 5404).
+Run the interactive review again: it **only queues unfilled papers**.
+Inspect the original exact arXiv v1 PDF before explicitly typing
+CONFIRM followed by the shown paper ID. Never confirm blindly.
