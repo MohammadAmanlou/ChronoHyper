@@ -91,6 +91,35 @@ class PaperRecorderTests(unittest.TestCase):
             self._run(source_url="https://arxiv.org/pdf/1506.00303v1",
                       source_version_date="2021-01-01")
 
+    def test_arxiv_v1_may_predate_bibliographic_publication_year(self):
+        # A journal article catalogued in 2018 can have a valid arXiv v1
+        # from 2017. Rejecting it would incorrectly block historical evidence.
+        self.rows[0]["paper_year"] = "2018"
+        self._write("PRIMARY_PAPERS_TO_FILL.csv", self.fields, self.rows)
+        self._write("SOURCE_PASSAGES_TO_FILL.csv",
+                    ("blind_id", "snapshot_year", "paper_id", "paper_title", "paper_year"),
+                    [
+                        {"blind_id": "L001", "snapshot_year": "2020",
+                         "paper_id": "5452", "paper_title": "Original source",
+                         "paper_year": "2018"},
+                        {"blind_id": "L002", "snapshot_year": "2022",
+                         "paper_id": "5452", "paper_title": "Original source",
+                         "paper_year": "2018"},
+                    ])
+        self.auto_row["source_version_date"] = "2017-10-27"
+        self.auto_row["versioned_source_url"] = "https://arxiv.org/pdf/1710.10324v1"
+        self._write("AUTO_PRIMARY_EVIDENCE_CANDIDATES.csv",
+                    tuple(self.auto_row), [self.auto_row])
+        preview = self._run()
+        self.assertEqual(preview["status"], "DRY_RUN_ONLY")
+        self.assertEqual(preview["source_version_date"], "2017-10-27")
+        saved = self._run(apply=True)
+        self.assertEqual(saved["status"], "SAVED_WITH_BACKUP")
+        with self.main_file.open(encoding="utf-8-sig",newline="") as f:
+            recorded = next(csv.DictReader(f))
+        self.assertEqual(recorded["paper_year"], "2018")
+        self.assertEqual(recorded["source_version_date"], "2017-10-27")
+
     def test_requires_explicit_date_for_unverified_source(self):
         self.auto_row["date_status"]="UNVERIFIED"
         self._write("AUTO_PRIMARY_EVIDENCE_CANDIDATES.csv",
