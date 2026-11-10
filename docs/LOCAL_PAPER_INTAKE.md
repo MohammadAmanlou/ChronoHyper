@@ -329,3 +329,60 @@ uninterpretable even if a structured output validator accepted it. Record
 that limitation transparently rather than silently filling the title,
 faking a reviewer correction, or retrospectively altering the previously
 frozen p-value.
+
+
+### L017 / L023 interpretation and V4 evidence-separated prototype (11 Nov 2026)
+
+Real Qwen L017 output: V3 "Amorphous" was marked accurate and V2
+"Mixed topics: Carbon / Amorphous" was marked vague. Its rationale
+called the V3 gloss an overclaim while assigning "unclear" in the
+structured field. The V3 gloss's **17 of 25** statement is a
+*locally checkable name-mention count*, NOT a claim that a paper says
+"amorphous" 17 times or establishes an entire scientific topic.
+The critic may be confusing lexical provenance with paper entailment.
+The number must be validated against frozen member names; neither paper
+abstracts nor Qwen notes alone attest it.
+
+Real Qwen L023 output: V2 "Mixed topics: Nasicon / Pipeline" got vague;
+V3 "Unresolved heterogeneous cluster" got wrong. V3 abstained because
+the candidate phrase failed its cutoff-specific lexical support rule.
+Failure to identify a topic is NOT a scientific claim that all members
+are genuinely heterogeneous. A shared *very broad* domain such as
+machine learning in materials science may not justify a more specific
+label. Both quality-of-title and appropriateness-of-abstention must
+be evaluated independently. Keep the original 5-win / 14-loss /
+5-tie AI-only diagnostic (p≈0.0636) frozen; the review is not an
+independent semantic acceptance result and Qwen's qualitative
+rationale has known possible internal contradictions.
+
+A new **separate** experimental module
+\`research_lab/label_v4_exploratory.py\` does NOT infer new semantic
+scientific titles or lower V3 thresholds after viewing its losses.
+It applies exactly the frozen original V2 phrase evidence and V3
+coverage/source-count rules, but represents:
+
+- \`display_title\`: the qualified phrase only, or neutral
+  \`Unresolved topic\` when no source-qualified term passes
+- \`lexical_evidence_state\`: majority/partial/no-qualified-phrase status
+- \`abstained_from_specific_topic\`: an explicit boolean flag
+- \`observed_terms_not_confirmed_topics\`: original V2 selected
+  phrases with exact name/support counts, marked not semantically verified
+- \`display_gloss\`: carefully scoped name-mention and provenance
+  claims, never a statement that an abstained cluster is scientifically
+  incoherent
+
+To generate ALL 180 (3×60) source-scoped presentations locally:
+
+    git pull --ff-only origin main
+    .\.venv\Scripts\python.exe -m unittest research_lab.test_label_v4_exploratory -v
+    .\.venv\Scripts\python.exe -m research_lab.label_v4_exploratory --project .
+
+This writes only the ignored folder
+\`local_only/label_v4_exploratory/\` and refuses to overwrite it.
+It does not open the 24-case private ratings, paper full-text intake,
+gold, A/B mapping, or change any previous selected model, V2/V3 or PDF.
+A new evaluator should have SEPARATE rubrics for topic-title
+utility, semantic entailment, lexical count/provenance accuracy and
+whether abstention is appropriate, and should use genuinely unseen,
+source-authorized, fulltext-supported cases. Re-scoring this same 24-case
+worksheet would only be post-hoc development, NOT confirmation of V4.
