@@ -51,3 +51,50 @@ Never upload original private source full texts, mappings or rating sheets
 to public GitHub. Do not run assemble until every source access row is
 resolved, or score until a genuinely independent reviewer grades the
 frozen blind worksheet.
+
+
+## NEW: Automatically gather version-specific abstracts in bulk (no copy-paste)
+
+From your Windows PowerShell at the repository root:
+
+    git pull --ff-only origin main
+
+Then collect all currently unfilled papers that have a previously verified
+arXiv v1 version. Internet access to arxiv.org is required:
+
+    .\.venv\Scripts\python.exe -m research_lab.fetch_arxiv_abstracts --project .
+
+The command downloads **only from the exact arXiv v1 abstract pages** already
+linked to the frozen paper IDs. It checks the official page submission date
+against the date stored in the original auto candidates before saving text.
+It does not overwrite any already downloaded draft or the original reviewed
+paper library. Each abstract goes into the private local folder:
+
+    local_only/reviews/fulltext_label24/AUTO_ARXIV_ABSTRACTS_PENDING_REVIEW/
+
+Review the local manifest_LOCAL.csv for successful fetches, papers requiring
+manual source search, and any network/version mismatch. arXiv may block
+automated requests; a failed fetch does not justify inventing or substituting
+abstract text. No new candidate paper title, version or label accuracy is
+silently inferred.
+
+To try only the next previously identified paper 5396:
+
+    .\.venv\Scripts\python.exe -m research_lab.fetch_arxiv_abstracts --project . --paper-id 5396
+
+The corresponding draft file (if successfully fetched) is
+paper_5396_abstract.txt in the pending directory. Inspect the listed exact
+arXiv v1 abstract page and compare the text yourself, then run the generic
+record command using that saved file (no manual paper text copy needed).
+Do not use --apply without that check:
+
+    .\.venv\Scripts\python.exe -m research_lab.record_inspected_paper --project . --paper-id 5396 --passage-file ".\local_only\reviews\fulltext_label24\AUTO_ARXIV_ABSTRACTS_PENDING_REVIEW\paper_5396_abstract.txt" --locator "arXiv v1 abstract page"
+
+Then, after actual human inspection, repeat this command with --apply.
+
+The bulk fetcher never marks paper evidence FULL_TEXT_USER_INSPECTED,
+never changes the original 92-row intake, never scores label accuracy and
+never creates the blind reviewer packet. It cannot establish sufficient
+semantic support for cluster titles merely from abstracts. Paper sources
+without a verified historical arXiv v1 are explicitly reported for separate
+manual verification.
