@@ -256,3 +256,35 @@ scientifically confirmed overclaim rate. Original source and frozen
 retrieval experiments stay unchanged. Do not run the older generic
 --score with AI_ONLY_REVIEW24.csv because that generic filename/semantic
 stage may be confused with actual independent reviewer results.
+
+
+### Recovery when Qwen emits incomplete grades (2026-11-10)
+
+A real two-case smoke test recorded L001 but rejected L002 because a
+"sufficient=yes" JSON object lacked a required title/gloss grade.
+This is **not** the 24/24 synthetic unittest output, which is deliberately
+generated only by mocks and written to a temporary test folder.
+No actual final 24-case AI reviewer result has been claimed.
+
+The local reviewer now passes a **six-field JSON Schema** in the documented
+Ollama \`/api/generate\` \`format\` parameter and on an invalid response
+re-prompts the model with the precise validation error. Source-scientific
+judgment, the FAIR_EVIDENCE_RUBRIC_V1 policy, immutable packet and
+previously accepted L001 checkpoint are unchanged. If retries still
+fail, the affected case stays UNRATED (no automatic invented grades).
+
+After \`git pull --ff-only origin main\`, run:
+
+    .\.venv\Scripts\python.exe -m unittest research_lab.test_ai_blind_fulltext_review -v
+    .\.venv\Scripts\python.exe -m research_lab.ai_blind_fulltext_review --project . --model qwen3:8b --limit 2
+
+The smoke test should print L001 CHECKPOINT_OK and either L002 SAVED_AI_ONLY
+or a diagnostically useful invalid response error. If both pass, run
+without --limit to finish the other 22. Do **not** delete L001.json, modify
+original blind packet, or treat passing mock tests as completed local
+scientific judging. If a particular case repeatedly fails, leave it
+unrated and investigate the local Ollama output rather than filling it
+with an invented result.
+
+Source: official Ollama API documentation states \`format\` can be \`json\`
+or a JSON Schema; JSON mode alone does not enforce the scientific grade keys.
