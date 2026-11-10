@@ -104,6 +104,39 @@ constitute independent semantic correctness. This makes the 0/24 result
 unsuitable for claiming a 100% semantic label failure rate. Details and the
 separated review protocol are in [Label evidence separation](LABEL_EVIDENCE_SEPARATION.md).
 
+## Local source-name provenance audit reproduced (10 November 2026)
+
+**User-reported Windows run**, after pulling `main`, successfully executed
+`python -m research_lab.v3_provenance_audit --project .` against the
+applicant's private original corpus and previously generated V3 candidates.
+This is **real local data validation**, not synthetic unit-test output.
+
+| Frozen snapshot | V3 labels audited | Majority-name labels | Partial-name labels | Explicit abstentions |
+|---|---:|---:|---:|---:|
+| 2020 | 60 | 8 | 13 | 39 |
+| 2022 | 60 | 6 | 16 | 38 |
+| 2024 | 60 | 5 | 17 | 38 |
+| **Total** | **180** | **19** | **46** | **115** |
+
+Reported audit properties: **0 structural/lexical errors**, **65** leading or
+partial source-name labels, **115/180 (63.89%)** explicit conservative
+abstentions, **2,103** dated source-article provenance reference checks,
+`locked_model_changed=false`, `gold_answer_files_opened=false`.
+The local audit independently *recalculates deterministic graph/name claims*
+from original artifacts; it is **not** an independent scientific expert
+judgment. The exact number of full-paper semantic entailment claims that can
+be evaluated remains **0**, and independently measured label accuracy and
+scientific gloss overclaim rate remain **null/not evaluated**. The local
+ignored JSON report, as opposed to a private paper PDF or A/B key, is the
+source of these reported counts; remote CI cannot attest to local inputs.
+
+**Next evidence gate:** inspect source-date-verified full articles and obtain
+an independent, blinded semantic review with per-arm title and gloss grades,
+explicit unsupported/unclear cases, denominators and reviewer provenance.
+Keep lexical-consistency pass counts separate from scientific correctness
+and preserve all negative or inconclusive assessments. See
+[Label evidence separation](LABEL_EVIDENCE_SEPARATION.md).
+
 ## What remains before scientific delivery can claim completion
 
 1. **Original-paper scientific evidence.** Obtain authorized complete primary-text passages, versions available by the original cutoff and independent qualified adjudication of scientific labels and 36 Type-B source/task claims, especially Q17.
