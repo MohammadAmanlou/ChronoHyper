@@ -13,10 +13,12 @@ from __future__ import annotations
 
 import argparse
 from collections import Counter
+from datetime import date
 import hashlib
 import json
 from pathlib import Path
 import random
+from urllib.parse import urlsplit
 
 from research_lab.blind_paper_eval import _eligible, _source, _titles, csv_read, csv_write
 from research_lab.label_v3 import improve_case
@@ -264,6 +266,7 @@ def prepare(project="."):
         "source_input_sha256": inputs,
         "candidate_sha256_by_year": snapshots,
         "preview_sha256": sha(out / FORM),
+        "case_links_sha256": sha(out / LINKS),
         "private_mapping_sha256": sha(out / KEY),
         "source_library_sha256_initial": sha(out / LIBRARY),
         "rubric_sha256": sha(out / RUBRIC),
@@ -281,15 +284,39 @@ def status(project="."):
     receipt = json.loads((out / MANIFEST).read_text(encoding="utf-8"))
     if (sha(out / FORM) != receipt["preview_sha256"] or
             sha(out / KEY) != receipt["private_mapping_sha256"] or
-            sha(out / RUBRIC) != receipt["rubric_sha256"]):
-        raise ValueError("Original blind preview, key or rubric changed")
+            sha(out / RUBRIC) != receipt["rubric_sha256"] or
+            sha(out / LINKS) != receipt["case_links_sha256"]):
+        raise ValueError("Original blind preview, key, case links or rubric changed")
+    links = csv_read(out / LINKS)
+    original = {r["paper_id"]: (r["paper_title"], r["paper_year"])
+                for r in links}
+    earliest_case_year = {}
+    for r in links:
+        ident = r["paper_id"]
+        earliest_case_year[ident] = min(int(r["snapshot_year"]),
+                                        earliest_case_year.get(ident, 9999))
     library = csv_read(out / LIBRARY)
+    if (len(library) != len(original) or
+            len({r["paper_id"] for r in library}) != len(library) or
+            any(r["paper_id"] not in original or
+                (r["paper_title"], r["paper_year"]) != original[r["paper_id"]]
+                for r in library)):
+        raise ValueError("Source library original paper identities changed")
+    def date_and_url_eligible(r):
+        try:
+            version = date.fromisoformat(r["historical_version_date"].strip())
+            address = urlsplit(r["source_url"].strip())
+            return (version <= date(earliest_case_year[r["paper_id"]], 12, 31)
+                    and address.scheme == "https" and bool(address.hostname)
+                    and not address.username and not address.password)
+        except ValueError:
+            return False
     verified = sum(
         r["historical_version_verified_yes_no"].strip().lower() == "yes"
         and r["access_permission_confirmed_yes_no"].strip().lower() == "yes"
         and len(r["authentic_primary_passage"].strip()) >= 90
-        and bool(r["source_url"].strip()) and bool(r["historical_version_date"].strip())
-        and bool(r["passage_locator"].strip())
+        and len(r["passage_locator"].strip()) >= 5
+        and date_and_url_eligible(r)
         for r in library
     )
     result = {
