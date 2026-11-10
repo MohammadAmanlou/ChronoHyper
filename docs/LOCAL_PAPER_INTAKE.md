@@ -150,3 +150,54 @@ because an exact confirmation string was not entered (4166, 5404).
 Run the interactive review again: it **only queues unfilled papers**.
 Inspect the original exact arXiv v1 PDF before explicitly typing
 CONFIRM followed by the shown paper ID. Never confirm blindly.
+
+
+## Five remaining non-indexed papers: verified primary-source retrieval
+
+The five outstanding source records can now be staged without copying text.
+A separate, fixed source manifest lists historically dated ORIGINAL
+publishers/preprints, not a changed research-corpus field:
+
+- 5402: OQMD (Saal et al.), Springer JOM online 2013-09-28,
+  https://link.springer.com/article/10.1007/s11837-013-0755-4
+- 5403: AFLOW (Curtarolo et al.), arXiv v1 2013-08-26,
+  https://arxiv.org/pdf/1308.5715v1
+- 5435: solid-state electrolyte diffusion (Marcolongo et al.),
+  arXiv v1 2019-10-22, https://arxiv.org/pdf/1910.10090v1
+- 5399: linking structural defects (Yang & Buehler),
+  npj Computational Materials first published 2022-09-17,
+  https://www.nature.com/articles/s41524-022-00879-4
+- 5455: scaling deep learning (Merchant et al.), Nature first published
+  2023-11-29, https://www.nature.com/articles/s41586-023-06735-9
+
+From PowerShell at the repository root:
+
+    git pull --ff-only origin main
+    .\.venv\Scripts\python.exe -m research_lab.fetch_remaining_primary_abstracts --project .
+
+The source-specific fetcher checks article identity, date visible on the
+publisher's original webpage or on arXiv v1, and temporal snapshots.
+It stores no text in git, never changes frozen paper metadata or the 92
+original links, and never claims that downloaded text was inspected.
+Failed publisher requests (bot blocking, missing abstract etc) are marked
+FETCH_FAILED_NEEDS_MANUAL_SOURCE_REVIEW in
+local_only/reviews/fulltext_label24/REMAINING_PRIMARY_ABSTRACTS_PENDING_REVIEW/manifest_LOCAL.csv.
+A failed download must not be treated as an unavailable original paper.
+
+For successfully staged original abstracts, use:
+
+    .\.venv\Scripts\python.exe -m research_lab.review_remaining_primary_abstracts --project .
+
+The tool prints one abstract, opens its original linked source, and requires
+an explicit case-specific CONFIRM <paper_id> after the applicant compares
+the exact passage and date to the original PDF or publisher article.
+No auto-confirmation. Enter skips. Q stops. Each affirmative confirmation
+uses the existing guarded recorder to back up and update just that one
+private library row. A source abstract is a source-intake item, not
+scientific evidence of the generated cluster label's semantic accuracy.
+
+Once all unique sources are legitimately resolved, run --status; even
+when all are inspected, the independent 24-case scientific blinded
+evaluation remains NOT_EVALUATED until a distinct reviewer completes
+the separate immutable review form. Never silently mark papers UNAVAILABLE
+merely because an automated downloader failed.
