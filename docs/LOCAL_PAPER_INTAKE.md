@@ -98,3 +98,37 @@ never creates the blind reviewer packet. It cannot establish sufficient
 semantic support for cluster titles merely from abstracts. Paper sources
 without a verified historical arXiv v1 are explicitly reported for separate
 manual verification.
+
+
+## Faster way: inspect and attest staged abstracts in one interactive run
+
+After the historical-source bulk fetch has succeeded, run once:
+
+    git pull --ff-only origin main
+    .\.venv\Scripts\python.exe -m research_lab.review_staged_abstracts --project .
+
+For every still-unfilled paper whose arXiv v1 abstract was fetched, the
+tool prints the local abstract, opens the **historical v1 PDF** in your
+default browser and pauses for your explicit attestation. You must personally
+check that the printed text actually matches the paper abstract (including
+the dated version and source identity). Only then enter the exact confirmation
+text: CONFIRM 5396 (for paper ID 5396), replacing the number for each paper.
+Press Enter to skip or Q to stop. The input is deliberately case-specific:
+software cannot claim that it read a paper as a human.
+
+Each correctly confirmed paper is registered with the existing guarded local
+recorder, including a CSV backup. It will not overwrite previously registered
+papers. It will not automatically mark uninspected articles. This is a source
+review, not independent blind semantic label grading.
+
+Start with just paper 5396 if desired:
+
+    .\.venv\Scripts\python.exe -m research_lab.review_staged_abstracts --project . --paper-id 5396
+
+After review, inspect data intake progress:
+
+    .\.venv\Scripts\python.exe -m research_lab.fulltext_label_audit --project . --status
+
+For the five sources lacking date-gated arXiv v1, use independent source
+discovery rather than relying on inferred versions. These remain unfilled
+until a real source is verified or explicitly declared unavailable.
