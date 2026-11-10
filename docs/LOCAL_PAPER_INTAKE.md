@@ -201,3 +201,58 @@ when all are inspected, the independent 24-case scientific blinded
 evaluation remains NOT_EVALUATED until a distinct reviewer completes
 the separate immutable review form. Never silently mark papers UNAVAILABLE
 merely because an automated downloader failed.
+
+
+## Fair local AI-only blind audit of assembled 24-case packet (10 Nov 2026)
+
+This **optional development diagnostic** applies the same gentle-but-factual
+scientific rubric to both blinded labels A/B using the frozen 24-case packet.
+Title labels that reasonably capture the topic can score "accurate" even
+if not maximally specific. Unsupported specific claims are never accepted
+as established; abstract-only ambiguity is "unclear", and cases that
+cannot support even a fair title comparison are insufficient. It does not
+force a positive finding for V2 or V3. Most passages are abstracts and
+source content is only applicant-attested, not independent full-paper review.
+
+Only use the local Ollama server already installed on the user's computer.
+No Internet API uploads. No repository keys, prior experiment scores, A/B
+mapping, or gold are passed to the model. The original
+BLIND_FULLTEXT_LABEL24.csv is SHA-256 checked against the assembled receipt
+and NEVER modified. The existing REVIEW_IN_PROGRESS.csv is untouched.
+No external sharing permissions are assumed.
+
+Commands from repository root:
+
+    git pull --ff-only origin main
+    .\.venv\Scripts\python.exe -m unittest research_lab.test_ai_blind_fulltext_review -v
+    ollama list
+    .\.venv\Scripts\python.exe -m research_lab.ai_blind_fulltext_review --project . --model qwen3:8b --limit 2
+    .\.venv\Scripts\python.exe -m research_lab.ai_blind_fulltext_review --project . --model qwen3:8b
+
+The first invocation is an optional 2-case smoke test; it writes case
+checkpoints, not a misleading completed review. The second invocation
+reuses valid checkpoints and processes all remaining cases. If Ollama
+stops or emits invalid JSON, unresolved cases remain unresolved and can
+be resumed by running the same command. Do not delete/edit checkpoints
+to tune outcomes after inspecting grades. The script writes PRIVATE local
+AI_ONLY_BLIND24_QWEN_LOCAL/L001.json ... L024.json only after each valid
+response. A full 24-case run writes AI_ONLY_REVIEW24.csv and
+AI_ONLY_REVIEW24_SUMMARY.json under local_only/reviews/fulltext_label24/.
+All files are excluded from git.
+
+Only after a real 24-case AI-only CSV exists, compute descriptive
+V2-versus-V3 AI diagnostic in a separate downstream step:
+
+    .\.venv\Scripts\python.exe -m research_lab.summarize_ai_fulltext_review --project .
+
+This is the **first point** that the private A/B mapping is read; the
+rating tool has not read it. The output is
+AI_ONLY_REVIEW24_SCORE_LOCAL.json with effective denominators, 95% Wilson
+intervals and paired descriptive sign test. It never overwrites
+score_LOCAL_PRIVATE.json (reserved for actual independent review).
+NEVER relabel this AI-only output as independent human expert review,
+full-text-verified entailment, confirmation on an unseen corpus, or a
+scientifically confirmed overclaim rate. Original source and frozen
+retrieval experiments stay unchanged. Do not run the older generic
+--score with AI_ONLY_REVIEW24.csv because that generic filename/semantic
+stage may be confused with actual independent reviewer results.
