@@ -386,3 +386,77 @@ utility, semantic entailment, lexical count/provenance accuracy and
 whether abstention is appropriate, and should use genuinely unseen,
 source-authorized, fulltext-supported cases. Re-scoring this same 24-case
 worksheet would only be post-hoc development, NOT confirmation of V4.
+
+
+## Next gate: NEW-case V2/V3/V4 three-arm blind source screening (11 Nov 2026)
+
+The applicant's real V4 exploratory source-term rendering completed for 180
+frozen same-corpus hierarchy nodes (2020: 8 majority, 13 partial, 39 no
+qualified phrase; 2022: 6/16/38; 2024: 5/17/38). This is a **presentation**
+and source-name confidence separation, not new topic learning, semantically
+validated labeling or an independent scientific gain.
+
+The next protocol is implemented as
+\`research_lab/prepare_three_arm_review.py\`. This first phase is **ONLY
+case disjoint screening**, not judging, publication, or external confirmation.
+For transparency, the design was devised AFTER the previous 24-case V2/V3
+Qwen comparison (5 V3 wins, 14 losses, 5 ties), and every case still uses
+the SAME ORIGINAL corpus. Even a fresh local source inspection and a new
+LLM evaluation will remain same-corpus, post-hoc development.
+
+The 12-case pilot is stratified as 4 previously unreviewed level-one clusters
+per original cutoff year. Before selection it MUST exclude all known
+(year, stable_id) from the earlier tracked V2 comparison (24), the earlier
+local private V2/V3 review (24), and if found the prior 48-row coherence
+experiment's real-target mapping. If that optional third key is missing, the
+manifest truthfully marks prior-coverage exclusion as unverified. Case
+identity novelty is NOT independent original-source-papers novelty and does
+not imply independent reviewer credibility. The helper will REFUSE to
+recycle cases if any year is under quota.
+
+The 12 case contexts each contain a random sample of 14 eligible archived
+node names, up to eight original linked article TITLES as weak context,
+and three A/B/C-blinded V2/V3/V4 label+gloss alternatives. Side ordering is
+independently randomized and recorded ONLY in ignored
+\`mapping_PRIVATE.csv\`. Importantly, a title or paper metadata field is
+NOT yet a dated scientific passage.
+
+Each case has up to four pre-cutoff source-paper *metadata links* chosen
+by occurrence among its sampled nodes; the de-duplicated paper library is
+empty of URLs, version dates, passages, permission approvals and scientific
+ratings. No paper text is fabricated or sent over the network.
+
+Run from the repository root on the user's authorized local workspace:
+
+    git pull --ff-only origin main
+    .\.venv\Scripts\python.exe -m unittest research_lab.test_prepare_three_arm_review -v
+    .\.venv\Scripts\python.exe -m research_lab.prepare_three_arm_review --project . --prepare
+    .\.venv\Scripts\python.exe -m research_lab.prepare_three_arm_review --project . --status
+
+The ignored private output directory is
+\`local_only/reviews/three_arm_new_development/\` with:
+- \`BLIND_3ARM_PREVIEW_NOT_YET_RATABLE.csv\` — 12 unrated blinded cases
+- \`mapping_PRIVATE.csv\` — NEVER give to the reviewer or upload
+- \`CASE_PAPER_LINKS_PRIVATE.csv\` — citation/metadata associations
+- \`PRIMARY_PAPERS_TO_VERIFY_LOCAL.csv\` — unique actual paper intake
+- \`PREDECLARED_REVIEW_RUBRIC.txt\` — separate accuracy, informativeness,
+  abstention appropriateness and gloss overclaim axes
+- \`manifest_PRIVATE.json\` — hashed provenance and honest status
+
+The script refuses to overwrite any existing first packet. The status
+command is READ ONLY; a source entry is considered *user-attested
+complete* only if a real date no later than the earliest referenced case
+cutoff, a secure URL, a section/page locator, a substantial passage and
+explicit yes/yes historical version + permission fields are supplied.
+Even then it is NOT software-verified source truth and the current
+protocol reports \`ready_for_blind_semantic_rating=false\`. A separate
+assembled, independently verified reviewer packet and validated scoring
+tool are still needed before anyone should assign grades. Do not attempt
+to score \`BLIND_3ARM_PREVIEW_NOT_YET_RATABLE.csv\` or adapt the old 2-arm
+score routine to three arms.
+
+**Do NOT push or paste** the ignored source library, original corpus
+node names, private A/B/C mapping, reviewer evidence or completed ratings
+to GitHub, public services or external LLM APIs. Continue local Qwen only
+when a source-screened, permission-compatible judge packet exists; model
+self-judgment cannot replace scientific expert verification.
